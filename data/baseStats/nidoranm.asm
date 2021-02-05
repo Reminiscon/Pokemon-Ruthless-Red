@@ -14,8 +14,8 @@ dw NidoranMPicBack
 ; attacks known at lvl 0
 db LEER
 db TACKLE
-db 0
-db 0
+db DOUBLE_KICK
+db TOXIC
 db 3 ; growth rate
 ; learnset
 	tmlearn 6,7,8

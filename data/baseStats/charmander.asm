@@ -14,8 +14,8 @@ dw CharmanderPicBack
 ; attacks known at lvl 0
 db SCRATCH
 db GROWL
-db 0
-db 0
+db EMBER
+db COUNTER
 db 3 ; growth rate
 ; learnset
 	tmlearn 1,3,5,6,8
@@ -23,6 +23,6 @@ db 3 ; growth rate
 	tmlearn 17,18,19,20,23
 	tmlearn 28,31,32
 	tmlearn 33,34,38,39,40
-	tmlearn 44
+	tmlearn 44,48
 	tmlearn 50,51,54
 db 0 ; padding

@@ -1,19 +1,18 @@
-_MtMoonPokecenterText1::
-	text "I've 6 # BALLs"
-	line "set in my belt."
+_MtMoonPokecenterText1::							;modified text
+	text "Some trainers"
+	line "are more skilled"
+	cont "than others!"
 
-	para "At most, you can"
-	line "carry 6 #MON."
+	para "I don't mess with"
+	line "SUPER NERDS!"
 	done
 
-_MtMoonPokecenterText3::
-	text "TEAM ROCKET"
-	line "attacks CERULEAN"
-	cont "citizens..."
-
-	para "TEAM ROCKET is"
-	line "always in the"
-	cont "news!"
+_MtMoonPokecenterText3::							;modified text
+	text "MT.MOON is no"
+	line "joke. The wild"
+	cont "#MON on the"
+	cont "bottom floor"
+	cont "are fierce!"
 	done
 
 _MagikarpSalesmanText1::

@@ -93,20 +93,23 @@ _Route3AfterBattleText5::
 	cont "people see you!"
 	done
 
-_Route3BattleText6::
-	text "Hey! You're not"
-	line "wearing shorts!"
+_Route3BattleText6::						;modified text
+	text "My RATTATA is two"
+	line "standard"
+	cont "deviations"
+	
+	para "above the mean!"
 	done
 
-_Route3EndBattleText6::
-	text "Lost!"
-	line "Lost! Lost!"
+_Route3EndBattleText6::						;modified text
+	text "But the"
+	line "Z-SCORE..."
 	prompt
 
-_Route3AfterBattleText6::
-	text "I always wear"
-	line "shorts, even in"
-	cont "winter!"
+_Route3AfterBattleText6::					;modified text
+	text "Statistics is much"
+	line "better than"
+	cont "gender studies."
 	done
 
 _Route3BattleText7::
@@ -138,8 +141,22 @@ _Route3AfterBattleText8::
 	text "ROUTE 4 is at the"
 	line "foot of MT.MOON."
 	done
+	
+_Route3BattleText9::									;NEW
+	text "I will show"
+	line "no mercy!"
+	done
 
-_Route3Text10::
+_Route3EndBattleText9::
+	text "Huh?"
+	prompt
+
+_Route3AfterBattleText9::
+	text "But you're just"
+	line "a filthy casual!"
+	done
+
+_Route3Text11::
 	text "ROUTE 3"
 	line "MT.MOON AHEAD"
 	done

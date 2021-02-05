@@ -47,19 +47,19 @@ _MtMoon1AfterBattleText4::
 	line "out of here?"
 	done
 
-_MtMoon1BattleText5::
-	text "What! Don't sneak"
-	line "up on me!"
+_MtMoon1BattleText5::				;modified text
+	text "Here comes a"
+	line "shockerino!"
 	done
 
-_MtMoon1EndBattleText5::
-	text "My"
-	line "#MON won't do!"
+_MtMoon1EndBattleText5::			;modified text
+	text "Well"
+	line "diddly doodly!"
 	prompt
 
-_MtMoon1AfterBattleText5::
-	text "I have to find"
-	line "stronger #MON."
+_MtMoon1AfterBattleText5::			;modified text
+	text "Quit diddling,"
+	line "get a move on."
 	done
 
 _MtMoon1BattleText6::
@@ -113,7 +113,10 @@ _MtMoon1AfterBattleText8::
 	cont "catch one."
 	done
 
-_MtMoon1Text14::
-	text "Beware! ZUBAT is"
-	line "a blood sucker!"
+_MtMoon1Text14::					;modified text
+	text "There is no way"
+	line "to come back up."
+	
+	para "Go prepared, or"
+	line "face your doom."
 	done

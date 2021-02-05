@@ -13,8 +13,8 @@ dw PoliwagPicFront
 dw PoliwagPicBack
 ; attacks known at lvl 0
 db BUBBLE
-db 0
-db 0
+db WATER_GUN
+db HYPNOSIS
 db 0
 db 3 ; growth rate
 ; learnset

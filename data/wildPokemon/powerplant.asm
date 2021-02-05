@@ -1,16 +1,16 @@
 PowerPlantMons:
 	db $0A
-	db 21,VOLTORB
-	db 21,MAGNEMITE
-	db 24,PIKACHU
-	db 23,MAGNEMITE
-	db 23,VOLTORB
-	db 32,MAGNETON
-	db 35,MAGNETON
+	db 38,ELECTRODE							;modified
+	db 40,ELECTRODE							;modified
+	db 42,ELECTRODE							;modified
+	db 38,RAICHU							;modified
+	db 42,RAICHU							;modified
+	db 38,MAGNETON							;modified
+	db 42,MAGNETON							;modified
 	IF DEF(_RED)
-		db 34,ELECTABUZZ
-		db 37,ELECTABUZZ
-		db 21,PORYGON
+		db 39,ELECTABUZZ
+		db 43,ELECTABUZZ
+		db 44,PORYGON
 	ENDC
 	IF (DEF(_BLUE) || DEF(_GREEN))
 		db 33,ELECTABUZZ

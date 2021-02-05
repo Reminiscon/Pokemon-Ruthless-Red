@@ -1918,7 +1918,7 @@ CoinCaseNumCoinsText:
 ItemUseOldRod:
 	call FishingInit
 	jp c, ItemUseNotTime
-	lb bc, 5, MAGIKARP
+	lb bc, 40, TENTACOOL						;modified
 	ld a, $1 ; set bite
 	jr RodResponse
 
@@ -2336,11 +2336,7 @@ ItemUseTMHM:
 	ld [wWhichPokemon], a
 	ld a, b
 	and a
-	ret z
-	ld a, [wcf91]
-	call IsItemHM
-	ret c
-	jp RemoveUsedItem
+	ret						;some code was deleted here to make tms reusable
 
 BootedUpTMText:
 	TX_FAR _BootedUpTMText

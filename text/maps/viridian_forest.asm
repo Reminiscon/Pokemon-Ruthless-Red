@@ -42,8 +42,8 @@ _ViridianFrstAfterBattleText2::
 	done
 
 _ViridianForestBattleText3::
-	text "Hey, wait up!"
-	line "What's the hurry?"
+	text "Get ready to"
+	line "cry."
 	done
 
 _ViridianForestEndBattleText3::

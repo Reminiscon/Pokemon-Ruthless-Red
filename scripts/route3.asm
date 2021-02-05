@@ -23,6 +23,7 @@ Route3TextPointers:
 	dw Route3Text8
 	dw Route3Text9
 	dw Route3Text10
+	dw Route3Text11
 
 Route3TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_3_TRAINER_0
@@ -95,7 +96,16 @@ Route3TrainerHeader7:
 	dw Route3AfterBattleText8 ; TextAfterBattle
 	dw Route3EndBattleText8 ; TextEndBattle
 	dw Route3EndBattleText8 ; TextEndBattle
-
+	
+Route3TrainerHeader8:													;NEW
+	dbEventFlagBit EVENT_BEAT_ROUTE_3_TRAINER_8, 1
+	db ($2 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_ROUTE_3_TRAINER_8, 1
+	dw Route3BattleText9 ; TextBeforeBattle
+	dw Route3AfterBattleText9 ; TextAfterBattle
+	dw Route3EndBattleText9 ; TextEndBattle
+	dw Route3EndBattleText9 ; TextEndBattle
+	
 	db $ff
 
 Route3Text1:
@@ -245,7 +255,25 @@ Route3EndBattleText8:
 Route3AfterBattleText8:
 	TX_FAR _Route3AfterBattleText8
 	db "@"
+	
+Route3Text10:												;NEW
+	TX_ASM
+	ld hl, Route3TrainerHeader8
+	call TalkToTrainer
+	jp TextScriptEnd
+	
+Route3BattleText9:											;NEW
+	TX_FAR _Route3BattleText9
+	db "@"
 
-Route3Text10:
-	TX_FAR _Route3Text10
+Route3EndBattleText9:										;NEW
+	TX_FAR _Route3EndBattleText9
+	db "@"
+
+Route3AfterBattleText9	:									;NEW
+	TX_FAR _Route3AfterBattleText9
+	db "@"
+
+Route3Text11:
+	TX_FAR _Route3Text11
 	db "@"

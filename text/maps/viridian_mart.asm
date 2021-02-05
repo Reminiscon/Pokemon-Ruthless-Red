@@ -24,7 +24,10 @@ _ViridianMartText2::
 	line "many ANTIDOTEs."
 	done
 
-_ViridianMartText3::
-	text "No! POTIONs are"
-	line "all sold out."
+_ViridianMartText3::						;modified text
+	text "I caught a"
+	line "DROWZEE!"
+	
+	para "Taught it"
+	line "METRONOME!"
 	done

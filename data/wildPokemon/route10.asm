@@ -1,27 +1,27 @@
 Route10Mons:
 	db $0F
 	IF DEF(_RED)
-		db 16,VOLTORB
-		db 16,SPEAROW
-		db 14,VOLTORB
-		db 11,EKANS
-		db 13,SPEAROW
-		db 15,EKANS
-		db 17,VOLTORB
-		db 17,SPEAROW
-		db 13,EKANS
-		db 17,EKANS
+		db 33,ELECTRODE					;modified
+		db 34,ELECTRODE					;modified
+		db 35,ELECTRODE					;modified
+		db 36,ELECTRODE					;modified
+		db 37,ELECTRODE					;modified
+		db 33,MAGNETON					;modified
+		db 35,MAGNETON					;modified
+		db 37,MAGNETON					;modified
+		db 36,ARBOK						;modified
+		db 38,ARBOK						;modified
 	ENDC
 	IF (DEF(_BLUE) || DEF(_GREEN))
-		db 16,VOLTORB
-		db 16,SPEAROW
-		db 14,VOLTORB
-		db 11,SANDSHREW
-		db 13,SPEAROW
-		db 15,SANDSHREW
-		db 17,VOLTORB
-		db 17,SPEAROW
-		db 13,SANDSHREW
-		db 17,SANDSHREW
+		db 33,ELECTRODE					;modified
+		db 34,ELECTRODE					;modified
+		db 35,ELECTRODE					;modified
+		db 36,ELECTRODE					;modified
+		db 37,ELECTRODE					;modified
+		db 33,MAGNETON					;modified
+		db 35,MAGNETON					;modified
+		db 37,MAGNETON					;modified
+		db 36,ARBOK						;modified
+		db 38,ARBOK						;modified
 	ENDC
 	db $00

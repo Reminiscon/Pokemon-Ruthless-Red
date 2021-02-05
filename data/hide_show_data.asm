@@ -18,7 +18,7 @@ MapHSPointers:
 	dw MapHS0A
 	dw MapHSXX
 	dw MapHSXX
-	dw MapHS0D
+	dw MapHS0D	;NEW, Route 2
 	dw MapHSXX
 	dw MapHS0F
 	dw MapHSXX
@@ -27,7 +27,7 @@ MapHSPointers:
 	dw MapHSXX
 	dw MapHS14
 	dw MapHSXX
-	dw MapHSXX
+	dw MapHS16	;NEW, Route 11
 	dw MapHS17
 	dw MapHSXX
 	dw MapHSXX
@@ -304,10 +304,17 @@ MapHS0A:
 MapHS0D:
 	db ROUTE_2,$01,Show
 	db ROUTE_2,$02,Show
+	db ROUTE_2,$03,Show							;NEW
+	db ROUTE_2,$04,Show							;NEW
+	db ROUTE_2,$05,Show							;NEW
 MapHS0F:
 	db ROUTE_4,$03,Show
 MapHS14:
 	db ROUTE_9,$0A,Show
+MapHS16:
+	db ROUTE_11,$0D,Show						;NEW
+	db ROUTE_11,$0E,Show						;NEW
+	db ROUTE_11,$0F,Show						;NEW
 MapHS17:
 	db ROUTE_12,$01,Show
 	db ROUTE_12,$09,Show

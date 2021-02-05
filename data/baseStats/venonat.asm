@@ -14,8 +14,8 @@ dw VenonatPicBack
 ; attacks known at lvl 0
 db TACKLE
 db DISABLE
-db 0
-db 0
+db CONFUSION
+db PSYWAVE
 db 0 ; growth rate
 ; learnset
 	tmlearn 6

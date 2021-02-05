@@ -3,7 +3,7 @@ _PewterCityText1::
 	line "CLEFAIRYs came"
 	cont "from the moon!"
 
-	para "They appeared "
+	para "They appeared"
 	line "after MOON STONE"
 	cont "fell on MT.MOON."
 	done
@@ -45,21 +45,21 @@ _PewterCityText13::
 	cont "See you around!"
 	done
 
-_PewterCityText_19427::
+_PewterCityText_19427::				;modified text
 	text "Psssst!"
 	line "Do you know what"
 	cont "I'm doing?"
 	done
 
-_PewterCityText_1942c::
-	text "That's right!"
-	line "It's hard work!"
+_PewterCityText_1942c::				;modified text
+	text "Correct! I am"
+	line "training hard!"
 	done
 
-_PewterCityText_19431::
-	text "I'm spraying REPEL"
-	line "to keep #MON"
-	cont "out of my garden!"
+_PewterCityText_19431::				;modified text
+	text "I'm walking in"
+	line "the grass,"
+	cont "genius."
 	done
 
 _PewterCityText_1945d::
@@ -76,13 +76,12 @@ _PewterCityText14::
 	cont "take on BROCK!"
 	done
 
-_PewterCityText6::
-	text "TRAINER TIPS"
+_PewterCityText6::					;modified text
+	text "WARNING"
 
-	para "Any #MON that"
-	line "takes part in"
-	cont "battle, however"
-	cont "short, earns EXP!"
+	para "#MON from the"
+	line "VIRIDIAN FOREST"
+	cont "enclosed here."
 	done
 
 _PewterCityText7::

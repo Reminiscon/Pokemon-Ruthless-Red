@@ -14,8 +14,8 @@ dw PikachuPicBack
 ; attacks known at lvl 0
 db THUNDERSHOCK
 db GROWL
-db 0
-db 0
+db PAY_DAY
+db MIMIC
 db 0 ; growth rate
 ; learnset
 	tmlearn 1,5,6,8

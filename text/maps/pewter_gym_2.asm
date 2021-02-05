@@ -21,19 +21,16 @@ _ReceivedTM34Text::
 	text "<PLAYER> received"
 	line "TM34!@@"
 
-_TM34ExplanationText::
+_TM34ExplanationText::					;modified text
 	db $0
 	para "A TM contains a"
 	line "technique that"
 	cont "can be taught to"
 	cont "#MON!"
 
-	para "A TM is good only"
-	line "once! So when you"
-	cont "use one to teach"
-	cont "a new technique,"
-	cont "pick the #MON"
-	cont "carefully!"
+	para "A TM can be"
+	line "used as much as"
+	cont "you want!"
 
 	para "TM34 contains"
 	line "BIDE!"
@@ -92,10 +89,10 @@ _PewterGymEndBattleText1::
 	cont "distance!"
 	prompt
 
-_PewterGymAfterBattleText1::
-	text "You're pretty hot,"
-	line "but not as hot"
-	cont "as BROCK!"
+_PewterGymAfterBattleText1::				;modified text
+	text "BROCK does not"
+	line "only use ROCK"
+	cont "type #MON!"
 	done
 
 _PewterGymText_5c515::
@@ -117,16 +114,19 @@ _PewterGymText_5c51a::
 	line "get happening!"
 	prompt
 
-_PewterGymText_5c51f::
-	text "The 1st #MON"
-	line "out in a match is"
-	cont "at the top of the"
-	cont "#MON LIST!"
+_PewterGymText_5c51f::							;modified text
+	text "BROCK's strategy"
+	line "will put the"
+	cont "squeeze on you"
+	cont "if not careful!"
 
-	para "By changing the"
-	line "order of #MON,"
-	cont "matches could be"
-	cont "made easier!"
+	para "Douse him with"
+	line "water and do it"
+	cont "quick!"
+	
+	para "Else your defeat"
+	line "will be slow"
+	cont "and painful!"
 	done
 
 _PewterGymText_5c524::

@@ -3,7 +3,7 @@ db 40 ; base hp
 db 80 ; base attack
 db 35 ; base defense
 db 70 ; base speed
-db 35 ; base special
+db 45 ; base special
 db FIGHTING ; species type 1
 db FIGHTING ; species type 2
 db 190 ; catch rate
@@ -14,7 +14,7 @@ dw MankeyPicBack
 ; attacks known at lvl 0
 db SCRATCH
 db LEER
-db 0
+db SEISMIC_TOSS
 db 0
 db 0 ; growth rate
 ; learnset

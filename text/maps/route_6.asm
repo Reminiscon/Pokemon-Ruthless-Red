@@ -1,7 +1,5 @@
-_Route6BattleText1::
-	text "Who's there?"
-	line "Quit listening in"
-	cont "on us!"
+_Route6BattleText1::							;modified text
+	text "Time to roll!"
 	done
 
 _Route6EndBattleText1::
@@ -10,14 +8,12 @@ _Route6EndBattleText1::
 	prompt
 
 _Route6AfterBattleText1::
-	text "Whisper..."
-	line "whisper..."
+	text "Mutter..."
+	line "Mutter..."
 	done
 
-_Route6BattleText2::
-	text "Excuse me! This"
-	line "is a private"
-	cont "conversation!"
+_Route6BattleText2::							;modified text
+	text "Time to rock!"
 	done
 
 _Route6EndBattleText2::
@@ -89,8 +85,33 @@ _Route6AfterBattleText6::
 	line "weak? Or, am I"
 	cont "just bad?"
 	done
+	
+_Route6BattleText7::							;NEW
+	text "Well you're just"
+	line "in time!"
+	
+	para "I have just"
+	line "polished my"
+	cont "glasses!"
+	
+	para "No matter what"
+	line "you try, I will"
+	cont "see it coming"
+	cont "from every angle!"
+	done
 
-_Route6Text7::
+_Route6EndBattleText7::
+	text "Now"
+	line "that is haxx!"
+	prompt
+
+_Route6AfterBattleText7::
+	text "Never send in"
+	line "a noob to do a"
+	cont "nerd's job!"
+	done
+	
+_Route6Text8::
 	text "UNDERGROUND PATH"
 	line "CERULEAN CITY -"
 	cont "VERMILION CITY"

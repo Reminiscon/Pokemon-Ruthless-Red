@@ -1,10 +1,20 @@
-_VermilionCityText1::
-	text "We're careful"
-	line "about pollution!"
+_VermilionCityText1::							;modified text
+	text "Well since you"
+	line "asked, time for"
+	cont "a battle!"
 
-	para "We've heard GRIMER"
-	line "multiplies in"
-	cont "toxic sludge!"
+	para "I'm related to"
+	line "AGATHA and will"
+	cont "stomp you flat!"
+	
+	para "HAH HAH HAH!!!"
+	line "The look on your"
+	cont "face!"
+	
+	para "It was a joke!"
+	line "Oh, you're never"
+	cont "too old to have"
+	cont "fun!"
 	done
 
 _VermilionCityText_198a7::
@@ -87,22 +97,35 @@ _VermilionCityText6::
 	line "once a year."
 	done
 
-_VermilionCityText7::
+_VermilionCityText7::							;modified text
 	text "VERMILION CITY"
 	line "The Port of"
 	cont "Exquisite Sunsets"
+	
+	para "NOTICE"
+	
+	para "AREA UNDER"
+	line "CONSTRUCTION"
+	
+	para "Do not jump"
+	line "over the ledge"
+	cont "unprepared!"
 	done
 
-_VermilionCityText8::
+_VermilionCityText8::							;modified text
 	text "NOTICE!"
 
-	para "ROUTE 12 may be"
-	line "blocked off by a"
-	cont "sleeping #MON."
+	para "The route ahead"
+	line "is an autonomous"
+	cont "zone!"
 
-	para "Detour through"
-	line "ROCK TUNNEL to"
-	cont "LAVENDER TOWN."
+	para "It is lawless!"
+	line "Do not proceed"
+	cont "any further!"
+	
+	para "Dangerous wild"
+	line "#MON beyond"
+	cont "this ledge!"
 
 	para "VERMILION POLICE"
 	done

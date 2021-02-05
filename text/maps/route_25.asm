@@ -34,10 +34,10 @@ _Route25AfterBattleText2::
 	cont "around the world."
 	done
 
-_Route25BattleText3::
-	text "I'm a cool guy."
-	line "I've got a girl"
-	cont "friend!"
+_Route25BattleText3::							;modified text
+	text "Okay tough guy,"
+	line "it is time for a"
+	cont "rematch!"
 	done
 
 _Route25EndBattleText3::
@@ -45,9 +45,10 @@ _Route25EndBattleText3::
 	line "darn..."
 	prompt
 
-_Route25AfterBattleText3::
-	text "Oh well. My girl"
-	line "will cheer me up."
+_Route25AfterBattleText3::						;modified text
+	text "I'll beat you"
+	line "real bad one"
+	cont "day!"
 	done
 
 _Route25BattleText4::

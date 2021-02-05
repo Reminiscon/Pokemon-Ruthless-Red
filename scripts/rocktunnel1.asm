@@ -42,7 +42,7 @@ RockTunnel1TrainerHeader1:
 
 RockTunnel1TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_2
 	dw RockTunnel1BattleText3 ; TextBeforeBattle
 	dw RockTunnel1AfterBattleText3 ; TextAfterBattle
@@ -51,7 +51,7 @@ RockTunnel1TrainerHeader2:
 
 RockTunnel1TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_3
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCK_TUNNEL_1_TRAINER_3
 	dw RockTunnel1BattleText4 ; TextBeforeBattle
 	dw RockTunnel1AfterBattleText4 ; TextAfterBattle

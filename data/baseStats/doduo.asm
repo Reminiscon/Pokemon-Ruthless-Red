@@ -13,8 +13,8 @@ dw DoduoPicFront
 dw DoduoPicBack
 ; attacks known at lvl 0
 db PECK
-db 0
-db 0
+db SUBSTITUTE
+db RAGE
 db 0
 db 0 ; growth rate
 ; learnset

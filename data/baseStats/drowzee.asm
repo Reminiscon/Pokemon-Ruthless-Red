@@ -14,7 +14,7 @@ dw DrowzeePicBack
 ; attacks known at lvl 0
 db POUND
 db HYPNOSIS
-db 0
+db COUNTER
 db 0
 db 0 ; growth rate
 ; learnset

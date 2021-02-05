@@ -1,12 +1,11 @@
 _ViridianCityText1::
-	text "Those # BALLs"
-	line "at your waist!"
-	cont "You have #MON!"
+	text "VIRIDIAN FOREST"
+	line "is a terrifying"
+	cont "place!"
 
-	para "It's great that"
-	line "you can carry and"
-	cont "use #MON any"
-	cont "time, anywhere!"
+	para "One of my friends"
+	line "in the city knows"
+	cont "all about it!"
 	done
 
 _ViridianCityText_19122::
@@ -40,7 +39,12 @@ _ViridianCityText_19157::
 
 	para "Watch out for its"
 	line "POISON STING!"
+	
+	para "Careful though,"
+	line "both of them"
+	cont "have COUNTER!"
 	done
+	
 IF DEF(_GREEN)
 _ViridianCityText_19175::
 	text "Oh Grandpa! Don't"
@@ -178,30 +182,28 @@ _ViridianCityText8::
 	cont "Green Paradise"
 	done
 
-_ViridianCityText9::
+_ViridianCityText9::						;modified text
 	text "TRAINER TIPS"
 
-	para "Catch #MON"
-	line "and expand your"
-	cont "collection!"
+	para "A lot of"
+	line "trainers use"
+	cont "TM and HM moves."
 
-	para "The more you have,"
-	line "the easier it is"
-	cont "to fight!"
+	para "Some trainers"
+	line "are tougher than"
+	cont "others!"
 	done
 
-_ViridianCityText10::
+_ViridianCityText10::						;modified text
 	text "TRAINER TIPS"
 
-	para "The battle moves"
-	line "of #MON are"
-	cont "limited by their"
-	cont "POWER POINTs, PP."
+	para "It's always"
+	line "a good idea to"
+	cont "read signs."
 
-	para "To replenish PP,"
-	line "rest your tired"
-	cont "#MON at a"
-	cont "#MON CENTER!"
+	para "Also, talk to"
+	line "people for tips"
+	cont "and hints!"
 	done
 
 _ViridianCityText13::

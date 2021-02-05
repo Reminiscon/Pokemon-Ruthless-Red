@@ -3,7 +3,7 @@ db 30 ; base hp
 db 56 ; base attack
 db 35 ; base defense
 db 72 ; base speed
-db 25 ; base special
+db 35 ; base special
 db NORMAL ; species type 1
 db NORMAL ; species type 2
 db 255 ; catch rate
@@ -14,7 +14,7 @@ dw RattataPicBack
 ; attacks known at lvl 0
 db TACKLE
 db TAIL_WHIP
-db 0
+db RAGE
 db 0
 db 0 ; growth rate
 ; learnset
@@ -24,5 +24,5 @@ db 0 ; growth rate
 	tmlearn 25,28,31,32
 	tmlearn 34,39,40
 	tmlearn 44
-	tmlearn 50
+	tmlearn 50, 51
 db 0 ; padding

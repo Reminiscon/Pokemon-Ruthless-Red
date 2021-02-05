@@ -1,13 +1,13 @@
 Route3Mons:
 	db $14
-	db 6,PIDGEY
-	db 5,SPEAROW
-	db 7,PIDGEY
-	db 6,SPEAROW
-	db 7,SPEAROW
-	db 8,PIDGEY
-	db 8,SPEAROW
-	db 3,JIGGLYPUFF
-	db 5,JIGGLYPUFF
-	db 7,JIGGLYPUFF
+	db 13,PIDGEY
+	db 13,SPEAROW
+	db 13,PIDGEY
+	db 14,SANDSHREW		;modified
+	db 14,SANDSHREW		;modified
+	db 14,DODUO			;modified
+	db 15,DODUO			;modified
+	db 15,JIGGLYPUFF
+	db 15,JIGGLYPUFF
+	db 16,GROWLITHE		;modified
 	db $00

@@ -1,13 +1,13 @@
 MoonMonsB2:
 	db $0A
-	db 9,ZUBAT
-	db 9,GEODUDE
-	db 10,ZUBAT
-	db 10,GEODUDE
-	db 11,ZUBAT
-	db 10,PARAS
-	db 12,PARAS
-	db 10,CLEFAIRY
-	db 12,ZUBAT
-	db 12,CLEFAIRY
+	db 20,PARAS			;modified
+	db 20,PARAS			;modified
+	db 20,PARAS			;modified
+	db 20,PARAS			;modified
+	db 22,GOLBAT		;modified
+	db 22,GOLBAT		;modified
+	db 22,GOLBAT		;modified
+	db 22,CLEFABLE		;modified
+	db 22,CLEFABLE		;modified
+	db 24,PARASECT		;modified
 	db $00

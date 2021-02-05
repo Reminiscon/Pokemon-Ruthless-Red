@@ -120,6 +120,12 @@ _Route10Text7::
 	text "ROCK TUNNEL"
 	done
 
-_Route10Text10::
+_Route10Text10::						;modified text
 	text "POWER PLANT"
+	
+	para "WARNING"
+	
+	para "ENTRANCE UNSAFE"
+	line "MUST EXIT OUT"
+	cont "THE OTHER SIDE"
 	done

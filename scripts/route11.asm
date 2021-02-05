@@ -23,7 +23,11 @@ Route11TextPointers:
 	dw Route11Text8
 	dw Route11Text9
 	dw Route11Text10
-	dw Route11Text11
+	dw Route11Text11					;NEW
+	dw Route11Text12					;NEW
+	dw PickUpItemText					;NEW
+	dw PickUpItemText					;NEW
+	dw PickUpItemText					;NEW
 
 Route11TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_11_TRAINER_0
@@ -114,6 +118,24 @@ Route11TrainerHeader9:
 	dw Route11AfterBattleText10 ; TextAfterBattle
 	dw Route11EndBattleText10 ; TextEndBattle
 	dw Route11EndBattleText10 ; TextEndBattle
+	
+Route11TrainerHeader10:
+	dbEventFlagBit EVENT_BEAT_ROUTE_11_TRAINER_10, 1
+	db ($4 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_ROUTE_11_TRAINER_10, 1
+	dw Route11BattleText11 ; TextBeforeBattle
+	dw Route11AfterBattleText11 ; TextAfterBattle
+	dw Route11EndBattleText11 ; TextEndBattle
+	dw Route11EndBattleText11 ; TextEndBattle
+	
+Route11TrainerHeader11:
+	dbEventFlagBit EVENT_BEAT_ROUTE_11_TRAINER_11, 1
+	db ($4 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_ROUTE_11_TRAINER_11, 1
+	dw Route11BattleText12 ; TextBeforeBattle
+	dw Route11AfterBattleText12 ; TextAfterBattle
+	dw Route11EndBattleText12 ; TextEndBattle
+	dw Route11EndBattleText12 ; TextEndBattle
 
 	db $ff
 
@@ -296,7 +318,39 @@ Route11EndBattleText10:
 Route11AfterBattleText10:
 	TX_FAR _Route11AfterBattleText10
 	db "@"
+	
+Route11Text11:										;modified text
+	TX_ASM
+	ld hl, Route11TrainerHeader10
+	call TalkToTrainer
+	jp TextScriptEnd
 
-Route11Text11:
-	TX_FAR _Route11Text11
+Route11BattleText11:
+	TX_FAR _Route11BattleText11
+	db "@"
+
+Route11EndBattleText11:
+	TX_FAR _Route11EndBattleText11
+	db "@"
+
+Route11AfterBattleText11:
+	TX_FAR _Route11AfterBattleText11
+	db "@"
+	
+Route11Text12:										;modified text
+	TX_ASM
+	ld hl, Route11TrainerHeader11
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route11BattleText12:
+	TX_FAR _Route11BattleText12
+	db "@"
+
+Route11EndBattleText12:
+	TX_FAR _Route11EndBattleText12
+	db "@"
+
+Route11AfterBattleText12:
+	TX_FAR _Route11AfterBattleText12
 	db "@"

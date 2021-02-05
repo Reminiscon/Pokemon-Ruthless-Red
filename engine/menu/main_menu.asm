@@ -665,7 +665,7 @@ BattleAnimationOptionText:
 
 BattleStyleOptionText:
 	db   "BATTLE STYLE"
-	next " SHIFT    SET@"
+	next " SET         @"
 
 OptionMenuCancelText:
 	db "CANCEL@"

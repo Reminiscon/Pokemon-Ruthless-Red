@@ -70,7 +70,6 @@ AlwaysHappenSideEffects:
 	db RECOIL_EFFECT
 	db TWINEEDLE_EFFECT
 	db RAGE_EFFECT
-	db HYPER_BEAM_EFFECT	;joenote - adding this here makes hyperbeam recharge if enemy is knocked out
 	db -1
 SpecialEffects:
 ; Effects from arrays 2, 4, and 5B, minus Twineedle and Rage.
@@ -728,14 +727,6 @@ HandlePoisonBurnLeechSeed_DecreaseOwnHP:
 .playersTurn
 	bit BADLY_POISONED, [hl]
 	jr z, .noToxic
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - If this bit is set, this function is being called for leech seed.
-;			Do not do Toxic routines
-	ld a, [wUnusedC000]
-	bit 6, a	;check if this is for leech seed
-	res 6, a 	;(reset the bit without affecting flags)
-	jr nz, .noToxic	;if so, then do not increment the toxic counter or multiply the damage for toxic
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [de]    ; increment toxic counter
 	inc a
 	ld [de], a
@@ -1553,7 +1544,7 @@ EnemySendOutFirstMon:
 	jr z, .next4
 	ld a, [wOptions]
 	bit 6, a
-	jr nz, .next4
+	jr .next4						;removing shift battle style
 	ld hl, TrainerAboutToUseText
 	call PrintText
 	coord hl, 0, 7

@@ -296,7 +296,6 @@ WingAttackAnim:
 
 WhirlwindAnim:
 	db $46,$11,$10
-	db SE_SLIDE_ENEMY_MON_OFF, $FF
 	db $FF
 
 FlyAnim:

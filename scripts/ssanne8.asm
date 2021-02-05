@@ -36,7 +36,7 @@ SSAnne8TrainerHeader0:
 
 SSAnne8TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SS_ANNE_8_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($1 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SS_ANNE_8_TRAINER_1
 	dw SSAnne8BattleText2 ; TextBeforeBattle
 	dw SSAnne8AfterBattleText2 ; TextAfterBattle

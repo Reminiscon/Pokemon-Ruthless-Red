@@ -6,11 +6,11 @@ _ViridianPokeCenterText2::
 	line "told me. So kind!"
 	done
 
-_ViridianPokeCenterText3::
-	text "There's a #MON"
-	line "CENTER in every"
-	cont "town ahead."
-
-	para "They don't charge"
-	line "any money either!"
+_ViridianPokeCenterText3::						;modified text
+	text "PSYCHIC may"
+	line "seem powerful,"
+	cont "but GHOST and"
+	cont "BUG #MON"
+	cont "are immune to"
+	cont "it!"
 	done

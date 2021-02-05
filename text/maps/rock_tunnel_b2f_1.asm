@@ -97,9 +97,8 @@ _RockTunnel2AfterBattleText7::
 	cont "are too scary!"
 	done
 
-_RockTunnel2BattleText8::
-	text "Hit me with your"
-	line "best shot!"
+_RockTunnel2BattleText8::						;modified text
+	text "KABLOOEY!"
 	done
 
 _RockTunnel2EndBattleText8::

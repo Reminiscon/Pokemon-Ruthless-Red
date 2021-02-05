@@ -13,8 +13,8 @@ dw ParasPicFront
 dw ParasPicBack
 ; attacks known at lvl 0
 db SCRATCH
-db 0
-db 0
+db LEECH_LIFE
+db MEGA_DRAIN
 db 0
 db 0 ; growth rate
 ; learnset

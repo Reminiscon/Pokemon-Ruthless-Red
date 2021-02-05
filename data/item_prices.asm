@@ -27,18 +27,18 @@ ItemPrices:
 	money 0     ; MARSHBADGE
 	money 0     ; VOLCANOBADGE
 	money 0     ; EARTHBADGE
-	money 550   ; ESCAPE_ROPE
+	money 2200  ; ESCAPE_ROPE				;modified 550 -> 2200
 	money 350   ; REPEL
 	money 0     ; OLD_AMBER
 	money 2100  ; FIRE_STONE
 	money 2100  ; THUNDER_STONE
 	money 2100  ; WATER_STONE
-	money 9800  ; HP_UP
-	money 9800  ; PROTEIN
-	money 9800  ; IRON
-	money 9800  ; CARBOS
-	money 9800  ; CALCIUM
-	money 4800  ; RARE_CANDY
+	money 200   ; HP_UP						;modified 9800 -> 200
+	money 200   ; PROTEIN					;modified 9800 -> 200
+	money 200   ; IRON						;modified 9800 -> 200
+	money 200   ; CARBOS					;modified 9800 -> 200
+	money 200   ; CALCIUM					;modified 9800 -> 200
+	money 100   ; RARE_CANDY				;modified 4800 -> 100
 	money 0     ; DOME_FOSSIL
 	money 0     ; HELIX_FOSSIL
 	money 0     ; SECRET_KEY
@@ -50,7 +50,7 @@ ItemPrices:
 	money 10000 ; NUGGET
 	money 9800  ; XXX PP_UP
 	money 1000  ; POKE_DOLL
-	money 600   ; FULL_HEAL
+	money 1200  ; FULL_HEAL					;modified 600 -> 1200
 	money 1500  ; REVIVE
 	money 4000  ; MAX_REVIVE
 	money 700   ; GUARD_SPEC

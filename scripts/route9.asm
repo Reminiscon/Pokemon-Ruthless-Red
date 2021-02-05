@@ -24,6 +24,7 @@ Route9TextPointers:
 	dw Route9Text9
 	dw PickUpItemText
 	dw Route9Text11
+	dw Route9Text12
 
 Route9TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_9_TRAINER_0
@@ -265,4 +266,8 @@ Route9AfterBattleText9:
 
 Route9Text11:
 	TX_FAR _Route9Text11
+	db "@"
+	
+Route9Text12:
+	TX_FAR _Route9Text12
 	db "@"

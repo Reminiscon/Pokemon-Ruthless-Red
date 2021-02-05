@@ -1,27 +1,27 @@
 Route4Mons:
 	db $14
 	IF DEF(_RED)
-		db 10,RATTATA
-		db 10,SPEAROW
-		db 8,RATTATA
-		db 6,EKANS
-		db 8,SPEAROW
-		db 10,EKANS
-		db 12,RATTATA
-		db 12,SPEAROW
-		db 8,EKANS
-		db 12,EKANS
+		db 17,PIDGEY					;modified
+		db 17,PIDGEY					;modified
+		db 17,PONYTA					;modified
+		db 18,PONYTA					;modified
+		db 18,PIDGEOTTO					;modified
+		db 18,PIDGEOTTO					;modified
+		db 19,PIDGEOTTO					;modified
+		db 19,POLIWAG					;modified
+		db 19,POLIWAG					;modified
+		db 20,BULBASAUR					;modified
 	ENDC
 	IF (DEF(_BLUE) || DEF(_GREEN))
-		db 10,RATTATA
-		db 10,SPEAROW
-		db 8,RATTATA
-		db 6,SANDSHREW
-		db 8,SPEAROW
-		db 10,SANDSHREW
-		db 12,RATTATA
-		db 12,SPEAROW
-		db 8,SANDSHREW
-		db 12,SANDSHREW
+		db 17,PIDGEY					;modified
+		db 17,PIDGEY					;modified
+		db 17,PONYTA					;modified
+		db 18,PONYTA					;modified
+		db 18,PIDGEOTTO					;modified
+		db 18,PIDGEOTTO					;modified
+		db 19,PIDGEOTTO					;modified
+		db 19,POLIWAG					;modified
+		db 19,POLIWAG					;modified
+		db 20,BULBASAUR					;modified
 	ENDC
 	db $00

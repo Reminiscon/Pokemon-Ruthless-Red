@@ -64,12 +64,13 @@ _VermilionGymEndBattleText1::
 	line "You're very good!"
 	prompt
 
-_VermilionGymAfterBattleText1::
-	text "The door won't"
-	line "open?"
-
-	para "LT.SURGE always"
-	line "was cautious!"
+_VermilionGymAfterBattleText1::						;modified text
+	text "It is clear to"
+	line "me now."
+	
+	para "Helping the"
+	line "Soviet Union"
+	cont "was a mistake!"
 	done
 
 _VermilionGymBattleText2::
@@ -111,7 +112,7 @@ _VermilionGymAfterBattleText3::
 	cont "next to it!"
 	done
 
-_VermilionGymText_5cbf4::
+_VermilionGymText_5cbf4::							;modified text
 	text "Yo! Champ in"
 	line "making!"
 
@@ -123,11 +124,23 @@ _VermilionGymText_5cbf4::
 
 	para "He's an expert on"
 	line "electric #MON!"
+	
+	para "He may seem like"
+	line "a meathead, but"
+	cont "do not be fooled!"
 
-	para "Birds and water"
-	line "#MON are at"
-	cont "risk! Beware of"
-	cont "paralysis too!"
+	para "He battles as if"
+	line "he were still in"
+	cont "a war!"
+	
+	para "He will do all"
+	line "all he can to"
+	cont "render you unable"
+	cont "to strike back!"
+	
+	para "Most importantly,"
+	line "watch your weak"
+	cont "spots!"
 
 	para "LT.SURGE is very"
 	line "cautious!"

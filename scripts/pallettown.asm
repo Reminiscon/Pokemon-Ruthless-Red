@@ -212,3 +212,5 @@ PalletTownText6: ; sign by Red’s house
 PalletTownText7: ; sign by Blue’s house
 	TX_FAR _PalletTownText7
 	db "@"
+	
+	

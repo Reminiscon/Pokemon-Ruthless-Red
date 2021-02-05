@@ -8,12 +8,12 @@ _ViridianForestExitText1::
 	cont "different kinds!"
 	done
 
-_ViridianForestExitText2::
-	text "Have you noticed"
-	line "the bushes on the"
-	cont "roadside?"
+_ViridianForestExitText2::						;modified text
+	text "DIGLETT seem weak"
+	line "but they can be"
+	cont "vicious with DIG!"
 
-	para "They can be cut"
-	line "down by a special"
-	cont "#MON move."
+	para "Do not even get"
+	line "me started on"
+	cont "DUGTRIO!"
 	done

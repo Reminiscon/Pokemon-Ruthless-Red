@@ -16,23 +16,25 @@ _OakWalksUpText::
 	line "me!"
 	done
 
-_PalletTownText2::
-	text "I'm raising"
-	line "#MON too!"
+_PalletTownText2::					;modified text
+	text "Oh, pick"
+	line "BULBASAUR!"
 
-	para "When they get"
-	line "strong, they can"
-	cont "protect me!"
+	para "It can even"
+	line "get RAZOR WIND"
+	cont "later on!"
 	done
 
-_PalletTownText3::
-	text "Technology is"
-	line "incredible!"
+_PalletTownText3::					;modified text
+	text "Pick CHARMANDER"
+	line "to fry bugs!"
 
-	para "You can now store"
-	line "and recall items"
-	cont "and #MON as"
-	cont "data via PC!"
+	para "Well, SQUIRTLE"
+	line "is also good"
+	cont "against BROCK!"
+	
+	para "BULBASAUR?"
+	line "It stinks!"
 	done
 
 _PalletTownText4::
@@ -40,10 +42,14 @@ _PalletTownText4::
 	line "RESEARCH LAB"
 	done
 
-_PalletTownText5::
+_PalletTownText5::					;modified text
 	text "PALLET TOWN"
 	line "Shades of your"
 	cont "journey await!"
+	
+	para "...likely"
+	line "fifty shades"
+	cont "of red, though."
 	done
 
 _PalletTownText6::

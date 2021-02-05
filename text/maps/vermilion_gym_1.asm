@@ -1,4 +1,4 @@
-_VermilionGymText_5cb6d::
+_VermilionGymText_5cb6d::					;modified text
 	text "Hey, kid! What do"
 	line "you think you're"
 	cont "doing here?"
@@ -14,7 +14,11 @@ _VermilionGymText_5cb6d::
 
 	para "They zapped my"
 	line "enemies into"
-	cont "paralysis!"
+	cont "Immobilization!"
+	
+	para "And struck them"
+	line "with unparalleled"
+	cont "precision!"
 
 	para "The same as I'll"
 	line "do to you!"

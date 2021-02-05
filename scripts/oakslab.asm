@@ -1234,4 +1234,3 @@ OaksLabText10:
 OaksLabText_1d405:
 	TX_FAR _OaksLabText_1d405
 	db "@"
-

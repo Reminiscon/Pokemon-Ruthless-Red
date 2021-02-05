@@ -1,27 +1,27 @@
 Route9Mons:
 	db $0F
 	IF DEF(_RED)
-		db 16,RATTATA
-		db 16,SPEAROW
-		db 14,RATTATA
-		db 11,EKANS
-		db 13,SPEAROW
-		db 15,EKANS
-		db 17,RATTATA
-		db 17,SPEAROW
-		db 13,EKANS
-		db 17,EKANS
+		db 33,EXEGGCUTE					;modified
+		db 33,EXEGGCUTE					;modified
+		db 33,VULPIX					;modified
+		db 33,VULPIX					;modified
+		db 34,EEVEE						;modified
+		db 34,EEVEE						;modified
+		db 34,POLIWHIRL					;modified
+		db 34,POLIWHIRL					;modified
+		db 35,PIKACHU					;modified
+		db 35,PIKACHU					;modified
 	ENDC
 	IF (DEF(_BLUE) || DEF(_GREEN))
-		db 16,RATTATA
-		db 16,SPEAROW
-		db 14,RATTATA
-		db 11,SANDSHREW
-		db 13,SPEAROW
-		db 15,SANDSHREW
-		db 17,RATTATA
-		db 17,SPEAROW
-		db 13,SANDSHREW
-		db 17,SANDSHREW
+		db 33,EXEGGCUTE					;modified
+		db 33,EXEGGCUTE					;modified
+		db 33,VULPIX					;modified
+		db 33,VULPIX					;modified
+		db 34,EEVEE						;modified
+		db 34,EEVEE						;modified
+		db 34,POLIWHIRL					;modified
+		db 34,POLIWHIRL					;modified
+		db 35,PIKACHU					;modified
+		db 35,PIKACHU					;modified
 	ENDC
 	db $00

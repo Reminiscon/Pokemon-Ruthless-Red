@@ -1,27 +1,27 @@
 Route22Mons:
 	db $19
 	IF DEF(_RED)
-		db 3,RATTATA
-		db 3,NIDORAN_M
-		db 4,RATTATA
-		db 4,NIDORAN_M
-		db 2,RATTATA
-		db 2,NIDORAN_M
-		db 3,SPEAROW
-		db 5,SPEAROW
-		db 3,NIDORAN_F
-		db 4,NIDORAN_F
+		db 5,EEVEE			;modified
+		db 4,ODDISH			;modified
+		db 4,SLOWPOKE		;modified
+		db 4,BELLSPROUT		;modified
+		db 4,BELLSPROUT		;modified
+		db 4,SLOWPOKE		;modified
+		db 4,ODDISH			;modified
+		db 5,TANGELA		;modified
+		db 6,NIDORAN_F		;modified
+		db 6,NIDORAN_M		;modified
 	ENDC
 	IF (DEF(_BLUE) || DEF(_GREEN))
-		db 3,RATTATA
-		db 3,NIDORAN_F
-		db 4,RATTATA
-		db 4,NIDORAN_F
-		db 2,RATTATA
-		db 2,NIDORAN_F
-		db 3,SPEAROW
-		db 5,SPEAROW
-		db 3,NIDORAN_M
-		db 4,NIDORAN_M
+		db 5,EEVEE			;modified
+		db 4,ODDISH			;modified
+		db 4,SLOWPOKE		;modified
+		db 4,BELLSPROUT		;modified
+		db 4,BELLSPROUT		;modified
+		db 4,SLOWPOKE		;modified
+		db 4,ODDISH			;modified
+		db 5,TANGELA		;modified
+		db 6,NIDORAN_F		;modified
+		db 6,NIDORAN_M		;modified
 	ENDC
 	db $00

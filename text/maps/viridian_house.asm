@@ -1,20 +1,25 @@
-_ViridianHouseText1::
-	text "Coming up with"
-	line "nicknames is fun,"
-	cont "but hard."
+_ViridianHouseText1::						;modified text
+	text "I told my son"
+	line "not to go into"
+	cont "that forest!"
 
-	para "Simple names are"
-	line "the easiest to"
-	cont "remember."
+	para "You better not go"
+	line "too, if you know"
+	cont "what's good for"
+	cont "you!"
 	done
 
-_ViridianHouseText2::
-	text "My Daddy loves"
-	line "#MON too."
+_ViridianHouseText2::						;modified text
+	text "I barely got"
+	line "away from it!"
+	
+	para "F-from it..."
+	line "PINSIR..."
 	done
 
-_ViridianHouseText_1d5b1::
+_ViridianHouseText_1d5b1::					;modified text
 	text "SPEARY: Tetweet!"
+	line "(looks terrified)"
 	done
 
 _ViridianHouseText4::

@@ -10,12 +10,17 @@ Route2Object:
 	warp 3, 43, 2, VIRIDIAN_FOREST_ENTRANCE
 
 	db 2 ; signs
-	sign 5, 65, 3 ; Route2Text3
-	sign 11, 11, 4 ; Route2Text4
+	sign  5, 47, 8 ; Route2Text3
+	sign 13, 11, 9 ; Route2Text4
 
-	db 2 ; objects
-	object SPRITE_BALL, 13, 54, STAY, NONE, 1, MOON_STONE
-	object SPRITE_BALL, 13, 45, STAY, NONE, 2, HP_UP
+	db 7 ; objects
+	object SPRITE_BALL, 15, 50, STAY, NONE, 1, MOON_STONE
+	object SPRITE_BALL, 15, 44, STAY, NONE, 2, HP_UP
+	object SPRITE_BALL, 17,  2, STAY, NONE, 3, X_DEFEND
+	object SPRITE_BALL, 18,  2, STAY, NONE, 4, ULTRA_BALL
+	object SPRITE_BALL, 19,  2, STAY, NONE, 5, DIRE_HIT
+	object SPRITE_LASS, 15,  4, STAY, RIGHT, 6, OPP_COOLTRAINER_F, 5
+	object SPRITE_GIRL,  3, 54, STAY, DOWN, 7, OPP_LASS, 19
 
 	; warp-to
 	warp_to 12, 9, ROUTE_2_WIDTH ; DIGLETTS_CAVE_EXIT

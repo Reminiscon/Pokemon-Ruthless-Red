@@ -13,7 +13,7 @@ dw GeodudePicFront
 dw GeodudePicBack
 ; attacks known at lvl 0
 db TACKLE
-db 0
+db ROCK_THROW
 db 0
 db 0
 db 3 ; growth rate

@@ -14,7 +14,7 @@ dw VoltorbPicBack
 ; attacks known at lvl 0
 db TACKLE
 db SCREECH
-db 0
+db SELFDESTRUCT
 db 0
 db 0 ; growth rate
 ; learnset

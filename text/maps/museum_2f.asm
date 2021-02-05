@@ -6,13 +6,13 @@ _Museum2FText1::
 	done
 
 _Museum2FText2::
-	text "July 20, 1969!"
+	text "October 3, 1942!"
 
-	para "The 1st lunar"
-	line "landing!"
+	para "V-2 rockets were"
+	line "invented!"
 
-	para "I bought a color"
-	line "TV to watch it!"
+	para "Great times in"
+	line "the old country.."
 	done
 
 _Museum2FText3::
@@ -39,7 +39,22 @@ _Museum2FText6::
 	done
 
 _Museum2FText7::
-	text "Meteorite that"
-	line "fell on MT.MOON."
-	cont "(MOON STONE?)"
+	text "The V-2, used"
+	line "to design the"
+	cont "SPACE SHUTTLE."
+	done
+	
+_Museum2FText8::
+	text "The MOON STONE"
+	line "can be used to"
+	cont "evolve:"
+	
+	para "CLEFAIRY"
+	line "GRAVELER"
+	
+	para "HAUNTER"
+	line "JIGGLYPUFF"
+	
+	para "NIDORINA"
+	line "NIDORINO"
 	done

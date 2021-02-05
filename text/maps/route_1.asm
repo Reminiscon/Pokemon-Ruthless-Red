@@ -42,8 +42,14 @@ _Route1Text2::
 	cont "quicker that way."
 	done
 
-_Route1Text3::
+_Route1Text3::						;modified text
 	text "ROUTE 1"
 	line "PALLET TOWN -"
 	cont "VIRIDIAN CITY"
+	
+	para "POLICE NOTICE"
+	line "If you see a"
+	cont "strange-"
+	cont "looking CLOWN,"
+	cont "RUN."
 	done

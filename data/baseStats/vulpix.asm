@@ -14,8 +14,8 @@ dw VulpixPicBack
 ; attacks known at lvl 0
 db EMBER
 db TAIL_WHIP
-db 0
-db 0
+db CONFUSE_RAY
+db FIRE_SPIN
 db 0 ; growth rate
 ; learnset
 	tmlearn 6,8

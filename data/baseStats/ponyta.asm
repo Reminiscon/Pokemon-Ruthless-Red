@@ -13,8 +13,8 @@ dw PonytaPicFront
 dw PonytaPicBack
 ; attacks known at lvl 0
 db EMBER
-db 0
-db 0
+db LOW_KICK
+db FIRE_SPIN
 db 0
 db 0 ; growth rate
 ; learnset

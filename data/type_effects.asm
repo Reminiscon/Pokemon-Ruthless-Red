@@ -65,6 +65,8 @@ TypeEffects:
 	db FLYING,ROCK,05
 	db PSYCHIC,FIGHTING,20
 	db PSYCHIC,POISON,20
+	db PSYCHIC,GHOST,00		;Psychic cannot affect Ghost
+	db PSYCHIC,BUG,00		;Psychic cannot affect Bug
 	db BUG,FIRE,05
 	db BUG,GRASS,20
 	db BUG,FIGHTING,05
@@ -79,7 +81,7 @@ TypeEffects:
 	db ROCK,BUG,20
 	db ROCK,ICE,20
 	db GHOST,NORMAL,00
-	db GHOST,PSYCHIC,20	;ghost was always supposed to by 2x vs psychic
+	db GHOST,PSYCHIC,20		;Ghost is super effective against Psychic
 	db FIRE,DRAGON,05
 	db WATER,DRAGON,05
 	db ELECTRIC,DRAGON,05

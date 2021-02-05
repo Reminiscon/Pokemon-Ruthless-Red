@@ -210,10 +210,12 @@ _CeruleanCityText12::
 _CeruleanCityText13::
 	text "TRAINER TIPS"
 
-	para "Pressing B Button"
-	line "during evolution"
-	cont "cancels the whole"
-	cont "process."
+	para "Think before"
+	line "jumping a ledge."
+	
+	para "You might not get"
+	line "back without some"
+	cont "trouble!"
 	done
 
 IF DEF(_GREEN)

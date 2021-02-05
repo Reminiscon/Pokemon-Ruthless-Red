@@ -1180,30 +1180,30 @@ TrainerAIPointers:
 	dbw 3,JugglerAI ; juggler
 	dbw 3,GenericAI
 	dbw 3,GenericAI
-	dbw 2,BlackbeltAI ; blackbelt
+	dbw 1,BlackbeltAI ; blackbelt		;decreased from 2 to 1
 	dbw 3,GenericAI
 	dbw 3,GenericAI
 	dbw 1,GenericAI ; chief
 	dbw 3,GenericAI
 	dbw 1,GiovanniAI ; giovanni
 	dbw 3,GenericAI
-	dbw 2,CooltrainerMAI ; cooltrainerm
-	dbw 1,CooltrainerFAI ; cooltrainerf
-	dbw 2,BrunoAI ; bruno
+	dbw 1,CooltrainerMAI ; cooltrainerm	
+	dbw 2,CooltrainerFAI ; cooltrainerf	;increased from 1 to 2
+	dbw 1,BrunoAI ; bruno				;decreased from 2 to 1
 	dbw 5,BrockAI ; brock
-	dbw 1,MistyAI ; misty
+	dbw 1,MistyAI ; misty				
 	dbw 1,LtSurgeAI ; surge
-	dbw 1,ErikaAI ; erika
+	dbw 9,ErikaAI ; erika				;increased from 1 to 9
 	dbw 2,KogaAI ; koga
-	dbw 2,BlaineAI ; blaine
-	dbw 1,SabrinaAI ; sabrina
+	dbw 3,BlaineAI ; blaine				;increased from 2 to 3
+	dbw 3,SabrinaAI ; sabrina			;increased from 1 to 3
 	dbw 3,GenericAI
-	dbw 1,Sony2AI ; sony2
-	dbw 1,Sony3AI ; sony3
-	dbw 2,LoreleiAI ; lorelei
+	dbw 6,Sony2AI ; sony2				;increased from 1 to 6
+	dbw 6,Sony3AI ; sony3				;increased from 1 to 6
+	dbw 4,LoreleiAI ; lorelei			;increased from 2 to 4
 	dbw 3,GenericAI
-	dbw 2,AgathaAI ; agatha
-	dbw 1,LanceAI ; lance
+	dbw 4,AgathaAI ; agatha				;increased from 2 to 4
+	dbw 5,LanceAI ; lance				;increased from 1 to 5
 
 ;joenote - reorganizing these AI routines to jump on carry instead of returning on not-carry
 ;also adding recognition of a switch-pkmn bit
@@ -1225,7 +1225,7 @@ GiovanniAI:
 
 CooltrainerMAI:	
 	cp $40
-	jp c, AIUseXAttack
+	jp c, AIUseXAccuracy				;changed from XAttack to XAccuracy
 	ret
 	
 CooltrainerFAI:
@@ -1233,7 +1233,7 @@ CooltrainerFAI:
 	jr nc, .coolFreturn
 	ld a, $5
 	call AICheckIfHPBelowFraction
-	jp c, AIUseHyperPotion
+	jp c, AIUseFullRestore				;changed from HyperPotion to FullRestore
 .coolFreturn
 	ret
 	
@@ -1246,12 +1246,12 @@ BrockAI:
 
 MistyAI:
 	cp $40
-	jp c, AIUseXDefend
+	jp c, AIUseXSpecial					;changed from XDefend to XSpecial
 	ret
 	
 LtSurgeAI:
 	cp $40
-	jp c, AIUseXSpeed
+	jp c, AIUseDireHit					;changed from XSpeed to DireHit
 	ret
 	
 ErikaAI:
@@ -1259,13 +1259,13 @@ ErikaAI:
 	jr nc, .erikareturn
 	ld a, $A
 	call AICheckIfHPBelowFraction
-	jp c, AIUseSuperPotion
+	jp c, AIUseHyperPotion				;changed from SuperPotion to HyperPotion
 .erikareturn
 	ret
 
 KogaAI:
 	cp $40
-	jp c, AIUseXAttack
+	jp c, AIUseXAccuracy				;changed from XAttack to XAccuracy
 	ret
 	
 BlaineAI:	;blaine needs to check HP. this was an oversight	
@@ -1273,7 +1273,7 @@ BlaineAI:	;blaine needs to check HP. this was an oversight
 	jr nc, .blainereturn
 	ld a, $2
 	call AICheckIfHPBelowFraction	
-	jp c, AIUseSuperPotion
+	jp c, AIUseFullRestore				;changed from SuperPotion to FullRestore
 .blainereturn
 	ret
 
@@ -1282,7 +1282,7 @@ SabrinaAI:
 	jr nc, .sabrinareturn
 	ld a, $A
 	call AICheckIfHPBelowFraction
-	jp c, AIUseHyperPotion
+	jp c, AIUseFullRestore				;changed from HyperPotion to FullRestore
 .sabrinareturn
 	ret
 
@@ -1291,7 +1291,7 @@ Sony2AI:
 	jr nc, .rival2return
 	ld a, 5
 	call AICheckIfHPBelowFraction
-	jp c, AIUsePotion
+	jp c, AIUseFullHeal					;changed from Potion to FullHeal
 .rival2return
 	ret
 
@@ -1309,14 +1309,14 @@ LoreleiAI:
 	jr nc, .loreleireturn
 	ld a, 5
 	call AICheckIfHPBelowFraction
-	jp c, AIUseSuperPotion	
+	jp c, AIUseFullRestore				;changed from SuperPotion to FullRestore
 .loreleireturn
 	ret
 
 
 BrunoAI:
 	cp $40
-	jp c, AIUseXDefend
+	jp c, AIUseDireHit					;changed from XDefend to DireHit
 	ret
 
 AgathaAI:
@@ -1326,7 +1326,7 @@ AgathaAI:
 	jr nc, .agathareturn
 	ld a, $4
 	call AICheckIfHPBelowFraction
-	jp c, AIUseSuperPotion
+	jp c, AIUseFullRestore				;changed from SuperPotion to FullRestore
 .agathareturn
 	ret
 
@@ -1335,7 +1335,7 @@ LanceAI:
 	jr nc, .lancereturn
 	ld a, 5
 	call AICheckIfHPBelowFraction
-	jp c, AIUseHyperPotion
+	jp c, AIUseFullRestore				;changed from HyperPotion to FullRestore
 .lancereturn
 	ret
 

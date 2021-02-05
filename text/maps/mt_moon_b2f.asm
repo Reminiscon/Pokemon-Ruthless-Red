@@ -18,12 +18,16 @@ _MtMoon3Text_49f7f::
 	text "Look, you've got"
 	line "no room for this.@@"
 
-_MtMoon3Text_49f85::
+_MtMoon3Text_49f85::									;modified text
 	text "Hey, stop!"
 
 	para "I found these"
 	line "fossils! They're"
 	cont "both mine!"
+	
+	para "You are in"
+	line "for a real"
+	cont "shock!"
 	done
 
 _MtMoon3Text_49f8a::
@@ -105,9 +109,9 @@ _MtMoon3AfterBattleText4::
 	done
 
 _MtMoon3BattleText5::
-	text "Little kids"
-	line "should leave"
-	cont "grown-ups alone!"
+	text "HYPER BEAM!"
+	line "HYPER BEAM!"
+	cont "HYPER BEAM!"
 	done
 
 _MtMoon3EndBattleText5::
@@ -116,7 +120,7 @@ _MtMoon3EndBattleText5::
 	prompt
 
 _MtMoon3AfterBattleText5::
-	text "#MON lived"
-	line "here long before"
-	cont "people came."
+	text "The greatest"
+	line "strategy ever"
+	cont "has failed..."
 	done

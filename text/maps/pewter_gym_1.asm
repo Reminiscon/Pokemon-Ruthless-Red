@@ -1,4 +1,4 @@
-_PewterGymText_5c49e::
+_PewterGymText_5c49e::						;modified text
 	text "I'm BROCK!"
 	line "I'm PEWTER's GYM"
 	cont "LEADER!"
@@ -7,12 +7,8 @@ _PewterGymText_5c49e::
 	line "hard defense and"
 	cont "determination!"
 
-	para "That's why my"
-	line "#MON are all"
-	cont "the rock-type!"
-
 	para "Do you still want"
 	line "to challenge me?"
-	cont "Fine then! Show"
-	cont "me your best!"
+	cont "Fine then! Time"
+	cont "to suffer!"
 	done

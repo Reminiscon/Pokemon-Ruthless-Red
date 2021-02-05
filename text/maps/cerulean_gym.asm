@@ -1,4 +1,4 @@
-_CeruleanGymText_5c7be::
+_CeruleanGymText_5c7be::							;modified text
 	text "Hi, you're a new"
 	line "face!"
 
@@ -11,10 +11,12 @@ _CeruleanGymText_5c7be::
 	line "approach when you"
 	cont "catch #MON?"
 
-	para "My policy is an"
-	line "all-out offensive"
-	cont "with water-type"
-	cont "#MON!"
+	para "My policy is"
+	line "balancing offense"
+	cont "and defense"
+	
+	para "with water-type"
+	line "#MON!"
 	done
 
 _CeruleanGymText_5c7c3::
@@ -103,7 +105,7 @@ _CeruleanGymAfterBattleText2::
 	line "someone like you!"
 	done
 
-_CeruleanGymText_5c82a::
+_CeruleanGymText_5c82a::						;modified text
 	text "Yo! Champ in"
 	line "making!"
 
@@ -113,12 +115,18 @@ _CeruleanGymText_5c82a::
 	line "is a pro who uses"
 	cont "water #MON!"
 
-	para "You can drain all"
-	line "their water with"
-	cont "plant #MON!"
+	para "Psst.. and I know"
+	line "she has a dragon"
+	cont "#MON up her"
+	cont "sleeve!"
+	
+	para "She uses both"
+	line "offensive and"
+	cont "defensive strats!"
 
-	para "Or, zap them with"
-	line "electricity!"
+	para "Make sure to keep"
+	line "her SPECIAL power"
+	cont "under control!"
 	done
 
 _CeruleanGymText_5c82f::

@@ -41,7 +41,7 @@ SSAnne9TrainerHeader0:
 
 SSAnne9TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SS_ANNE_9_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($1 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SS_ANNE_9_TRAINER_1
 	dw SSAnne9BattleText2 ; TextBeforeBattle
 	dw SSAnne9AfterBattleText2 ; TextAfterBattle
@@ -50,7 +50,7 @@ SSAnne9TrainerHeader1:
 
 SSAnne9TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_SS_ANNE_9_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SS_ANNE_9_TRAINER_2
 	dw SSAnne9BattleText3 ; TextBeforeBattle
 	dw SSAnne9AfterBattleText3 ; TextAfterBattle

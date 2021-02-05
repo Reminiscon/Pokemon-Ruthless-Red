@@ -1,12 +1,16 @@
 _Route24EndBattleText1::
-	text "I"
-	line "thought not!"
+	text "Well"
+	line "alright then."
 	prompt
 
-_Route24AfterBattleText1::
-	text "I hid because the"
-	line "people on the"
-	cont "bridge scared me!"
+_Route24AfterBattleText1::						;modified text
+	text "I thought you"
+	line "would be tired"
+	cont "at this point!"
+	
+	para "Thought your"
+	line "money was easy"
+	cont "pickings!"
 	done
 
 _Route24BattleText2::

@@ -68,9 +68,8 @@ _Route9BattleText5::
 	cont "bored, eh!"
 	done
 
-_Route9EndBattleText5::
-	text "Keep it"
-	line "coming, eh!"
+_Route9EndBattleText5::							;modified text
+	text "KABOOM!!!"
 
 	para "Oh wait. I'm out"
 	line "of #MON!"
@@ -154,4 +153,12 @@ _Route9Text11::
 	text "ROUTE 9"
 	line "CERULEAN CITY-"
 	cont "ROCK TUNNEL"
+	done
+	
+_Route9Text12::									;modified text
+	text "#MON TECHNICAL"
+	line "INSTITUTE"
+	
+	para "UNDER"
+	line "CONSTRUCTION"
 	done

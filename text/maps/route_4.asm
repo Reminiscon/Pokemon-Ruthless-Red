@@ -1,7 +1,13 @@
-_Route4Text1::
-	text "Ouch! I tripped"
-	line "over a rocky"
-	cont "#MON, GEODUDE!"
+_Route4Text1::							;modified text
+	text "Some nerd went"
+	line "into that cave"
+	cont "rambling about"
+	cont "FOSSILS."
+	
+	para "Nerds know too"
+	line "much! I would"
+	cont "not want to"
+	cont "battle them!"
 	done
 
 _Route4BattleText1::
@@ -33,3 +39,29 @@ _Route4Text6::
 	line "MT.MOON -"
 	cont "CERULEAN CITY"
 	done
+	
+_Route4BattleText2::							;NEW
+	text "Now just wait"
+	line "one moment!"
+	
+	para "So, you want"
+	line "to access my"
+	cont "training zone?"
+	
+	para "You'll need to"
+	line "defeat me!"
+	done
+
+_Route4EndBattleText2::
+	text "Dang,"
+	line "you are tough!"
+	prompt
+
+_Route4AfterBattleText2::
+	text "One day, I"
+	line "want to teach"
+	cont "HITMONCHAN the"
+	cont "three elemental"
+	cont "punches!"
+	done
+

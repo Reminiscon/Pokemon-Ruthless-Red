@@ -8,16 +8,30 @@ _SSAnne9Text_61bf2::
 	line "like this!"
 	prompt
 
-_SSAnne9Text_61c01::
-	text "Ah yes, I have"
-	line "seen some #MON"
-	cont "ferry people"
-	cont "across the water!"
+_SSAnne9Text_61c01::						;modified text
+	text "You thought we"
+	line "were trainers?"
+
+	para "HAH! HAH! HAH!"
+	
+	para "We are just here"
+	line "to eat!"
 	done
 
-_SSAnne9Text_61c10::
-	text "#MON can CUT"
-	line "down small bushes."
+_SSAnne9Text_61c10::						;modified text
+	text "Hoarding all this"
+	line "glorious food"
+	cont "so that those"
+	cont "dang Millennials"
+	cont "get nothing!"
+	
+	para "What's that?"
+	line "I'm a greedy,"
+	cont "fat old man?"
+	
+	para "Mind your own"
+	line "beeswax! Boomers"
+	cont "rule, forever!"
 	done
 
 _SSAnne9Text_61c1f::

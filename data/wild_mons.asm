@@ -1,8 +1,8 @@
 WildDataPointers:
-	dw NoMons      ; PALLET_TOWN
-	dw NoMons      ; VIRIDIAN_CITY
-	dw NoMons      ; PEWTER_CITY
-	dw NoMons      ; CERULEAN_CITY
+	dw WaterMons   ; PALLET_TOWN			;added wild pokemon
+	dw Route2Mons  ; VIRIDIAN_CITY			;added wild pokemon
+	dw ForestMons  ; PEWTER_CITY			;added wild pokemon
+	dw WaterMons   ; CERULEAN_CITY			;added wild pokemon
 	dw NoMons      ; LAVENDER_TOWN
 	dw NoMons      ; VERMILION_CITY
 	dw NoMons      ; CELADON_CITY
