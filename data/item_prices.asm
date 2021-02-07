@@ -8,7 +8,7 @@ ItemPrices:
 	money 0     ; SURFBOARD
 	money 1000  ; SAFARI_BALL
 	money 0     ; POKEDEX
-	money 0     ; MOON_STONE
+	money 4200  ; MOON_STONE				;modified 0 -> 4200
 	money 100   ; ANTIDOTE
 	money 250   ; BURN_HEAL
 	money 250   ; ICE_HEAL
@@ -49,7 +49,7 @@ ItemPrices:
 	money 0     ; CARD_KEY
 	money 10000 ; NUGGET
 	money 9800  ; XXX PP_UP
-	money 1000  ; POKE_DOLL
+	money 200   ; POKE_DOLL					;modified 1000 -> 200
 	money 1200  ; FULL_HEAL					;modified 600 -> 1200
 	money 1500  ; REVIVE
 	money 4000  ; MAX_REVIVE

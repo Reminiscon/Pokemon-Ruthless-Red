@@ -257,6 +257,7 @@ SpearowEvosMoves:
 	db 22, MIRROR_MOVE
 	db 24, SLAM
 	db 29, DRILL_PECK
+	db 29, DRILL_PECK
 	db 36, AGILITY
 	db 43, TRI_ATTACK
 	db 0
@@ -429,6 +430,7 @@ LaprasEvosMoves:
 	db 25, BODY_SLAM
 	db 31, CONFUSE_RAY
 	db 38, ICE_BEAM
+	db 42, DREAM_EATER
 	db 46, HYDRO_PUMP
 	db 0
 
@@ -1345,7 +1347,7 @@ JigglypuffEvosMoves:
 	db 34, BODY_SLAM
 	db 39, DOUBLE_EDGE
 	db 42, DREAM_EATER
-	db 48, PETAL_DANCE
+	db 46, PETAL_DANCE
 	db 0
 
 WigglytuffEvosMoves:

@@ -1,4 +1,4 @@
-_CeladonGymText_48a5e::
+_CeladonGymText_48a5e::							;modified text
 	text "Hello. Lovely"
 	line "weather isn't it?"
 	cont "It's so pleasant."
@@ -13,8 +13,9 @@ _CeladonGymText_48a5e::
 
 	para "I teach the art of"
 	line "flower arranging."
-	cont "My #MON are of"
-	cont "the grass-type."
+	cont "I'm also an expert"
+	cont "on sleep and"
+	cont "dreams."
 
 	para "Oh, I'm sorry, I"
 	line "had no idea that"
@@ -149,8 +150,8 @@ _CeladonGymEndBattleText5::
 	text "No!"
 	prompt
 
-_CeladonGymAfterBattleText5::
-	text "We only use grass-"
+_CeladonGymAfterBattleText5::					;modified text
+	text "We mostly use grass-"
 	line "type #MON at"
 	cont "our GYM!"
 
@@ -188,20 +189,25 @@ _CeladonGymEndBattleText7::
 	line "Splendid!"
 	prompt
 
-_CeladonGymAfterBattleText7::
+_CeladonGymAfterBattleText7::					;modified text
 	text "I have a blind"
 	line "date coming up."
 	cont "I have to learn"
 	cont "to be polite."
+	
+	para "Easier said than"
+	line "done for girls like"
+	cont "us!"
 	done
 
-_CeladonGymBattleText8::
+_CeladonGymBattleText8::						;modified text
 	text "Welcome to"
 	line "CELADON GYM!"
 
 	para "You better not"
 	line "underestimate"
-	cont "girl power!"
+	cont "the destructive"
+	cont "power of feminism!"
 	done
 
 _CeladonGymEndBattleText8::
@@ -210,8 +216,9 @@ _CeladonGymEndBattleText8::
 	prompt
 
 _CeladonGymAfterBattleText8::
-	text "I didn't bring my"
-	line "best #MON!"
+	text "You can afford"
+	line "items because of"
+	cont "the wage gap!"
 
 	para "Wait 'til next"
 	line "time!"

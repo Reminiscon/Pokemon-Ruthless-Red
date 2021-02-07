@@ -1,27 +1,27 @@
 Route8Mons:
 	db $0F
 	IF DEF(_RED)
-		db 18,PIDGEY
-		db 18,MANKEY
-		db 17,EKANS
-		db 16,GROWLITHE
-		db 20,PIDGEY
-		db 20,MANKEY
-		db 19,EKANS
-		db 17,GROWLITHE
-		db 15,GROWLITHE
-		db 18,GROWLITHE
+		db 39,PIDGEOT					;modified
+		db 39,PIDGEOT					;modified
+		db 40,PIDGEOT					;modified
+		db 40,PIDGEOT					;modified
+		db 39,BUTTERFREE				;modified
+		db 39,BEEDRILL					;modified
+		db 40,BEEDRILL					;modified
+		db 40,BUTTERFREE				;modified
+		db 40,DODRIO					;modified
+		db 44,DODRIO					;modified
 	ENDC
 	IF (DEF(_BLUE) || DEF(_GREEN))
-		db 18,PIDGEY
-		db 18,MEOWTH
-		db 17,SANDSHREW
-		db 16,VULPIX
-		db 20,PIDGEY
-		db 20,MEOWTH
-		db 19,SANDSHREW
-		db 17,VULPIX
-		db 15,VULPIX
-		db 18,VULPIX
+		db 39,PIDGEOT					;modified
+		db 39,PIDGEOT					;modified
+		db 40,PIDGEOT					;modified
+		db 40,PIDGEOT					;modified
+		db 39,BUTTERFREE				;modified
+		db 39,BEEDRILL					;modified
+		db 40,BEEDRILL					;modified
+		db 40,BUTTERFREE				;modified
+		db 40,DODRIO					;modified
+		db 44,DODRIO					;modified
 	ENDC
 	db $00

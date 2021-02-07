@@ -2771,7 +2771,7 @@ wOaksLabCurScript:: ; d5f0
 	ds 1
 wPalletTownCurScript:: ; d5f1
 	ds 1
-wRoute2CurScript:: ; d5f2
+wRoute2CurScript:: ; d5f2			;NEW
 	ds 1
 wBluesHouseCurScript:: ; d5f3
 	ds 1
@@ -2849,6 +2849,7 @@ wRockTunnel2CurScript:: ; d620
 	ds 1
 wRockTunnel1CurScript:: ; d621
 	ds 1
+wLavenderPokecenterCurScript:: ; d622			;NEW
 	ds 1
 wRoute11CurScript:: ; d623
 	ds 1

@@ -47,9 +47,10 @@ _Route1Text3::						;modified text
 	line "PALLET TOWN -"
 	cont "VIRIDIAN CITY"
 	
-	para "POLICE NOTICE"
-	line "If you see a"
-	cont "strange-"
-	cont "looking CLOWN,"
-	cont "RUN."
+	para "VIRIDIAN POLICE"
+	line "NOTICE"
+	
+	para "If you see a"
+	line "strange-looking"
+	cont "clown, RUN."
 	done

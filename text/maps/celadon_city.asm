@@ -45,15 +45,9 @@ _ReceivedTM41Text::
 	TX_RAM wcf4b
 	text "!@@"
 
-_TM41ExplanationText::
+_TM41ExplanationText::							;modified text
 	text "TM41 teaches"
 	line "SOFTBOILED!"
-
-	para "Only one #MON"
-	line "can use it!"
-
-	para "That #MON is"
-	line "CHANSEY!"
 	done
 
 _TM41NoRoomText::
@@ -125,14 +119,15 @@ _CeladonCityText15::
 	cont "DEPT. STORE!"
 	done
 
-_CeladonCityText16::
+_CeladonCityText16::							;modified text
 	text "TRAINER TIPS"
 
 	para "GUARD SPEC."
 	line "protects #MON"
-	cont "against SPECIAL"
-	cont "attacks such as"
-	cont "fire and water!"
+	cont "against stat"
+	cont "lowering moves"
+	cont "such as LEER and"
+	cont "NIGHT SHADE!"
 
 	para "Get your items at"
 	line "CELADON DEPT."

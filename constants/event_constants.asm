@@ -974,8 +974,8 @@ const_value = 0
 	const EVENT_3CB                                  ; 3CB, (D7C0, bit 3)
 	const EVENT_3CC                                  ; 3CC, (D7C0, bit 4)
 	const EVENT_3CD					                 ; 3CD, (D7C0, bit 5)
-	const EVENT_BEAT_ROUTE_2_TRAINER_0				 ; 3CE, (D7C0, bit 6)
-	const EVENT_BEAT_ROUTE_2_TRAINER_1               ; 3CF, (D7C0, bit 7)
+	const EVENT_BEAT_ROUTE_2_TRAINER_0				 ; 3CE, (D7C0, bit 6)			;NEW
+	const EVENT_BEAT_ROUTE_2_TRAINER_1               ; 3CF, (D7C0, bit 7)			;NEW
 	const EVENT_3D0                                  ; 3D0, (D7C1, bit 0)
 	const EVENT_3D1                                  ; 3D1, (D7C1, bit 1)
 	const EVENT_3D2                                  ; 3D2, (D7C1, bit 2)
@@ -1133,7 +1133,7 @@ const_value = 0
 	const EVENT_46A                                  ; 46A, (D7D4, bit 2)
 	const EVENT_46B                                  ; 46B, (D7D4, bit 3)
 	const EVENT_46C                                  ; 46C, (D7D4, bit 4)
-	const EVENT_46D                                  ; 46D, (D7D4, bit 5)
+	const EVENT_BEAT_LAVENDER_POKE_CENTER_TRAINER_0  ; 46D, (D7D4, bit 5)			;NEW
 	const EVENT_46E                                  ; 46E, (D7D4, bit 6)
 	const EVENT_46F                                  ; 46F, (D7D4, bit 7)
 	const EVENT_470                                  ; 470, (D7D5, bit 0)

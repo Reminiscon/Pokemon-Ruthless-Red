@@ -5,7 +5,7 @@ WildDataPointers:
 	dw WaterMons   ; CERULEAN_CITY			;added wild pokemon
 	dw NoMons      ; LAVENDER_TOWN
 	dw NoMons      ; VERMILION_CITY
-	dw NoMons      ; CELADON_CITY
+	dw Route7Mons  ; CELADON_CITY			;added wild pokemon
 	dw NoMons      ; FUCHSIA_CITY
 	dw NoMons      ; CINNABAR_ISLAND
 	dw NoMons      ; INDIGO_PLATEAU

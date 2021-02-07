@@ -1193,7 +1193,7 @@ TrainerAIPointers:
 	dbw 5,BrockAI ; brock
 	dbw 1,MistyAI ; misty				
 	dbw 1,LtSurgeAI ; surge
-	dbw 9,ErikaAI ; erika				;increased from 1 to 9
+	dbw 1,ErikaAI ; erika
 	dbw 2,KogaAI ; koga
 	dbw 3,BlaineAI ; blaine				;increased from 2 to 3
 	dbw 3,SabrinaAI ; sabrina			;increased from 1 to 3
@@ -1255,12 +1255,8 @@ LtSurgeAI:
 	ret
 	
 ErikaAI:
-	cp $80
-	jr nc, .erikareturn
-	ld a, $A
-	call AICheckIfHPBelowFraction
-	jp c, AIUseHyperPotion				;changed from SuperPotion to HyperPotion
-.erikareturn
+	cp $40
+	jp c, AIUseXAccuracy				;changed from Super Potion to XAccuracy
 	ret
 
 KogaAI:

@@ -49,3 +49,4 @@ _Route2AfterBattleText2::
 	text "Stop oppressing"
 	line "me!"
 	done
+	

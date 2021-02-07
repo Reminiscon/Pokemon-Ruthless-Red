@@ -66,7 +66,7 @@ TypeEffects:
 	db PSYCHIC,FIGHTING,20
 	db PSYCHIC,POISON,20
 	db PSYCHIC,GHOST,00		;Psychic cannot affect Ghost
-	db PSYCHIC,BUG,00		;Psychic cannot affect Bug
+	db PSYCHIC,BUG,05		;Psychic is not very effective against Bug
 	db BUG,FIRE,05
 	db BUG,GRASS,20
 	db BUG,FIGHTING,05

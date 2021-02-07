@@ -1,8 +1,6 @@
-_Route8BattleText1::
-	text "You look good at"
-	line "#MON, but"
-	cont "how's your grade"
-	cont "in chemistry?"	;joenote - cleaned up translation
+_Route8BattleText1::						;modified text
+	text "I'm a master of"
+	line "substitution jutsu!"
 	done
 
 _Route8EndBattleText1::
@@ -11,8 +9,8 @@ _Route8EndBattleText1::
 	prompt
 
 _Route8AfterBattleText1::
-	text "I am better at"
-	line "school than this!"
+	text "Some day I will"
+	line "be a true ninja!"
 	done
 
 _Route8BattleText2::
@@ -30,20 +28,23 @@ _Route8AfterBattleText2::
 	line "with me today!"
 	done
 
-_Route8BattleText3::
-	text "You need strategy"
-	line "to win at this!"
+_Route8BattleText3::						;modified text
+	text "My tai jutsu is"
+	line "unstoppable!"
 	done
 
 _Route8EndBattleText3::
 	text "It's"
-	line "not logical!"
+	line "not possible!"
 	prompt
 
 _Route8AfterBattleText3::
-	text "Go with GRIMER"
-	line "first...and..."
-	cont "...and...then..."
+	text "Relying too much"
+	line "on one strategy"
+	cont "can be potent."
+	
+	para "But it can also"
+	line "backfire."
 	done
 
 _Route8BattleText4::
@@ -62,9 +63,9 @@ _Route8AfterBattleText4::
 	cont "evolve!"
 	done
 
-_Route8BattleText5::
-	text "School is fun, but"
-	line "so are #MON."
+_Route8BattleText5::						;modified text
+	text "Behold my lethal"
+	line "jutsu!"
 	done
 
 _Route8EndBattleText5::
@@ -78,8 +79,8 @@ _Route8AfterBattleText5::
 	cont "gates at SAFFRON."
 	done
 
-_Route8BattleText6::
-	text "MEOWTH is so cute,"
+_Route8BattleText6::						;modified text
+	text "PERSIAN is cute,"
 	line "meow, meow, meow!"
 	done
 
@@ -128,7 +129,7 @@ _Route8AfterBattleText8::
 	cont "Just can't stop!"
 	done
 
-_Route8BattleText9::
+_Route8BattleText9::						;modified text
 	text "What's a cute,"
 	line "round and fluffy"
 	cont "#MON?"
@@ -138,12 +139,12 @@ _Route8EndBattleText9::
 	text "Stop!"
 
 	para "Don't be so mean"
-	line "to my CLEFAIRY!"
+	line "to my CLEFABLE!"
 	prompt
 
 _Route8AfterBattleText9::
 	text "I heard that"
-	line "CLEFAIRY evolves"
+	line "GRAVELER evolves"
 	cont "when it's exposed"
 	cont "to a MOON STONE."
 	done
