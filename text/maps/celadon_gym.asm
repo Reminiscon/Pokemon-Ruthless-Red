@@ -22,8 +22,9 @@ _CeladonGymText_48a5e::							;modified text
 	cont "you wished to"
 	cont "challenge me."
 
-	para "Very well, but I"
-	line "shall not lose."
+	para "Very well, but"
+	line "you may never"
+	cont "awaken after this."
 	done
 
 _CeladonGymText_48a63::
@@ -48,10 +49,10 @@ _CeladonGymText_48a68::
 	cont "unattractive."
 	done
 
-_CeladonGymText9::
+_CeladonGymText9::								;modified text
 	text "The RAINBOWBADGE"
 	line "will make #MON"
-	cont "up to L50 obey."
+	cont "up to L60 obey."
 
 	para "It also allows"
 	line "#MON to use"
@@ -196,8 +197,8 @@ _CeladonGymAfterBattleText7::					;modified text
 	cont "to be polite."
 	
 	para "Easier said than"
-	line "done for girls like"
-	cont "us!"
+	line "done for girls"
+	cont "like us!"
 	done
 
 _CeladonGymBattleText8::						;modified text
@@ -217,8 +218,9 @@ _CeladonGymEndBattleText8::
 
 _CeladonGymAfterBattleText8::
 	text "You can afford"
-	line "items because of"
-	cont "the wage gap!"
+	line "better items"
+	cont "because of the"
+	cont "wage gap!"
 
 	para "Wait 'til next"
 	line "time!"

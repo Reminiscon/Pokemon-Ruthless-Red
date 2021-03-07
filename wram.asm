@@ -685,8 +685,10 @@ wLinkBattleRandomNumberListIndex:: ; ccde
 wAICount:: ; ccdf
 ; number of times remaining that AI action can occur
 	ds 1
-
-	ds 2
+wAICount2:: ; cce0
+	ds 1
+wAICount3:: ; cce1
+	ds 1
 
 wEnemyMoveListIndex:: ; cce2
 	ds 1

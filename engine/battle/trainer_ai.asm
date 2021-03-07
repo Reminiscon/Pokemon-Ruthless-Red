@@ -1050,49 +1050,49 @@ ReadMoveForAIscoring:
 TrainerClassMoveChoiceModifications:
 	db 0      ; YOUNGSTER
 	db 1,0    ; BUG CATCHER
-	db 1,3,4,0    ; LASS
+	db 1,0    ; LASS					;Subtracted 3,4
 	db 1,3,0  ; SAILOR
-	db 1,3,4,0    ; JR_TRAINER_M
-	db 1,3,4,0    ; JR_TRAINER_F
+	db 1,3,0    ; JR_TRAINER_M			;Subtracted 4
+	db 1,3,0    ; JR_TRAINER_F			;Subtracted 4
 	db 1,2,3,4,0; POKEMANIAC
 	db 1,2,3,4,0  ; SUPER_NERD
-	db 1,3,4,0    ; HIKER
+	db 1,3,0    ; HIKER					;Subtracted 4
 	db 1,0    ; BIKER
-	db 1,3,0  ; BURGLAR
-	db 1,3,4,0    ; ENGINEER
+	db 1,2,3,4,0  ; BURGLAR				;Added 2
+	db 1,2,3,0    ; ENGINEER			;Added 2, Subtracted 4
 	db 1,2,0  ; JUGGLER_X
 	db 1,3,0  ; FISHER
 	db 1,3,0  ; SWIMMER
 	db 0      ; CUE_BALL
-	db 1,0    ; GAMBLER
+	db 1,3,0    ; GAMBLER				;Added 3
 	db 1,3,4,0  ; BEAUTY
-	db 1,2,4,0  ; PSYCHIC_TR
-	db 1,3,4,0  ; ROCKER
-	db 1,0    ; JUGGLER
-	db 1,4,0    ; TAMER
-	db 1,4,0    ; BIRD_KEEPER
-	db 1,0    ; BLACKBELT
-	db 1,0    ; SONY1
-	db 1,3,4,0  ; PROF_OAK
+	db 1,2,3,0  ; PSYCHIC_TR			;Added 3, Subtracted 4
+	db 1,3,0  ; ROCKER					;Subtracted 4
+	db 1,3,4,0    ; JUGGLER				;Added 3,4
+	db 1,3,4,0    ; TAMER				;Added 3
+	db 1,3,0    ; BIRD_KEEPER			;Added 3, Subtracted 4
+	db 1,3,0    ; BLACKBELT				;Added 3
+	db 1,4,0    ; SONY1					;Added 4
+	db 1,2,3,4,0  ; PROF_OAK			;Added 2
 	db 1,2,3,4,0  ; CHIEF
-	db 1,2,0  ; SCIENTIST
-	db 1,3,4,0  ; GIOVANNI
-	db 1,0    ; ROCKET
+	db 1,2,3,4,0  ; SCIENTIST			;Added 3,4
+	db 1,2,3,4,0  ; GIOVANNI			;Added 2
+	db 1,3,4,0    ; ROCKET				;Added 3,4
 	db 1,3,4,0  ; COOLTRAINER_M
 	db 1,3,4,0  ; COOLTRAINER_F
 	db 1,3,4,0    ; BRUNO
 	db 1,3,4,0    ; BROCK
-	db 1,3,4,0  ; MISTY
+	db 1,2,3,4,0  ; MISTY				;Added 2
 	db 1,3,4,0  ; LT_SURGE
-	db 1,3,4,0  ; ERIKA
+	db 1,2,3,4,0  ; ERIKA				;Added 2
 	db 1,3,4,0  ; KOGA
 	db 1,3,4,0  ; BLAINE
 	db 1,3,4,0  ; SABRINA
-	db 1,2,3,4,0  ; GENTLEMAN
+	db 1,3,4,0  ; GENTLEMAN				;Subtracted 2
 	db 1,3,4,0  ; SONY2
 	db 1,3,4,0  ; SONY3
 	db 1,2,3,4,0; LORELEI
-	db 1,0    ; CHANNELER
+	db 1,2,3,0    ; CHANNELER			;Added 2,3
 	db 1,3,4,0    ; AGATHA
 	db 1,3,4,0  ; LANCE
 
@@ -1146,6 +1146,10 @@ TrainerAI:
 	dec hl
 	ld a, [hli]
 	ld [wAICount], a
+	xor a
+	ld [wAICount2], a
+	xor a
+	ld [wAICount3], a
 .getpointer
 	ld a, [hli]
 	ld h, [hl]
@@ -1163,105 +1167,352 @@ TrainerAIPointers:
 	dbw 3,GenericAI
 	dbw 3,GenericAI
 	dbw 3,GenericAI
+	dbw 5,PokemaniacAI	; pokemaniac
+	dbw 5,SupernerdAI	; supernerd		
 	dbw 3,GenericAI
 	dbw 3,GenericAI
-	dbw 3,GenericAI
-	dbw 3,GenericAI
-	dbw 3,GenericAI
+	dbw 5,BurglarAI ; burglar
 	dbw 3,GenericAI
 	dbw 3,JugglerAI ; juggler_x
 	dbw 3,GenericAI
 	dbw 3,GenericAI
 	dbw 3,GenericAI
 	dbw 3,GenericAI
+	dbw 2,BeautyAI ; beauty				
 	dbw 3,GenericAI
 	dbw 3,GenericAI
+	dbw 4,JugglerAI ; juggler			
+	dbw 2,TamerAI ; tamer				
 	dbw 3,GenericAI
-	dbw 3,JugglerAI ; juggler
-	dbw 3,GenericAI
-	dbw 3,GenericAI
-	dbw 1,BlackbeltAI ; blackbelt		;decreased from 2 to 1
-	dbw 3,GenericAI
+	dbw 2,BlackbeltAI ; blackbelt
+	dbw 2,Sony1AI ; sony1				
 	dbw 3,GenericAI
 	dbw 1,GenericAI ; chief
-	dbw 3,GenericAI
-	dbw 1,GiovanniAI ; giovanni
-	dbw 3,GenericAI
-	dbw 1,CooltrainerMAI ; cooltrainerm	
-	dbw 2,CooltrainerFAI ; cooltrainerf	;increased from 1 to 2
-	dbw 1,BrunoAI ; bruno				;decreased from 2 to 1
+	dbw 5,ScientistAI	; scientist		
+	dbw 9,GiovanniAI ; giovanni			
+	dbw 4,RocketAI ; rocket				
+	dbw 5,CooltrainerMAI ; cooltrainerm	
+	dbw 5,CooltrainerFAI ; cooltrainerf	
+	dbw 9,BrunoAI ; bruno				
 	dbw 5,BrockAI ; brock
-	dbw 1,MistyAI ; misty				
-	dbw 1,LtSurgeAI ; surge
-	dbw 1,ErikaAI ; erika
-	dbw 2,KogaAI ; koga
-	dbw 3,BlaineAI ; blaine				;increased from 2 to 3
-	dbw 3,SabrinaAI ; sabrina			;increased from 1 to 3
-	dbw 3,GenericAI
-	dbw 6,Sony2AI ; sony2				;increased from 1 to 6
-	dbw 6,Sony3AI ; sony3				;increased from 1 to 6
-	dbw 4,LoreleiAI ; lorelei			;increased from 2 to 4
-	dbw 3,GenericAI
-	dbw 4,AgathaAI ; agatha				;increased from 2 to 4
-	dbw 5,LanceAI ; lance				;increased from 1 to 5
+	dbw 5,MistyAI ; misty				
+	dbw 6,LtSurgeAI ; surge
+	dbw 6,ErikaAI ; erika
+	dbw 7,KogaAI ; koga					
+	dbw 8,BlaineAI ; blaine				
+	dbw 7,SabrinaAI ; sabrina			
+	dbw 4,GentlemanAI ; gentleman
+	dbw 6,Sony2AI ; sony2				
+	dbw 10,Sony3AI ; sony3				
+	dbw 9,LoreleiAI ; lorelei			
+	dbw 2,ChannelerAI ; channeler		
+	dbw 9,AgathaAI ; agatha				
+	dbw 10,LanceAI ; lance				
 
 ;joenote - reorganizing these AI routines to jump on carry instead of returning on not-carry
 ;also adding recognition of a switch-pkmn bit
 
-JugglerAI:
-	cp $40
+PokemaniacAI:	;NEW
+	cp $20	;12.5%
+	jr nc, .pokemaniacnext1
 	jp c, AISwitchIfEnoughMons
-	ret
-	
-BlackbeltAI:
-	cp $20
-	jp c, AIUseXAttack	
-	ret
-	
-GiovanniAI:
-	cp $40
-	jp c, AIUseGuardSpec
+.pokemaniacnext1
+	call Random
+	cp $80	;50%
+	jr nc, .pokemaniacnext2
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseHyperPotion
+.pokemaniacnext2
+	call Random
+	ld a, $4	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseMaxPotion
 	ret
 
-CooltrainerMAI:	
-	cp $40
-	jp c, AIUseXAccuracy				;changed from XAttack to XAccuracy
-	ret
-	
-CooltrainerFAI:
-	cp $40
-	jr nc, .coolFreturn
-	ld a, $5
-	call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore				;changed from HyperPotion to FullRestore
-.coolFreturn
-	ret
-	
-BrockAI:
-; if his active monster has a status condition, use a full heal
+SupernerdAI:	;NEW
+	cp $80	;50%
+	jr nc, .supernerdnext1
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseMaxPotion
+.supernerdnext1
+	call Random
 	ld a, [wEnemyMonStatus]
 	and a
 	jp nz, AIUseFullHeal
 	ret 
+	
+BurglarAI:	;NEW
+	cp $80 ;50%
+	jr nc, .burglarnext1
+    ld a, $2 ;above fraction
+    call AICheckIfHPBelowFraction
+    jp nc, AIXSpeRestricted2
+.burglarnext1
+	call Random
+    cp $80	;50%
+	jr nc, .burglarnext2
+    ld a, $3 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIUseFullRestore
+.burglarnext2
+	and a
+    ret
+	
+BeautyAI:	;NEW
+	cp $C0 ;75%
+	ld a, $4	;below fraction
+	call AICheckIfHPBelowFraction
+	jp c, AIUseHyperPotion
+	ret
+
+JugglerAI:	;NEW
+	cp $20	;12.5%
+	jr nc, .jugglernext1
+	jp c, AISwitchIfEnoughMons
+.jugglernext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .jugglernext2
+	ld a, $1	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIMPotRestricted2
+.jugglernext2
+	call Random
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal
+    ret
+	
+TamerAI:	;NEW
+	cp $20 ;12.5%
+	jr nc, .tamernext1
+    ld a, $2 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIHPotRestricted2
+.tamernext1
+	call Random
+    cp $60	;37.5%
+	jr nc, .tamernext2
+    ld a, $2 ;above fraction
+    call AICheckIfHPBelowFraction
+    jp nc, AIXAccRestricted3
+.tamernext2
+	and a
+    ret
+
+BlackbeltAI:
+	cp $40 ;25%
+	jr nc, .blackbeltnext1
+    ld a, $2 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIHPotRestricted2
+.blackbeltnext1
+	call Random
+    cp $40	;25%
+	jr nc, .blackbeltnext2
+    ld a, $2 ;above fraction
+    call AICheckIfHPBelowFraction
+    jp nc, AIXAttRestricted3
+.blackbeltnext2
+	and a
+    ret
+	
+Sony1AI:	;NEW
+	cp $60 ;37.5%
+	jr nc, .sony1next1
+	ld a, $2 ;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .sony1next1
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIFHeaRestricted2
+.sony1next1
+	call Random
+    cp $20	;12.5%
+	jr nc, .sony1next2
+    ld a, $2 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIUseSuperPotion
+.sony1next2
+	and a
+    ret
+	
+ScientistAI:	;NEW
+	cp $60	;37.5%
+	jr nc, .scientistnext1
+    ld a, $2 ;above fraction
+    call AICheckIfHPBelowFraction
+    jp nc, AIXSpcRestricted2
+.scientistnext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .scientistnext2
+	ld a, $3 ;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .scientistnext2
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullRestore
+.scientistnext2
+	call Random
+    cp $80	;50%
+	jr nc, .scientistnext3
+    ld a, $3 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIUseFullRestore
+.scientistnext3
+	and a
+    ret
+	
+GiovanniAI:
+	ld a, $3
+	call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore				;changed from GuardSpec to FullRestore
+	ret
+
+RocketAI:    ;NEW
+    cp $E0 ;87.5%
+	jr nc, .rocketnext1
+	ld a, $4	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseHyperPotion
+.rocketnext1
+	call Random
+    cp $20	;12.5%
+	jr nc, .rocketnext2
+    ld a, $2	;above fraction
+    call AICheckIfHPBelowFraction
+    jp nc, AIXSpeRestricted2
+.rocketnext2
+	and a
+    ret
+
+CooltrainerMAI:
+	cp $80 ;50%
+	jr nc, .cooltrainermnext1
+    ld a, $2 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIUseFullRestore
+.cooltrainermnext1
+	call Random
+    cp $80 ;50%
+	jr nc, .cooltrainermnext2
+	ld a, $2 ;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .cooltrainermnext2
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal
+.cooltrainermnext2
+	and a
+    ret
+	
+CooltrainerFAI:
+	cp $80 ;50%
+	jr nc, .cooltrainerfnext1
+    ld a, $2 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIUseFullRestore
+.cooltrainerfnext1
+	call Random
+    cp $80 ;50%
+	jr nc, .cooltrainerfnext2
+	ld a, $2 ;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .cooltrainerfnext2
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal
+.cooltrainerfnext2
+	and a
+    ret
+	
+BrockAI:
+	cp $60	;37.5%
+	jr nc, .brocknext1
+    ld a, $2 ;above fraction
+    call AICheckIfHPBelowFraction
+    jp nc, AIGSpeRestricted2
+.brocknext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .brocknext2
+    ld a, $2 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIMPotRestricted3
+.brocknext2
+	call Random
+	ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal
+	ret
 
 MistyAI:
-	cp $40
-	jp c, AIUseXSpecial					;changed from XDefend to XSpecial
+	cp $60	;37.5%
+	jr nc, .mistynext1
+    ld a, $2 ;above fraction
+    call AICheckIfHPBelowFraction
+    jp nc, AIXSpcRestricted2
+.mistynext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .mistynext2
+    ld a, $2 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIMPotRestricted3
+.mistynext2
+	call Random
+	ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal
 	ret
 	
 LtSurgeAI:
-	cp $40
-	jp c, AIUseDireHit					;changed from XSpeed to DireHit
+	cp $60	;37.5%
+	jr nc, .ltsurgenext1
+    ld a, $2 ;above fraction
+    call AICheckIfHPBelowFraction
+    jp nc, AIDHitRestricted2
+.ltsurgenext1
+	call Random
+	cp $60	;37.5%
+	jr nc, .ltsurgenext2
+    ld a, $2 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIMPotRestricted3
+.ltsurgenext2
+	call Random
+	ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal
 	ret
 	
 ErikaAI:
-	cp $40
-	jp c, AIUseXAccuracy				;changed from Super Potion to XAccuracy
+    cp $60	;37.5%
+	jr nc, .erikanext1
+    ld a, $2 ;above fraction
+    call AICheckIfHPBelowFraction
+    jp nc, AIXAccRestricted2
+.erikanext1
+	call Random
+	cp $60	;37.5%
+	jr nc, .erikanext2
+    ld a, $2 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIMPotRestricted3
+.erikanext2
+	call Random
+	ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal
 	ret
 
 KogaAI:
-	cp $40
-	jp c, AIUseXAccuracy				;changed from XAttack to XAccuracy
+	ld a, $3
+	call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore				
 	ret
 	
 BlaineAI:	;blaine needs to check HP. this was an oversight	
@@ -1269,26 +1520,40 @@ BlaineAI:	;blaine needs to check HP. this was an oversight
 	jr nc, .blainereturn
 	ld a, $2
 	call AICheckIfHPBelowFraction	
-	jp c, AIUseFullRestore				;changed from SuperPotion to FullRestore
+	jp c, AIUseFullRestore				
 .blainereturn
 	ret
 
 SabrinaAI:
-	cp $40
-	jr nc, .sabrinareturn
-	ld a, $A
+	ld a, $3
 	call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore				;changed from HyperPotion to FullRestore
-.sabrinareturn
+	jp c, AIUseFullRestore				
 	ret
 
+GentlemanAI:	;NEW
+	cp $40 ;25%
+	jr nc, .gentlemannext1
+    ld a, $2 ;above fraction
+    call AICheckIfHPBelowFraction
+    jp nc, AIGSpeRestricted2
+.gentlemannext1
+	call Random
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal
+    ret
+
 Sony2AI:
-	cp $20
-	jr nc, .rival2return
-	ld a, 5
-	call AICheckIfHPBelowFraction
-	jp c, AIUseFullHeal					;changed from Potion to FullHeal
-.rival2return
+	cp $C0	;75%
+	jr nc, .sony2next1
+    ld a, $2 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIUseMaxPotion
+.sony2next1
+	call Random
+	ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal
 	ret
 
 Sony3AI:
@@ -1303,35 +1568,54 @@ Sony3AI:
 LoreleiAI:
 	cp $80
 	jr nc, .loreleireturn
-	ld a, 5
+	ld a, $2
 	call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore				;changed from SuperPotion to FullRestore
+	jp c, AIUseFullRestore				
 .loreleireturn
 	ret
 
+ChannelerAI:	;NEW
+	cp $10 ;6.75%
+	jr nc, .channelernext1
+	ld a, $1	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIFResRestricted2
+.channelernext1
+	call Random
+    cp $40	;25%
+	jr nc, .channelernext2
+    ld a, $2	;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIUseHyperPotion
+.channelernext2
+	and a
+    ret
 
 BrunoAI:
-	cp $40
-	jp c, AIUseDireHit					;changed from XDefend to DireHit
-	ret
+	cp $20	;12.5% chance to use
+	jp c, AIUseXAttack					
+	ld a, [wEnemyMonStatus]
+    and a
+    jp nz, AIUseFullHeal            
+    ret 
 
 AgathaAI:
 ;	cp $14
 ;	jp c, AISwitchIfEnoughMons
-	cp $80
+	cp $C0	;75% chance to heal
 	jr nc, .agathareturn
-	ld a, $4
+	ld a, $2
 	call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore				;changed from SuperPotion to FullRestore
+	jp c, AIUseFullRestore				
 .agathareturn
 	ret
 
 LanceAI:
-	cp $80
+	cp $E0	;87.5% chance to heal
 	jr nc, .lancereturn
-	ld a, 5
+	ld a, $2
 	call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore				;changed from HyperPotion to FullRestore
+	jp c, AIUseFullRestore				
 .lancereturn
 	ret
 
@@ -1400,11 +1684,23 @@ AIUseSuperPotion:
 	ld a, SUPER_POTION
 	ld b, 50
 	jr AIRecoverHP
+	
+AIUseLemonade:	;NEW
+; enemy trainer heals his monster with a lemonade
+	ld a, LEMONADE
+	ld b, 80
+	jr AIRecoverHP
 
 AIUseHyperPotion:
 ; enemy trainer heals his monster with a hyper potion
 	ld a, HYPER_POTION
 	ld b, 200
+	jr AIRecoverHP
+	
+AIUseMaxPotion:
+; enemy trainer heals his monster with a max potion
+	ld a, MAX_POTION
+	ld b, 999
 	; fallthrough
 
 AIRecoverHP:
@@ -1640,6 +1936,7 @@ AICheckIfHPBelowFraction:
 	pop hl
 	ret
 
+
 AIUseXAttack:
 	ld b, $A
 	ld a, X_ATTACK
@@ -1716,3 +2013,237 @@ StrCmpSpeed:	;joenote - function for AI to compare pkmn speeds
 	;carry flag not set means player pkmn faster
 	;carry flag set means ai pkmn faster
 	ret
+	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; wAICount2 ; NEW - Restricts a specific item to 1 use only.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+AIFResRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseFullRestore
+	
+AIPotRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUsePotion
+	
+AISPotRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseSuperPotion
+	
+AILemoRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseLemonade
+	
+AIHPotRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseHyperPotion
+	
+AIMPotRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseMaxPotion
+
+AIFHeaRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseFullHeal
+
+AIXAccRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseXAccuracy
+	
+AIGSpeRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseGuardSpec
+	
+AIDHitRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseDireHit
+	
+AIXAttRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseXAttack
+	
+AIXDefRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseXDefend
+	
+AIXSpeRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseXSpeed
+	
+AIXSpcRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseXSpecial
+	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; wAICount3 ; NEW - Restricts an additional specific item to 1 use only.
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+AIFResRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseFullRestore
+	
+AIPotRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUsePotion
+	
+AISPotRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseSuperPotion
+	
+AILemoRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseLemonade
+	
+AIHPotRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseHyperPotion
+	
+AIMPotRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseMaxPotion
+
+AIFHeaRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseFullHeal
+
+AIXAccRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseXAccuracy
+	
+AIGSpeRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseGuardSpec
+	
+AIDHitRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseDireHit
+	
+AIXAttRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseXAttack
+	
+AIXDefRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseXDefend
+	
+AIXSpeRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseXSpeed
+	
+AIXSpcRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseXSpecial
+
+	

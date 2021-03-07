@@ -16,7 +16,7 @@ MoveEnd:
 	move DOUBLESLAP,   ATTACK_TWICE_EFFECT,         50, NORMAL,    85, 10		;Hits twice, 50 POW
 	move COMET_PUNCH,  TWO_TO_FIVE_ATTACKS_EFFECT,  18, BUG,       85, 15		;Normal -> Bug
 	move MEGA_PUNCH,   FLINCH_SIDE_EFFECT2,        100, NORMAL,    85, 10		;30% chance to Flinch, 100 POW, 10 PP
-	move PAY_DAY,      PAY_DAY_EFFECT,              40, NORMAL,   100, 20
+	move PAY_DAY,      DRAIN_HP_EFFECT,             60, NORMAL,   100, 10		;Drain HP effect, 60 POW, 10 PP
 	move FIRE_PUNCH,   BURN_SIDE_EFFECT1,           75, FIRE,     100, 15
 	move ICE_PUNCH,    FREEZE_SIDE_EFFECT,          75, ICE,      100, 15
 	move THUNDERPUNCH, PARALYZE_SIDE_EFFECT1,       75, ELECTRIC, 100, 15
@@ -61,7 +61,7 @@ MoveEnd:
 	move SUPERSONIC,   CONFUSION_EFFECT,             0, NORMAL,   100,  5		;100 ACC, 5 PP
 	move SONICBOOM,    SPECIAL_DOWN1_EFFECT,         0, NORMAL,   100, 10		;Lowers SPC 1 stage, 100 ACC, 10 PP
 	move DISABLE,      DISABLE_EFFECT,               0, NORMAL,   100, 10		;100 ACC, 10 PP
-	move ACID,         DEFENSE_DOWN2_EFFECT,         0, POISON,   100, 10		;Lowers DEF 2 stages, 10 PP
+	move ACID,         BURN_SIDE_EFFECT2,           55, POISON,   100, 20		;30% chance to Burn, 55 POW, 20 PP
 	move EMBER,        BURN_SIDE_EFFECT1,           40, FIRE,     100, 25
 	move FLAMETHROWER, BURN_SIDE_EFFECT1,           95, FIRE,     100, 15
 	move MIST,         MIST_EFFECT,                  0, ICE,      100, 30
@@ -165,7 +165,7 @@ MoveEnd:
 	move CRABHAMMER,   NO_ADDITIONAL_EFFECT,        90, WATER,     85, 10
 	move EXPLOSION,    EXPLODE_EFFECT,             170, NORMAL,   100,  5
 	move FURY_SWIPES,  TWO_TO_FIVE_ATTACKS_EFFECT,  18, NORMAL,    80, 15
-	move BONEMERANG,   ATTACK_TWICE_EFFECT,         60, GROUND,    90,  5		;60 POW, 5 PP
+	move BONEMERANG,   ATTACK_TWICE_EFFECT,         50, GROUND,   100, 15		;100 ACC, 15 PP
 	move REST,         HEAL_EFFECT,                  0, PSYCHIC,  100, 10
 	move ROCK_SLIDE,   FLINCH_SIDE_EFFECT2,         75, ROCK,      90, 10		;30% chance to Flinch
 	move HYPER_FANG,   FLINCH_SIDE_EFFECT1,         80, NORMAL,    90, 15

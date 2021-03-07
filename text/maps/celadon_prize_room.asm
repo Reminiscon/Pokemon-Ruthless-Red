@@ -6,7 +6,8 @@ _CeladonPrizeRoomText1::
 	line "win at slots!"
 	done
 
-_CeladonPrizeRoomText2::
-	text "I had a major"
-	line "haul today!"
+_CeladonPrizeRoomText2::					;modified text
+	text "Sorry, this"
+	line "machine is"
+	cont "out of order."
 	done

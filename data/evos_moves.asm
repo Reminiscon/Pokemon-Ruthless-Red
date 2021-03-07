@@ -243,6 +243,7 @@ ClefairyEvosMoves:
 	db 31, METRONOME
 	db 39, DIZZY_PUNCH
 	db 39, DEFENSE_CURL
+	db 42, DREAM_EATER
 	db 48, LIGHT_SCREEN
 	db 0
 
@@ -519,6 +520,7 @@ StaryuEvosMoves:
 ; Learnset
 	db 17, WATER_GUN
 	db 22, HARDEN
+	db 25, LIGHT_SCREEN							;Added for Misty's Staryu
 	db 27, RECOVER
 	db 32, SWIFT
 	db 37, MINIMIZE
@@ -683,6 +685,7 @@ ChanseyEvosMoves:
 ; Learnset
 	db 24, SING
 	db 30, GROWL
+	db 34, DREAM_EATER
 	db 38, MINIMIZE
 	db 44, DEFENSE_CURL
 	db 48, LIGHT_SCREEN
@@ -1696,7 +1699,7 @@ GolbatEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
-	db 10, LEECH_LIFE				;Removed Supersonic for Leech Life, for wild Golbat in Mt.Moon
+	db 10, LEECH_LIFE								;Removed Supersonic for Leech Life, for wild Golbat in Mt.Moon
 	db 15, BITE
 	db 21, CONFUSE_RAY
 	db 32, WING_ATTACK
@@ -1834,7 +1837,7 @@ PersianEvosMoves:
 	db 12, BITE
 	db 17, PAY_DAY
 	db 24, SCREECH
-	db 31, BODY_SLAM						;Added, so Persian uses it on Route 11
+	db 31, BODY_SLAM								;Added, so Persian uses it on Route 11
 	db 37, FURY_SWIPES
 	db 51, SLASH
 	db 52, HYPNOSIS

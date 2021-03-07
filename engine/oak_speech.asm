@@ -46,7 +46,7 @@ OakSpeech:
 	ld hl, wNumBoxItems
 	ld a, POTION
 	ld [wcf91], a
-	ld a, 1
+	ld a, 5
 	ld [wItemQuantity], a
 	call AddItemToInventory  ; give one potion
 	ld a, [wDefaultMap]

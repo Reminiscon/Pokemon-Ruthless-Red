@@ -252,8 +252,6 @@ HikerData:
 	db 38,GRAVELER,MACHOKE,GRAVELER,MACHOKE,0
 	db 39,ONIX,ONIX,RHYHORN,0
 	db 40,RHYHORN,MACHOKE,0
-; Route 4
-	db 20,HITMONCHAN,0														;NEW				;Custom Moves Applied
 BikerData:
 ; Route 13
 	db 28,KOFFING,KOFFING,KOFFING,0
@@ -456,6 +454,8 @@ BlackbeltData:
 	db 38,MACHOKE,MACHOP,MACHOKE,0
 ; Victory Road 2F
 	db 43,MACHOKE,MACHOP,MACHOKE,0
+; Route 4
+	db 20,HITMONCHAN,0														;NEW				;Custom Moves Applied
 Green1Data:
 	db 5,SQUIRTLE,0
 	db 5,BULBASAUR,0
@@ -614,7 +614,7 @@ MistyData:
 LtSurgeData:
 	db $FF,38,MAGNETON,38,ELECTABUZZ,39,TAUROS,40,JOLTEON,40,RAICHU,0					;Custom Moves Applied
 ErikaData:
-	db $FF,48,TANGELA,48,VENUSAUR,49,EXEGGUTOR,49,LAPRAS,50,GENGAR,50,VILEPLUME,0		;Custom Moves Applied
+	db $FF,48,VENUSAUR,48,VICTREEBEL,49,CLEFABLE,49,GENGAR,50,EXEGGUTOR,50,VILEPLUME,0	;Custom Moves Applied
 KogaData:
 	db $FF,37,KOFFING,39,MUK,37,KOFFING,43,WEEZING,0
 BlaineData:

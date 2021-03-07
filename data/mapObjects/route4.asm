@@ -15,7 +15,7 @@ Route4Object:
 	object SPRITE_LASS, 13,  7, WALK, 0, 1 ; person
 	object SPRITE_LASS, 27,  6, STAY, LEFT, 2, OPP_LASS, 4
 	object SPRITE_BALL, 57,  3, STAY, NONE, 3, TM_04
-	object SPRITE_HIKER, 6, 14, STAY, RIGHT, 7, OPP_HIKER, 15
+	object SPRITE_HIKER, 6, 14, STAY, RIGHT, 7, OPP_BLACKBELT, 10
 
 	; warp-to
 	warp_to 17, 13, ROUTE_4_WIDTH ; MT_MOON_POKECENTER

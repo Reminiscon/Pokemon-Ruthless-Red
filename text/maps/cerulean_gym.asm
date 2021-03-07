@@ -27,13 +27,10 @@ _CeruleanGymText_5c7c3::
 	line "aquatic #MON!"
 	done
 
-_CeruleanGymText_5c7c8::
+_CeruleanGymText_5c7c8::							;modified text
 	text "The CASCADEBADGE"
 	line "makes all #MON"
-	cont "up to L30 obey!"
-
-	para "That includes"
-	line "even outsiders!"
+	cont "up to L40 obey!"
 
 	para "There's more, you"
 	line "can now use CUT"

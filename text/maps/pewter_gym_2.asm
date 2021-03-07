@@ -57,15 +57,15 @@ _PewterGymText_5c4bc::
 	para "<PLAYER> received"
 	line "the BOULDERBADGE!@@"
 
-_PewterGymText_5c4c1::
+_PewterGymText_5c4c1::						;modified text
 	db $0
 	para "That's an official"
 	line "#MON LEAGUE"
 	cont "BADGE!"
 
-	para "Its bearer's"
-	line "#MON become"
-	cont "more powerful!"
+	para "The BOULDERBADGE"
+	line "makes all #MON"
+	cont "up to L30 obey!"
 
 	para "The technique"
 	line "FLASH can now be"

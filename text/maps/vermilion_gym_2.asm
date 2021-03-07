@@ -10,10 +10,10 @@ _VermilionGymText_5cb72::
 	cont "type #MON!"
 	done
 
-_VermilionGymText_5cb77::
+_VermilionGymText_5cb77::							;modified text
 	text "The THUNDERBADGE"
-	line "cranks up your"
-	cont "#MON's DEFENSE!"	;joenote - changed SPEED to DEFENSE in order to fix a typo
+	line "makes all #MON"
+	cont "up to L50 obey!"
 
 	para "It also lets your"
 	line "#MON FLY any"

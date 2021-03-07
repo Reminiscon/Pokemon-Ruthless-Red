@@ -44,29 +44,29 @@ ItemPrices:
 	money 0     ; SECRET_KEY
 	money 0     ; XXX
 	money 0     ; BIKE_VOUCHER
-	money 950   ; X_ACCURACY
+	money 1800  ; X_ACCURACY				;modified 950 -> 1800
 	money 2100  ; LEAF_STONE
 	money 0     ; CARD_KEY
 	money 10000 ; NUGGET
 	money 9800  ; XXX PP_UP
-	money 200   ; POKE_DOLL					;modified 1000 -> 200
+	money 100   ; POKE_DOLL					;modified 1000 -> 100
 	money 1200  ; FULL_HEAL					;modified 600 -> 1200
 	money 1500  ; REVIVE
 	money 4000  ; MAX_REVIVE
 	money 700   ; GUARD_SPEC
 	money 500   ; SUPER_REPEL
 	money 700   ; MAX_REPEL
-	money 650   ; DIRE_HIT
+	money 1300  ; DIRE_HIT					;modified 650 -> 1300
 	money 10    ; COIN
 	money 200   ; FRESH_WATER
 	money 300   ; SODA_POP
 	money 350   ; LEMONADE
 	money 0     ; S_S_TICKET
 	money 0     ; GOLD_TEETH
-	money 500   ; X_ATTACK
-	money 550   ; X_DEFEND
-	money 350   ; X_SPEED
-	money 350   ; X_SPECIAL
+	money 1250  ; X_ATTACK					;modified 500 -> 1250
+	money 700   ; X_DEFEND					;modified 550 -> 700
+	money 700   ; X_SPEED					;modified 350 -> 700
+	money 1800  ; X_SPECIAL					;modified 350 -> 1800
 	money 0     ; COIN_CASE
 	money 0     ; OAKS_PARCEL
 	money 0     ; ITEMFINDER
@@ -77,11 +77,11 @@ ItemPrices:
 	money 0     ; OLD_ROD
 	money 0     ; GOOD_ROD
 	money 0     ; SUPER_ROD
-	money 0     ; PP_UP
-	money 0     ; ETHER
-	money 0     ; MAX_ETHER
-	money 0     ; ELIXER
-	money 0     ; MAX_ELIXER
+	money 9800  ; PP_UP						;modified 0 -> 9800
+	money 900   ; ETHER						;modified 0 -> 900
+	money 1800  ; MAX_ETHER					;modified 0 -> 1800
+	money 2700  ; ELIXER					;modified 0 -> 2700
+	money 5400  ; MAX_ELIXER				;modified 0 -> 5400
 	money 0     ; FLOOR_B2F
 	money 0     ; FLOOR_B1F
 	money 0     ; FLOOR_1F

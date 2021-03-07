@@ -32,7 +32,7 @@ _ViridianCityText_19152::
 	text "Oh, OK then!"
 	done
 
-_ViridianCityText_19157::
+_ViridianCityText_19157::					;modified text
 	text "CATERPIE has no"
 	line "poison, but"
 	cont "WEEDLE does."

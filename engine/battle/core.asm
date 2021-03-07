@@ -4285,47 +4285,46 @@ OHKOText:
 	TX_FAR _OHKOText
 	db "@"
 
-; checks if a traded mon will disobey due to lack of badges
+; checks if any mon will disobey due to lack of badges
 ; stores whether the mon will use a move in Z flag
 CheckForDisobedience:
 	xor a
 	ld [wMonIsDisobedient], a
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
-	jr nz, .checkIfMonIsTraded
+	jr .levelofdisobedience			;Renamed from .monisTraded because badges now apply the level cap to all mons
 	ld a, $1
 	and a
 	ret
-; compare the mon's original trainer ID with the player's ID to see if it was traded
-.checkIfMonIsTraded
-	ld hl, wPartyMon1OTID
-	ld bc, wPartyMon2 - wPartyMon1
-	ld a, [wPlayerMonNumber]
-	call AddNTimes
-	ld a, [wPlayerID]
-	cp [hl]
-	jr nz, .monIsTraded
-	inc hl
-	ld a, [wPlayerID + 1]
-	cp [hl]
-	jp z, .canUseMove
-; it was traded
-.monIsTraded
+; code of .CheckifMonIsTraded was deleted because badges now apply the level cap to all mons
+.levelofdisobedience
 ; what level might disobey?
 	ld hl, wObtainedBadges
 	bit 7, [hl]
 	ld a, 255	;joenote - upped to 255
 	jr nz, .next
+	bit 6, [hl]		;Volcano Badge limit added
+	ld a, 90
+	jr nz, .next
 	bit 5, [hl]
+	ld a, 80
+	jr nz, .next
+	bit 4, [hl]		;Soul Badge limit added
 	ld a, 70
 	jr nz, .next
 	bit 3, [hl]
+	ld a, 60
+	jr nz, .next
+	bit 2, [hl]		;Thunder Badge limit added
 	ld a, 50
 	jr nz, .next
 	bit 1, [hl]
+	ld a, 40
+	jr nz, .next
+	bit 0, [hl]		;Pewter Badge limit added
 	ld a, 30
 	jr nz, .next
-	ld a, 10
+	ld a, 15
 .next
 	ld b, a
 	ld c, a
@@ -7233,84 +7232,7 @@ HalveAttackDueToBurn:
 	ret
 
 ApplyBadgeStatBoosts:
-	ld a, [wLinkState]
-	cp LINK_STATE_BATTLING
-	jr z, .return ; return if link battle
-	ld a, [wObtainedBadges]
-	ld b, a
-	call .selectiveBadgeBoost	;joenote - jump down and run new section
-	ld hl, wBattleMonAttack
-	ld c, $4
-; the boost is applied for badges whose bit position is even
-; the order of boosts matches the order they are laid out in RAM
-; Boulder (bit 0) - attack
-; Thunder (bit 2) - defense
-; Soul (bit 4) - speed
-; Volcano (bit 6) - special
-.loop
-	srl b
-	call c, .applyBoostToStat
-	inc hl
-	inc hl
-	srl b
-	dec c
-	jr nz, .loop
-.return	;joenote - clear out stat mod address offset backup
-	xor a
-	ld [wUnusedD71B], a
-	ret
-; multiply stat at hl by 1.125
-; cap stat at 999
-.applyBoostToStat
-	ld a, [hli]
-	ld d, a
-	ld e, [hl]
-	srl d
-	rr e
-	srl d
-	rr e
-	srl d
-	rr e
-	ld a, [hl]
-	add e
-	ld [hld], a
-	ld a, [hl]
-	adc d
-	ld [hli], a
-	ld a, [hld]
-	sub 999 % $100
-	ld a, [hl]
-	sbc 999 / $100
-	ret c
-	ld a, 999 / $100
-	ld [hli], a
-	ld a, 999 % $100
-	ld [hld], a
-	ret
-;joenote - check for backed up stat mod address offset to selectively apply badge boosts
-.selectiveBadgeBoost
-	;b holds the obtained badge bits that are used to apply boosts
-	ld a, [wUnusedD71B]	;get the backed-up offset into 'a'
-	and a
-	ret z	;kick out if zero so the function will apply all normal badge boosts
-	ld c, $5	;load a value of 5 into c
-	cp c	;set carry  flag if the offset in a is < c's value (stat being affected is neither accuracy or evasion)
-	ret nc 	;kick out if carry flag not set so the function will apply all normal badge boosts
-	ld c, b	;put the badge bits into c and push onto stack
-	push bc
-	ld c, a	;put the offset value into c. it should be 1, 2, 3, or 4. use it as a loop counter.
-	ld a, $80	;set an initial bit that gets rolled around
-.selectloop
-	rla
-	rla
-	dec c
-	jr nz, .selectloop
-	pop bc	;get the badge bits back into c
-	ld b, a	;put the selected badge boost into b
-	ld a, c ;put badge bits into 'a'
-	and b	;AND a with b to clear the badge boost if you don't have that badge
-	ld b, a	;store it back into b
-	ret
+	ret	; Badge boosts have been wiped out entirely
 
 LoadHudAndHpBarAndStatusTilePatterns:
 	call LoadHpBarAndStatusTilePatterns

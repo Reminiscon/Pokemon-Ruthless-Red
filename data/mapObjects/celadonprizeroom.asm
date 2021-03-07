@@ -12,7 +12,7 @@ CeladonPrizeRoomObject:
 
 	db 2 ; objects
 	object SPRITE_BALDING_GUY, 1, 4, STAY, NONE, 1 ; person
-	object SPRITE_GAMBLER, 7, 3, WALK, 2, 2 ; person
+	object SPRITE_GUARD,  6,  3, STAY, DOWN, 2, 2 ; person
 
 	; warp-to
 	warp_to 4, 7, CELADON_PRIZE_ROOM_WIDTH
