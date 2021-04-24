@@ -29,7 +29,7 @@ PokemonTower6Script0:
 	jp nc, CheckFightingMapTrainers
 	xor a
 	ld [hJoyHeld], a
-	ld a, $6
+	ld a, $A
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -40,7 +40,7 @@ PokemonTower6Script0:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, MAROWAK
 	ld [wCurOpponent], a
-	ld a, 30
+	ld a, 60
 	ld [wCurEnemyLVL], a
 	ld a, $4
 	ld [wPokemonTower6CurScript], a
@@ -66,7 +66,7 @@ PokemonTower6Script4:
 	and a
 	jr nz, .asm_60b82
 	SetEvent EVENT_BEAT_GHOST_MAROWAK
-	ld a, $7
+	ld a, $B
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	xor a
@@ -104,6 +104,10 @@ PokemonTower6TextPointers:
 	dw PokemonTower6Text1
 	dw PokemonTower6Text2
 	dw PokemonTower6Text3
+	dw PokemonTower6Text4
+	dw PokemonTower6Text5
+	dw PickUpItemText
+	dw PickUpItemText
 	dw PickUpItemText
 	dw PickUpItemText
 	dw PokemonTower6Text6
@@ -111,7 +115,7 @@ PokemonTower6TextPointers:
 
 PokemonTower6TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_6_TRAINER_0
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_6_TRAINER_0
 	dw PokemonTower6BattleText1 ; TextBeforeBattle
 	dw PokemonTower6AfterBattleText1 ; TextAfterBattle
@@ -120,7 +124,7 @@ PokemonTower6TrainerHeader0:
 
 PokemonTower6TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_6_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_6_TRAINER_1
 	dw PokemonTower6BattleText2 ; TextBeforeBattle
 	dw PokemonTower6AfterBattleText2 ; TextAfterBattle
@@ -129,12 +133,30 @@ PokemonTower6TrainerHeader1:
 
 PokemonTower6TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_6_TRAINER_2
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_6_TRAINER_2
 	dw PokemonTower6BattleText3 ; TextBeforeBattle
 	dw PokemonTower6AfterBattleText3 ; TextAfterBattle
 	dw PokemonTower6EndBattleText3 ; TextEndBattle
 	dw PokemonTower6EndBattleText3 ; TextEndBattle
+	
+PokemonTower6TrainerHeader3:
+	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_6_TRAINER_3
+	db ($3 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_6_TRAINER_3
+	dw PokemonTower6BattleText4 ; TextBeforeBattle
+	dw PokemonTower6AfterBattleText4 ; TextAfterBattle
+	dw PokemonTower6EndBattleText4 ; TextEndBattle
+	dw PokemonTower6EndBattleText4 ; TextEndBattle
+	
+PokemonTower6TrainerHeader4:
+	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_6_TRAINER_4
+	db ($3 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_6_TRAINER_4
+	dw PokemonTower6BattleText5 ; TextBeforeBattle
+	dw PokemonTower6AfterBattleText5 ; TextAfterBattle
+	dw PokemonTower6EndBattleText5 ; TextEndBattle
+	dw PokemonTower6EndBattleText5 ; TextEndBattle
 
 	db $ff
 
@@ -153,6 +175,18 @@ PokemonTower6Text2:
 PokemonTower6Text3:
 	TX_ASM
 	ld hl, PokemonTower6TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+	
+PokemonTower6Text4:
+	TX_ASM
+	ld hl, PokemonTower6TrainerHeader3
+	call TalkToTrainer
+	jp TextScriptEnd
+	
+PokemonTower6Text5:
+	TX_ASM
+	ld hl, PokemonTower6TrainerHeader4
 	call TalkToTrainer
 	jp TextScriptEnd
 
@@ -212,7 +246,31 @@ PokemonTower6EndBattleText3:
 PokemonTower6AfterBattleText3:
 	TX_FAR _PokemonTower6AfterBattleText3
 	db "@"
+	
+PokemonTower6BattleText4:
+	TX_FAR _PokemonTower6BattleText4
+	db "@"
 
+PokemonTower6EndBattleText4:
+	TX_FAR _PokemonTower6EndBattleText4
+	db "@"
+
+PokemonTower6AfterBattleText4:
+	TX_FAR _PokemonTower6AfterBattleText4
+	db "@"
+
+PokemonTower6BattleText5:
+	TX_FAR _PokemonTower6BattleText5
+	db "@"
+
+PokemonTower6EndBattleText5:
+	TX_FAR _PokemonTower6EndBattleText5
+	db "@"
+
+PokemonTower6AfterBattleText5:
+	TX_FAR _PokemonTower6AfterBattleText5
+	db "@"
+	
 PokemonTower6Text6:
 	TX_FAR _PokemonTower6Text6
 	db "@"

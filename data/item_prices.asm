@@ -33,12 +33,12 @@ ItemPrices:
 	money 2100  ; FIRE_STONE
 	money 2100  ; THUNDER_STONE
 	money 2100  ; WATER_STONE
-	money 200   ; HP_UP						;modified 9800 -> 200
-	money 200   ; PROTEIN					;modified 9800 -> 200
-	money 200   ; IRON						;modified 9800 -> 200
-	money 200   ; CARBOS					;modified 9800 -> 200
-	money 200   ; CALCIUM					;modified 9800 -> 200
-	money 100   ; RARE_CANDY				;modified 4800 -> 100
+	money 2000  ; HP_UP						;modified 9800 -> 2000
+	money 2000  ; PROTEIN					;modified 9800 -> 2000
+	money 2000  ; IRON						;modified 9800 -> 2000
+	money 2000  ; CARBOS					;modified 9800 -> 2000
+	money 2000  ; CALCIUM					;modified 9800 -> 2000
+	money 1000  ; RARE_CANDY				;modified 4800 -> 1000
 	money 0     ; DOME_FOSSIL
 	money 0     ; HELIX_FOSSIL
 	money 0     ; SECRET_KEY

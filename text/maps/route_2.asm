@@ -37,7 +37,7 @@ _Route2AfterBattleText1::
 	
 _Route2BattleText2::
 	text "I study"
-	line "Liberal Arts!"
+	line "liberal arts!"
 	done
 
 _Route2EndBattleText2::

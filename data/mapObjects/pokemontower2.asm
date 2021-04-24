@@ -3,7 +3,7 @@ PokemonTower2Object:
 
 	db 2 ; warps
 	warp 3, 9, 0, POKEMONTOWER_3
-	warp 18, 9, 2, POKEMONTOWER_1
+	warp 16,  9, 2, POKEMONTOWER_1
 
 	db 0 ; signs
 
@@ -13,4 +13,4 @@ PokemonTower2Object:
 
 	; warp-to
 	warp_to 3, 9, POKEMONTOWER_2_WIDTH ; POKEMONTOWER_3
-	warp_to 18, 9, POKEMONTOWER_2_WIDTH ; POKEMONTOWER_1
+	warp_to 16,  9, POKEMONTOWER_2_WIDTH ; POKEMONTOWER_1

@@ -1444,8 +1444,7 @@ _WithExpAllText::
 	line "@@"
 
 _BoostedText::
-	text "a boosted"
-	cont "@@"
+	text "@@"
 
 _ExpPointsText::
 	TX_NUM wExpAmountGained, 2, 4

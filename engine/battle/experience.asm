@@ -83,6 +83,7 @@ GainExperience:
 	ld a, [wPlayerID]
 	cp b
 	jr nz, .tradedMon
+	jr z, .tradedMon
 	ld b, [hl]
 	ld a, [wPlayerID + 1]
 	cp b

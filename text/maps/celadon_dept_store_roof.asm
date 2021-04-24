@@ -138,3 +138,38 @@ _VendingMachineText6::
 _VendingMachineText7::
 	text "Not thirsty!"
 	done
+	
+_CeladonMartRoofBattleText1::	;NEW
+	text "ERGH!"
+	done
+	
+_CeladonMartRoofEndBattleText1::
+	text "Fiddle"
+	line "sticks!"
+	prompt
+	
+_CeladonMartRoofAfterBattleText1::
+	text "What are you"
+	line "looking at buddy?"
+	cont "ERGH!"
+	done
+	
+_CeladonMartRoofBattleText2::	;NEW
+	text "Is the juice"
+	line "worth the"
+	cont "squeeze?"
+	
+	para "..."
+	
+	para "ERGH!"
+	done
+	
+_CeladonMartRoofEndBattleText2::
+	text "Gee"
+	line "willickers!"
+	prompt
+	
+_CeladonMartRoofAfterBattleText2::
+	text "LEMONADE sure"
+	line "is swell! ERGH!"
+	done

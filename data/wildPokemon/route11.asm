@@ -3,10 +3,10 @@ Route11Mons:
 	IF DEF(_RED)
 		db 31,PERSIAN						;modified
 		db 31,PERSIAN						;modified
-		db 32,ARCANINE						;modified
-		db 32,ARCANINE						;modified
-		db 33,ELECTRODE						;modified
-		db 33,ELECTRODE						;modified
+		db 32,GROWLITHE						;modified
+		db 32,GROWLITHE						;modified
+		db 33,ARCANINE						;modified
+		db 33,ARCANINE						;modified
 		db 33,ELECTRODE						;modified
 		db 33,ELECTRODE						;modified
 		db 31,JYNX							;modified
@@ -15,10 +15,10 @@ Route11Mons:
 	IF (DEF(_BLUE) || DEF(_GREEN))
 		db 31,PERSIAN						;modified
 		db 31,PERSIAN						;modified
-		db 32,ARCANINE						;modified
-		db 32,ARCANINE						;modified
-		db 33,ELECTRODE						;modified
-		db 33,ELECTRODE						;modified
+		db 32,GROWLITHE						;modified
+		db 32,GROWLITHE						;modified
+		db 33,ARCANINE						;modified
+		db 33,ARCANINE						;modified
 		db 33,ELECTRODE						;modified
 		db 33,ELECTRODE						;modified
 		db 31,JYNX							;modified

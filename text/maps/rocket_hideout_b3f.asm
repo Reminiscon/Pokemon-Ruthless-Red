@@ -33,3 +33,19 @@ _RocketHide3AfterBattleText3::
 	cont "LIFT KEY to run"
 	cont "the elevator!"
 	done
+	
+_RocketHideout3BattleText4::
+	text "Prepare for"
+	line "triple trouble!"
+	done
+
+_RocketHideout3EndBattleText4::
+	text "Triple"
+	line "wrecked!"
+	prompt
+
+_RocketHideout3AfterBattleText4::
+	text "If you want the"
+	line "TM that badly,"
+	cont "take it!"
+	done

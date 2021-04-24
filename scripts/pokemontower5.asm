@@ -42,10 +42,10 @@ PokemonTower5Script0:
 	ret
 
 CoordsData_60992:
-	db $08,$0A
-	db $08,$0B
-	db $09,$0A
-	db $09,$0B
+	db $0C,$0E
+	db $0C,$0F
+	db $0D,$0E
+	db $0D,$0F
 	db $FF
 
 PokemonTower5TextPointers:
@@ -59,7 +59,7 @@ PokemonTower5TextPointers:
 
 PokemonTower5TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5_TRAINER_0
-	db ($2 << 4) ; trainer's view range
+	db ($5 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_5_TRAINER_0
 	dw PokemonTower5BattleText1 ; TextBeforeBattle
 	dw PokemonTower5AfterBattleText1 ; TextAfterBattle
@@ -68,7 +68,7 @@ PokemonTower5TrainerHeader0:
 
 PokemonTower5TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($5 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_5_TRAINER_1
 	dw PokemonTower5BattleText2 ; TextBeforeBattle
 	dw PokemonTower5AfterBattleText2 ; TextAfterBattle
@@ -77,7 +77,7 @@ PokemonTower5TrainerHeader1:
 
 PokemonTower5TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5_TRAINER_2
-	db ($2 << 4) ; trainer's view range
+	db ($5 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_5_TRAINER_2
 	dw PokemonTower5BattleText3 ; TextBeforeBattle
 	dw PokemonTower5AfterBattleText3 ; TextAfterBattle
@@ -86,7 +86,7 @@ PokemonTower5TrainerHeader2:
 
 PokemonTower5TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_5_TRAINER_3
-	db ($2 << 4) ; trainer's view range
+	db ($5 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_5_TRAINER_3
 	dw PokemonTower5BattleText4 ; TextBeforeBattle
 	dw PokemonTower5AfterBattleText4 ; TextAfterBattle

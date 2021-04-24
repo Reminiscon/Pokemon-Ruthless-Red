@@ -146,6 +146,7 @@ RocketHideout3Script3:
 RocketHideout3TextPointers:
 	dw RocketHideout3Text1
 	dw RocketHideout3Text2
+	dw RocketHideout3Text3
 	dw PickUpItemText
 	dw PickUpItemText
 
@@ -166,6 +167,15 @@ RocketHideout3TrainerHeader1:
 	dw RocketHideout3AfterBattleText3 ; TextAfterBattle
 	dw RocketHideout3EndBattleText3 ; TextEndBattle
 	dw RocketHideout3EndBattleText3 ; TextEndBattle
+	
+RocketHideout3TrainerHeader2:
+	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_3_TRAINER_2
+	db ($4 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_3_TRAINER_2
+	dw RocketHideout3BattleText4 ; TextBeforeBattle
+	dw RocketHideout3AfterBattleText4 ; TextAfterBattle
+	dw RocketHideout3EndBattleText4 ; TextEndBattle
+	dw RocketHideout3EndBattleText4 ; TextEndBattle
 
 	db $ff
 
@@ -203,4 +213,22 @@ RocketHideout3EndBattleText3:
 
 RocketHideout3AfterBattleText3:
 	TX_FAR _RocketHide3AfterBattleText3
+	db "@"
+	
+RocketHideout3Text3:
+	TX_ASM
+	ld hl, RocketHideout3TrainerHeader2
+	call TalkToTrainer
+	jp TextScriptEnd
+
+RocketHideout3BattleText4:
+	TX_FAR _RocketHideout3BattleText4
+	db "@"
+
+RocketHideout3EndBattleText4:
+	TX_FAR _RocketHideout3EndBattleText4
+	db "@"
+
+RocketHideout3AfterBattleText4:
+	TX_FAR _RocketHideout3AfterBattleText4
 	db "@"

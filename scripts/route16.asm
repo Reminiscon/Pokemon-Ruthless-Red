@@ -73,6 +73,7 @@ Route16TextPointers:
 	dw Route16Text9
 	dw Route16Text10
 	dw Route16Text11
+	dw Route16Text12
 
 Route16TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_16_TRAINER_0
@@ -127,6 +128,15 @@ Route16TrainerHeader5:
 	dw Route16AfterBattleText6 ; TextAfterBattle
 	dw Route16EndBattleText6 ; TextEndBattle
 	dw Route16EndBattleText6 ; TextEndBattle
+	
+Route16TrainerHeader6:
+	dbEventFlagBit EVENT_BEAT_ROUTE_16_TRAINER_6
+	db ($4 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_ROUTE_16_TRAINER_5
+	dw Route16BattleText7 ; TextBeforeBattle
+	dw Route16AfterBattleText7 ; TextAfterBattle
+	dw Route16EndBattleText7 ; TextEndBattle
+	dw Route16EndBattleText7 ; TextEndBattle
 
 	db $ff
 
@@ -237,23 +247,41 @@ Route16EndBattleText6:
 Route16AfterBattleText6:
 	TX_FAR _Route16AfterBattleText6
 	db "@"
-
+	
 Route16Text7:
-	TX_FAR _Route16Text7
+	TX_ASM
+	ld hl, Route16TrainerHeader6
+	call TalkToTrainer
+	jp TextScriptEnd
+
+Route16BattleText7:
+	TX_FAR _Route16BattleText7
 	db "@"
 
-Route16Text10:
-	TX_FAR _Route16Text10
+Route16EndBattleText7:
+	TX_FAR _Route16EndBattleText7
 	db "@"
 
-Route16Text11:
-	TX_FAR _Route16Text11
+Route16AfterBattleText7:
+	TX_FAR _Route16AfterBattleText7
 	db "@"
 
 Route16Text8:
 	TX_FAR _Route16Text8
 	db "@"
 
+Route16Text11:
+	TX_FAR _Route16Text11
+	db "@"
+
+Route16Text12:
+	TX_FAR _Route16Text12
+	db "@"
+
 Route16Text9:
 	TX_FAR _Route16Text9
+	db "@"
+
+Route16Text10:
+	TX_FAR _Route16Text10
 	db "@"

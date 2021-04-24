@@ -6,8 +6,9 @@ CeladonGameCornerObject:
 	warp 16, 17, 7, -1
 	warp 17, 4, 1, ROCKET_HIDEOUT_1
 
-	db 1 ; signs
+	db 2 ; signs
 	sign 9, 4, 12 ; CeladonGameCornerText12
+	sign 19,  4, 14 ; CeladonGameCornerText14
 
 	db 11 ; objects
 	object SPRITE_FOULARD_WOMAN, 2, 6, STAY, DOWN, 1 ; person

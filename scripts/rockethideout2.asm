@@ -419,6 +419,7 @@ RocketHideout2TextPointers:
 	dw PickUpItemText
 	dw PickUpItemText
 	dw PickUpItemText
+	dw RocketHideout2Text2
 
 RocketHideout2TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_2_TRAINER_0
@@ -428,6 +429,15 @@ RocketHideout2TrainerHeader0:
 	dw RocketHideout2AfterBattleTxt2 ; TextAfterBattle
 	dw RocketHideout2EndBattleText2 ; TextEndBattle
 	dw RocketHideout2EndBattleText2 ; TextEndBattle
+	
+RocketHideout2TrainerHeader1:
+	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_2_TRAINER_1
+	db ($5 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_2_TRAINER_1
+	dw RocketHideout2BattleText3 ; TextBeforeBattle
+	dw RocketHideout2AfterBattleTxt3 ; TextAfterBattle
+	dw RocketHideout2EndBattleText3 ; TextEndBattle
+	dw RocketHideout2EndBattleText3 ; TextEndBattle
 
 	db $ff
 
@@ -448,3 +458,22 @@ RocketHideout2EndBattleText2:
 RocketHideout2AfterBattleTxt2:
 	TX_FAR _RocketHideout2AfterBattleTxt2
 	db "@"
+
+RocketHideout2Text2:
+	TX_ASM
+	ld hl, RocketHideout2TrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+
+RocketHideout2BattleText3:
+	TX_FAR _RocketHideout2BattleText3
+	db "@"
+
+RocketHideout2EndBattleText3:
+	TX_FAR _RocketHideout2EndBattleText3
+	db "@"
+
+RocketHideout2AfterBattleTxt3:
+	TX_FAR _RocketHideout2AfterBattleTxt3
+	db "@"
+	

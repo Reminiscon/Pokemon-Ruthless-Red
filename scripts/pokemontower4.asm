@@ -22,7 +22,7 @@ PokemonTower4TextPointers:
 
 PokemonTower4TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_4_TRAINER_0
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_4_TRAINER_0
 	dw PokemonTower4BattleText1 ; TextBeforeBattle
 	dw PokemonTower4AfterBattleText1 ; TextAfterBattle
@@ -31,7 +31,7 @@ PokemonTower4TrainerHeader0:
 
 PokemonTower4TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_4_TRAINER_1
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_4_TRAINER_1
 	dw PokemonTower4BattleText2 ; TextBeforeBattle
 	dw PokemonTower4AfterBattleText2 ; TextAfterBattle
@@ -40,7 +40,7 @@ PokemonTower4TrainerHeader1:
 
 PokemonTower4TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_4_TRAINER_2
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_4_TRAINER_2
 	dw PokemonTower4BattleText3 ; TextBeforeBattle
 	dw PokemonTower4AfterBattleText3 ; TextAfterBattle

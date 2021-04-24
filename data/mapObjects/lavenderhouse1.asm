@@ -1,9 +1,10 @@
 LavenderHouse1Object:
 	db $a ; border block
 
-	db 2 ; warps
+	db 3 ; warps
 	warp 2, 7, 2, -1
 	warp 3, 7, 2, -1
+	warp 3, 6, 1, -1
 
 	db 0 ; signs
 
@@ -18,3 +19,4 @@ LavenderHouse1Object:
 	; warp-to
 	warp_to 2, 7, LAVENDER_HOUSE_1_WIDTH
 	warp_to 3, 7, LAVENDER_HOUSE_1_WIDTH
+	warp_to 3,  6, LAVENDER_HOUSE_1_WIDTH ; POKEMONTOWER_7

@@ -184,3 +184,12 @@ _CeladonGameCornerText_48f19::
 	text "Oops! Forgot the"
 	line "COIN CASE!"
 	done
+	
+_CeladonGameCornerText14::
+	text "WARNING"
+	
+	para "ROCKETS ONLY"
+	
+	para "NO EXIT AT THIS"
+	line "POINT."
+	done

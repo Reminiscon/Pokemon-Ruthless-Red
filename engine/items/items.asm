@@ -1830,6 +1830,7 @@ ItemUsePokeflute:
 .skipMusic
 	ld hl, FluteWokeUpText
 	jp PrintText
+	
 
 ; wakes up all party pokemon
 ; INPUT:

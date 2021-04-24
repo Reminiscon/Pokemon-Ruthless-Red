@@ -1,6 +1,3 @@
-CeladonMartRoofScript:
-	jp EnableAutoTextBoxDrawing
-
 CeladonMartRoofScript_GetDrinksInBag:
 ; construct a list of all drinks in the player's bag
 	xor a
@@ -204,6 +201,20 @@ CeladonMartRoofScript_PrintDrinksInBag:
 	inc [hl]
 	pop hl
 	jr .loop
+	
+CeladonMartRoofScript:
+	call EnableAutoTextBoxDrawing
+	ld hl, CeladonMartRoofTrainerHeader0
+	ld de, CeladonMartRoofScriptPointers
+	ld a, [wCeladonMartRoofCurScript]
+	call ExecuteCurMapScriptInTable
+	ld [wCeladonMartRoofCurScript], a
+	ret
+	
+CeladonMartRoofScriptPointers:
+	dw CheckFightingMapTrainers
+	dw DisplayEnemyTrainerTextAndStartBattle
+	dw EndTrainerBattle
 
 CeladonMartRoofTextPointers:
 	dw CeladonMartRoofText1
@@ -212,6 +223,28 @@ CeladonMartRoofTextPointers:
 	dw CeladonMartRoofText5
 	dw CeladonMartRoofText5
 	dw CeladonMartRoofText6
+	dw CeladonMartRoofText7
+	dw CeladonMartRoofText8
+	
+CeladonMartRoofTrainerHeader0:
+	dbEventFlagBit EVENT_BEAT_CELADON_MART_ROOF_TRAINER_0
+	db ($4 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_CELADON_MART_ROOF_TRAINER_0
+	dw CeladonMartRoofBattleText1 ; TextBeforeBattle
+	dw CeladonMartRoofAfterBattleText1 ; TextAfterBattle
+	dw CeladonMartRoofEndBattleText1 ; TextEndBattle
+	dw CeladonMartRoofEndBattleText1 ; TextEndBattle
+	
+CeladonMartRoofTrainerHeader1:
+	dbEventFlagBit EVENT_BEAT_CELADON_MART_ROOF_TRAINER_1
+	db ($4 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_CELADON_MART_ROOF_TRAINER_1
+	dw CeladonMartRoofBattleText2 ; TextBeforeBattle
+	dw CeladonMartRoofAfterBattleText2 ; TextAfterBattle
+	dw CeladonMartRoofEndBattleText2 ; TextEndBattle
+	dw CeladonMartRoofEndBattleText2 ; TextEndBattle
+	
+	db $ff
 
 CeladonMartRoofText1:
 	TX_FAR _CeladonMartRoofText1
@@ -252,4 +285,40 @@ CeladonMartRoofText5:
 
 CeladonMartRoofText6:
 	TX_FAR _CeladonMartRoofText6
+	db "@"
+	
+CeladonMartRoofText7:
+	TX_ASM
+	ld hl, CeladonMartRoofTrainerHeader0
+	call TalkToTrainer
+	jp TextScriptEnd
+	
+CeladonMartRoofBattleText1:
+	TX_FAR _CeladonMartRoofBattleText1
+	db "@"
+	
+CeladonMartRoofEndBattleText1:
+	TX_FAR _CeladonMartRoofEndBattleText1
+	db "@"
+	
+CeladonMartRoofAfterBattleText1:
+	TX_FAR _CeladonMartRoofAfterBattleText1
+	db "@"
+	
+CeladonMartRoofText8:
+	TX_ASM
+	ld hl, CeladonMartRoofTrainerHeader1
+	call TalkToTrainer
+	jp TextScriptEnd
+	
+CeladonMartRoofBattleText2:
+	TX_FAR _CeladonMartRoofBattleText2
+	db "@"
+	
+CeladonMartRoofEndBattleText2:
+	TX_FAR _CeladonMartRoofEndBattleText2
+	db "@"
+	
+CeladonMartRoofAfterBattleText2:
+	TX_FAR _CeladonMartRoofAfterBattleText2
 	db "@"

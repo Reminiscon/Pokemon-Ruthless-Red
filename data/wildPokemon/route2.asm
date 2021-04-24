@@ -6,10 +6,10 @@ Route2Mons:
 	db 4,VULPIX				;modified
 	db 5,SANDSHREW			;modified
 	IF DEF(_RED)
-		db 4,WEEDLE
+		db 4,PIDGEY
 	ENDC
 	IF (DEF(_BLUE) || DEF(_GREEN))
-		db 4,CATERPIE
+		db 4,PIDGEY
 	ENDC
 	db 4,RHYHORN			;modified
 	db 5,RHYHORN			;modified

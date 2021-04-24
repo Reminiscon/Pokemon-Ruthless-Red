@@ -1164,30 +1164,30 @@ TrainerAIPointers:
 	dbw 3,GenericAI
 	dbw 3,GenericAI
 	dbw 3,GenericAI
-	dbw 3,GenericAI
-	dbw 3,GenericAI
-	dbw 3,GenericAI
+	dbw 1,SailorAI	; sailor
+	dbw 1,JrtrainerMAI	; jrtrainerm
+	dbw 1,JrtrainerFAI	; jrtrainerf
 	dbw 5,PokemaniacAI	; pokemaniac
 	dbw 5,SupernerdAI	; supernerd		
-	dbw 3,GenericAI
+	dbw 1,HikerAI	; hiker
 	dbw 3,GenericAI
 	dbw 5,BurglarAI ; burglar
-	dbw 3,GenericAI
+	dbw 1,EngineerAI	; engineer
 	dbw 3,JugglerAI ; juggler_x
-	dbw 3,GenericAI
-	dbw 3,GenericAI
+	dbw 1,FisherAI	; fisher
+	dbw 1,SwimmerAI	; swimmer
 	dbw 3,GenericAI
 	dbw 3,GenericAI
 	dbw 2,BeautyAI ; beauty				
-	dbw 3,GenericAI
-	dbw 3,GenericAI
+	dbw 1,PsychicTRAI	; psychicTR
+	dbw 1,RockerAI	; rocker
 	dbw 4,JugglerAI ; juggler			
 	dbw 2,TamerAI ; tamer				
-	dbw 3,GenericAI
+	dbw 1,BirdkeeperAI	; birdkeeper
 	dbw 2,BlackbeltAI ; blackbelt
 	dbw 2,Sony1AI ; sony1				
 	dbw 3,GenericAI
-	dbw 1,GenericAI ; chief
+	dbw 8,ChiefAI ; chief
 	dbw 5,ScientistAI	; scientist		
 	dbw 9,GiovanniAI ; giovanni			
 	dbw 4,RocketAI ; rocket				
@@ -1211,6 +1211,36 @@ TrainerAIPointers:
 
 ;joenote - reorganizing these AI routines to jump on carry instead of returning on not-carry
 ;also adding recognition of a switch-pkmn bit
+
+SailorAI:	;NEW
+	cp $10	;6.75%
+	jr nc, .sailornext1
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFreshWater
+.sailornext1
+	and a
+	ret
+
+JrtrainerMAI:	;NEW
+	cp $20	;12.5%
+	jr nc, .jrtrainermnext1
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSuperPotion
+.jrtrainermnext1
+	and a
+	ret
+
+JrtrainerFAI:	;NEW
+	cp $20	;12.5%
+	jr nc, .jrtrainerfnext1
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSuperPotion
+.jrtrainerfnext1
+	and a
+	ret
 
 PokemaniacAI:	;NEW
 	cp $20	;12.5%
@@ -1243,6 +1273,16 @@ SupernerdAI:	;NEW
 	jp nz, AIUseFullHeal
 	ret 
 	
+HikerAI:	;NEW
+	cp $10	;6.75%
+	jr nc, .hikernext1
+	ld a, $2	;above fraction 
+    call AICheckIfHPBelowFraction
+	jp nc, AIUseXDefend
+.hikernext1
+	and a
+	ret
+
 BurglarAI:	;NEW
 	cp $80 ;50%
 	jr nc, .burglarnext1
@@ -1260,11 +1300,64 @@ BurglarAI:	;NEW
 	and a
     ret
 	
+EngineerAI:	;NEW
+	cp $20	;12.5%
+	jr nc, .engineernext1
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseLemonade
+.engineernext1
+	and a
+	ret
+
+FisherAI:	;NEW
+	cp $10	;6.75%
+	jr nc, .fishernext1
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseLemonade
+.fishernext1
+	and a
+	ret
+
+SwimmerAI:	;NEW
+	cp $10	;6.75%
+	jr nc, .swimmernext1
+	ld a, $2	;above fraction 
+    call AICheckIfHPBelowFraction
+	jp nc, AIUseXSpecial
+.swimmernext1
+	and a
+	ret
+	
 BeautyAI:	;NEW
 	cp $C0 ;75%
+	jr nc, .beautynext1
 	ld a, $4	;below fraction
 	call AICheckIfHPBelowFraction
 	jp c, AIUseHyperPotion
+.beautynext1
+	and a
+	ret
+	
+PsychicTRAI:	;NEW
+	cp $20	;12.5%
+	jr nc, .psychictrnext1
+	ld a, $4	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseHyperPotion
+.psychictrnext1
+	and a
+	ret
+
+RockerAI:	;NEW
+	cp $20	;12.5%
+	jr nc, .rockernext1
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSodaPop
+.rockernext1
+	and a
 	ret
 
 JugglerAI:	;NEW
@@ -1301,6 +1394,16 @@ TamerAI:	;NEW
 .tamernext2
 	and a
     ret
+	
+BirdkeeperAI:	;NEW
+	cp $10	;6.75%
+	jr nc, .birdkeepernext1
+	ld a, $2	;above fraction 
+    call AICheckIfHPBelowFraction
+	jp nc, AIUseXSpeed
+.birdkeepernext1
+	and a
+	ret
 
 BlackbeltAI:
 	cp $40 ;25%
@@ -1339,6 +1442,26 @@ Sony1AI:	;NEW
 	and a
     ret
 	
+ChiefAI:		;NEW
+	cp $C0 ;75%
+	jr nc, .chiefnext1
+    ld a, $2 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIUseFullRestore
+.chiefnext1
+	call Random
+    cp $C0 ;75%
+	jr nc, .chiefnext2
+	ld a, $1 ;below fraction
+    call AICheckIfHPBelowFraction
+	jr nc, .chiefnext2
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullRestore
+.chiefnext2
+	and a
+	ret
+	
 ScientistAI:	;NEW
 	cp $60	;37.5%
 	jr nc, .scientistnext1
@@ -1349,9 +1472,9 @@ ScientistAI:	;NEW
 	call Random
 	cp $20	;12.5%
 	jr nc, .scientistnext2
-	ld a, $3 ;above fraction
+	ld a, $1 ;below fraction
     call AICheckIfHPBelowFraction
-	jr c, .scientistnext2
+	jr nc, .scientistnext2
     ld a, [wEnemyMonStatus]
 	and a
 	jp nz, AIUseFullRestore
@@ -1367,10 +1490,34 @@ ScientistAI:	;NEW
     ret
 	
 GiovanniAI:
-	ld a, $3
-	call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore				;changed from GuardSpec to FullRestore
-	ret
+	cp $C0 ;75%
+	jr nc, .giovanninext1
+    ld a, $2 ;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIUseFullRestore
+.giovanninext1
+	call Random
+    cp $C0 ;75%
+	jr nc, .giovanninext2
+	ld a, $1 ;below fraction
+    call AICheckIfHPBelowFraction
+	jr nc, .giovanninext2
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullRestore
+.giovanninext2
+	call Random
+    cp $40 ;25%
+	jr nc, .giovanninext3
+	ld a, $2 ;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .giovanninext3
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal
+.giovanninext3
+	and a
+    ret
 
 RocketAI:    ;NEW
     cp $E0 ;87.5%
@@ -1683,6 +1830,18 @@ AIUseSuperPotion:
 ; enemy trainer heals his monster with a super potion
 	ld a, SUPER_POTION
 	ld b, 50
+	jr AIRecoverHP
+	
+AIUseFreshWater:
+; enemy trainer heals his monster with a fresh water
+	ld a, FRESH_WATER
+	ld b, 50
+	jr AIRecoverHP
+	
+AIUseSodaPop:
+; enemy trainer heals his monster with a soda pop
+	ld a, SODA_POP
+	ld b, 60
 	jr AIRecoverHP
 	
 AIUseLemonade:	;NEW
@@ -2042,6 +2201,22 @@ AISPotRestricted2:
 	ld [wAICount2], a
 	jp AIUseSuperPotion
 	
+AIFresRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseFreshWater
+	
+AISodaRestricted2:
+	ld a, [wAICount2]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount2], a
+	jp AIUseSodaPop
+	
 AILemoRestricted2:
 	ld a, [wAICount2]
 	cp 1
@@ -2157,6 +2332,22 @@ AISPotRestricted3:
 	inc a
 	ld [wAICount3], a
 	jp AIUseSuperPotion
+	
+AIFresRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseFreshWater
+	
+AISodaRestricted3:
+	ld a, [wAICount3]
+	cp 1
+	ret nc
+	inc a
+	ld [wAICount3], a
+	jp AIUseSodaPop
 	
 AILemoRestricted3:
 	ld a, [wAICount3]

@@ -2819,6 +2819,7 @@ wSSAnne9CurScript:: ; d609
 	ds 1
 wRoute22CurScript:: ; d60a
 	ds 1
+wCeladonMartRoofCurScript:: ; d60b
 	ds 1
 wRedsHouse2CurScript:: ; d60c
 	ds 1
@@ -2828,7 +2829,9 @@ wRoute22GateCurScript:: ; d60e
 	ds 1
 wCeruleanCityCurScript:: ; d60f
 	ds 1
-	ds 7
+wPokemonTower1CurScript:: ; d610
+	ds 1
+	ds 6
 wSSAnne5CurScript:: ; d617
 	ds 1
 wViridianForestCurScript:: ; d618
@@ -2888,7 +2891,9 @@ wRocketHideout2CurScript:: ; d632
 wRocketHideout3CurScript:: ; d633
 	ds 1
 wRocketHideout4CurScript:: ; d634
-	ds 2
+	ds 1
+wCeladonMansion4CurScript:: ; d635
+	ds 1
 wRoute6GateCurScript:: ; d636
 	ds 1
 wRoute8GateCurScript:: ; d637

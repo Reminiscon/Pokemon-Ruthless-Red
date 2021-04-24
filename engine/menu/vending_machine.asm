@@ -109,15 +109,15 @@ VendingMachineText1:
 	db "@"
 
 DrinkText:
-	db   "FRESH WATER"
+	db   "LEMONADE"
 	next "SODA POP"
-	next "LEMONADE"
+	next "FRESH WATER"
 	next "CANCEL@"
 
 DrinkPriceText:
-	db   "¥200"
+	db   "¥350"
 	next "¥300"
-	next "¥350"
+	next "¥200"
 	next "@"
 
 VendingMachineText4:
@@ -155,9 +155,9 @@ LoadVendingMachineItem:
 	ret
 
 VendingPrices:
-	db FRESH_WATER
-	money 200
-	db SODA_POP
-	money 300
 	db LEMONADE
 	money 350
+	db SODA_POP
+	money 300
+	db FRESH_WATER
+	money 200

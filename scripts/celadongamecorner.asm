@@ -130,6 +130,7 @@ CeladonGameCornerTextPointers:
 	dw CeladonGameCornerText11
 	dw CeladonGameCornerText12
 	dw CeladonGameCornerText13
+	dw CeladonGameCornerText14
 
 CeladonGameCornerText1:
 	TX_FAR _CeladonGameCornerText1
@@ -260,6 +261,10 @@ CeladonGameCornerText5:
 .asm_48d96
 	call PrintText
 	jp TextScriptEnd
+	
+CeladonGameCornerText14
+	TX_FAR _CeladonGameCornerText14
+	db "@"
 
 CeladonGameCornerText_48d9c:
 	TX_FAR _CeladonGameCornerText_48d9c

@@ -27,9 +27,13 @@ _RocketHideout4Text_45584::
 	done
 
 _RocketHideout4BattleText2::
-	text "I know you! You"
-	line "ruined our plans"
-	cont "at MT.MOON!"
+	text "We are the last"
+	line "line of defense!"
+	
+	para "We will stop"
+	line "you, even if we"
+	cont "have to blow"
+	cont "this place up!"
 	done
 
 _RocketHideout4EndBattleText2::
@@ -37,23 +41,21 @@ _RocketHideout4EndBattleText2::
 	line "again!"
 	prompt
 
-_RocketHide4AfterBattleText2::
+_RocketHideout4AfterBattleText2::
 	text "Do you have"
 	line "something against"
 	cont "TEAM ROCKET?"
 	done
 
 _RocketHideout4BattleText3::
-	text "How can you not"
-	line "see the beauty of"
-	cont "our evil?"
+	text "BOMBS AWAY!"
 	done
 
 _RocketHideout4EndBattleText3::
 	text "Ayaya!"
 	prompt
 
-_RocketHide4AfterBattleText3::
+_RocketHideout4AfterBattleText3::
 	text "BOSS! I'm sorry I"
 	line "failed you!"
 	done
@@ -72,3 +74,81 @@ _RocketHideout4Text_455ec::
 	text "Oh no! I dropped"
 	line "the LIFT KEY!"
 	done
+	
+_RocketHideout4BattleText5::
+	text "I am going for"
+	line "the jugular!"
+	done
+
+_RocketHideout4EndBattleText5::
+	text "No"
+	line "sense of humor?"
+	prompt
+
+_RocketHideout4AfterBattleText5::
+	text "Get it? Jugular?"
+	line "Because I'm a"
+	cont "JUGGLER?"
+	
+	para "..."
+	
+	para "Whatever kid, go"
+	line "fight the next"
+	cont "dude."
+	done
+	
+_RocketHideout4BattleText6::
+	text "This is my chance!"
+	line "Maybe they will"
+	cont "finally give me"
+	cont "one of those cool"
+	cont "uniforms!"
+	done
+
+_RocketHideout4EndBattleText6::
+	text "I'll"
+	line "never get one!"
+	prompt
+
+_RocketHideout4AfterBattleText6::
+	text "Dude, the guy up"
+	line "there means"
+	cont "serious business."
+	
+	para "He is the 2nd"
+	line "strongest here!"
+	done
+	
+_RocketHideout4BattleText7::
+	text "I know who you"
+	line "are."
+	
+	para "But you do not"
+	line "know who I am."
+	
+	para "How is this for"
+	line "an introduction?"
+	done
+
+_RocketHideout4EndBattleText7::
+	text "You"
+	line "will regret this!"
+	prompt
+
+_RocketHideout4AfterBattleText7::
+	text "You are at the top"
+	line "of the blacklist."
+	
+	para "Now I understand"
+	line "why."
+	
+	para "We will meet"
+	line "again."
+	
+	para "That is, if you"
+	line "survive"
+	cont "GIOVANNI."
+	
+	para "HAH HAH HAH!!!"
+	done
+

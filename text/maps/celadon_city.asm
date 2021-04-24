@@ -81,9 +81,9 @@ _CeladonCityText9::
 _CeladonCityText10::
 	text "TRAINER TIPS"
 
-	para "X ACCURACY boosts"
-	line "the accuracy of"
-	cont "techniques!"
+	para "X DEFEND boosts"
+	line "the defense of"
+	cont "any #MON!"
 
 	para "DIRE HIT jacks up"
 	line "the likelihood of"

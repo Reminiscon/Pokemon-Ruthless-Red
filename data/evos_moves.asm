@@ -369,6 +369,10 @@ GengarEvosMoves:
 ; Learnset
 	db 29, HYPNOSIS
 	db 38, DREAM_EATER
+	db 51, LICK									;Added, so Gengar uses it in Pokemon Tower
+	db 51, MEGA_DRAIN							;Added, so Gengar uses it in Pokemon Tower
+	db 51, METRONOME							;Added, so Gengar uses it in Pokemon Tower
+	db 51, EXPLOSION							;Added, so Gengar uses it in Pokemon Tower
 	db 0
 
 NidoranFEvosMoves:
@@ -499,6 +503,10 @@ GastlyEvosMoves:
 ; Learnset
 	db 27, HYPNOSIS
 	db 35, DREAM_EATER
+	db 52, EXPLOSION							;Added, so Gastly uses it in Pokemon Tower
+	db 52, EXPLOSION							;Added, so Gastly uses it in Pokemon Tower
+	db 52, EXPLOSION							;Added, so Gastly uses it in Pokemon Tower
+	db 52, EXPLOSION							;Added, so Gastly uses it in Pokemon Tower
 	db 0
 
 ScytherEvosMoves:
@@ -689,6 +697,7 @@ ChanseyEvosMoves:
 	db 38, MINIMIZE
 	db 44, DEFENSE_CURL
 	db 48, LIGHT_SCREEN
+	db 48, FLAMETHROWER
 	db 54, DOUBLE_EDGE
 	db 0
 
@@ -878,6 +887,7 @@ KoffingEvosMoves:
 	db 37, SMOKESCREEN
 	db 38, PSYBEAM
 	db 40, SELFDESTRUCT
+	db 43, FLAMETHROWER
 	db 45, HAZE
 	db 48, EXPLOSION
 	db 0
@@ -1175,7 +1185,6 @@ PikachuEvosMoves:
 	db 33, AGILITY
 	db 38, DIZZY_PUNCH
 	db 43, THUNDER
-	db 58, SURF
 	db 0
 
 RaichuEvosMoves:
@@ -1510,8 +1519,8 @@ KakunaEvosMoves:
 	db 0
 ; Learnset
 	db 7, HARDEN
-	db 14, LIGHT_SCREEN
-	db 21, WITHDRAW
+	db 12, LIGHT_SCREEN
+	db 19, WITHDRAW
 	db 0
 
 BeedrillEvosMoves:
@@ -1630,8 +1639,8 @@ MetapodEvosMoves:
 	db 0
 ; Learnset
 	db 7, HARDEN
-	db 14, WITHDRAW
-	db 21, LIGHT_SCREEN
+	db 12, WITHDRAW
+	db 19, LIGHT_SCREEN
 	db 0
 
 ButterfreeEvosMoves:
@@ -1828,6 +1837,7 @@ WeezingEvosMoves:
 	db 49, HAZE
 	db 53, PSYBEAM
 	db 53, EXPLOSION
+	db 58, FLAMETHROWER
 	db 0
 
 PersianEvosMoves:

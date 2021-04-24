@@ -28,4 +28,39 @@ _PokemonTower1Text5::
 	text "I am a CHANNELER!"
 	line "There are spirits"
 	cont "up to mischief!"
+	
+	para "A word of"
+	line "warning."
+	
+	para "If you lack"
+	line "4 badges."
+	
+	para "Proceed at your"
+	line "own risk."
+	done
+	
+_PokemonTower1BattleText1::
+	text "That's a big"
+	line "no-no!"
+	done
+	
+_PokemonTower1EndBattleText1::
+	text "You"
+	line "cheat!"
+	prompt
+	
+_PokemonTower1AfterBattleText1::
+	text "You really wanted"
+	line "to cheese it"
+	cont "that badly."
+	
+	para "Didn't you?"
+	done
+	
+_PokemonTower1Text7::
+	text "Entered purified,"
+	line "protected zone!"
+
+	para "<PLAYER>'s #MON"
+	line "are fully healed!"
 	done

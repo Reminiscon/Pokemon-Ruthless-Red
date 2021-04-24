@@ -10,12 +10,13 @@ RocketHideout2Object:
 
 	db 0 ; signs
 
-	db 5 ; objects
-	object SPRITE_ROCKET, 20, 12, STAY, DOWN, 1, OPP_ROCKET, 13
-	object SPRITE_BALL, 1, 11, STAY, NONE, 2, MOON_STONE
+	db 6 ; objects
+	object SPRITE_ROCKET, 27,  7, STAY, DOWN, 1, OPP_ROCKET, 13
+	object SPRITE_BALL,  1, 11, STAY, NONE, 2, MOON_STONE
 	object SPRITE_BALL, 16, 8, STAY, NONE, 3, NUGGET
 	object SPRITE_BALL, 6, 12, STAY, NONE, 4, TM_07
-	object SPRITE_BALL, 3, 21, STAY, NONE, 5, SUPER_POTION
+	object SPRITE_BALL,  3, 21, STAY, NONE, 5, X_ACCURACY
+	object SPRITE_OAK_AIDE, 26, 18, STAY, LEFT, 6, OPP_SCIENTIST, 14
 
 	; warp-to
 	warp_to 27, 8, ROCKET_HIDEOUT_2_WIDTH ; ROCKET_HIDEOUT_1

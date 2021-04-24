@@ -1,16 +1,22 @@
 PokemonTower7Object:
 	db $1 ; border block
 
-	db 1 ; warps
+	db 2 ; warps
 	warp 9, 16, 1, POKEMONTOWER_6
+	warp 14, 3, 2, LAVENDER_HOUSE_1
 
 	db 0 ; signs
 
-	db 4 ; objects
-	object SPRITE_ROCKET, 9, 11, STAY, RIGHT, 1, OPP_ROCKET, 19
-	object SPRITE_ROCKET, 12, 9, STAY, LEFT, 2, OPP_ROCKET, 20
-	object SPRITE_ROCKET, 9, 7, STAY, RIGHT, 3, OPP_ROCKET, 21
-	object SPRITE_MR_FUJI, 10, 3, STAY, DOWN, 4 ; person
+	db 8 ; objects
+	object SPRITE_ROCKET,  7, 11, STAY, LEFT, 1, OPP_ROCKET, 19
+	object SPRITE_ROCKET,  7,  9, STAY, LEFT, 2, OPP_ROCKET, 20
+	object SPRITE_ROCKET,  7,  7, STAY, LEFT, 3, OPP_ROCKET, 21
+	object SPRITE_ROCKER,  4, 10, STAY, RIGHT, 4, OPP_JUGGLER, 10
+	object SPRITE_ROCKER,  4,  8, STAY, RIGHT, 5, OPP_JUGGLER, 11
+	object SPRITE_BLACK_HAIR_BOY_2, 17,  9, STAY, LEFT, 6, OPP_BURGLAR, 9
+	object SPRITE_OAK_AIDE,  9,  5, STAY, RIGHT, 7, OPP_CHIEF, 2
+	object SPRITE_MR_FUJI, 10, 3, STAY, DOWN, 8 ; person
 
 	; warp-to
 	warp_to 9, 16, POKEMONTOWER_7_WIDTH ; POKEMONTOWER_6
+	warp_to 14, 3, POKEMONTOWER_7_WIDTH ; LAVENDER_HOUSE_1

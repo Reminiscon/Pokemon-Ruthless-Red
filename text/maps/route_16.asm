@@ -75,6 +75,30 @@ _Route16AfterBattleText5::
 	cont "tear up enemies!"
 	done
 
+_Route16BattleText7::
+	text "Let the chips"
+	line "fall where they"
+	cont "may!"
+	done
+
+_Route16EndBattleText7::
+	text "Blew up"
+	line "again!"
+	prompt
+
+_Route16AfterBattleText7::
+	text "I traded with"
+	line "a ROCKET for"
+	cont "this SNORLAX."
+	
+	para "I don't get"
+	line "what is wrong"
+	cont "with it."
+	
+	para "All it does is"
+	line "blow itself up!"
+	done
+	
 _Route16BattleText6::
 	text "Sure, I'll go!"
 	done
@@ -90,30 +114,30 @@ _Route16AfterBattleText6::
 	cont "vicious #MON!"
 	done
 
-_Route16Text7::
+_Route16Text8::
 	text "A sleeping #MON"
 	line "blocks the way!"
 	done
 
-_Route16Text10::
+_Route16Text11::
 	text "SNORLAX woke up!"
 
 	para "It attacked in a"
 	line "grumpy rage!"
 	done
 
-_Route16Text11::
+_Route16Text12::
 	text "With a big yawn,"
 	line "SNORLAX returned"
 	cont "to the mountains!"
 	done
 
-_Route16Text8::
+_Route16Text9::
 	text "Enjoy the slope!"
 	line "CYCLING ROAD"
 	done
 
-_Route16Text9::
+_Route16Text10::
 	text "ROUTE 16"
 	line "CELADON CITY -"
 	cont "FUCHSIA CITY"

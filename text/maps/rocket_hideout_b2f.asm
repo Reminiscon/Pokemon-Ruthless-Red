@@ -15,3 +15,22 @@ _RocketHideout2AfterBattleTxt2::
 	cont "floors. Can you"
 	cont "reach the BOSS?"
 	done
+	
+_RocketHideout2BattleText3::
+	text "Howdy!"
+	done
+
+_RocketHideout2EndBattleText3::
+	text "I"
+	line "also surrender!"
+	prompt
+
+_RocketHideout2AfterBattleTxt3::
+	text "I don't take"
+	line "this seriously"
+	cont "like these other"
+	cont "chumps."
+	
+	para "I just want to"
+	line "get paid!"
+	done

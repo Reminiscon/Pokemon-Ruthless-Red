@@ -14,3 +14,4 @@ CeladonMansion5Object:
 	; warp-to
 	warp_to 2, 7, CELADON_MANSION_5_WIDTH ; CELADON_MANSION_4
 	warp_to 3, 7, CELADON_MANSION_5_WIDTH ; CELADON_MANSION_4
+	

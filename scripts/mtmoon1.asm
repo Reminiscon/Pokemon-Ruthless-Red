@@ -39,7 +39,7 @@ MtMoon1TrainerHeader0:
 
 MtMoon1TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_MT_MOON_1_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MT_MOON_1_TRAINER_1
 	dw MtMoon1BattleText3 ; TextBeforeBattle
 	dw MtMoon1AfterBattleText3 ; TextAfterBattle
@@ -48,7 +48,7 @@ MtMoon1TrainerHeader1:
 
 MtMoon1TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_MT_MOON_1_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MT_MOON_1_TRAINER_2
 	dw MtMoon1BattleText4 ; TextBeforeBattle
 	dw MtMoon1AfterBattleText4 ; TextAfterBattle
@@ -57,7 +57,7 @@ MtMoon1TrainerHeader2:
 
 MtMoon1TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_MT_MOON_1_TRAINER_3
-	db ($3 << 4) ; trainer's view range
+	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MT_MOON_1_TRAINER_3
 	dw MtMoon1BattleText5 ; TextBeforeBattle
 	dw MtMoon1AfterBattleText5 ; TextAfterBattle
@@ -66,7 +66,7 @@ MtMoon1TrainerHeader3:
 
 MtMoon1TrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_MT_MOON_1_TRAINER_4
-	db ($3 << 4) ; trainer's view range
+	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MT_MOON_1_TRAINER_4
 	dw MtMoon1BattleText6 ; TextBeforeBattle
 	dw MtMoon1AfterBattleText6 ; TextAfterBattle
@@ -75,7 +75,7 @@ MtMoon1TrainerHeader4:
 
 MtMoon1TrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_MT_MOON_1_TRAINER_5
-	db ($3 << 4) ; trainer's view range
+	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MT_MOON_1_TRAINER_5
 	dw MtMoon1BattleText7 ; TextBeforeBattle
 	dw MtMoon1AfterBattleText7 ; TextAfterBattle
@@ -84,7 +84,7 @@ MtMoon1TrainerHeader5:
 
 MtMoon1TrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_MT_MOON_1_TRAINER_6
-	db ($3 << 4) ; trainer's view range
+	db ($2 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MT_MOON_1_TRAINER_6
 	dw MtMoon1BattleText8 ; TextBeforeBattle
 	dw MtMoon1AfterBattleText8 ; TextAfterBattle

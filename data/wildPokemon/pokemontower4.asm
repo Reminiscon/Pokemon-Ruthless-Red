@@ -1,13 +1,13 @@
 TowerMons4:
 	db $0A
-	db 20,GASTLY
-	db 21,GASTLY
-	db 22,GASTLY
-	db 23,GASTLY
-	db 19,GASTLY
-	db 18,GASTLY
-	db 25,HAUNTER
-	db 20,CUBONE
-	db 22,CUBONE
-	db 24,GASTLY
+	db 52,GASTLY
+	db 52,GASTLY
+	db 54,GASTLY
+	db 54,GASTLY
+	db 52,ABRA
+	db 54,ABRA
+	db 52,CUBONE
+	db 54,CUBONE
+	db 55,HAUNTER
+	db 60,GENGAR
 	db $00
