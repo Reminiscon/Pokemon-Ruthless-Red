@@ -270,6 +270,7 @@ VoltorbEvosMoves:
 ; Learnset
 	db 17, SONICBOOM
 	db 22, SELFDESTRUCT
+	db 25, THUNDERSHOCK							;Added, so Voltorb is viable against Water-types early-game
 	db 29, LIGHT_SCREEN
 	db 36, SWIFT
 	db 39, BARRAGE

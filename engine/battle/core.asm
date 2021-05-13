@@ -4304,16 +4304,16 @@ CheckForDisobedience:
 	ld a, 255	;joenote - upped to 255
 	jr nz, .next
 	bit 6, [hl]		;Volcano Badge limit added
-	ld a, 90
+	ld a, 95
 	jr nz, .next
 	bit 5, [hl]
-	ld a, 80
+	ld a, 85
 	jr nz, .next
 	bit 4, [hl]		;Soul Badge limit added
-	ld a, 70
+	ld a, 75
 	jr nz, .next
 	bit 3, [hl]
-	ld a, 60
+	ld a, 65
 	jr nz, .next
 	bit 2, [hl]		;Thunder Badge limit added
 	ld a, 50

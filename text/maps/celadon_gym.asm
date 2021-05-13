@@ -52,7 +52,7 @@ _CeladonGymText_48a68::
 _CeladonGymText9::								;modified text
 	text "The RAINBOWBADGE"
 	line "will make #MON"
-	cont "up to L60 obey."
+	cont "up to L65 obey."
 
 	para "It also allows"
 	line "#MON to use"
