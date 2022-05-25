@@ -46,6 +46,7 @@ const_value = 0
 	const HS_ROUTE_12_ITEM_2              ; 1F X
 	const HS_ROUTE_15_ITEM                ; 20 X
 	const HS_ROUTE_16_SNORLAX             ; 21
+	const HS_ROUTE_18_RIVAL				  
 	const HS_ROUTE_22_RIVAL_1             ; 22
 	const HS_ROUTE_22_RIVAL_2             ; 23
 	const HS_NUGGET_BRIDGE_GUY            ; 24

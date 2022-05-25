@@ -32,6 +32,8 @@ INCLUDE "data/baseStats/nidoqueen.asm"
 INCLUDE "data/baseStats/nidoranm.asm"
 INCLUDE "data/baseStats/nidorino.asm"
 INCLUDE "data/baseStats/nidoking.asm"
+INCLUDE "data/baseStats/phanpy.asm"			;NEW
+INCLUDE "data/baseStats/donphan.asm"		;NEW
 INCLUDE "data/baseStats/clefairy.asm"
 INCLUDE "data/baseStats/clefable.asm"
 INCLUDE "data/baseStats/vulpix.asm"
@@ -40,9 +42,15 @@ INCLUDE "data/baseStats/jigglypuff.asm"
 INCLUDE "data/baseStats/wigglytuff.asm"
 INCLUDE "data/baseStats/zubat.asm"
 INCLUDE "data/baseStats/golbat.asm"
+INCLUDE "data/baseStats/crobat.asm"			;NEW
+INCLUDE "data/baseStats/mareep.asm"			;NEW
+INCLUDE "data/baseStats/flaaffy.asm"		;NEW
+INCLUDE "data/baseStats/ampharos.asm"		;NEW
 INCLUDE "data/baseStats/oddish.asm"
 INCLUDE "data/baseStats/gloom.asm"
 INCLUDE "data/baseStats/vileplume.asm"
+INCLUDE "data/baseStats/bellossom.asm"		;NEW
+INCLUDE "data/baseStats/sudowoodo.asm"		;NEW
 INCLUDE "data/baseStats/paras.asm"
 INCLUDE "data/baseStats/parasect.asm"
 INCLUDE "data/baseStats/venonat.asm"
@@ -60,6 +68,10 @@ INCLUDE "data/baseStats/arcanine.asm"
 INCLUDE "data/baseStats/poliwag.asm"
 INCLUDE "data/baseStats/poliwhirl.asm"
 INCLUDE "data/baseStats/poliwrath.asm"
+INCLUDE "data/baseStats/politoed.asm"		;NEW
+INCLUDE "data/baseStats/hoppip.asm"			;NEW
+INCLUDE "data/baseStats/skiploom.asm"		;NEW
+INCLUDE "data/baseStats/jumpluff.asm"		;NEW
 INCLUDE "data/baseStats/abra.asm"
 INCLUDE "data/baseStats/kadabra.asm"
 INCLUDE "data/baseStats/alakazam.asm"
@@ -78,9 +90,11 @@ INCLUDE "data/baseStats/ponyta.asm"
 INCLUDE "data/baseStats/rapidash.asm"
 INCLUDE "data/baseStats/slowpoke.asm"
 INCLUDE "data/baseStats/slowbro.asm"
+INCLUDE "data/baseStats/slowking.asm"		;NEW
 INCLUDE "data/baseStats/magnemite.asm"
 INCLUDE "data/baseStats/magneton.asm"
 INCLUDE "data/baseStats/farfetchd.asm"
+INCLUDE "data/baseStats/reefetchd.asm"		;NEW
 INCLUDE "data/baseStats/doduo.asm"
 INCLUDE "data/baseStats/dodrio.asm"
 INCLUDE "data/baseStats/seel.asm"
@@ -93,6 +107,7 @@ INCLUDE "data/baseStats/gastly.asm"
 INCLUDE "data/baseStats/haunter.asm"
 INCLUDE "data/baseStats/gengar.asm"
 INCLUDE "data/baseStats/onix.asm"
+INCLUDE "data/baseStats/dimonix.asm"		;NEW
 INCLUDE "data/baseStats/drowzee.asm"
 INCLUDE "data/baseStats/hypno.asm"
 INCLUDE "data/baseStats/krabby.asm"
@@ -106,6 +121,7 @@ INCLUDE "data/baseStats/marowak.asm"
 INCLUDE "data/baseStats/hitmonlee.asm"
 INCLUDE "data/baseStats/hitmonchan.asm"
 INCLUDE "data/baseStats/lickitung.asm"
+INCLUDE "data/baseStats/lickilicki.asm"		;NEW
 INCLUDE "data/baseStats/koffing.asm"
 INCLUDE "data/baseStats/weezing.asm"
 INCLUDE "data/baseStats/rhyhorn.asm"
@@ -115,12 +131,21 @@ INCLUDE "data/baseStats/tangela.asm"
 INCLUDE "data/baseStats/kangaskhan.asm"
 INCLUDE "data/baseStats/horsea.asm"
 INCLUDE "data/baseStats/seadra.asm"
+INCLUDE "data/baseStats/kingdra.asm"		;NEW
 INCLUDE "data/baseStats/goldeen.asm"
 INCLUDE "data/baseStats/seaking.asm"
+INCLUDE "data/baseStats/teddiursa.asm"		;NEW
+INCLUDE "data/baseStats/ursaring.asm"		;NEW
 INCLUDE "data/baseStats/staryu.asm"
 INCLUDE "data/baseStats/starmie.asm"
+INCLUDE "data/baseStats/slugma.asm"			;NEW
+INCLUDE "data/baseStats/magcargo.asm"		;NEW
 INCLUDE "data/baseStats/mrmime.asm"
+INCLUDE "data/baseStats/houndour.asm"		;NEW
+INCLUDE "data/baseStats/houndoom.asm"		;NEW
 INCLUDE "data/baseStats/scyther.asm"
+INCLUDE "data/baseStats/scizor.asm"			;NEW
+INCLUDE "data/baseStats/heracross.asm"		;NEW
 INCLUDE "data/baseStats/jynx.asm"
 INCLUDE "data/baseStats/electabuzz.asm"
 INCLUDE "data/baseStats/magmar.asm"
@@ -128,13 +153,25 @@ INCLUDE "data/baseStats/pinsir.asm"
 INCLUDE "data/baseStats/tauros.asm"
 INCLUDE "data/baseStats/magikarp.asm"
 INCLUDE "data/baseStats/gyarados.asm"
+INCLUDE "data/baseStats/swinub.asm"			;NEW
+INCLUDE "data/baseStats/piloswine.asm"		;NEW
 INCLUDE "data/baseStats/lapras.asm"
 INCLUDE "data/baseStats/ditto.asm"
 INCLUDE "data/baseStats/eevee.asm"
 INCLUDE "data/baseStats/vaporeon.asm"
 INCLUDE "data/baseStats/jolteon.asm"
 INCLUDE "data/baseStats/flareon.asm"
+INCLUDE "data/baseStats/leafeon.asm"		;NEW
+INCLUDE "data/baseStats/wooper.asm"			;NEW
+INCLUDE "data/baseStats/quagsire.asm"		;NEW
+INCLUDE "data/baseStats/dunsparce.asm"		;NEW
 INCLUDE "data/baseStats/porygon.asm"
+INCLUDE "data/baseStats/porygon2.asm"		;NEW
+INCLUDE "data/baseStats/misdreavus.asm"		;NEW
+INCLUDE "data/baseStats/gligar.asm"			;NEW
+INCLUDE "data/baseStats/qwilfish.asm"		;NEW
+INCLUDE "data/baseStats/sneasel.asm"		;NEW
+INCLUDE "data/baseStats/corsola.asm"		;NEW
 INCLUDE "data/baseStats/omanyte.asm"
 INCLUDE "data/baseStats/omastar.asm"
 INCLUDE "data/baseStats/kabuto.asm"
@@ -149,4 +186,8 @@ INCLUDE "data/baseStats/dragonair.asm"
 INCLUDE "data/baseStats/dragonite.asm"
 INCLUDE "data/baseStats/mewtwo.asm"
 INCLUDE "data/baseStats/mew.asm"	;mew should have been put here had it not been added so late in the game's development
+INCLUDE "data/baseStats/lugia.asm"			;NEW
+INCLUDE "data/baseStats/hooh.asm"			;NEW
+INCLUDE "data/baseStats/armmewtwo.asm"		;NEW
+INCLUDE "data/baseStats/venustoise.asm"		;NEW
 

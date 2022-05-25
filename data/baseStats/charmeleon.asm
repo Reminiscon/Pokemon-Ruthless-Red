@@ -16,7 +16,7 @@ db SCRATCH
 db GROWL
 db EMBER
 db 0
-db 3 ; growth rate
+db 5 ; growth rate, changed from 3 to 5 to slow down early game level-ups
 ; learnset
 	tmlearn 1,3,5,6,8
 	tmlearn 9,10

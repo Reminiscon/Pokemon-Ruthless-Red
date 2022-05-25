@@ -2639,6 +2639,11 @@ MoveSoundTable:
 	db SFX_BATTLE_26,         $f0,$ff ; SUPER_FANG
 	db SFX_NOT_VERY_EFFECTIVE,$01,$ff ; SLASH
 	db SFX_BATTLE_2C,         $d8,$04 ; SUBSTITUTE
+	db SFX_BATTLE_13,		  $00,$00 ; SUPPRESS
+	db SFX_BATTLE_29,         $ff,$ff ; ROCKET_BEAM
+	db SFX_NOT_VERY_EFFECTIVE,$f0,$e0 ; SHADOW_BALL
+	db SFX_BATTLE_2E,         $00,$80 ; AEROBLAST
+	db SFX_BATTLE_36,         $00,$80 ; SACRED_FIRE
 	db SFX_BATTLE_0B,         $00,$80 ; STRUGGLE
 	db SFX_BATTLE_0B,         $00,$80
 

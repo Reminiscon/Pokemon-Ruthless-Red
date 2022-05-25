@@ -42,7 +42,7 @@ ItemNames:
 	db "DOME FOSSIL@"
 	db "HELIX FOSSIL@"
 	db "SECRET KEY@"
-	db "?????@"
+	db "MIST STONE@" ;was ?????, or UNUSED_ITEM
 	db "BIKE VOUCHER@"
 	db "X ACCURACY@"
 	db "LEAF STONE@"

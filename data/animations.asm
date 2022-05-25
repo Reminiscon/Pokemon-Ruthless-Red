@@ -163,6 +163,11 @@ AttackAnimationPointers:
 	dw SuperFangAnim
 	dw SlashAnim
 	dw SubstituteAnim
+	dw SuppressAnim					;NEW
+	dw RocketBeamAnim				;NEW
+	dw ShadowBallAnim				;NEW
+	dw AeroblastAnim				;NEW
+	dw SacredFireAnim				;NEW
 	dw StruggleAnim
 	dw ShowPicAnim
 	dw EnemyFlashAnim
@@ -531,7 +536,6 @@ AuroraBeamAnim:
 	db $FF
 
 HyperBeamAnim:
-	db SE_DARK_SCREEN_PALETTE, $48
 	db SE_SPIRAL_BALLS_INWARD, $FF
 	db $02,$3E,$2E
 	db SE_DARK_SCREEN_FLASH, $FF
@@ -1121,6 +1125,57 @@ SubstituteAnim:
 	db SE_SLIDE_MON_OFF, $A3
 	db $08,$FF,$47
 	db SE_SUBSTITUTE_MON, $FF
+	db $FF
+	
+SuppressAnim:								;NEW
+	db SE_LIGHT_SCREEN_PALETTE, $48
+	db SE_DARK_SCREEN_FLASH, $88
+	db SE_DARK_SCREEN_FLASH, $FF
+	db SE_RESET_SCREEN_PALETTE, $FF
+	db SE_FLASH_SCREEN_LONG, $5C
+	db SE_LIGHT_SCREEN_PALETTE, $48
+	db SE_DARK_SCREEN_FLASH, $88
+	db SE_DARK_SCREEN_FLASH, $FF
+	db SE_RESET_SCREEN_PALETTE, $FF
+	db $FF
+	
+RocketBeamAnim:								;NEW
+	db SE_DARK_SCREEN_PALETTE, $FF
+	db $03,$3D,$2E
+	db SE_DELAY_ANIMATION_10, $FF
+	db SE_DELAY_ANIMATION_10, $FF
+	db $46,$33,$11
+	db SE_RESET_SCREEN_PALETTE, $FF
+	db $FF
+	
+ShadowBallAnim:								;NEW
+	db SE_DARK_SCREEN_PALETTE, $FF
+	db $06,$FF,$43
+	db SE_DARK_SCREEN_FLASH, $FF
+	db $43,$8B,$41
+	db $05,$FF,$55
+	db SE_DARK_SCREEN_FLASH, $2A
+	db SE_DARK_SCREEN_FLASH, $2A
+	db SE_RESET_SCREEN_PALETTE, $FF
+	db $FF
+	
+AeroblastAnim:								;NEW
+	db SE_LIGHT_SCREEN_PALETTE, $49
+	db SE_SPIRAL_BALLS_INWARD, $FF
+	db $02,$3E,$2E
+	db SE_DARK_SCREEN_FLASH, $FF
+	db SE_DARK_SCREEN_FLASH, $FF
+	db $46,$04,$04
+	db SE_RESET_SCREEN_PALETTE, $FF
+	db $FF
+
+SacredFireAnim:								;NEW
+	db SE_DARK_SCREEN_PALETTE, $FF
+	db $46,$51,$1F
+	db $46,$FF,$0C
+	db $46,$FF,$0D
+	db $46,$FF,$0E
+	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
 BallTossAnim:

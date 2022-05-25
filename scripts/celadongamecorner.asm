@@ -262,7 +262,7 @@ CeladonGameCornerText5:
 	call PrintText
 	jp TextScriptEnd
 	
-CeladonGameCornerText14
+CeladonGameCornerText14:
 	TX_FAR _CeladonGameCornerText14
 	db "@"
 

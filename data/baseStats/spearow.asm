@@ -16,13 +16,13 @@ db PECK
 db GROWL
 db RAGE
 db 0
-db 0 ; growth rate
+db 3 ; growth rate, changed from 0 to 3 to slow down early game level-ups
 ; learnset
 	tmlearn 2,4,6
 	tmlearn 9,10
 	tmlearn 20
 	tmlearn 31,32
 	tmlearn 34,39
-	tmlearn 43,44
+	tmlearn 43,44,49
 	tmlearn 50,52
 db 0 ; padding

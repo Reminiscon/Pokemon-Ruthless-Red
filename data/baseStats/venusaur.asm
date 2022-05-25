@@ -16,7 +16,7 @@ db TACKLE
 db GROWL
 db LEECH_SEED
 db VINE_WHIP
-db 3 ; growth rate
+db 5 ; growth rate, changed from 3 to 5 to slow down early game level-ups
 ; learnset
 	tmlearn 2,3,6,8
 	tmlearn 9,10,15

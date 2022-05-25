@@ -16,7 +16,7 @@ db TACKLE
 db DISABLE
 db CONFUSION
 db PSYWAVE
-db 0 ; growth rate
+db 3 ; growth rate, changed from 0 to 3 to slow down early game level-ups
 ; learnset
 	tmlearn 6
 	tmlearn 9,10

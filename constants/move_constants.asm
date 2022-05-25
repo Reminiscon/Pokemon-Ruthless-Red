@@ -164,6 +164,11 @@ const_value = 1
 	const SUPER_FANG   ; a2
 	const SLASH        ; a3
 	const SUBSTITUTE   ; a4
+	const SUPPRESS	   ; a5
+	const ROCKET_BEAM  ; a6
+	const SHADOW_BALL  ; a7
+	const AEROBLAST    ; a8
+	const SACRED_FIRE  ; a9
 
 NUM_ATTACKS EQU const_value + -1
 

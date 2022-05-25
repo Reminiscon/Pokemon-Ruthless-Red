@@ -16,11 +16,11 @@ db SCRATCH
 db SAND_ATTACK
 db 0
 db 0
-db 0 ; growth rate
+db 3 ; growth rate, changed from 0 to 3 to slow down early game level-ups
 ; learnset
 	tmlearn 3,6,8
 	tmlearn 9,10,15
-	tmlearn 17,19,20
+	tmlearn 17,18,19,20
 	tmlearn 26,27,28,31,32
 	tmlearn 34,39,40
 	tmlearn 44,48

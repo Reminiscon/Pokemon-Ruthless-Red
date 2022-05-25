@@ -746,22 +746,26 @@ UncompressMonSprite::
 	ld a, BANK(DrowzeePicFront)
 	jr c, .GotBank
 	ld a, b
-	cp NINETALES + 1
-	ld a, BANK(NinetalesPicFront)
+	cp KRABBY + 1	;Was Ninetales + 1
+	ld a, BANK(KrabbyPicFront)
 	jr c, .GotBank
 	ld a, b
-	cp KAKUNA + 1
-	ld a, BANK(KakunaPicFront)
+	cp WIGGLYTUFF + 1	;Was Kakuna + 1
+	ld a, BANK(WigglytuffPicFront)
 	jr c, .GotBank
 	ld a, b
-	cp CLEFABLE + 1
-	ld a, BANK(ClefablePicFront)
+	cp GOLBAT + 1	;Was Clefable + 1
+	ld a, BANK(GolbatPicFront)
 	jr c, .GotBank
 	ld a, b
-	cp PORYGON + 1
-	ld a, BANK(PorygonPicFront)
+	cp STARMIE + 1	;Was Porygon + 1
+	ld a, BANK(StarmiePicFront)
 	jr c, .GotBank
-	ld a, BANK(VictreebelPicFront)
+	ld a, b		;was the end BANK(VictreebelPicFront)
+	cp PORYGON2 + 1		;NEW
+	ld a, BANK(Porygon2PicFront)
+	jr c, .GotBank
+	ld a, BANK(VenustoisePicFront)		;Was (VictreebelPicFront)
 .GotBank
 	jp UncompressSpriteData
 

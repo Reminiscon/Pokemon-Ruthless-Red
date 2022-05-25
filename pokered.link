@@ -170,6 +170,12 @@ ROMX $30
 ROMX $31
   "Pics 7" ; PICS_7
   
+ROMX $32
+  "Pics 8" ; PICS_8
+  
+ROMX $33
+  "Battle (bank 33)"
+  
 WRAM0
   "WRAM Bank 0"
 

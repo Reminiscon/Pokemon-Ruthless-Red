@@ -28,7 +28,7 @@ MapSpriteSets:
 	db $f5 ; ROUTE_15
 	db $f6 ; ROUTE_16
 	db $09 ; ROUTE_17
-	db $f7 ; ROUTE_18
+	db $0b ; ROUTE_18		Originally $f7
 	db $0a ; ROUTE_19
 	db $f8 ; ROUTE_20
 	db $01 ; ROUTE_21
@@ -38,12 +38,12 @@ MapSpriteSets:
 	db $02 ; ROUTE_25
 
 ; Format:
-; 00: determines whether the map is split East/West or North/South
+; first value: determines whether the map is split East/West or North/South
 ; $01 = East/West divide
 ; $02 = North/South divide
-; 01: coordinate of dividing line
-; 02: sprite set ID if in the West or North side
-; 03: sprite set ID if in the East or South side
+; second value: coordinate of dividing line
+; third value: sprite set ID if in the West or North side
+; fourth value: sprite set ID if in the East or South side
 SplitMapSpriteSets:
 	db $02,$25,$02,$01 ; $f1
 	db $02,$32,$02,$03 ; $f2
@@ -57,6 +57,7 @@ SplitMapSpriteSets:
 	db $02,$02,$07,$04 ; $fa
 	db $01,$11,$05,$07 ; $fb
 	db $01,$03,$07,$03 ; $fc
+	db $01,$22,$0B,$0B ; $fd		;New
 
 SpriteSets:
 ; sprite set $01
@@ -188,6 +189,19 @@ SpriteSets:
 	db SPRITE_BUG_CATCHER
 	db SPRITE_BALL
 	db SPRITE_OMANYTE
+	
+; sprite set $0b			;NEW
+	db SPRITE_BIKER
+	db SPRITE_BLACK_HAIR_BOY_1
+	db SPRITE_BLACK_HAIR_BOY_2
+	db SPRITE_GENTLEMAN
+	db SPRITE_BLUE
+	db SPRITE_SAILOR
+	db SPRITE_GAMBLER
+	db SPRITE_SS_CAPTAIN
+	db SPRITE_FAT_BALD_GUY
+	db SPRITE_OAK_AIDE
+	db SPRITE_BALL
 
 SpriteSheetPointerTable:
 	; SPRITE_RED

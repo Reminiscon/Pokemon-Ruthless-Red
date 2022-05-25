@@ -21,5 +21,5 @@ ForestMons:
 		db 7,PIKACHU	;modified
 	ENDC
 	db 7,PINSIR			;modified
-	db 7,PINSIR			;modified
+	db 9,PINSIR			;modified
 	db $00

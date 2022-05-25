@@ -16,10 +16,10 @@ db SCRATCH
 db LEECH_LIFE
 db MEGA_DRAIN
 db 0
-db 0 ; growth rate
+db 3 ; growth rate, changed from 0 to 3 to slow down early game level-ups
 ; learnset
 	tmlearn 3,6,8
-	tmlearn 9,10
+	tmlearn 9,10,18
 	tmlearn 20,21,22
 	tmlearn 28,31,32
 	tmlearn 33,34,40

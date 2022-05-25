@@ -93,20 +93,25 @@ SpecialTrainerMoves:
 	db 0
 	
 	db BROCK,$1
-	db 1,1,LEECH_LIFE
-	db 1,2,MEGA_DRAIN
-	db 1,3,SUPERSONIC
-	db 1,4,SUBSTITUTE
-	db 2,1,BIND
-	db 2,2,TOXIC
-	db 3,1,BIND
-	db 3,2,TOXIC
+	db 1,1,ROCK_THROW
+	db 1,2,SEISMIC_TOSS
+	db 1,3,TOXIC
+	db 1,4,COUNTER
+	db 2,1,ROCK_THROW
+	db 2,2,SEISMIC_TOSS
+	db 2,3,TOXIC
+	db 2,4,REST
+	db 3,1,MEGA_DRAIN
+	db 3,2,LEECH_LIFE
+	db 3,3,TOXIC
+	db 3,4,SUPERSONIC
 	db 4,1,BIND
 	db 4,2,TOXIC
-	db 5,1,FIRE_SPIN
-	db 5,2,CONFUSE_RAY
-	db 5,3,REST
-	db 5,4,SUBSTITUTE
+	db 4,3,FLASH
+	db 5,1,BIND
+	db 5,2,TOXIC
+	db 6,1,BIND
+	db 6,2,TOXIC
 	db 0
 	;Route 3
 	db BUG_CATCHER,$4
@@ -505,8 +510,8 @@ SpecialTrainerMoves:
 	db 0
 	
 	db GAMBLER,$4
-	db 1,1,RAZOR_LEAF
-	db 1,2,BUBBLEBEAM
+	db 1,1,VINE_WHIP
+	db 1,2,MIMIC
 	db 1,3,LEECH_SEED
 	db 1,4,TOXIC
 	db 2,1,FIRE_SPIN
@@ -680,7 +685,7 @@ SpecialTrainerMoves:
 	db 4,4,REST
 	db 5,1,SURF
 	db 5,2,ICE_BEAM
-	db 5,3,PSYBEAM
+	db 5,3,SUBMISSION
 	db 5,4,HAZE
 	db 0
 	
@@ -702,8 +707,8 @@ SpecialTrainerMoves:
 	db 4,3,FOCUS_ENERGY
 	db 4,4,REST
 	db 5,1,MEGA_DRAIN
-	db 5,2,BUBBLEBEAM
-	db 5,3,GROWTH
+	db 5,2,RAZOR_WIND
+	db 5,3,BODY_SLAM
 	db 5,4,REST
 	db 0
 	
@@ -891,7 +896,7 @@ SpecialTrainerMoves:
 	db 4,1,DIG
 	db 4,2,SLASH
 	db 4,3,SAND_ATTACK
-	db 4,4,DISABLE
+	db 4,4,MIMIC
 	db 0
 	;Route 10
 	db POKEMANIAC,$1
@@ -1044,13 +1049,13 @@ SpecialTrainerMoves:
 	;Route 10 (After Rock Tunnel)
 	db HIKER,$7
 	db 1,1,BIND
-	db 1,2,SUPER_FANG
-	db 1,3,TOXIC
-	db 1,4,AGILITY
+	db 1,2,BODY_SLAM
+	db 1,3,DIG
+	db 1,4,FISSURE
 	db 2,1,BIND
-	db 2,2,DIG
-	db 2,3,TOXIC
-	db 2,4,AGILITY
+	db 2,2,BODY_SLAM
+	db 2,3,DIG
+	db 2,4,FISSURE
 	db 3,1,EARTHQUAKE
 	db 3,2,ROCK_SLIDE
 	db 3,3,TAKE_DOWN
@@ -1329,10 +1334,10 @@ SpecialTrainerMoves:
 	db 2,2,WRAP
 	db 2,3,SWORDS_DANCE
 	db 2,4,SLEEP_POWDER
-	db 3,1,RAZOR_LEAF
-	db 3,2,KINESIS
-	db 3,3,MIRROR_MOVE
-	db 3,4,SOFTBOILED
+	db 3,1,SPLASH
+	db 3,2,SPLASH
+	db 3,3,SPLASH
+	db 3,4,SPLASH
 	db 4,1,HYPER_BEAM
 	db 4,2,TAKE_DOWN
 	db 4,3,SWORDS_DANCE
@@ -1438,10 +1443,10 @@ SpecialTrainerMoves:
 	db 1,2,FIRE_PUNCH
 	db 1,3,THUNDERPUNCH
 	db 1,4,ICE_PUNCH
-	db 2,1,SUPER_FANG
+	db 2,1,HYPER_BEAM
 	db 2,2,LEECH_LIFE
 	db 2,3,SUPERSONIC
-	db 2,4,HYPER_FANG
+	db 2,4,SCREECH
 	db 3,1,MEGA_PUNCH
 	db 3,2,BODY_SLAM
 	db 3,3,DIG
@@ -1718,7 +1723,7 @@ SpecialTrainerMoves:
 	db 5,4,REFLECT
 	db 6,1,SURF
 	db 6,2,ICE_BEAM
-	db 6,3,PSYBEAM
+	db 6,3,MIST
 	db 6,4,WITHDRAW
 	db 0
 	
@@ -2063,7 +2068,7 @@ SpecialTrainerMoves:
 	db 2,2,ROCK_SLIDE
 	db 2,3,BODY_SLAM
 	db 2,4,SLASH
-	db 3,1,SUPER_FANG
+	db 3,1,SCREECH
 	db 3,2,BITE
 	db 3,3,WHIRLWIND
 	db 3,4,CONFUSE_RAY
@@ -2108,18 +2113,18 @@ SpecialTrainerMoves:
 	db 0
 	
 	db JUGGLER,$B
-	db 1,1,SUPER_FANG
-	db 1,2,BIND
-	db 1,3,AGILITY
-	db 1,4,TOXIC
+	db 1,1,HYPER_BEAM
+	db 1,2,BODY_SLAM
+	db 1,3,HEADBUTT
+	db 1,4,FISSURE
 	db 2,1,PSYCHIC_M
 	db 2,2,THUNDERPUNCH
 	db 2,3,FLASH
 	db 2,4,HYPNOSIS
-	db 3,1,SUPER_FANG
-	db 3,2,BIND
-	db 3,3,AGILITY
-	db 3,4,TOXIC
+	db 3,1,HYPER_BEAM
+	db 3,2,BODY_SLAM
+	db 3,3,HEADBUTT
+	db 3,4,FISSURE
 	db 0
 	
 	db ROCKET,$15
@@ -2203,8 +2208,11 @@ SpecialTrainerMoves:
 	db 4,3,FIRE_BLAST
 	db 0
 	
-	db GIOVANNI,$3
-	db 5,3,FISSURE
+	db GIOVANNI,$3 ;TESTING Arm.Mewtwo
+	db 1,1,PSYCHIC_M
+	db 1,2,ROCKET_BEAM
+	db 1,3,BARRIER
+	db 1,4,SUPPRESS
 	db 0
 	
 	db LORELEI,$1
@@ -2237,7 +2245,7 @@ SpecialTrainerMoves:
 	db 1,3,SKY_ATTACK
 	db 6,3,FIRE_BLAST
 	db 0
-
-
+	
 	
 	db $ff
+	

@@ -1,6 +1,6 @@
 WildDataPointers:
 	dw WaterMons   ; PALLET_TOWN			;added wild pokemon
-	dw Route2Mons  ; VIRIDIAN_CITY			;added wild pokemon
+	dw ViridianCityMons  ; VIRIDIAN_CITY			;added wild pokemon
 	dw ForestMons  ; PEWTER_CITY			;added wild pokemon
 	dw WaterMons   ; CERULEAN_CITY			;added wild pokemon
 	dw NoMons      ; LAVENDER_TOWN
@@ -319,3 +319,4 @@ INCLUDE "data/wildPokemon/victoryroad2.asm"
 INCLUDE "data/wildPokemon/victoryroad3.asm"
 INCLUDE "data/wildPokemon/victoryroad1.asm"
 INCLUDE "data/wildPokemon/diglettscave.asm"
+INCLUDE "data/wildPokemon/viridiancity.asm"

@@ -13,8 +13,8 @@ dw OddishPicFront
 dw OddishPicBack
 ; attacks known at lvl 0
 db ABSORB
-db 0
-db 0
+db POISONPOWDER
+db REFLECT
 db 0
 db 3 ; growth rate
 ; learnset

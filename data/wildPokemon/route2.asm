@@ -1,24 +1,24 @@
 Route2Mons:
 	db $19
-	db 4,RATTATA			;modified
-	db 4,PIDGEY				;modified
-	db 4,PIDGEY				;modified
-	db 4,VULPIX				;modified
-	db 5,SANDSHREW			;modified
+	db 6,MANKEY				;modified
+	db 6,MANKEY				;modified
+	db 6,ODDISH				;modified
+	db 6,ODDISH				;modified
+	db 7,SANDSHREW			;modified
 	IF DEF(_RED)
-		db 4,PIDGEY
+		db 7,SANDSHREW
 	ENDC
 	IF (DEF(_BLUE) || DEF(_GREEN))
-		db 4,PIDGEY
+		db 7,SANDSHREW
 	ENDC
-	db 4,RHYHORN			;modified
-	db 5,RHYHORN			;modified
+	db 8,SLUGMA				;modified
+	db 8,SLUGMA				;modified
 	IF DEF(_RED)
-		db 7,DROWZEE		;modified
-		db 7,CUBONE			;modified
+		db 8,SLOWPOKE		;modified
+		db 9,SNEASEL		;modified
 	ENDC
 	IF (DEF(_BLUE) || DEF(_GREEN))
-		db 7,DROWZEE		;modified
-		db 7,CUBONE			;modified
+		db 8,SLOWPOKE		;modified
+		db 9,SNEASEL		;modified
 	ENDC
 	db $00

@@ -1818,7 +1818,7 @@ AIUseFullRestore:
 	ld [de], a
 	ld [wHPBarMaxHP+1], a
 	ld [wEnemyMonHP], a
-	jr AIPrintItemUseAndUpdateHPBar
+	jp AIPrintItemUseAndUpdateHPBar
 
 AIUsePotion:
 ; enemy trainer heals his monster with a potion
@@ -1859,7 +1859,26 @@ AIUseHyperPotion:
 AIUseMaxPotion:
 ; enemy trainer heals his monster with a max potion
 	ld a, MAX_POTION
-	ld b, 999
+	ld [wAIItem], a
+	ld de, wHPBarOldHP
+	ld hl, wEnemyMonHP + 1
+	ld a, [hld]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	inc de
+	ld hl, wEnemyMonMaxHP + 1
+	ld a, [hld]
+	ld [de], a
+	inc de
+	ld [wHPBarMaxHP], a
+	ld [wEnemyMonHP + 1], a
+	ld a, [hl]
+	ld [de], a
+	ld [wHPBarMaxHP+1], a
+	ld [wEnemyMonHP], a
+	jr AIPrintItemUseAndUpdateHPBar
 	; fallthrough
 
 AIRecoverHP:

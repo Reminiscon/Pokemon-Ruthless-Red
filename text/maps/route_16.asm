@@ -74,6 +74,21 @@ _Route16AfterBattleText5::
 	line "ferocious! They"
 	cont "tear up enemies!"
 	done
+	
+_Route16BattleText6::
+	text "Sure, I'll go!"
+	done
+
+_Route16EndBattleText6::
+	text "Don't make"
+	line "me mad!"
+	prompt
+
+_Route16AfterBattleText6::
+	text "I like harassing"
+	line "people with my"
+	cont "vicious #MON!"
+	done
 
 _Route16BattleText7::
 	text "Let the chips"
@@ -98,47 +113,35 @@ _Route16AfterBattleText7::
 	para "All it does is"
 	line "blow itself up!"
 	done
-	
-_Route16BattleText6::
-	text "Sure, I'll go!"
-	done
-
-_Route16EndBattleText6::
-	text "Don't make"
-	line "me mad!"
-	prompt
-
-_Route16AfterBattleText6::
-	text "I like harassing"
-	line "people with my"
-	cont "vicious #MON!"
-	done
 
 _Route16Text8::
 	text "A sleeping #MON"
 	line "blocks the way!"
 	done
 
-_Route16Text11::
+_Route16Text10::
 	text "SNORLAX woke up!"
 
 	para "It attacked in a"
 	line "grumpy rage!"
 	done
 
-_Route16Text12::
+_Route16Text11::
 	text "With a big yawn,"
 	line "SNORLAX returned"
 	cont "to the mountains!"
 	done
 
 _Route16Text9::
-	text "Enjoy the slope!"
-	line "CYCLING ROAD"
-	done
-
-_Route16Text10::
 	text "ROUTE 16"
 	line "CELADON CITY -"
 	cont "FUCHSIA CITY"
 	done
+
+_Route16Text12::
+	text "ROUTE 16"
+	line "CELADON CITY -"
+	cont "FUCHSIA CITY"
+	done
+	
+	

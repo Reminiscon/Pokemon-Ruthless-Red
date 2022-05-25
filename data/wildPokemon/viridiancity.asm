@@ -1,4 +1,4 @@
-Route2Mons:
+ViridianCityMons:
 	db $19
 	db 4,RATTATA			;modified
 	db 4,PIDGEY				;modified
@@ -11,8 +11,8 @@ Route2Mons:
 	IF (DEF(_BLUE) || DEF(_GREEN))
 		db 4,PIDGEY
 	ENDC
-	db 4,RHYHORN			;modified
-	db 5,RHYHORN			;modified
+	db 4,SLUGMA				;modified
+	db 5,SLUGMA				;modified
 	IF DEF(_RED)
 		db 7,DROWZEE		;modified
 		db 7,CUBONE			;modified

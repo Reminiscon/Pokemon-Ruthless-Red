@@ -34,7 +34,7 @@ MapHSPointers:
 	dw MapHS1A
 	dw MapHS1B
 	dw MapHSXX
-	dw MapHSXX
+	dw MapHS1D	;NEW, Route 18
 	dw MapHSXX
 	dw MapHSXX
 	dw MapHSXX
@@ -323,6 +323,8 @@ MapHS1A:
 	db ROUTE_15,$0B,Show
 MapHS1B:
 	db ROUTE_16,$08,Show
+MapHS1D:
+	db ROUTE_18,$04,Show						;NEW
 MapHS21:
 	db ROUTE_22,$01,Hide
 	db ROUTE_22,$02,Hide

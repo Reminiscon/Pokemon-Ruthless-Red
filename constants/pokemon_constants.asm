@@ -30,8 +30,8 @@ const_value = 1
 	const BLASTOISE    ; $1C
 	const PINSIR       ; $1D
 	const TANGELA      ; $1E
-	const MISSINGNO_1F ; $1F
-	const MISSINGNO_20 ; $20
+	const CROBAT	   ; $1F		;NEW, was MISSINGNO_19
+	const MAREEP	   ; $20		;NEW, was MISSINGNO_20
 	const GROWLITHE    ; $21
 	const ONIX         ; $22
 	const FEAROW       ; $23
@@ -49,26 +49,26 @@ const_value = 1
 	const PSYDUCK      ; $2F
 	const DROWZEE      ; $30
 	const GOLEM        ; $31
-	const MISSINGNO_32 ; $32
+	const FLAAFFY	   ; $32		;NEW, was MISSINGNO_32
 	const MAGMAR       ; $33
-	const MISSINGNO_34 ; $34
+	const AMPHAROS	   ; $34		;NEW, was MISSINGNO_34
 	const ELECTABUZZ   ; $35
 	const MAGNETON     ; $36
 	const KOFFING      ; $37
-	const MISSINGNO_38 ; $38
+	const BELLOSSOM	   ; $38		;NEW, was MISSINGNO_38
 	const MANKEY       ; $39
 	const SEEL         ; $3A
 	const DIGLETT      ; $3B
 	const TAUROS       ; $3C
-	const MISSINGNO_3D ; $3D
-	const MISSINGNO_3E ; $3E
-	const MISSINGNO_3F ; $3F
+	const SUDOWOODO	   ; $3D		;NEW, was MISSINGNO_3D
+	const POLITOED	   ; $3E		;NEW, was MISSINGNO_3E
+	const HOPPIP	   ; $3F		;NEW, was MISSINGNO_3F
 	const FARFETCHD    ; $40
 	const VENONAT      ; $41
 	const DRAGONITE    ; $42
-	const MISSINGNO_43 ; $43
-	const MISSINGNO_44 ; $44
-	const MISSINGNO_45 ; $45
+	const SKIPLOOM	   ; $43		;NEW, was MISSINGNO_43
+	const JUMPLUFF	   ; $44		;NEW, was MISSINGNO_44
+	const LEAFEON	   ; $45		;NEW, was MISSINGNO_45
 	const DODUO        ; $46
 	const POLIWAG      ; $47
 	const JYNX         ; $48
@@ -78,23 +78,23 @@ const_value = 1
 	const DITTO        ; $4C
 	const MEOWTH       ; $4D
 	const KRABBY       ; $4E
-	const MISSINGNO_4F ; $4F
-	const MISSINGNO_50 ; $50
-	const MISSINGNO_51 ; $51
+	const WOOPER	   ; $4F		;NEW, was MISSINGNO_4F
+	const QUAGSIRE	   ; $50		;NEW, was MISSINGNO_50
+	const DUNSPARCE	   ; $51		;NEW, was MISSINGNO_51
 	const VULPIX       ; $52
 	const NINETALES    ; $53
 	const PIKACHU      ; $54
 	const RAICHU       ; $55
-	const MISSINGNO_56 ; $56
-	const MISSINGNO_57 ; $57
+	const MISDREAVUS   ; $56		;NEW, was MISSINGNO_56
+	const SLOWKING	   ; $57		;NEW, was MISSINGNO_57
 	const DRATINI      ; $58
 	const DRAGONAIR    ; $59
 	const KABUTO       ; $5A
 	const KABUTOPS     ; $5B
 	const HORSEA       ; $5C
 	const SEADRA       ; $5D
-	const MISSINGNO_5E ; $5E
-	const MISSINGNO_5F ; $5F
+	const GLIGAR	   ; $5E		;NEW, was MISSINGNO_5E
+	const DIMONIX	   ; $5F		;NEW, was MISSINGNO_5F
 	const SANDSHREW    ; $60
 	const SANDSLASH    ; $61
 	const OMANYTE      ; $62
@@ -114,38 +114,38 @@ const_value = 1
 	const WEEDLE       ; $70
 	const KAKUNA       ; $71
 	const BEEDRILL     ; $72
-	const MISSINGNO_73 ; $73
+	const QWILFISH	   ; $73		;NEW, was MISSINGNO_73
 	const DODRIO       ; $74
 	const PRIMEAPE     ; $75
 	const DUGTRIO      ; $76
 	const VENOMOTH     ; $77
 	const DEWGONG      ; $78
-	const MISSINGNO_79 ; $79
-	const MISSINGNO_7A ; $7A
+	const SCIZOR	   ; $79		;NEW, was MISSINGNO_79
+	const HERACROSS	   ; $7A		;NEW, was MISSINGNO_7A
 	const CATERPIE     ; $7B
 	const METAPOD      ; $7C
 	const BUTTERFREE   ; $7D
 	const MACHAMP      ; $7E
-	const MISSINGNO_7F ; $7F
+	const SNEASEL	   ; $7F		;NEW, was MISSINGNO_7F
 	const GOLDUCK      ; $80
 	const HYPNO        ; $81
 	const GOLBAT       ; $82
 	const MEWTWO       ; $83
 	const SNORLAX      ; $84
 	const MAGIKARP     ; $85
-	const MISSINGNO_86 ; $86
-	const MISSINGNO_87 ; $87
+	const TEDDIURSA	   ; $86		;NEW, was MISSINGNO_86
+	const URSARING	   ; $87		;NEW, was MISSINGNO_87
 	const MUK          ; $88
-	const MISSINGNO_8A ; $8A
+	const SLUGMA	   ; $8A		;NEW, was MISSINGNO_8A
 	const KINGLER      ; $8A
 	const CLOYSTER     ; $8B
-	const MISSINGNO_8C ; $8C
+	const MAGCARGO	   ; $8C		;NEW, was MISSINGNO_8C
 	const ELECTRODE    ; $8D
 	const CLEFABLE     ; $8E
 	const WEEZING      ; $8F
 	const PERSIAN      ; $90
 	const MAROWAK      ; $91
-	const MISSINGNO_92 ; $92
+	const SWINUB	   ; $92		;NEW, was MISSINGNO_92
 	const HAUNTER      ; $93
 	const ABRA         ; $94
 	const ALAKAZAM     ; $95
@@ -155,13 +155,13 @@ const_value = 1
 	const BULBASAUR    ; $99
 	const VENUSAUR     ; $9A
 	const TENTACRUEL   ; $9B
-	const MISSINGNO_9C ; $9C
+	const PILOSWINE	   ; $9C		;NEW, was MISSINGNO_9C
 	const GOLDEEN      ; $9D
 	const SEAKING      ; $9E
-	const MISSINGNO_9F ; $9F
-	const MISSINGNO_A0 ; $A0
-	const MISSINGNO_A1 ; $A1
-	const MISSINGNO_A2 ; $A2
+	const CORSOLA	   ; $9F		;NEW, was MISSINGNO_9F
+	const HOUNDOUR	   ; $A0		;NEW, was MISSINGNO_A0
+	const HOUNDOOM	   ; $A1		;NEW, was MISSINGNO_A1
+	const KINGDRA	   ; $A2		;NEW, was MISSINGNO_A2
 	const PONYTA       ; $A3
 	const RAPIDASH     ; $A4
 	const RATTATA      ; $A5
@@ -171,22 +171,28 @@ const_value = 1
 	const GEODUDE      ; $A9
 	const PORYGON      ; $AA
 	const AERODACTYL   ; $AB
-	const MISSINGNO_AC ; $AC
+	const PHANPY	   ; $AC		;NEW, was MISSINGNO_AC
 	const MAGNEMITE    ; $AD
-	const MISSINGNO_AE ; $AE
-	const MISSINGNO_AF ; $AF
+	const DONPHAN	   ; $AE		;NEW, was MISSINGNO_AE
+	const PORYGON2	   ; $AF		;NEW, was MISSINGNO_AF
 	const CHARMANDER   ; $B0
 	const SQUIRTLE     ; $B1
 	const CHARMELEON   ; $B2
 	const WARTORTLE    ; $B3
 	const CHARIZARD    ; $B4
-	const MISSINGNO_B5 ; $B5
-	const FOSSIL_KABUTOPS   ; $B6
-	const FOSSIL_AERODACTYL ; $B7
-	const MON_GHOST    ; $B8
+	const LICKILICKI   ; $B5		;NEW, was MISSINGNO_B5
+	const REEFETCHD    ; $B6		;NEW, was FOSSIL_KABUTOPS
+	const LUGIA	       ; $B7		;NEW, was FOSSIL_AERODACTYL
+	const HO_OH	       ; $B8		;NEW, was MON_GHOST
 	const ODDISH       ; $B9
 	const GLOOM        ; $BA
 	const VILEPLUME    ; $BB
 	const BELLSPROUT   ; $BC
 	const WEEPINBELL   ; $BD
 	const VICTREEBEL   ; $BE
+	const ARM_MEWTWO   ; $BF		;NEW
+	const VENUSTOISE   ; $CO		;NEW
+	const MISSINGNO_C1 ; $C1		;NEW, unlisted, replacement for MISSINGNO_B5
+	const FOSSIL_KABUTOPS ; $C2		;Readded here, unlisted
+	const FOSSIL_AERODACTYL ; $C3	;Readded here, unlisted
+	const MON_GHOST    ; $C4		;Readded here, unlisted

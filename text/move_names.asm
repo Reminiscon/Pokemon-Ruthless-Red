@@ -163,5 +163,10 @@ MoveNames::
 	db "SUPER FANG@"
 	db "SLASH@"
 	db "SUBSTITUTE@"
+	db "SUPPRESS@"
+	db "ROCKET BEAM@"
+	db "SHADOW BALL@"
+	db "AEROBLAST@"
+	db "SACRED FIRE@"
 	db "STRUGGLE@"
 

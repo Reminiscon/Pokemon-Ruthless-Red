@@ -16,7 +16,7 @@ db TACKLE
 db TAIL_WHIP
 db QUICK_ATTACK
 db 0
-db 0 ; growth rate
+db 3 ; growth rate, changed from 0 to 3 to slow down early game level-ups
 ; learnset
 	tmlearn 6,8
 	tmlearn 9,10,11,12,13,14,15

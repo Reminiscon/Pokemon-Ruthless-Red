@@ -59,7 +59,7 @@ ItemUsePtrTable:
 	dw UnusableItem      ; DOME_FOSSIL
 	dw UnusableItem      ; HELIX_FOSSIL
 	dw UnusableItem      ; SECRET_KEY
-	dw UnusableItem		 ; XXX
+	dw ItemUseEvoStone	 ; MIST_STONE			;NEW
 	dw UnusableItem      ; BIKE_VOUCHER
 	dw ItemUseXAccuracy  ; X_ACCURACY
 	dw ItemUseEvoStone   ; LEAF_STONE
@@ -71,7 +71,7 @@ ItemUsePtrTable:
 	dw ItemUseMedicine   ; REVIVE
 	dw ItemUseMedicine   ; MAX_REVIVE
 	dw ItemUseGuardSpec  ; GUARD_SPEC
-	dw ItemUseSuperRepel ; SUPER_REPL
+	dw ItemUseSuperRepel ; SUPER_REPEL
 	dw ItemUseMaxRepel   ; MAX_REPEL
 	dw ItemUseDireHit    ; DIRE_HIT
 	dw UnusableItem      ; COIN

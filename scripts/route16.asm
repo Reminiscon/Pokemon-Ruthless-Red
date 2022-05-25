@@ -86,7 +86,7 @@ Route16TrainerHeader0:
 
 Route16TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROUTE_16_TRAINER_1
-	db ($2 << 4) ; trainer's view range
+	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_16_TRAINER_1
 	dw Route16BattleText2 ; TextBeforeBattle
 	dw Route16AfterBattleText2 ; TextAfterBattle
@@ -95,7 +95,7 @@ Route16TrainerHeader1:
 
 Route16TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROUTE_16_TRAINER_2
-	db ($2 << 4) ; trainer's view range
+	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_16_TRAINER_2
 	dw Route16BattleText3 ; TextBeforeBattle
 	dw Route16AfterBattleText3 ; TextAfterBattle
@@ -104,7 +104,7 @@ Route16TrainerHeader2:
 
 Route16TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_ROUTE_16_TRAINER_3
-	db ($2 << 4) ; trainer's view range
+	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_16_TRAINER_3
 	dw Route16BattleText4 ; TextBeforeBattle
 	dw Route16AfterBattleText4 ; TextAfterBattle
@@ -113,7 +113,7 @@ Route16TrainerHeader3:
 
 Route16TrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_ROUTE_16_TRAINER_4
-	db ($2 << 4) ; trainer's view range
+	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_16_TRAINER_4
 	dw Route16BattleText5 ; TextBeforeBattle
 	dw Route16AfterBattleText5 ; TextAfterBattle
@@ -122,7 +122,7 @@ Route16TrainerHeader4:
 
 Route16TrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_ROUTE_16_TRAINER_5
-	db ($4 << 4) ; trainer's view range
+	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_16_TRAINER_5
 	dw Route16BattleText6 ; TextBeforeBattle
 	dw Route16AfterBattleText6 ; TextAfterBattle
@@ -131,8 +131,8 @@ Route16TrainerHeader5:
 	
 Route16TrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_ROUTE_16_TRAINER_6
-	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_ROUTE_16_TRAINER_5
+	db ($3 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_ROUTE_16_TRAINER_6
 	dw Route16BattleText7 ; TextBeforeBattle
 	dw Route16AfterBattleText7 ; TextAfterBattle
 	dw Route16EndBattleText7 ; TextEndBattle
@@ -285,3 +285,5 @@ Route16Text9:
 Route16Text10:
 	TX_FAR _Route16Text10
 	db "@"
+
+	

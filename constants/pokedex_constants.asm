@@ -34,6 +34,8 @@ const_value = 1
 	const DEX_NIDORAN_M  ; 32
 	const DEX_NIDORINO   ; 33
 	const DEX_NIDOKING   ; 34
+	const DEX_PHANPY	 ; 
+	const DEX_DONPHAN	 ; 
 	const DEX_CLEFAIRY   ; 35
 	const DEX_CLEFABLE   ; 36
 	const DEX_VULPIX     ; 37
@@ -42,9 +44,15 @@ const_value = 1
 	const DEX_WIGGLYTUFF ; 40
 	const DEX_ZUBAT      ; 41
 	const DEX_GOLBAT     ; 42
+	const DEX_CROBAT	 ; 
+	const DEX_MAREEP	 ; 
+	const DEX_FLAAFFY	 ; 
+	const DEX_AMPHAROS	 ; 
 	const DEX_ODDISH     ; 43
 	const DEX_GLOOM      ; 44
 	const DEX_VILEPLUME  ; 45
+	const DEX_BELLOSSOM  ; 
+	const DEX_SUDOWOODO  ; 
 	const DEX_PARAS      ; 46
 	const DEX_PARASECT   ; 47
 	const DEX_VENONAT    ; 48
@@ -62,6 +70,10 @@ const_value = 1
 	const DEX_POLIWAG    ; 60
 	const DEX_POLIWHIRL  ; 61
 	const DEX_POLIWRATH  ; 62
+	const DEX_POLITOED	 ; 
+	const DEX_HOPPIP	 ; 
+	const DEX_SKIPLOOM	 ; 
+	const DEX_JUMPLUFF	 ; 
 	const DEX_ABRA       ; 63
 	const DEX_KADABRA    ; 64
 	const DEX_ALAKAZAM   ; 65
@@ -80,9 +92,11 @@ const_value = 1
 	const DEX_RAPIDASH   ; 78
 	const DEX_SLOWPOKE   ; 79
 	const DEX_SLOWBRO    ; 80
+	const DEX_SLOWKING	 ; 
 	const DEX_MAGNEMITE  ; 81
 	const DEX_MAGNETON   ; 82
 	const DEX_FARFETCHD  ; 83
+	const DEX_REEFETCHD  ; 
 	const DEX_DODUO      ; 84
 	const DEX_DODRIO     ; 85
 	const DEX_SEEL       ; 86
@@ -95,6 +109,7 @@ const_value = 1
 	const DEX_HAUNTER    ; 93
 	const DEX_GENGAR     ; 94
 	const DEX_ONIX       ; 95
+	const DEX_DIMONIX	 ; 
 	const DEX_DROWZEE    ; 96
 	const DEX_HYPNO      ; 97
 	const DEX_KRABBY     ; 98
@@ -108,6 +123,7 @@ const_value = 1
 	const DEX_HITMONLEE  ; 106
 	const DEX_HITMONCHAN ; 107
 	const DEX_LICKITUNG  ; 108
+	const DEX_LICKILICKI ; 
 	const DEX_KOFFING    ; 109
 	const DEX_WEEZING    ; 110
 	const DEX_RHYHORN    ; 111
@@ -117,12 +133,21 @@ const_value = 1
 	const DEX_KANGASKHAN ; 115
 	const DEX_HORSEA     ; 116
 	const DEX_SEADRA     ; 117
+	const DEX_KINGDRA	 ; 
 	const DEX_GOLDEEN    ; 118
 	const DEX_SEAKING    ; 119
+	const DEX_TEDDIURSA	 ; 
+	const DEX_URSARING	 ; 
 	const DEX_STARYU     ; 120
 	const DEX_STARMIE    ; 121
+	const DEX_SLUGMA	 ; 
+	const DEX_MAGCARGO	 ; 
 	const DEX_MR_MIME    ; 122
+	const DEX_HOUNDOUR	 ; 
+	const DEX_HOUNDOOM	 ; 
 	const DEX_SCYTHER    ; 123
+	const DEX_SCIZOR	 ; 
+	const DEX_HERACROSS	 ; 
 	const DEX_JYNX       ; 124
 	const DEX_ELECTABUZZ ; 125
 	const DEX_MAGMAR     ; 126
@@ -130,13 +155,25 @@ const_value = 1
 	const DEX_TAUROS     ; 128
 	const DEX_MAGIKARP   ; 129
 	const DEX_GYARADOS   ; 130
+	const DEX_SWINUB	 ; 
+	const DEX_PILOSWINE	 ; 
 	const DEX_LAPRAS     ; 131
 	const DEX_DITTO      ; 132
 	const DEX_EEVEE      ; 133
 	const DEX_VAPOREON   ; 134
 	const DEX_JOLTEON    ; 135
 	const DEX_FLAREON    ; 136
+	const DEX_LEAFEON	 ; 
+	const DEX_WOOPER	 ; 
+	const DEX_QUAGSIRE	 ; 
+	const DEX_DUNSPARCE	 ; 
 	const DEX_PORYGON    ; 137
+	const DEX_PORYGON2	 ; 
+	const DEX_MISDREAVUS ; 
+	const DEX_GLIGAR	 ; 
+	const DEX_QWILFISH	 ; 
+	const DEX_SNEASEL	 ; 
+	const DEX_CORSOLA	 ; 
 	const DEX_OMANYTE    ; 138
 	const DEX_OMASTAR    ; 139
 	const DEX_KABUTO     ; 140
@@ -151,5 +188,9 @@ const_value = 1
 	const DEX_DRAGONITE  ; 149
 	const DEX_MEWTWO     ; 150
 	const DEX_MEW        ; 151
+	const DEX_LUGIA		 ; 
+	const DEX_HO_OH		 ; 
+	const DEX_ARM_MEWTWO ; 152 (temporarily)
+	const DEX_VENUSTOISE ; 153 (temporarily)
 
-NUM_POKEMON    EQU 151
+NUM_POKEMON    EQU 192

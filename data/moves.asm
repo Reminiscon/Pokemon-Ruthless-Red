@@ -29,10 +29,10 @@ MoveEnd:
 	move GUST,         NO_ADDITIONAL_EFFECT,        40, FLYING,   100, 35		;Normal -> Flying
 	move WING_ATTACK,  NO_ADDITIONAL_EFFECT,        60, FLYING,   100, 35		;60 POW
 	move WHIRLWIND,    SPEED_DOWN_SIDE_EFFECT,      55, FLYING,   100, 15		;33% chance to lower SPE, 55 POW, Normal -> Flying, 100 ACC, 15 PP
-	move FLY,          NO_ADDITIONAL_EFFECT,        70, FLYING,    95, 15		;Strikes immediately
+	move FLY,          CHARGE_EFFECT,        		70, FLYING,    95, 15		
 	move BIND,         TRAPPING_EFFECT,             15, ROCK,      75, 20		;Normal -> Rock
 	move SLAM,         NO_ADDITIONAL_EFFECT,        80, FIGHTING,  75, 20		;Normal -> Fighting
-	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        35, GRASS,    100, 25		;25 PP
+	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        45, GRASS,    100, 25		;45 POW, 25 PP
 	move STOMP,        FLINCH_SIDE_EFFECT2,         65, NORMAL,   100, 20
 	move DOUBLE_KICK,  ATTACK_TWICE_EFFECT,         30, FIGHTING, 100, 30
 	move MEGA_KICK,    NO_ADDITIONAL_EFFECT,       120, NORMAL,    85,  5		;85 ACC
@@ -111,7 +111,7 @@ MoveEnd:
 	move QUICK_ATTACK, NO_ADDITIONAL_EFFECT,        40, NORMAL,   100, 30
 	move RAGE,         RAGE_EFFECT,                 65, NORMAL,   100, 10		;65 POW, 10 PP
 	move TELEPORT,     SWITCH_AND_TELEPORT_EFFECT,   0, PSYCHIC,  100, 20
-	move NIGHT_SHADE,  SPECIAL_DOWN2_EFFECT,         0, GHOST,    100,  5		;Lowers SPC 2 stages, 5 PP
+	move NIGHT_SHADE,  DRAIN_HP_EFFECT,             80, GHOST,    100,  5		;Drain HP effect, 80 POW, 5 PP
 	move MIMIC,        MIMIC_EFFECT,                 0, NORMAL,   100, 10
 	move SCREECH,      DEFENSE_DOWN2_EFFECT,         0, NORMAL,    85, 40
 	move DOUBLE_TEAM,  EVASION_UP1_EFFECT,           0, NORMAL,   100,  5		;5 PP
@@ -126,7 +126,7 @@ MoveEnd:
 	move LIGHT_SCREEN, LIGHT_SCREEN_EFFECT,          0, PSYCHIC,  100, 30
 	move HAZE,         HAZE_EFFECT,                  0, ICE,      100, 30
 	move REFLECT,      REFLECT_EFFECT,               0, PSYCHIC,  100, 20
-	move FOCUS_ENERGY, FOCUS_ENERGY_EFFECT,          0, NORMAL,   100, 30		;Fixed to 4x Crit Rate instead of 0.25x
+	move FOCUS_ENERGY, FOCUS_ENERGY_EFFECT,          0, NORMAL,   100,  5		;Fixed to 4x Crit Rate instead of 0.25x, 5 PP
 	move BIDE,         BIDE_EFFECT,                  0, BIRD,     100, 10
 	move METRONOME,    METRONOME_EFFECT,             0, BIRD,     100, 10
 	move MIRROR_MOVE,  MIRROR_MOVE_EFFECT,           0, FLYING,   100, 20
@@ -142,7 +142,7 @@ MoveEnd:
 	move SWIFT,        SWIFT_EFFECT,                60, NORMAL,   100, 20
 	move SKULL_BASH,   CHARGE_EFFECT,              140, FIGHTING, 100,  5		;140 POW, Normal -> Fighting, 5 PP
 	move SPIKE_CANNON, TWO_TO_FIVE_ATTACKS_EFFECT,  20, WATER,    100, 15		;Normal -> Water
-	move CONSTRICT,    EVASION_DOWN1_EFFECT,         0, NORMAL,   100, 15		;Lowers EVS 1 stage, 15 PP
+	move CONSTRICT,    EVASION_DOWN1_EFFECT,         0, NORMAL,   100, 15		;Normal -> Grass, Lowers EVS 1 stage, 15 PP
 	move AMNESIA,      SPECIAL_UP2_EFFECT,           0, PSYCHIC,  100,  5		;5 PP
 	move KINESIS,      ACCURACY_DOWN2_EFFECT,        0, PSYCHIC,   80,  5		;Lowers ACC 2 stages, 5 PP
 	move SOFTBOILED,   HEAL_EFFECT,                  0, NORMAL,   100, 10
@@ -175,5 +175,10 @@ MoveEnd:
 	move SUPER_FANG,   SUPER_FANG_EFFECT,            1, NORMAL,    90, 10
 	move SLASH,        NO_ADDITIONAL_EFFECT,        70, NORMAL,   100, 20
 	move SUBSTITUTE,   SUBSTITUTE_EFFECT,            0, NORMAL,   100, 10
-	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,   100, 10	;joenote - changed from normal to BIRD type (acts as typless)
+	move SUPPRESS,     SPECIAL_DOWN2_EFFECT,		 0, PSYCHIC,  100, 10		;NEW (Unique to Arm.Mewtwo)
+	move ROCKET_BEAM,  SWIFT_EFFECT,			   100, FIRE,     100, 10		;NEW (Unique to Arm.Mewtwo)
+	move SHADOW_BALL,  SPECIAL_DOWN_SIDE_EFFECT,    80, GHOST,    100, 15		;NEW
+	move AEROBLAST,    NO_ADDITIONAL_EFFECT,       100, FLYING,    95,  5		;NEW (Unique to Lugia)
+	move SACRED_FIRE,  BURN_SIDE_EFFECT2,		   100, FIRE,      95,  5		;NEW (Unique to Ho-oh)
+	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,     100, 10	;joenote - changed from normal to BIRD type (acts as typless)
 	

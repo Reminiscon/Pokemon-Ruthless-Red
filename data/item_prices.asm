@@ -38,11 +38,11 @@ ItemPrices:
 	money 2000  ; IRON						;modified 9800 -> 2000
 	money 2000  ; CARBOS					;modified 9800 -> 2000
 	money 2000  ; CALCIUM					;modified 9800 -> 2000
-	money 1000  ; RARE_CANDY				;modified 4800 -> 1000
+	money 0  ; RARE_CANDY				;modified 4800 -> 1000
 	money 0     ; DOME_FOSSIL
 	money 0     ; HELIX_FOSSIL
 	money 0     ; SECRET_KEY
-	money 0     ; XXX
+	money 0  ; MIST_STONE				;NEW, 4800
 	money 0     ; BIKE_VOUCHER
 	money 1800  ; X_ACCURACY				;modified 950 -> 1800
 	money 2100  ; LEAF_STONE

@@ -16,7 +16,7 @@ db THUNDERSHOCK
 db GROWL
 db PAY_DAY
 db MIMIC
-db 0 ; growth rate
+db 3 ; growth rate, changed from 0 to 3 to slow down early game level-ups
 ; learnset
 	tmlearn 1,5,6,8
 	tmlearn 9,10,16

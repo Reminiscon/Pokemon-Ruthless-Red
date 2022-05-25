@@ -16,7 +16,7 @@ db TACKLE
 db TAIL_WHIP
 db WATER_GUN
 db REFLECT
-db 3 ; growth rate
+db 5 ; growth rate, changed from 3 to 5 to slow down early game level-ups
 ; learnset
 	tmlearn 1,5,6,8
 	tmlearn 9,10,11,12,13,14
