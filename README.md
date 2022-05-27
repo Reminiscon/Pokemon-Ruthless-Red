@@ -78,7 +78,7 @@ It was done to serve as a codebase for others to start their own romhacks.
     - undoing burn is accurate to within 0 to -1 point
   - PP-up uses are disregarded when determining to use STRUGGLE if one or more moves are disabled
 
-	
+
 - Move fixes
   - dire hit/focus energy now quadruples crit rate instead of quarters
   - sleep now normal-chance hits a pkmn recharging from hyperbeam, but has no effect if it's already status-effected
@@ -124,7 +124,7 @@ It was done to serve as a codebase for others to start their own romhacks.
 	  - player/enemy pkmn is fully paralyzed or after hurting itself in confusion
     - Crash damage from jump kicks and pkmn hurting itself cannot be Countered
 
-	
+
 - Graphical Fixes
   - Glitched sprites can no longer cause a buffer overflow that corrupts the hall of fame
   - Returning from the status screen when an opponent is in substitute/minimize no longer glitches the graphics
@@ -138,7 +138,7 @@ It was done to serve as a codebase for others to start their own romhacks.
   - Amazing man can no longer be triggered by text boxes or the start menu (via a code tweak from Yellow-version)
   - The rival encounters on route 22 now show an exclamation bubble that never showed up originally
   - Erika uses her pic from yellow version which alters her funerary clothes to a proper kimono
-  
+
 
 - Item Fixes  
   - Great ball has a ball factor of 12 now
@@ -170,7 +170,7 @@ It was done to serve as a codebase for others to start their own romhacks.
 	- Looks like the idea was dropped in development due to issues with having separate audio banks
 	- However, there is a unique unused sfx in the battle audio bank that signifies getting some kind of important item
 	- This is likely what was going to be used for getting a badge at some point, and it has been restored
-	
+
 
 - Misc. fixes
   - Cinnabar/seafoam islands coast glitch fixed (no more missingo or artificially loading pokemon data)
@@ -257,7 +257,7 @@ It was done to serve as a codebase for others to start their own romhacks.
   - The effect of X Accuracy is no longer applied to one-hit K.O. moves (it originally made them auto-hit)
   - Upped the power of safari balls to account for lower ball factor
   - +1 turn to sleep counter since attacks can happen on wakeup (preserves effective sleep accuracy)
-  
+
 - Trainer ai routine #1 (recognition of stats, hp, and conditions) has been modified
   - using a move with a dream eater effect is heavily discouraged against non-sleeping opponents
   - using a move with a dream eater effect is slightly encouraged against a sleeping opponent
@@ -304,13 +304,13 @@ It was done to serve as a codebase for others to start their own romhacks.
   - These scores are taken into account when deciding to switch or picking a mon to send out
   - AI scoring for switching puts a heavier penalty on potentially switching in a bad type matchup
   - AI scoring imposes a very heavy penalty for potentially switching in pokemon with less than 1/4 HP
-  
+
 - Trainer ai routine #3 added to the following trainer classes
   - jr trainer M, jr trainer F, hiker, supernerd, engineer, lass, chief, bruno, brock, gentleman, agatha
 - Trainer ai routine #4 added to the following trainer classes
   -lass, jr trainer m/f, pokemaniac, supernerd, hiker, engineer, beauty, psychic, rocker, tamer, birdkeeper, cooltrainer m/f, gentleman
   -prof.oak, chief, gym leaders, e4
-  
+
 - Trainer AI battles now track which enemy pkmn have already been sent out, so allows for new functionality:
   - Trainer pkmn DVs are remembered between switching, and new ones won't be generated on every send-out
   - Trainer pkmn can now have stat experience assigned to them that is scaled to their level
@@ -342,3 +342,7 @@ It was done to serve as a codebase for others to start their own romhacks.
   - krazsen
   - kmalove
   - zycain
+
+
+
+
