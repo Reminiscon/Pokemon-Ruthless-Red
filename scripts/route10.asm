@@ -20,9 +20,11 @@ Route10TextPointers:
 	dw Route10Text5
 	dw Route10Text6
 	dw Route10Text7
-	dw PokeCenterSignText
+	dw PickUpItemText
 	dw Route10Text9
+	dw PokeCenterSignText
 	dw Route10Text10
+	dw Route10Text11
 
 Route10TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_10_TRAINER_0
@@ -77,6 +79,15 @@ Route10TrainerHeader5:
 	dw Route10AfterBattleText6 ; TextAfterBattle
 	dw Route10EndBattleText6 ; TextEndBattle
 	dw Route10EndBattleText6 ; TextEndBattle
+	
+Route10TrainerHeader6:
+	dbEventFlagBit EVENT_BEAT_ROUTE_10_TRAINER_6
+	db ($4 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_ROUTE_10_TRAINER_6
+	dw Route10BattleText7 ; TextBeforeBattle
+	dw Route10AfterBattleText7 ; TextAfterBattle
+	dw Route10EndBattleText7 ; TextEndBattle
+	dw Route10EndBattleText7 ; TextEndBattle
 
 	db $ff
 
@@ -187,12 +198,31 @@ Route10EndBattleText6:
 Route10AfterBattleText6:
 	TX_FAR _Route10AfterBattleText6
 	db "@"
-
-Route10Text9:
+	
 Route10Text7:
-	TX_FAR _Route10Text7 ; _Route10Text9
+	TX_ASM
+	ld hl, Route10TrainerHeader6
+	call TalkToTrainer
+	jp TextScriptEnd
+	
+Route10BattleText7:
+	TX_FAR _Route10BattleText7
+	db "@"
+
+Route10EndBattleText7:
+	TX_FAR _Route10EndBattleText7
+	db "@"
+
+Route10AfterBattleText7:
+	TX_FAR _Route10AfterBattleText7
 	db "@"
 
 Route10Text10:
-	TX_FAR _Route10Text10
+Route10Text9:
+	TX_FAR _Route10Text9 ; _Route10Text9
 	db "@"
+
+Route10Text11:
+	TX_FAR _Route10Text11
+	db "@"
+

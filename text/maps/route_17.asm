@@ -59,8 +59,8 @@ _Route17AfterBattleText4::
 	done
 
 _Route17BattleText5::
-	text "Let VOLTORB"
-	line "electrify you!"
+	text "ELECTRODE is a"
+	line "real blast!"
 	done
 
 _Route17EndBattleText5::
@@ -69,9 +69,9 @@ _Route17EndBattleText5::
 	prompt
 
 _Route17AfterBattleText5::
-	text "I got my VOLTORB"
-	line "at the abandoned"
-	cont "POWER PLANT."
+	text "Have you been"
+	line "to the POWER"
+	cont "PLANT?"
 	done
 
 _Route17BattleText6::

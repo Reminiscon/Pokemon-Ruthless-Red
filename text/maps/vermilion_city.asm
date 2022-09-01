@@ -18,9 +18,20 @@ _VermilionCityText1::							;modified text
 	done
 
 _VermilionCityText_198a7::
-	text "Did you see S.S."
-	line "ANNE moored in"
-	cont "the harbor?"
+	text "I heard that"
+	line "there is a short-"
+	cont "age of AWAKENING"
+	cont "in LAVENDER TOWN"
+	cont "and CELADON CITY!"
+	
+	para "Somebody has been"
+	line "hoarding! Could"
+	cont "it be TEAM"
+	cont "ROCKET?"
+	
+	para "If that's true,"
+	line "I would stock up"
+	cont "if I were you!"
 	done
 
 _VermilionCityText_198ac::	

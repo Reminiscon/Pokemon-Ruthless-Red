@@ -4,8 +4,8 @@ _SaffronGateText_1dfe7::
 	cont "though!"
 
 	para "I wish that I had"
-	line "some FRESHWATER"
-	cont "right now."
+	line "a VENDING MACHINE"
+	cont "drink right now."
 
 	para "Oh wait there,"
 	line "the road's closed."

@@ -5,7 +5,7 @@ db 55 ; base defense
 db 115 ; base speed
 db 75 ; base special
 db ICE ; species type 1
-db ICE ; species type 2
+db DEMON ; species type 2
 db 60 ; catch rate
 db 132 ; base exp yield
 INCBIN SNEASEL_FR,0,1 ; 77, sprite dimensions

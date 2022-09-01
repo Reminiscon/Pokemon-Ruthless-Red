@@ -15,7 +15,7 @@ dw CharmanderPicBack
 db SCRATCH
 db GROWL
 db EMBER
-db COUNTER
+db BIDE
 db 5 ; growth rate, changed from 3 to 5 to slow down early game level-ups
 ; learnset
 	tmlearn 1,3,5,6,8

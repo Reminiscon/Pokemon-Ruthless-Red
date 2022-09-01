@@ -13,6 +13,11 @@ SoftlockTeleport:
 	res 4, a 
 	set 6, a 
 	ld [wd732], a
+	;reset safari zone
+	ResetEvent EVENT_IN_SAFARI_ZONE
+	xor a
+	ld [wNumSafariBalls], a
+	ld [wSafariZoneEntranceCurScript], a
 	ret
 	
 	

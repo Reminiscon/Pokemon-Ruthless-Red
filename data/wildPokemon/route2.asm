@@ -1,8 +1,8 @@
 Route2Mons:
 	db $19
 	db 6,MANKEY				;modified
-	db 6,MANKEY				;modified
 	db 6,ODDISH				;modified
+	db 6,MANKEY				;modified
 	db 6,ODDISH				;modified
 	db 7,SANDSHREW			;modified
 	IF DEF(_RED)

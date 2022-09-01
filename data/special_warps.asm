@@ -96,7 +96,7 @@ PalletTownFlyWarp:
 ViridianCityFlyWarp:
 	FLYWARP_DATA VIRIDIAN_CITY_WIDTH,   16, 13
 PewterCityFlyWarp:
-	FLYWARP_DATA PEWTER_CITY_WIDTH,     30, 31
+	FLYWARP_DATA PEWTER_CITY_WIDTH,      6, 37
 CeruleanCityFlyWarp:
 	FLYWARP_DATA CERULEAN_CITY_WIDTH,   18, 13
 LavenderTownFlyWarp:
@@ -104,7 +104,7 @@ LavenderTownFlyWarp:
 VermilionCityFlyWarp:
 	FLYWARP_DATA VERMILION_CITY_WIDTH,   4, 11
 CeladonCityFlyWarp:
-	FLYWARP_DATA CELADON_CITY_WIDTH,    18, 39
+	FLYWARP_DATA CELADON_CITY_WIDTH,     6, 45
 FuchsiaCityFlyWarp:
 	FLYWARP_DATA FUCHSIA_CITY_WIDTH,    28, 19
 CinnabarIslandFlyWarp:

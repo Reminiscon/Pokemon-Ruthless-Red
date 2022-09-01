@@ -1413,7 +1413,7 @@ MagnemiteDexEntry:
 	db "@"
 	
 DonphanDexEntry:
-	db "ARMOR@"
+	db "BIG TAPIR@"
 	db 3,7
 	dw 2646
 	TX_FAR _DonphanDexEntry

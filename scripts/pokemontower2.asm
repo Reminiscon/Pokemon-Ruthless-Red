@@ -144,6 +144,13 @@ PokemonTower2Text1:
 	call SaveEndBattleTextPointers
 	ld a, OPP_SONY2
 	ld [wCurOpponent], a
+	
+	;joenote - deactivate skippable rival fights
+	;for the ss anne fight
+	ld a, $04
+	ld [wSSAnne2CurScript], a
+	;and the cerulean city fight
+	SetEvent EVENT_BEAT_CERULEAN_RIVAL
 
 	; select which team to use during the encounter
 	ld a, [wRivalStarter]

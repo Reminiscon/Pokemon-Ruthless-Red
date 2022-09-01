@@ -104,7 +104,7 @@ VictoryRoad2TextPointers:
 	dw VictoryRoad2Text3
 	dw VictoryRoad2Text4
 	dw VictoryRoad2Text5
-	dw MoltresText
+	dw PickUpItemText ;was MoltresText
 	dw PickUpItemText
 	dw PickUpItemText
 	dw PickUpItemText
@@ -158,14 +158,14 @@ VictoryRoad2TrainerHeader4:
 	dw VictoryRoad2EndBattleText5 ; TextEndBattle
 	dw VictoryRoad2EndBattleText5 ; TextEndBattle
 
-MoltresTrainerHeader:
-	dbEventFlagBit EVENT_BEAT_MOLTRES
-	db ($0 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_MOLTRES
-	dw MoltresBattleText ; TextBeforeBattle
-	dw MoltresBattleText ; TextAfterBattle
-	dw MoltresBattleText ; TextEndBattle
-	dw MoltresBattleText ; TextEndBattle
+;MoltresTrainerHeader:
+	;dbEventFlagBit EVENT_BEAT_MOLTRES
+	;db ($0 << 4) ; trainer's view range
+	;dwEventFlagAddress EVENT_BEAT_MOLTRES
+	;dw MoltresBattleText ; TextBeforeBattle
+	;dw MoltresBattleText ; TextAfterBattle
+	;dw MoltresBattleText ; TextEndBattle
+	;dw MoltresBattleText ; TextEndBattle
 
 	db $ff
 
@@ -199,19 +199,19 @@ VictoryRoad2Text5:
 	call TalkToTrainer
 	jp TextScriptEnd
 
-MoltresText:
-	TX_ASM
-	ld hl, MoltresTrainerHeader
-	call TalkToTrainer
-	jp TextScriptEnd
+;MoltresText:
+	;TX_ASM
+	;ld hl, MoltresTrainerHeader
+	;call TalkToTrainer
+	;jp TextScriptEnd
 
-MoltresBattleText:
-	TX_FAR _MoltresBattleText
-	TX_ASM
-	ld a, MOLTRES
-	call PlayCry
-	call WaitForSoundToFinish
-	jp TextScriptEnd
+;MoltresBattleText:
+	;TX_FAR _MoltresBattleText
+	;TX_ASM
+	;ld a, MOLTRES
+	;call PlayCry
+	;call WaitForSoundToFinish
+	;jp TextScriptEnd
 
 VictoryRoad2BattleText1:
 	TX_FAR _VictoryRoad2BattleText1

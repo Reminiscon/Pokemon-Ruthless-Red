@@ -165,6 +165,7 @@ MtMoon3TextPointers:
 	dw PickUpItemText
 	dw PickUpItemText
 	dw MtMoon3Text_49f99
+	dw ChiefWarningText
 
 MtMoon3TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_MT_MOON_3_TRAINER_0
@@ -403,4 +404,8 @@ MtMoon3EndBattleText5:
 
 MtMoon3AfterBattleText5:
 	TX_FAR _MtMoon3AfterBattleText5
+	db "@"
+	
+ChiefWarningText:
+	TX_FAR _ChiefWarningText
 	db "@"

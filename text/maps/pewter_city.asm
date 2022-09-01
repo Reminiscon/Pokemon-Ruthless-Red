@@ -19,6 +19,16 @@ _PewterCityText2::
 	cont "BROCK is totally"
 	cont "into it!"
 	done
+	
+	para "Well, there is"
+	line "also the COOL-"
+	cont "TRAINER living"
+	cont "just below this"
+	cont "city!"
+	
+	para "She uses a"
+	line "CHANSEY!"
+	done
 
 _PewterCityText_193f1::
 	text "Did you check out"

@@ -65,6 +65,13 @@ CeladonGymText_48963:
 	;ld hl, wBeatGymFlags	;joenote - redundant
 	;set 3, [hl]
 
+	;dylannote - Make it so that Zapdos disappears after Erika is defeated
+	ld a, HS_ZAPDOS
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	
+	ResetEvents EVENT_BEAT_ZAPDOS
+
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CELADON_GYM_TRAINER_0, EVENT_BEAT_CELADON_GYM_TRAINER_6
 

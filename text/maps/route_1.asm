@@ -51,6 +51,5 @@ _Route1Text3::						;modified text
 	line "NOTICE"
 	
 	para "If you see a"
-	line "strange-looking"
-	cont "clown, RUN."
+	line "clown, RUN!"
 	done

@@ -667,7 +667,9 @@ wTestBattlePlayerSelectedMove:: ; ccd9
 ; The player's selected move during a test battle.
 ; InitBattleVariables sets it to the move Pound.
 	ds 1
-
+	
+; [ccda] may equal any value; there is no limit
+wAILayer5Encouragement:: ; ccda
 	ds 1
 
 wMoveMenuType:: ; ccdb
@@ -697,8 +699,12 @@ wLastSwitchInEnemyMonHP:: ; cce3
 ; The enemy mon's HP when it was switched in or when the current player mon
 ; was switched in, which was more recent.
 ; It's used to determine the message to print when switching out the player mon.
-	ds 2
-
+	ds 1
+	
+; [cce4] may equal any value; there is no limit
+wAILayer6Encouragement:: ; cce4
+	ds 1
+	
 wTotalPayDayMoney:: ; cce5
 ; total amount of money made using Pay Day during the current battle
 	ds 3
@@ -708,6 +714,8 @@ wSafariEscapeFactor:: ; cce8
 wSafariBaitFactor:: ; cce9
 	ds 1;
 
+wAISwitchLimiter:: ; ccea
+; added to keep track of and limit the number of times AISwitchIfEnoughMons is executed in a battle
 	ds 1
 
 wTransformedEnemyMonOriginalDVs:: ; cceb
@@ -1731,6 +1739,9 @@ wCriticalHitOrOHKO:: ; d05e
 	ds 1
 
 wMoveMissed:: ; d05f
+;0 if didn't miss
+;1 if regular miss
+;2 if miss due to damage being reduced to 0 in calculations
 	ds 1
 
 wPlayerStatsToDouble:: ; d060
@@ -2431,7 +2442,14 @@ wOptions:: ; d355
 
 wObtainedBadges:: ; d356
 	flag_array 8
-
+;	BIT_BOULDERBADGE ; 0
+;	BIT_CASCADEBADGE ; 1
+;	BIT_THUNDERBADGE ; 2
+;	BIT_RAINBOWBADGE ; 3
+;	BIT_SOULBADGE    ; 4
+;	BIT_MARSHBADGE   ; 5
+;	BIT_VOLCANOBADGE ; 6
+;	BIT_EARTHBADGE   ; 7
 	ds 1
 
 wLetterPrintingDelayFlags:: ; d358
@@ -2786,6 +2804,7 @@ wRoute3CurScript:: ; d5f8
 	ds 1
 wRoute4CurScript:: ; d5f9
 	ds 1
+wMtMoon2CurScript:: ; d5fa
 	ds 1
 wViridianGymCurScript:: ; d5fb
 	ds 1
@@ -2944,6 +2963,7 @@ wUnknownDungeon3CurScript:: ; d650
 	ds 1
 wVictoryRoad1CurScript:: ; d651
 	ds 1
+wMoltenCavernCurScript:: ; d652			;NEW
 	ds 1
 wLanceCurScript:: ; d653
 	ds 1
@@ -3105,7 +3125,7 @@ wd728:: ; d728
 ; bit 7: set by ItemUseCardKey, which is leftover code from a previous implementation of the Card Key
 			;joenote - repurposed for exp all message now
 	ds 1
-
+wLowHealthTonePairs::	;d729			;in battle, used as a counter for low hp alarm tone pairs
 	ds 1
 
 wBeatGymFlags:: ; d72a

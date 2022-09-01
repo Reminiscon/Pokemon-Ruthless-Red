@@ -12,7 +12,7 @@ SSAnne5Object:
 	object SPRITE_SAILOR,  4,  5, STAY, NONE, 2 ; person
 	object SPRITE_BLACK_HAIR_BOY_1,  4,  8, STAY, NONE, 3 ; person
 	object SPRITE_SAILOR, 11,  5, STAY, DOWN, 4, OPP_SAILOR, 1
-	object SPRITE_SAILOR, 11,  8, STAY, UP, 5, OPP_SAILOR, 2
+	object SPRITE_SAILOR, 12,  7, STAY, RIGHT, 5, OPP_SAILOR, 2
 
 	; warp-to
 	warp_to 13, 6, SS_ANNE_5_WIDTH ; SS_ANNE_3

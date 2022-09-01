@@ -1,12 +1,14 @@
 _CeruleanMartText2::
-	text "Use REPEL to keep"
-	line "bugs and weak"
-	cont "#MON away."
-
-	para "Put your strongest"
-	line "#MON at the"
-	cont "top of the list"
-	cont "for best results!"
+	text "I heard about"
+	line "a certain GYM"
+	cont "LEADER that dis-"
+	cont "likes AWAKENING!"
+	
+	para "Could that be the"
+	line "reason behind the"
+	cont "shortage in"
+	cont "LAVENDER TOWN and"
+	cont "CELADON CITY?"
 	done
 
 _CeruleanMartText3::

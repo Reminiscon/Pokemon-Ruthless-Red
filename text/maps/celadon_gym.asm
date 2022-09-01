@@ -12,9 +12,10 @@ _CeladonGymText_48a5e::							;modified text
 	cont "of CELADON GYM."
 
 	para "I teach the art of"
-	line "flower arranging."
-	cont "I'm also an expert"
-	cont "on sleep and"
+	line "FEMINISM."
+	
+	para "I'm also an expert"
+	line "on sleep and"
 	cont "dreams."
 
 	para "Oh, I'm sorry, I"
@@ -104,8 +105,11 @@ _CeladonGymAfterBattleText2::
 	done
 
 _CeladonGymBattleText3::
-	text "I was getting"
-	line "bored."
+	text "Nobody is entit-"
+	line "led to anything!"
+	
+	para "Now pay for my"
+	line "existence!"
 	done
 
 _CeladonGymEndBattleText3::
@@ -114,56 +118,63 @@ _CeladonGymEndBattleText3::
 	prompt
 
 _CeladonGymAfterBattleText3::
-	text "Grass-type #MON"
-	line "are tough against"
-	cont "the water-type!"
-
-	para "They also have an"
-	line "edge on rock and"
-	cont "ground #MON!"
+	text "You are a cheap"
+	line "misogynist!"
 	done
 
 _CeladonGymBattleText4::
-	text "Aren't you the"
-	line "peeping Tom?"
+	text "I got good vibes!"
+	
+	para "You've got bad"
+	line "vibes!"
+	
+	para "That's why I will"
+	line "win and you will"
+	cont "lose!"
 	done
 
 _CeladonGymEndBattleText4::
-	text "I'm"
-	line "in shock!"
+	text "But"
+	line "the vibes?"
 	prompt
 
 _CeladonGymAfterBattleText4::
-	text "Oh, you weren't"
-	line "peeping? We get a"
-	cont "lot of gawkers!"
+	text "Having positive"
+	line "thoughts solves"
+	cont "every problem!"
+	
+	para "Why did I lose"
+	line "then?"
+	
+	para "..."
+	
+	para "STOP BEING SO"
+	line "NEGATIVE!"
 	done
 
 _CeladonGymBattleText5::
-	text "Look at my grass"
-	line "#MON!"
-
-	para "They're so easy"
-	line "to raise!"
+	text "We cannot allow"
+	line "our true goals to"
+	cont "be discovered!"
 	done
 
 _CeladonGymEndBattleText5::
-	text "No!"
+	text "You"
+	line "chauvinist!"
 	prompt
 
 _CeladonGymAfterBattleText5::					;modified text
-	text "We mostly use grass-"
-	line "type #MON at"
-	cont "our GYM!"
+	text "AWAKENING short-"
+	line "age?"
 
-	para "We also use them"
-	line "for making flower"
-	cont "arrangements!"
+	para "Great! Now every-"
+	line "one can stay"
+	cont "asleep!"
 	done
 
 _CeladonGymBattleText6::
 	text "Don't bring any"
-	line "bugs or fire"
+	line "bugs or FIRE"
 	cont "#MON in here!"
 	done
 
@@ -173,21 +184,21 @@ _CeladonGymEndBattleText6::
 	prompt
 
 _CeladonGymAfterBattleText6::
-	text "Our LEADER, ERIKA,"
-	line "might be quiet,"
-	cont "but she's also"
-	cont "very skilled!"
+	text "We sometimes use"
+	line "bugs though?"
+	
+	para "Yes, we are"
+	line "hypocrites!"
 	done
 
 _CeladonGymBattleText7::
-	text "Pleased to meet"
-	line "you. My hobby is"
-	cont "#MON training."
+	text "You are not a"
+	line "vegan? Gross!"
 	done
 
 _CeladonGymEndBattleText7::
-	text "Oh!"
-	line "Splendid!"
+	text "Evil"
+	line "meat eater!"
 	prompt
 
 _CeladonGymAfterBattleText7::					;modified text
@@ -206,9 +217,9 @@ _CeladonGymBattleText8::						;modified text
 	line "CELADON GYM!"
 
 	para "You better not"
-	line "underestimate"
-	cont "the destructive"
-	cont "power of feminism!"
+	line "underestimate the"
+	cont "destructive power"
+	cont "of FEMINISM!"
 	done
 
 _CeladonGymEndBattleText8::

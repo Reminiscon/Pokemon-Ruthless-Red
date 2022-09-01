@@ -1,18 +1,20 @@
 MtMoon3Object:
 	db $3 ; border block
 
-	db 4 ; warps
+	db 5 ; warps
 	warp 25, 9, 1, MT_MOON_2
 	warp 21, 17, 4, MT_MOON_2
-	warp 15, 27, 5, MT_MOON_2
-	warp 5, 7, 6, MT_MOON_2
+	warp 19, 23, 5, MT_MOON_2
+	warp  5,  7, 6, MT_MOON_2
+	warp  3, 11, 8, MT_MOON_2	;NEW
 
-	db 0 ; signs
+	db 1 ; signs
+	sign  3, 15, 11 ; Chiefwarningtext
 
 	db 9 ; objects
 	object SPRITE_BLACK_HAIR_BOY_2, 12, 8, STAY, RIGHT, 1, OPP_SUPER_NERD, 2
-	object SPRITE_ROCKET, 11, 16, STAY, DOWN, 2, OPP_ROCKET, 1
-	object SPRITE_ROCKET, 15, 22, STAY, DOWN, 3, OPP_ROCKET, 2
+	object SPRITE_ROCKET, 16, 16, STAY, DOWN, 2, OPP_ROCKET, 1
+	object SPRITE_ROCKET, 20, 22, STAY, DOWN, 3, OPP_ROCKET, 2
 	object SPRITE_ROCKET, 29, 11, STAY, UP, 4, OPP_ROCKET, 3
 	object SPRITE_ROCKET, 29, 17, STAY, LEFT, 5, OPP_ROCKET, 4
 	object SPRITE_OMANYTE, 12, 6, STAY, NONE, 6 ; person
@@ -23,5 +25,6 @@ MtMoon3Object:
 	; warp-to
 	warp_to 25, 9, MT_MOON_3_WIDTH ; MT_MOON_2
 	warp_to 21, 17, MT_MOON_3_WIDTH ; MT_MOON_2
-	warp_to 15, 27, MT_MOON_3_WIDTH ; MT_MOON_2
-	warp_to 5, 7, MT_MOON_3_WIDTH ; MT_MOON_2
+	warp_to 19, 23, MT_MOON_3_WIDTH ; MT_MOON_2
+	warp_to  5,  7, MT_MOON_3_WIDTH ; MT_MOON_2
+	warp_to  3, 11, MT_MOON_3_WIDTH ; MT_MOON_2		;NEW

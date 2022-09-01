@@ -13,10 +13,9 @@ _CeruleanGymText_5c7be::							;modified text
 
 	para "My policy is"
 	line "balancing offense"
-	cont "and defense"
-	
-	para "with water-type"
-	line "#MON!"
+	cont "and defense with"
+	cont "water-type"
+	cont "#MON!"
 	done
 
 _CeruleanGymText_5c7c3::
@@ -110,10 +109,10 @@ _CeruleanGymText_5c82a::						;modified text
 
 	para "The LEADER, MISTY,"
 	line "is a pro who uses"
-	cont "water #MON!"
+	cont "WATER #MON!"
 
 	para "Psst.. and I know"
-	line "she has a dragon"
+	line "she has a DRAGON"
 	cont "#MON up her"
 	cont "sleeve!"
 	

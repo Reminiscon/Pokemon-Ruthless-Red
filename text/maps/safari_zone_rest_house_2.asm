@@ -7,9 +7,12 @@ _SafariZoneRestHouse2Text1::
 	done
 
 _SafariZoneRestHouse2Text2::
-	text "Using BAIT will"
+	text "Using BAIT might"
 	line "make #MON"
-	cont "easier to catch."
+	cont "less likely to"
+	cont "run, but they'll"
+	cont "be harder to"
+	cont "catch."
 	done
 
 _SafariZoneRestHouse2Text3::

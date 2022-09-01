@@ -1,0 +1,3 @@
+
+_MoltresBattleText::
+	text "Gyaoo!@@"

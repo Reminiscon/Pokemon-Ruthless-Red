@@ -20,14 +20,14 @@ MapSpriteSets:
 	db $fb ; ROUTE_7
 	db $fc ; ROUTE_8
 	db $02 ; ROUTE_9
-	db $f2 ; ROUTE_10
+	db $f2 ; ROUTE_10		
 	db $f3 ; ROUTE_11
 	db $f4 ; ROUTE_12
 	db $08 ; ROUTE_13
 	db $08 ; ROUTE_14
 	db $f5 ; ROUTE_15
-	db $f6 ; ROUTE_16
-	db $09 ; ROUTE_17
+	db $fd ; ROUTE_16		Originally $f6
+	db $0b ; ROUTE_17		Originally $09
 	db $0b ; ROUTE_18		Originally $f7
 	db $0a ; ROUTE_19
 	db $f8 ; ROUTE_20
@@ -57,7 +57,7 @@ SplitMapSpriteSets:
 	db $02,$02,$07,$04 ; $fa
 	db $01,$11,$05,$07 ; $fb
 	db $01,$03,$07,$03 ; $fc
-	db $01,$22,$0B,$0B ; $fd		;New
+	db $01,$18,$0B,$05 ; $fd		;NEW
 
 SpriteSets:
 ; sprite set $01
@@ -110,7 +110,7 @@ SpriteSets:
 	db SPRITE_LASS
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_BALL
-	db SPRITE_LYING_OLD_MAN_UNUSED_2
+	db SPRITE_GENTLEMAN
 
 ; sprite set $05
 	db SPRITE_LITTLE_GIRL
@@ -160,7 +160,7 @@ SpriteSets:
 	db SPRITE_FOULARD_WOMAN
 	db SPRITE_FISHER2
 	db SPRITE_ROCKER
-	db SPRITE_SLOWBRO
+	db SPRITE_GENTLEMAN
 	db SPRITE_BALL
 	db SPRITE_SNORLAX
 
@@ -194,14 +194,14 @@ SpriteSets:
 	db SPRITE_BIKER
 	db SPRITE_BLACK_HAIR_BOY_1
 	db SPRITE_BLACK_HAIR_BOY_2
-	db SPRITE_GENTLEMAN
+	db SPRITE_GAMBLER
 	db SPRITE_BLUE
 	db SPRITE_SAILOR
 	db SPRITE_GAMBLER
-	db SPRITE_SS_CAPTAIN
-	db SPRITE_FAT_BALD_GUY
-	db SPRITE_OAK_AIDE
 	db SPRITE_BALL
+	db SPRITE_OAK_AIDE
+	db SPRITE_BUG_MASTER	;NEW
+	db SPRITE_SNORLAX
 
 SpriteSheetPointerTable:
 	; SPRITE_RED
@@ -503,6 +503,11 @@ SpriteSheetPointerTable:
 	dw SeelSprite
 	db $c0 ; byte count
 	db BANK(SeelSprite)
+	
+	; SPRITE_BUG_MASTER	;NEW
+	dw BugMasterSprite
+	db $c0 ; byte count
+	db BANK(BugMasterSprite)
 
 	; SPRITE_BALL
 	dw BallSprite

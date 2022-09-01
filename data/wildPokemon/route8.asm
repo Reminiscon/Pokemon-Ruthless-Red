@@ -1,5 +1,5 @@
 Route8Mons:
-	db $0F
+	db $30 ;$0F
 	IF DEF(_RED)
 		db 39,PIDGEOT					;modified
 		db 39,PIDGEOT					;modified

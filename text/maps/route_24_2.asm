@@ -92,3 +92,7 @@ _Route24AfterBattleText6::
 	text "I did my best, I"
 	line "have no regrets!"
 	done
+	
+_Route24Text8::
+	text "MOLTEN CAVERN"
+	done

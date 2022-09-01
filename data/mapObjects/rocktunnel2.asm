@@ -1,11 +1,13 @@
 RockTunnel2Object:
 	db $3 ; border block
 
-	db 4 ; warps
+	db 6 ; warps
 	warp 22, 27, 4, ROCK_TUNNEL_1
 	warp 29,  5, 5, ROCK_TUNNEL_1
 	warp  3,  3, 6, ROCK_TUNNEL_1
 	warp 23,  5, 7, ROCK_TUNNEL_1
+	warp 35, 25, 5, ROUTE_10
+	warp 37, 33, 6, ROUTE_10
 
 	db 0 ; signs
 
@@ -13,7 +15,7 @@ RockTunnel2Object:
 	object SPRITE_LASS, 24, 14, STAY, DOWN, 1, OPP_JR_TRAINER_F, 8
 	object SPRITE_HIKER,  4, 24, STAY, DOWN, 2, OPP_HIKER, 9
 	object SPRITE_BLACK_HAIR_BOY_2, 19,  3, STAY, DOWN, 3, OPP_POKEMANIAC, 3
-	object SPRITE_BLACK_HAIR_BOY_2, 19,  6, STAY, UP, 4, OPP_POKEMANIAC, 4
+	object SPRITE_BLACK_HAIR_BOY_2, 17,  6, STAY, UP, 4, OPP_POKEMANIAC, 4
 	object SPRITE_HIKER, 26,  5, STAY, RIGHT, 5, OPP_HIKER, 10
 	object SPRITE_LASS, 29,  2, STAY, DOWN, 6, OPP_JR_TRAINER_F, 9
 	object SPRITE_HIKER, 32,  5, STAY, LEFT, 7, OPP_HIKER, 11
@@ -24,3 +26,6 @@ RockTunnel2Object:
 	warp_to 29,  5, ROCK_TUNNEL_2_WIDTH ; ROCK_TUNNEL_1
 	warp_to  3,  3, ROCK_TUNNEL_2_WIDTH ; ROCK_TUNNEL_1
 	warp_to 23,  5, ROCK_TUNNEL_2_WIDTH ; ROCK_TUNNEL_1
+	warp_to 35, 25, ROCK_TUNNEL_2_WIDTH ; ROUTE_10
+	warp_to 37, 33, ROCK_TUNNEL_2_WIDTH ; ROUTE_10
+	

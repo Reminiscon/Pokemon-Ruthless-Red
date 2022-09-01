@@ -57,7 +57,7 @@ pokeblue_opt = -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON BLUE"
 pokegreen_opt = -cjsv -k 01 -l 0x33 -m 0x13 -p 0 -r 03 -t "POKEMON GREEN"
 
 %.gbc: $$(%_obj)
-	rgblink -d -n $*.sym -l pokered.link -o $@ $^
+	rgblink -m $*.map -d -n $*.sym -l pokered.link -o $@ $^
 	rgbfix $($*_opt) $@
 	sort $*.sym -o $*.sym
 

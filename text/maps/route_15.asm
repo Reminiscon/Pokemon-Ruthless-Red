@@ -53,8 +53,8 @@ _Route15AfterBattleText3::
 	done
 
 _Route15BattleText4::
-	text "Hmm? My birds are"
-	line "shivering! You're"
+	text "Hmm? My AERODACTYL"
+	line "is pumped! You're"
 	cont "good, aren't you?"
 	done
 
@@ -164,7 +164,7 @@ _Route15AfterBattleText10::
 	text "I'll go train with"
 	line "weaker people.@@"
 
-_Route15Text12::
+_Route15Text13::
 	text "ROUTE 15"
 	line "West to FUCHSIA"
 	cont "CITY"

@@ -68,9 +68,9 @@ _VermilionGymAfterBattleText1::						;modified text
 	text "It is clear to"
 	line "me now."
 	
-	para "Helping the"
-	line "Soviet Union"
-	cont "was a mistake!"
+	para "Aiding the SOVIET"
+	line "UNION was a"
+	cont "mistake!"
 	done
 
 _VermilionGymBattleText2::

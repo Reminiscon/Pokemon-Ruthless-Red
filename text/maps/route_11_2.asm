@@ -57,21 +57,12 @@ _Route11EndBattleText12::
 	prompt
 
 _Route11AfterBattleText12::
-	text "The cats and the"
-	line "dogs and the"
-	cont "bombs and the"
-	cont "crazy singing"
-	cont "ladies..."
+	text "CATS!"
 	
-	para "The cats and the"
-	line "dogs and the"
-	cont "bombs and the"
-	cont "crazy singing"
-	cont "ladies..."
+	para "DOGS!"
 	
-	para "The cats and the"
-	line "dogs and the"
-	cont "bombs and the"
-	cont "crazy singing"
-	cont "ladies..."
+	para "BOMBS!"
+	
+	para "CRAZY SINGING"
+	line "LADIES!!!"
 	done

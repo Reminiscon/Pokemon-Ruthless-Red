@@ -51,7 +51,7 @@ ENDM
 	mapconst VIRIDIAN_SCHOOL,             4,  4 ; $2B
 	mapconst VIRIDIAN_HOUSE,              4,  4 ; $2C
 	mapconst VIRIDIAN_GYM,                9, 10 ; $2D
-	mapconst DIGLETTS_CAVE_EXIT,          4,  4 ; $2E
+	mapconst MOLTEN_CAVERN,         	 16, 16 ; $2E
 	mapconst VIRIDIAN_FOREST_EXIT,        4,  5 ; $2F
 	mapconst ROUTE_2_HOUSE,               4,  4 ; $30
 	mapconst ROUTE_2_GATE,                4,  5 ; $31
@@ -90,7 +90,7 @@ ENDM
 	mapconst ROCK_TUNNEL_1,              18, 20 ; $52
 	mapconst POWER_PLANT,                18, 20 ; $53
 	mapconst ROUTE_11_GATE_1F,            5,  4 ; $54
-	mapconst DIGLETTS_CAVE_ENTRANCE,      4,  4 ; $55
+	mapconst DIGLETTS_CAVE_ENTRANCE,     16, 16 ; $55
 	mapconst ROUTE_11_GATE_2F,            4,  4 ; $56
 	mapconst ROUTE_12_GATE_1F,            4,  5 ; $57
 	mapconst BILLS_HOUSE,                 4,  4 ; $58

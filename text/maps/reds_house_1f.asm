@@ -24,12 +24,24 @@ _MomHealText2::
 	done
 
 _StandByMeText::
-	text "There's a movie"
-	line "on TV. Four boys"
-	cont "are walking on"
-	cont "railroad tracks."
+	;text "There's a movie"
+	;line "on TV. Four boys"
+	;cont "are walking on"
+	;cont "railroad tracks."
 
-	para "I better go too."
+	;para "I better go too."
+	;done
+	
+	text "There's a movie"
+	line "on TV. It is a"
+	cont "dystopian future"
+	cont "where the heroes"
+	cont "battle against a"
+	cont "COMMUNIST plot"
+	cont "and global take-"
+	cont "over."
+	
+	para "Inspiring."
 	done
 
 _TVWrongSideText::

@@ -88,4 +88,18 @@ TypeEffects:
 	db GRASS,DRAGON,05
 	db ICE,DRAGON,20
 	db DRAGON,DRAGON,20
+	db ARMOR,ICE,20			;NEW	;Armor is super effective against Ice
+	db ARMOR,FIRE,05		;NEW	;Armor is not very effective against Fire
+	db NORMAL,ARMOR,05		;NEW	;Normal is not very effective against Armor
+	db ICE,ARMOR,05			;NEW	;Ice is not very effective against Armor
+	db FIGHTING,ARMOR,20	;NEW	;Fighting is super effective against Armor
+	db FIRE,ARMOR,20		;NEW	;Fire is super effective against Armor
+	db DEMON,PSYCHIC,20		;NEW	;Demon is super effective against Psychic
+	db DEMON,FIGHTING,05	;NEW	;Demon is not very effective against Fighting
+	db GHOST,DEMON,05		;NEW	;Ghost is not very effective against Demon
+	db PSYCHIC,DEMON,05		;NEW	;Psychic is not very effective against Demon
+	db BUG,DEMON,20			;NEW	;Bug is super effective against Demon
+	db FIGHTING,DEMON,20	;NEW	;Fighting is super effective against Demon
+	db NORMAL,GLITCH,20		;NEW	;Normal is super effective against Glitch
+	db GLITCH,NORMAL,20		;NEW	;Glitch is super effective against Normal
 	db $FF

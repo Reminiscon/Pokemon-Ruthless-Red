@@ -14,7 +14,7 @@ dw DrowzeePicBack
 ; attacks known at lvl 0
 db POUND
 db HYPNOSIS
-db COUNTER
+db PSYWAVE
 db 0
 db 3 ; growth rate, changed from 0 to 3 to slow down early game level-ups
 ; learnset

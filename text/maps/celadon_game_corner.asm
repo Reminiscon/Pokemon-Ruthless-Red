@@ -97,6 +97,10 @@ _CeladonGameCornerText_48dca::
 	para "She might appear"
 	line "docile, but don't"
 	cont "be fooled!"
+	
+	para "I hope you have"
+	line "saved up some"
+	cont "AWAKENING!"
 	done
 
 _CeladonGameCornerText_48dcf::
@@ -188,8 +192,9 @@ _CeladonGameCornerText_48f19::
 _CeladonGameCornerText14::
 	text "WARNING"
 	
-	para "ROCKETS ONLY"
+	para "AUTHORIZED"
+	line "PERSONNEL ONLY"
 	
-	para "NO EXIT AT THIS"
-	line "POINT."
+	para "ENTRANCE IS ONE-"
+	line "WAY"
 	done

@@ -82,7 +82,7 @@ const_value = 0
 	const UNUSED_EFFECT_4B           ; $4B
 	const CONFUSION_SIDE_EFFECT      ; $4C
 	const TWINEEDLE_EFFECT           ; $4D
-	const UNUSED_EFFECT_4E           ; $4E
+	const TRI_ATTACK_EFFECT          ; $4E				;NEW, Tri Attack effect
 	const SUBSTITUTE_EFFECT          ; $4F
 	const HYPER_BEAM_EFFECT          ; $50
 	const RAGE_EFFECT                ; $51

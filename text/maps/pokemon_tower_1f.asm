@@ -32,8 +32,8 @@ _PokemonTower1Text5::
 	para "A word of"
 	line "warning."
 	
-	para "If you lack"
-	line "4 badges."
+	para "If you lack 4"
+	line "badges."
 	
 	para "Proceed at your"
 	line "own risk."
@@ -51,8 +51,8 @@ _PokemonTower1EndBattleText1::
 	
 _PokemonTower1AfterBattleText1::
 	text "You really wanted"
-	line "to cheese it"
-	cont "that badly."
+	line "to cheese it that"
+	cont "badly."
 	
 	para "Didn't you?"
 	done

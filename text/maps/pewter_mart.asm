@@ -6,6 +6,13 @@ _PewterMartText2::
 
 	para "It's totally weak"
 	line "and it cost ¥500!"
+	
+	para "If only I could"
+	line "defeat the BUG"
+	cont "MASTER in the"
+	cont "VIRIDIAN FOREST"
+	cont "and receive an"
+	cont "EXP.ALL..."
 	done
 
 _PewterMartText3::
@@ -14,4 +21,12 @@ _PewterMartText3::
 	cont "raise #MON"
 	cont "diligently, even"
 	cont "the weak ones!"
+	
+	para "Trainers will"
+	line "have more STAT"
+	cont "EXP on their"
+	cont "#MON according"
+	cont "to the level"
+	cont "that those"
+	cont "#MON are at!"
 	done

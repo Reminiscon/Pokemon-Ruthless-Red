@@ -3,7 +3,7 @@
 SuperRodData:
 	dbw PALLET_TOWN, FishingGroup1
 	dbw VIRIDIAN_CITY, FishingGroup1
-	dbw CERULEAN_CITY, FishingGroup3
+	dbw CERULEAN_CITY, FishingGroup11	;FishingGroup3
 	dbw VERMILION_CITY, FishingGroup4
 	dbw CELADON_CITY, FishingGroup5
 	dbw FUCHSIA_CITY, FishingGroup10
@@ -32,69 +32,80 @@ SuperRodData:
 	dbw SAFARI_ZONE_WEST, FishingGroup6
 	dbw SAFARI_ZONE_CENTER, FishingGroup6
 	dbw UNKNOWN_DUNGEON_2, FishingGroup9
-	dbw UNKNOWN_DUNGEON_3, FishingGroup2
-	dbw UNKNOWN_DUNGEON_1, FishingGroup9
+	dbw UNKNOWN_DUNGEON_3, FishingGroup9	;FishingGroup2
+	dbw UNKNOWN_DUNGEON_1, FishingGroup9	
 	db $FF
 
 ; fishing groups
 ; number of monsters, followed by level/monster pairs
 FishingGroup1:
-	db 2
-	db 15,TENTACOOL
-	db 15,POLIWAG
+	db 4
+	db 65,MR_MIME
+	db 65,MAGIKARP
+	db 65,POLIWAG
+	db 65,PSYDUCK
 
 FishingGroup2:
 	db 2
-	db 15,GOLDEEN
-	db 15,POLIWAG
+	db 65,GOLDEEN
+	db 65,POLIWAG
 
 FishingGroup3:
 	db 3
-	db 15,PSYDUCK
-	db 15,GOLDEEN
-	db 15,KRABBY
+	db 65,PSYDUCK
+	db 65,GOLDEEN
+	db 65,KRABBY
 
 FishingGroup4:
-	db 2
-	db 15,KRABBY
-	db 15,SHELLDER
+	db 4
+	db 65,QWILFISH
+	db 65,SHELLDER
+	db 65,SEEL
+	db 65,KRABBY
 
 FishingGroup5:
 	db 2
-	db 23,POLIWHIRL
-	db 15,SLOWPOKE
+	db 73,QWILFISH
+	db 65,TENTACOOL
 
 FishingGroup6:
 	db 4
-	db 15,DRATINI
-	db 15,KRABBY
-	db 15,PSYDUCK
-	db 15,SLOWPOKE
+	db 55,DRATINI
+	db 55,CORSOLA
+	db 55,QWILFISH
+	db 55,WOOPER
 
 FishingGroup7:
 	db 4
-	db 5,TENTACOOL
-	db 15,KRABBY
-	db 15,GOLDEEN
-	db 15,MAGIKARP
+	db 55,TENTACOOL
+	db 65,KRABBY
+	db 65,SEEL
+	db 65,MAGIKARP
 
 FishingGroup8:
 	db 4
-	db 15,STARYU
-	db 15,HORSEA
-	db 15,SHELLDER
-	db 15,GOLDEEN
+	db 65,STARYU
+	db 65,PSYDUCK
+	db 65,SEEL
+	db 65,SLOWPOKE
 
 FishingGroup9:
 	db 4
-	db 23,SLOWBRO
-	db 23,SEAKING
-	db 23,KINGLER
-	db 23,SEADRA
+	db 100,SLOWBRO
+	db 100,SEAKING
+	db 100,KINGLER
+	db 100,SEADRA
 
 FishingGroup10:
 	db 4
-	db 23,SEAKING
-	db 15,KRABBY
-	db 15,GOLDEEN
-	db 15,MAGIKARP
+	db 63,CLOYSTER
+	db 55,SHELLDER
+	db 55,GOLDEEN
+	db 55,MAGIKARP
+	
+FishingGroup11:		;NEW
+	db 4
+	db 5,DRATINI
+	db 5,DRATINI
+	db 5,DRATINI
+	db 5,DRATINI

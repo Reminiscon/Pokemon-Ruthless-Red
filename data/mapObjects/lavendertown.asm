@@ -10,12 +10,12 @@ LavenderTownObject:
 	warp  1, 11, 0, NAME_RATERS_HOUSE
 
 	db 6 ; signs
-	sign 11, 9, 4 ; LavenderTownText4
-	sign  7,  5, 5 ; LavenderTownText5
+	sign  7,  5, 4 ; LavenderTownText4
+	sign 11,  9, 5 ; LavenderTownText5
 	sign 16, 13, 6 ; MartSignText
 	sign 4, 5, 7 ; PokeCenterSignText
 	sign  3, 13, 8 ; LavenderTownText8
-	sign 17, 7, 9 ; LavenderTownText9
+	sign 15,  7, 9 ; LavenderTownText9
 
 	db 3 ; objects
 	object SPRITE_LITTLE_GIRL, 15, 9, WALK, 0, 1 ; person

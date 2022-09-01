@@ -15,9 +15,18 @@ _LavenderMartText2::
 	done
 
 _LavenderMartReviveText::
-	text "You know REVIVE?"
-	line "It revives any"
-	cont "fainted #MON!"
+	text "There's been an"
+	line "AWAKENING short-"
+	cont "age for what"
+	cont "seems like for-"
+	cont "ever now!"
+	
+	para "In both CELADON"
+	line "CITY and here in"
+	cont "LAVENDER TOWN!"
+	
+	para "I wonder who is"
+	line "responsible?"
 	done
 
 _LavenderMartNuggetText::

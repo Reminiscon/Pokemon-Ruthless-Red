@@ -25,9 +25,8 @@ _MtMoon3Text_49f85::									;modified text
 	line "fossils! They're"
 	cont "both mine!"
 	
-	para "You are in"
-	line "for a real"
-	cont "shock!"
+	para "You are in for a"
+	line "REAL shocking!"
 	done
 
 _MtMoon3Text_49f8a::
@@ -123,4 +122,15 @@ _MtMoon3AfterBattleText5::
 	text "The greatest"
 	line "strategy ever"
 	cont "has failed..."
+	done
+	
+_ChiefWarningText::
+	text "WARNING"
+	line "DO NOT ENTER"
+	
+	para "CLASSIFIED"
+	line "EXPERIMENTS"
+	
+	para "SIGNED,"
+	line "ROCKET CHIEF"
 	done

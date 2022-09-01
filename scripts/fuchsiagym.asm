@@ -64,9 +64,17 @@ FuchsiaGymScript3_75497:
 	set 4, [hl]
 	;ld hl, wBeatGymFlags	;joenote - redundant
 	;set 4, [hl]
+	
+	;dylannote - Make it so that Rival in Route 18 disappears after Koga is defeated
+	ld a, HS_ROUTE_18_RIVAL
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	
+	ResetEvents EVENT_BEAT_ROUTE_18_RIVAL
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
+	SetEvent EVENT_BEAT_ROUTE_14_TRAINER_9			;NEW
 
 	jp FuchsiaGymScript_75477
 
@@ -85,7 +93,7 @@ FuchsiaGymTextPointers:
 
 FuchsiaGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_0
-	db ($2 << 4) ; trainer's view range
+	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_0
 	dw FuchsiaGymBattleText1 ; TextBeforeBattle
 	dw FuchsiaGymAfterBattleText1 ; TextAfterBattle
@@ -94,7 +102,7 @@ FuchsiaGymTrainerHeader0:
 
 FuchsiaGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_1
-	db ($2 << 4) ; trainer's view range
+	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_1
 	dw FuchsiaGymBattleText2 ; TextBeforeBattle
 	dw FuchsiaGymAfterBattleText2 ; TextAfterBattle
@@ -103,7 +111,7 @@ FuchsiaGymTrainerHeader1:
 
 FuchsiaGymTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_2
-	db ($4 << 4) ; trainer's view range
+	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_2
 	dw FuchsiaGymBattleText3 ; TextBeforeBattle
 	dw FuchsiaGymAfterBattleText3 ; TextAfterBattle
@@ -112,7 +120,7 @@ FuchsiaGymTrainerHeader2:
 
 FuchsiaGymTrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_3
-	db ($2 << 4) ; trainer's view range
+	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_3
 	dw FuchsiaGymBattleText4 ; TextBeforeBattle
 	dw FuchsiaGymAfterBattleText4 ; TextAfterBattle
@@ -121,7 +129,7 @@ FuchsiaGymTrainerHeader3:
 
 FuchsiaGymTrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_4
-	db ($2 << 4) ; trainer's view range
+	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_4
 	dw FuchsiaGymBattleText5 ; TextBeforeBattle
 	dw FuchsiaGymAfterBattleText5 ; TextAfterBattle
@@ -130,7 +138,7 @@ FuchsiaGymTrainerHeader4:
 
 FuchsiaGymTrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
-	db ($2 << 4) ; trainer's view range
+	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_FUCHSIA_GYM_TRAINER_5
 	dw FuchsiaGymBattleText6 ; TextBeforeBattle
 	dw FuchsiaGymAfterBattleText6 ; TextAfterBattle

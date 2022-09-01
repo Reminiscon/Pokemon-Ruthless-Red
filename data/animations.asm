@@ -536,6 +536,7 @@ AuroraBeamAnim:
 	db $FF
 
 HyperBeamAnim:
+	db SE_DARK_SCREEN_PALETTE, $48
 	db SE_SPIRAL_BALLS_INWARD, $FF
 	db $02,$3E,$2E
 	db SE_DARK_SCREEN_FLASH, $FF
@@ -735,6 +736,7 @@ MeditateAnim:
 
 AgilityAnim:
 	db SE_LIGHT_SCREEN_PALETTE, $60
+	db SE_DELAY_ANIMATION_10, $FF
 	db SE_RESET_SCREEN_PALETTE, $FF
 	db $FF
 
@@ -1106,9 +1108,15 @@ ConversionAnim:
 	db $FF
 
 TriAttackAnim:
-	db SE_DARK_SCREEN_FLASH, $A0
-	db $46,$FF,$4D
+	db SE_FLASH_SCREEN_LONG, $A0 ;initial attack/sound
 	db SE_DARK_SCREEN_FLASH, $FF
+	db SE_DARK_SCREEN_FLASH, $FF
+	db SE_DARK_SCREEN_FLASH, $FF
+	db $46,$FF,$4D 
+	db $46,$33,$11 ;fire
+	db $46,$34,$0E
+	db $46,$56,$2B ;electric
+	db $10,$49,$2F ;ice
 	db $FF
 
 SuperFangAnim:

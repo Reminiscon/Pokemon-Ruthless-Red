@@ -19,9 +19,9 @@ _TM18ExplanationText::
 	cont "I'm leaning on,"
 	cont "mind you!"
 	
-	para "It meets NORMAL"
-	line "or FIGHTING moves"
-	cont "with 2x damage!"
+	para "It meets physical"
+	line "moves with 2x"
+	cont "damage!"
 	done
 
 _TM18NoRoomText::

@@ -18,7 +18,7 @@ MapHSPointers:
 	dw MapHS0A
 	dw MapHSXX
 	dw MapHSXX
-	dw MapHS0D	;NEW, Route 2
+	dw MapHS0D
 	dw MapHSXX
 	dw MapHS0F
 	dw MapHSXX
@@ -26,7 +26,7 @@ MapHSPointers:
 	dw MapHSXX
 	dw MapHSXX
 	dw MapHS14
-	dw MapHSXX
+	dw MapHS15  ;NEW, Route 10
 	dw MapHS16	;NEW, Route 11
 	dw MapHS17
 	dw MapHSXX
@@ -51,7 +51,7 @@ MapHSPointers:
 	dw MapHSXX
 	dw MapHSXX
 	dw MapHS2D
-	dw MapHSXX
+	dw MapHS2E	;NEW, Molten Cavern
 	dw MapHSXX
 	dw MapHSXX
 	dw MapHSXX
@@ -65,7 +65,7 @@ MapHSPointers:
 	dw MapHSXX
 	dw MapHSXX
 	dw MapHS3B
-	dw MapHSXX
+	dw MapHS3C	;NEW, Mt. Moon B1F
 	dw MapHS3D
 	dw MapHSXX
 	dw MapHSXX
@@ -153,7 +153,7 @@ MapHSPointers:
 	dw MapHS91
 	dw MapHS92
 	dw MapHS93
-	dw MapHS94
+	dw MapHSXX	;Was MapHS94, but the hide show data was removed
 	dw MapHS95
 	dw MapHSXX
 	dw MapHSXX
@@ -302,15 +302,17 @@ MapHS0A:
 	db SAFFRON_CITY,$0E,Show
 	db SAFFRON_CITY,$0F,Hide
 MapHS0D:
-	db ROUTE_2,$01,Show
-	db ROUTE_2,$02,Show
-	db ROUTE_2,$03,Show							;NEW
-	db ROUTE_2,$04,Show							;NEW
-	db ROUTE_2,$05,Show							;NEW
+	db ROUTE_2,$04,Show
+	db ROUTE_2,$05,Show
+	db ROUTE_2,$06,Show							;NEW
+	db ROUTE_2,$07,Show							;NEW
+	db ROUTE_2,$08,Show							;NEW
 MapHS0F:
 	db ROUTE_4,$03,Show
 MapHS14:
 	db ROUTE_9,$0A,Show
+MapHS15:
+	db ROUTE_10,$08,Show						;NEW
 MapHS16:
 	db ROUTE_11,$0D,Show						;NEW
 	db ROUTE_11,$0E,Show						;NEW
@@ -321,6 +323,7 @@ MapHS17:
 	db ROUTE_12,$0A,Show
 MapHS1A:
 	db ROUTE_15,$0B,Show
+	db ROUTE_15,$0C,Show						;NEW
 MapHS1B:
 	db ROUTE_16,$08,Show
 MapHS1D:
@@ -349,6 +352,15 @@ MapHS28:
 MapHS2D:
 	db VIRIDIAN_GYM,$01,Show
 	db VIRIDIAN_GYM,$0B,Show
+MapHS2E:
+	db MOLTEN_CAVERN,$01,Show					;NEW
+	db MOLTEN_CAVERN,$02,Show					;NEW
+	db MOLTEN_CAVERN,$03,Show					;NEW
+	db MOLTEN_CAVERN,$04,Show					;NEW
+	db MOLTEN_CAVERN,$05,Show					;NEW
+	db MOLTEN_CAVERN,$06,Show					;NEW
+	db MOLTEN_CAVERN,$07,Show					;NEW
+	
 MapHS34:
 	db MUSEUM_1F,$05,Show
 MapHSE4:
@@ -370,7 +382,7 @@ MapHS93:
 	db POKEMONTOWER_6,$07,Show
 	db POKEMONTOWER_6,$08,Show
 	db POKEMONTOWER_6,$09,Show
-MapHS94:
+;MapHS94:
 	;db POKEMONTOWER_7,$01,Show
 	;db POKEMONTOWER_7,$02,Show
 	;db POKEMONTOWER_7,$03,Show
@@ -418,9 +430,10 @@ MapHS58:
 	db BILLS_HOUSE,$02,Hide
 	db BILLS_HOUSE,$03,Hide
 MapHS33:
-	db VIRIDIAN_FOREST,$05,Show
 	db VIRIDIAN_FOREST,$06,Show
 	db VIRIDIAN_FOREST,$07,Show
+	db VIRIDIAN_FOREST,$08,Show
+	db VIRIDIAN_FOREST,$09,Show					;NEW
 MapHS3B:
 	db MT_MOON_1,$08,Show
 	db MT_MOON_1,$09,Show
@@ -428,6 +441,13 @@ MapHS3B:
 	db MT_MOON_1,$0B,Show
 	db MT_MOON_1,$0C,Show
 	db MT_MOON_1,$0D,Show
+MapHS3C:
+	db MT_MOON_2,$01,Show						;NEW
+	db MT_MOON_2,$02,Show						;NEW
+	db MT_MOON_2,$03,Show						;NEW
+	db MT_MOON_2,$04,Show						;NEW
+	db MT_MOON_2,$05,Show						;NEW
+	db MT_MOON_2,$06,Show						;NEW
 MapHS3D:
 	db MT_MOON_3,$06,Show
 	db MT_MOON_3,$07,Show

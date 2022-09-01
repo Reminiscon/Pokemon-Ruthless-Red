@@ -46,7 +46,7 @@ RocketHideout1TextPointers:
 
 RocketHideout1TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROCKET_HIDEOUT_1_TRAINER_0
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROCKET_HIDEOUT_1_TRAINER_0
 	dw RocketHideout1BattleText2 ; TextBeforeBattle
 	dw RocketHideout1AfterBattleTxt2 ; TextAfterBattle

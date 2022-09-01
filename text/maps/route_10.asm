@@ -82,18 +82,20 @@ _Route10AfterBattleText4::
 	done
 
 _Route10BattleText5::
-	text "Ah! This mountain"
-	line "air is delicious!"
+	text "I will crush you"
+	line "beneath boulders!"
 	done
 
 _Route10EndBattleText5::
-	text "That"
-	line "cleared my head!"
+	text "Boulders,"
+	line "not rocks!"
 	prompt
 
 _Route10AfterBattleText5::
-	text "I feel bloated on"
-	line "mountain air!"
+	text "Ah, suppose I"
+	line "should get my"
+	cont "hands on an"
+	cont "EARTHQUAKE TM!"
 	done
 
 _Route10BattleText6::
@@ -114,18 +116,52 @@ _Route10AfterBattleText6::
 	cont "pink one with a"
 	cont "floral pattern!"
 	done
+	
+_Route10BattleText7::
+	text "I'm going to"
+	line "retire soon."
+	
+	para "Couldn't care"
+	line "less if this"
+	cont "place blew up!"
+	done
 
+_Route10EndBattleText7::
+	text "Try-"
+	line "hard!"
+	prompt
+
+_Route10AfterBattleText7::
+	text "I bet ZAPDOS"
+	line "tastes like some"
+	cont "real quality"
+	cont "chicken!"
+	
+	para "On the other"
+	line "hand, I ain't"
+	cont "messin' with"
+	cont "that bird!"
+	
+	para "What? You dealt"
+	line "with it?"
+	
+	para "Great.. now I"
+	line "lost my excuse"
+	cont "to slack!"
+	done
+	
+_Route10Text10::
 _Route10Text9::
-_Route10Text7::
 	text "ROCK TUNNEL"
 	done
 
-_Route10Text10::						;modified text
+_Route10Text11::						;modified text
 	text "POWER PLANT"
 	
 	para "WARNING"
+	line "STEEP DECLINE"
 	
 	para "ENTRANCE UNSAFE"
 	line "MUST EXIT OUT"
-	cont "THE OTHER SIDE"
+	cont "THE BACK"
 	done

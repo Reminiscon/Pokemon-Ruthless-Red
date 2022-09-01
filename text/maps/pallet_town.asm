@@ -47,9 +47,10 @@ _PalletTownText5::					;modified text
 	line "Shades of your"
 	cont "journey await!"
 	
-	para "...likely"
-	line "fifty shades"
-	cont "of red, though."
+	para "..."
+	
+	para "Shades of"
+	line "BLOOD RED!"
 	done
 
 _PalletTownText6::

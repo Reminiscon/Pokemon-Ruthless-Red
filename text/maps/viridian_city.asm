@@ -41,8 +41,11 @@ _ViridianCityText_19157::					;modified text
 	line "POISON STING!"
 	
 	para "Careful though,"
-	line "both of them"
-	cont "have COUNTER!"
+	line "CATERPIE has"
+	cont "COUNTER!"
+	
+	para "WEEDLE can use"
+	line "REST!"
 	done
 	
 IF DEF(_GREEN)
@@ -57,9 +60,11 @@ _ViridianCityText_19175::
 ELSE
 _ViridianCityText_19175::
 	text "Oh Grandpa! Don't"
-	line "be so mean!"
-	cont "He hasn't had his"
-	cont "coffee yet."
+	line "pass out here!"
+	cont "My goodness..."
+	cont "Sorry, but we'll"
+	cont "have to wait till"
+	cont "he sobers up."
 	done
 ENDC
 
@@ -84,11 +89,14 @@ _ViridianCityText_19191::
 	done
 ELSE
 _ViridianCityText_19191::
-	text "You can't go"
-	line "through here!"
+	text "Urgh! Hic..."
+	line "hold on there!"
+	cont "C'mere an lissen"
+	cont "to what I hafta"
+	cont "say!"
 
-	para "This is private"
-	line "property!"
+	para "...Hey!"
+	line "I said don't go!"
 	done
 ENDC
 
@@ -136,12 +144,11 @@ _ViridianCityText_1920a::
 	done
 ELSE
 _ViridianCityText_1920a::
-	text "Ahh, I've had my"
-	line "coffee now and I"
-	cont "feel great!"
+	text "Mmm......"
+	line "Seems like I was"
+	cont "pretty drunk!"
 
-	para "Sure you can go"
-	line "through!"
+	para "My head hurts..."
 
 	para "Are you in a"
 	line "hurry?"
@@ -185,8 +192,8 @@ _ViridianCityText8::
 _ViridianCityText9::						;modified text
 	text "TRAINER TIPS"
 
-	para "A lot of"
-	line "trainers use"
+	para "Many Trainers"
+	line "make use of"
 	cont "TM and HM moves."
 
 	para "Some trainers"

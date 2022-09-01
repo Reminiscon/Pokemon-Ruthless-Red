@@ -133,7 +133,7 @@ PokemonTower6TrainerHeader1:
 
 PokemonTower6TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_POKEMONTOWER_6_TRAINER_2
-	db ($4 << 4) ; trainer's view range
+	db ($3 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_POKEMONTOWER_6_TRAINER_2
 	dw PokemonTower6BattleText3 ; TextBeforeBattle
 	dw PokemonTower6AfterBattleText3 ; TextAfterBattle

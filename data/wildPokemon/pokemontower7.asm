@@ -1,7 +1,5 @@
 TowerMons7:
 	db $0F
-	db 51,GENGAR
-	db 52,GENGAR
 	db 53,GENGAR
 	db 54,GENGAR
 	db 55,GENGAR
@@ -10,4 +8,6 @@ TowerMons7:
 	db 58,GENGAR
 	db 59,GENGAR
 	db 60,GENGAR
+	db 60,MISDREAVUS
+	db 60,MISDREAVUS
 	db $00

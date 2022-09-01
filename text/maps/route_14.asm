@@ -171,3 +171,9 @@ _Route14Text11::
 	line "West to FUCHSIA"
 	cont "CITY"
 	done
+	
+_Route14Text12::
+	text "ROUTE 14"
+	line "West to FUCHSIA"
+	cont "CITY"
+	done

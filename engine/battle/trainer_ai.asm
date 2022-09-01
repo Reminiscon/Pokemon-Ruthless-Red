@@ -7,6 +7,16 @@ AIEnemyTrainerChooseMoves:
 	ld [hli], a   ; move 2
 	ld [hli], a   ; move 3
 	ld [hl], a    ; move 4
+
+;joenote - make a backup buffer
+	push hl
+	ld a, $ff
+	inc hl
+	ld [hli], a	;backup 1
+	ld [hli], a	;backup 2
+	ld [hli], a	;backup 3
+	ld [hl], a	;backup 4
+	pop hl
 	
 	;joenote - backup the power of the last moved used
 	ld a, [wEnemyMovePower]
@@ -43,7 +53,7 @@ AIEnemyTrainerChooseMoves:
 	pop hl
 	ld a, [hli]
 	and a
-	jr z, .loopFindMinimumEntries
+	jr z, .loopFindMinimumEntries_bakupfirst
 	push hl
 	ld hl, AIMoveChoiceModificationFunctionPointers
 	dec a
@@ -57,6 +67,11 @@ AIEnemyTrainerChooseMoves:
 	ld de, .nextMoveChoiceModification  ; set return address
 	push de
 	jp hl         ; execute modification function
+.loopFindMinimumEntries_bakupfirst	;joenote - make a backup of the scores
+	ld hl, wBuffer  ; temp move selection array
+	ld de, wBuffer + NUM_MOVES  ;backup buffer
+	ld bc, NUM_MOVES
+	call CopyData
 .loopFindMinimumEntries ; all entries will be decremented sequentially until one of them is zero
 	ld hl, wBuffer  ; temp move selection array
 	ld de, wEnemyMonMoves  ; enemy moves
@@ -110,11 +125,14 @@ AIEnemyTrainerChooseMoves:
 
 AIMoveChoiceModificationFunctionPointers:
 	dw AIMoveChoiceModification1
-	dw AIMoveChoiceModification2
+	dw AIMoveChoiceModification2 ; dylannote - edited to only cover stat raising or lowering moves, and moves that only work once
 	dw AIMoveChoiceModification3
 	dw AIMoveChoiceModification4 ; ;joenote - repurposed unused routine for trainer switching
+	dw AIMoveChoiceModification5 ; dylannote - added to work like routine #2, but with status effects and no turn limit
+	dw AIMoveChoiceModification6 ; dylannote - added for advanced strategies involving a few select moves
 
 ; discourages moves that cause no damage but only a status ailment if player's mon already has one
+; joenote - reworked so that it now discourages doing things that are generally useless
 AIMoveChoiceModification1:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - kick out if no-attack bit is set
@@ -143,9 +161,168 @@ AIMoveChoiceModification1:
 	ld a, [wEnemyMoveEffect]	;load the move effect
 	cp SWITCH_AND_TELEPORT_EFFECT	;see if it is a battle-ending effect
 	jp z, .heavydiscourage	;heavily discourage if so
-;and dont try to use rage either
-	cp RAGE_EFFECT	
-	jp z, .heavydiscourage
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;dylannote - do not use Hyper Beam when the enemy has a physical attack disadvantage, or when 
+;the player has an active Substitute or active Reflect, or when the player Mon HP is full
+	ld a, [wEnemyMoveNum]	;load the specific move being used
+	cp HYPER_BEAM	;see if it is hyper beam
+	jr nz, .skiphyperbeamdiscourage	;skip out if move is not hyper beam
+	ld a, [wPlayerBattleStatus2]
+	bit HAS_SUBSTITUTE_UP, a
+	jp nz, .heavydiscourage
+	ld a, [wPlayerBattleStatus3]
+	bit HAS_REFLECT_UP, a
+	jp nz, .heavydiscourage
+	ld a, [wPlayerMonDefenseMod]
+	ld b, a
+	ld a, [wEnemyMonAttackMod]
+	cp b	;compare the attack modifier of the A.I. and the defense modifier of the player
+	jp c, .heavydiscourage	;heavily discourage using hyper beam if A.I. attack modifier is lesser
+	ld a, [wPlayerMonDefenseMod]
+	add a, 1
+	ld b, a
+	ld a, [wEnemyMonAttackMod]
+	cp b	;compare the attack modifier of the A.I. and the defense modifier + 1 of the player
+	jr nc, .skiphyperbeamdiscourage	;do not discourage Hyper Beam if A.I. attack modifier is equal or greater
+	ld a, $1
+	call PlayerCheckIfHPBelowFraction	;check if Player Mon's health is full
+	jp nc, .heavydiscourage	;heavily discourage if Player Mon's health is full
+.skiphyperbeamdiscourage
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - do not use dream eater if enemy not asleep, otherwise encourage it
+	ld a, [wEnemyMoveEffect]	;load the move effect
+	cp DREAM_EATER_EFFECT	;see if it is dream eater
+	jr nz, .notdreameater	;skip out if move is not dream eater
+	ld a, [wBattleMonStatus]	;load the player pkmn non-volatile status
+	and $7	;check bits 0 to 2 for sleeping turns
+	jp z, .heavydiscourage	;heavily discourage using dream eater on non-sleeping pkmn
+	dec [hl]	;else slightly encourage dream eater's use on a sleeping pkmn
+	jp .nextMove
+.notdreameater	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - do not use counter against a non-applicable move
+	ld a, [wEnemyMoveNum]	
+	cp COUNTER
+	jr nz, .countercheck_end	;if this move is not counter then jump out
+	ld a, [wPlayerMovePower]
+	and a
+	jp z, .heavydiscourage	;heavily discourage counter if enemy is using zero-power move
+	ld a, [wPlayerMoveType]
+	cp NORMAL
+	jr z, .countercheck_end	; continue on if countering a normal move
+	cp FIGHTING
+	jr z, .countercheck_end	; continue on if countering a fighting move
+    cp FLYING
+    jr z, .countercheck_end ; NEW, continue on if countering a flying move
+    cp POISON
+    jr z, .countercheck_end ; NEW, continue on if countering a poison move
+    cp GROUND
+    jr z, .countercheck_end ; NEW, continue on if countering a ground move
+    cp ROCK
+    jr z, .countercheck_end ; NEW, continue on if countering a rock move
+    cp BUG
+    jr z, .countercheck_end ; NEW, continue on if countering a bug move
+    cp GHOST
+    jr z, .countercheck_end ; NEW, continue on if countering a ghost move
+    cp ARMOR
+    jr z, .countercheck_end ; NEW, continue on if countering an armor move
+	cp BIRD
+	jr z, .countercheck_end	; MOVED TO END, continue on if countering STRUGGLE or other typeless move
+	jp .heavydiscourage	;else heavily discourage since the player move type is not applicable to counter
+.countercheck_end
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - do not use moves that are ineffective against substitute if a substitute is up
+	ld a, [wPlayerBattleStatus2]
+	bit HAS_SUBSTITUTE_UP, a	;check for substitute bit
+	jr z, .noSubImm	;if the substitute bit is not set, then skip out of this block
+	ld a, [wEnemyMoveEffect]	;get the move effect into a
+	push hl
+	push de
+	push bc
+	ld hl, SubstituteImmuneEffects
+	ld de, $0001
+	call IsInArray	;see if a is found in the hl array (carry flag set if true)
+	pop bc
+	pop de
+	pop hl
+	jp c, .heavydiscourage	;carry flag means the move effect is blocked by substitute
+	;else continue onward
+.noSubImm	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Exploding has a slight preference over healing because overall this hurts the player more than the AI
+	ld a, [wEnemyMoveEffect]	;load the move effect
+	cp HEAL_EFFECT	;see if it is a healing move
+	jr z, .heal_explode	;skip out if move is not
+	cp EXPLODE_EFFECT	;what about an explosion effect?
+	jr nz, .not_heal_explode	;skip out if move is not
+	dec [hl]	;otherwise give a slight edge to exploding
+	
+	;since this is an explosion effect, it would be good to heavily discourage if
+	;the opponent is in fly/dig state and the exploder is for-sure faster than the opponent
+	ld a, [wPlayerBattleStatus1]
+	bit 6, a
+	jr z, .heal_explode	;proceed as normal if player is not in fly/dig
+	call StrCmpSpeed	;do a speed compare
+	jp c, .heavydiscourage	;a set carry bit means the ai 'mon is faster, so heavily discourage
+	
+.heal_explode
+	ld a, 1	;
+	call AICheckIfHPBelowFraction
+	jp nc, .heavydiscourage	;heavy discourage if hp at max (heal +5 & explode +4)
+	inc [hl]	;1/2 hp to max hp - slight discourage (heal +1 & explode 0)
+	ld a, 2	;
+	call AICheckIfHPBelowFraction
+	jp nc, .nextMove	;if hp is 1/2 or more, get next move
+	dec [hl]	;else 1/3 to 1/2 hp - neutral (heal 0 & explode -1)
+	ld a, 3	;
+	call AICheckIfHPBelowFraction
+	jp nc, .nextMove	;if hp is 1/3 or more, get next move
+	dec [hl]	;else 0 to 1/3 hp - slight preference (heal -1 & explode -2)
+	jp .nextMove	;get next move
+.not_heal_explode
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;Randomly discourage 2-turn moves if confused or paralyzed
+	;check for 2-turn move
+	ld a, [wEnemyMoveEffect]
+	cp FLY_EFFECT
+	jr z, .twoturncheck_par
+	cp CHARGE_EFFECT
+	jr nz, .twoturndone
+	
+.twoturncheck_par
+	;handle paralysis
+	ld a, [wEnemyMonStatus]
+	bit PAR, a
+	jr z, .twoturncheck_confused
+	call Random
+	cp $70
+	jr nc, .twoturncheck_confused
+	inc [hl]	;random chance to discourage if paralyzed
+	inc [hl]
+	
+.twoturncheck_confused
+	;handle confusion
+	ld a, [wEnemyBattleStatus1]
+	bit 7, a ;check confusion bit
+	jr z, .twoturndone
+	call Random
+	cp $C0
+	jr nc, .twoturndone
+	inc [hl]	;random chance to discourage if confused
+	inc [hl]
+	
+.twoturndone
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	ld a, [wEnemyMovePower]
+	and a
+	jp nz, .nextMove	;go to next move if the current move is not zero-power
+;At this line onward all moves are assumed to be zero power
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - do not use haze if user has no status or neutral stat mods
@@ -193,88 +370,9 @@ AIMoveChoiceModification1:
 .notsubstitute
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - do not use dream eater if enemy not asleep, otherwise encourage it
-	ld a, [wEnemyMoveEffect]	;load the move effect
-	cp DREAM_EATER_EFFECT	;see if it is dream eater
-	jr nz, .notdreameater	;skip out if move is not dream eater
-	ld a, [wBattleMonStatus]	;load the player pkmn non-volatile status
-	and $7	;check bits 0 to 2 for sleeping turns
-	jp z, .heavydiscourage	;heavily discourage using dream eater on non-sleeping pkmn
-	dec [hl]	;else slightly encourage dream eater's use on a sleeping pkmn
-	jp .nextMove
-.notdreameater	
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - do not use counter against a non-applicable move
-	ld a, [wEnemyMoveNum]	
-	cp COUNTER
-	jr nz, .countercheck_end	;if this move is not counter then jump out
-	ld a, [wPlayerMovePower]
-	and a
-	jp z, .heavydiscourage	;heavily discourage counter if enemy is using zero-power move
-	ld a, [wPlayerMoveType]
-	cp NORMAL
-	jr z, .countercheck_end	; continue on if countering a normal move
-	cp FIGHTING
-	jr z, .countercheck_end	; continue on if countering a fighting move
-	cp BIRD
-	jr z, .countercheck_end	; continue on if countering STRUGGLE or other typeless move
-	jp .heavydiscourage	;else heavily discourage since the player move type is not applicable to counter
-.countercheck_end
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - do not use moves that are ineffective against substitute if a substitute is up
-	push hl	;save hl register on the stack
-	ld hl, wPlayerBattleStatus2
-	bit HAS_SUBSTITUTE_UP, [hl]	;check hl for substitute bit
-	pop hl	;restore original hl data from the stack
-	jr z, .noSubImm	;if the substitute bit is not set, then skip out of this block
-	ld a, [wEnemyMoveEffect]	;get the move effect into a
-	push hl
-	push de
-	push bc
-	ld hl, SubstituteImmuneEffects
-	ld de, $0001
-	call IsInArray	;see if a is found in the hl array (carry flag set if true)
-	pop bc
-	pop de
-	pop hl
-	jp c, .heavydiscourage	;carry flag means the move effect is blocked by substitute
-	;else continue onward
-.noSubImm	
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	ld a, [wEnemyMovePower]
-	and a
-	jp nz, .nextMove	;go to next move if the current move is not zero-power
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;At this line onward all moves are assumed to be zero power
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;Heavily discourage healing moves if HP is full. Encourage if hp is low
-	ld a, [wEnemyMoveEffect]	;load the move effect
-	cp HEAL_EFFECT	;see if it is a healing move
-	jr nz, .notahealingmove	;skip out if move is not a healing move
-	ld a, 1	;
-	call AICheckIfHPBelowFraction
-	jp nc, .heavydiscourage	;if hp not below 1/1 max hp then heavily discourage
-	inc [hl]	;slightly discourage by default (1/2 hp to max-1 hp)
-	ld a, 2	;
-	call AICheckIfHPBelowFraction
-	jp nc, .nextMove	;if hp is 1/2 or more, get next move
-	dec [hl]	;else return preference to neutral (1/3 to 1/2 hp)
-	ld a, 3	;
-	call AICheckIfHPBelowFraction
-	jp nc, .nextMove	;if hp is 1/3 or more, get next move
-	dec [hl]	;else slightly encourage
-	jp .nextMove	;get next move
-.notahealingmove
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - do not use moves that are blocked by mist
-	push hl	;save hl register on the stack
-	ld hl, wPlayerBattleStatus2
-	bit PROTECTED_BY_MIST, [hl]	;check hl for mist bit
-	pop hl	;restore original hl data from the stack
+	ld a, [wPlayerBattleStatus2]
+	bit PROTECTED_BY_MIST, a	;check for mist bit
 	jr z, .noMistImm	;if the mist bit is not set, then skip out of this block
 	ld a, [wEnemyMoveEffect]	;get the move effect into a
 	push hl
@@ -312,8 +410,40 @@ AIMoveChoiceModification1:
 .nodefupmove
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;dylannote - lightly discourage lowering the accuracy of the Player below -2 or raising the evasion
+; of A.I. above +2
+	ld a, [wEnemyMoveEffect]
+	cp ACCURACY_DOWN1_EFFECT
+	jr z, .accuracylightdiscouragecheck
+	cp ACCURACY_DOWN2_EFFECT
+	jr z, .accuracylightdiscouragecheck
+	cp EVASION_UP1_EFFECT
+	jr z, .evasionlightdiscouragecheck
+	cp EVASION_UP2_EFFECT
+	jr z, .evasionlightdiscouragecheck
+.accuracylightdiscouragecheck
+	ld a, [wPlayerMonAccuracyMod]
+	cp 4	;-3
+	jp z, .lightdiscourage
+	cp 3	;-4
+	jp z, .lightdiscourage
+	cp 2	;-5
+	jp z, .lightdiscourage
+	cp 1	;-6
+	jr z, .movetoheavydiscouragecheck
+.evasionlightdiscouragecheck
+	ld a, [wEnemyMonEvasionMod]
+	cp 10	;+3
+	jp z, .lightdiscourage
+	cp 11	;+4
+	jp z, .lightdiscourage
+	cp 12	;+5
+	jp z, .lightdiscourage
+	cp 13	;+6
+;dylannote - fallthrough
 ;joenote - heavily discourage stat modifying moves if it would hit the mod limit and be ineffective
 	;check for stat down effects
+.movetoheavydiscouragecheck
 	ld a, [wEnemyMoveEffect]	;get the move effect
 	cp ATTACK_DOWN1_EFFECT	
 	jr c, .nostatdownmod	;if value is < the ATTACK_DOWN1_EFFECT value, jump out
@@ -380,7 +510,7 @@ AIMoveChoiceModification1:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - heavily discourage moves that do not stack
-	;check each of the stackabe effects one by one and jump to the corresponding section
+	;check each of the stackable effects one by one and jump to the corresponding section
 	ld a, [wEnemyMoveEffect]
 	cp FOCUS_ENERGY_EFFECT
 	jr z, .checkfocus
@@ -452,9 +582,10 @@ AIMoveChoiceModification1:
 	ld a, [wPlayerBattleStatus1]	;load the player pkmn volatile status
 	and $80	;check bit 7 for confusion bit
 	jp nz, .heavydiscourage	;heavily discourage using zero-power confusion moves on confused pkmn
-	jp .nextMove	;if opponent is not confused, then neither encourage or discourage and go to next move
 .notconfuse
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;don't use a status move against a status'd target
 	ld a, [wEnemyMoveEffect]
 	push hl
 	push de
@@ -465,17 +596,89 @@ AIMoveChoiceModification1:
 	pop bc
 	pop de
 	pop hl
-	jp nc, .nextMove
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	;joenote - if player pkmn has no nonvolatile status, then don't encourage/discourage and get next move
+	jr nc, .nostatusconflict
 	ld a, [wBattleMonStatus]
 	and a
-	jp z, .nextMove
+	jr nz, .heavydiscourage
+.nostatusconflict
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-.heavydiscourage	;joenote - added marker
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote: fix spamming of buff/debuff moves
+	;See if the move has an effect that should not be dissuaded
+	ld a, [wEnemyMoveEffect]
+	push hl
+	push de
+	push bc
+	ld hl, EffectsToNotDissuade
+	ld de, $0001
+	call IsInArray
+	pop bc
+	pop de
+	pop hl
+	jr nc, .spamprotection	;If not found on list, run anti-spam on it
+
+;let's try to blind the AI a bit so that it won't just status the player immediately after using
+;a restorative item or switching
+	;effect found on list of spam-exempt moves, is this a status move?
+	ld a, [wEnemyMoveEffect]
+	push hl
+	push de
+	push bc
+	ld hl, StatusAilmentMoveEffects
+	ld de, $0001
+	call IsInArray
+	pop bc
+	pop de
+	pop hl
+	jr nc, .skipoutspam	;skip if not in the list of status effects
+	
+	;effect is a status move, did the player use an item or switch?
+	ld a, [wActionResultOrTookBattleTurn]
+	and a
+	jr z, .skipoutspam	;skip if player did not use an item or switch
+	
+	;50% chance that the AI predicts the player would switch or use an item
+	call Random
+	rla
+	jr c, .skipoutspam	;if carry set, then proceed as normal
+	;else run spam protection on the status move
+	
+.spamprotection
+;heavily discourage 0 BP moves if health is below 1/3 max
+	ld a, 3
+	call AICheckIfHPBelowFraction
+	jp c, .heavydiscourage
+;heavily discourage 0 BP moves if one was used just previously
+	ld a, [wAILastMovePower]
+	and a
+	jp z, .heavydiscourage
+;else apply a random bias to the 0 bp move we are on
+	call Random	
+;outcome desired: 	50% chance to heavily discourage and would rather do damage
+;					12.5% chance to slightly encourage
+;					else neither encourage nor discourage
+	cp 128	;don't set carry flag if number is >= this value
+	jp nc, .heavydiscourage	
+	cp 32
+	jp c, .givepref	;if not discouraged, then there is a chance to slightly encourage to spice things up
+	;else neither encourage nor discourage
+.skipoutspam
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - end of this AI layer
+	jp .nextMove
+.lightdiscourage	;dylannote - adding a .lightdiscourage version for more options
+	ld a, [hl]
+	add $1 ; lightly discourage move
+	ld [hl], a
+	jp .nextMove
+.heavydiscourage
 	ld a, [hl]
 	add $5 ; heavily discourage move
 	ld [hl], a
+	jp .nextMove
+.givepref	;joenote - added marker
+	dec [hl] ; slightly encourage this move
 	jp .nextMove
 
 EffectsToNotDissuade:
@@ -485,6 +688,15 @@ EffectsToNotDissuade:
 	db HEAL_EFFECT
 	db FOCUS_ENERGY_EFFECT
 	db SUBSTITUTE_EFFECT
+	db REFLECT_EFFECT
+	db LIGHT_SCREEN_EFFECT
+	db SUBSTITUTE_EFFECT
+	db MIST_EFFECT
+	db ACCURACY_DOWN1_EFFECT
+	db ACCURACY_DOWN2_EFFECT
+	db EVASION_UP1_EFFECT
+	db EVASION_UP2_EFFECT
+	;fall through
 StatusAilmentMoveEffects:
 	db $01 ; unused sleep effect
 	db SLEEP_EFFECT
@@ -510,12 +722,18 @@ SubstituteImmuneEffects:	;joenote - added this table to track for substitute imm
 	db SPECIAL_DOWN2_EFFECT
 	db ACCURACY_DOWN2_EFFECT
 	db EVASION_DOWN2_EFFECT
+	db LEECH_SEED_EFFECT
 	db DRAIN_HP_EFFECT
 	db LEECH_SEED_EFFECT
 	db DREAM_EATER_EFFECT
 	db $FF
 
 MistBlockEffects:	;joenote - added this table to track for things blocked by mist
+	db $01 ; unused sleep effect
+	db SLEEP_EFFECT
+	db POISON_EFFECT
+	db PARALYZE_EFFECT
+	db CONFUSION_EFFECT
 	db ATTACK_DOWN1_EFFECT
 	db DEFENSE_DOWN1_EFFECT
 	db SPEED_DOWN1_EFFECT
@@ -528,6 +746,7 @@ MistBlockEffects:	;joenote - added this table to track for things blocked by mis
 	db SPECIAL_DOWN2_EFFECT
 	db ACCURACY_DOWN2_EFFECT
 	db EVASION_DOWN2_EFFECT
+	db LEECH_SEED_EFFECT
 	db $FF
 
 SpecialZeroBPMoves:	;joenote - added this table to tracks 0 bp moves that should not be treated as buffs
@@ -536,18 +755,23 @@ SpecialZeroBPMoves:	;joenote - added this table to tracks 0 bp moves that should
 	db THUNDER_WAVE
 	db $FF
 	
-; slightly encourage moves with specific effects.
-; in particular, stat-modifying moves and other move effects
-; that fall in-between
+OtherZeroBPEffects:	;joenote - added to keep track of some outliers
+	db LEECH_SEED_EFFECT
+	db DISABLE_EFFECT
+	db CONFUSION_EFFECT
+	db $FF
+	
+; slightly encourage moves with specific effects on the first turn from sendout only
+; in particular, stat-modifying moves and moves that are only useful once per sendout
 AIMoveChoiceModification2:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - kick out if no-attack bit is set
+;kick out if no-attack bit is set
 	ld a, [wUnusedC000]
 	bit 2, a
 	ret nz
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [wAILayer2Encouragement]
-	and a ;cp $1	;joenote - AI layer 2 should activate on 1st turn instead of 2nd turn after sendout
+	and a ;cp $1	;AI layer 2 should activate on 1st turn instead of 2nd turn after sendout
 	ret nz
 	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
 	ld de, wEnemyMonMoves ; enemy moves
@@ -564,12 +788,24 @@ AIMoveChoiceModification2:
 	ld a, [wEnemyMoveEffect]
 	cp ATTACK_UP1_EFFECT
 	jr c, .nextMove
-	cp BIDE_EFFECT
+	cp EVASION_UP1_EFFECT + 1
 	jr c, .preferMove
+	cp ATTACK_DOWN1_EFFECT
+	jr c, .nextMove
+	cp BIDE_EFFECT + 1			
+	jr c, .preferMove			;also includes Conversion, Haze, and Bide
+	cp MIST_EFFECT
+	jr c, .nextMove
+	cp FOCUS_ENERGY_EFFECT + 1
+	jr c, .preferMove			;includes Mist and Focus Energy
 	cp ATTACK_UP2_EFFECT
 	jr c, .nextMove
-	cp POISON_EFFECT
+	cp EVASION_UP2_EFFECT + 1
 	jr c, .preferMove
+	cp ATTACK_DOWN2_EFFECT
+	jr c, .nextMove
+	cp REFLECT_EFFECT + 1
+	jr c, .preferMove			;includes light screen and reflect
 	jr .nextMove
 .preferMove
 	dec [hl] ; slightly encourage this move
@@ -578,6 +814,7 @@ AIMoveChoiceModification2:
 ; encourages moves that are effective against the player's mon (even if non-damaging).
 ; discourage damaging moves that are ineffective or not very effective against the player's mon,
 ; unless there's no damaging move that deals at least neutral damage
+; joenote - updated to also do some more advanced battle strategies
 AIMoveChoiceModification3:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - kick out if no-attack bit is set
@@ -597,12 +834,49 @@ AIMoveChoiceModification3:
 	ret z ; no more moves in move set
 	inc de
 	call ReadMove
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
-;joenote: fix spamming of buff/debuff moves
-	ld a, [wEnemyMovePower]	;get the base power of the enemy's attack
-	and a	;check if it is zero
-	jr nz, .skipout	;get out of this section if non-zero power
-	;backup check: don't use a status move against a status'd target
+;don't use poison-effect moves on poison-type pokemon
+	ld a, [wEnemyMoveEffect]
+	cp POISON_EFFECT
+	jr nz, .notpoisoneffect
+	ld a, [wBattleMonType]
+	cp POISON
+	jp z, .heavydiscourage2
+	ld a, [wBattleMonType + 1]
+	cp POISON
+	jp z, .heavydiscourage2
+.notpoisoneffect
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;slightly discourage using most offensive moves against fly/dig opponent if faster than opponent
+	ld a, [wPlayerBattleStatus1]
+	bit 6, a
+	jr z, .endflydigcheck	;proceed as normal if player is not in fly/dig
+	
+	call StrCmpSpeed	;do a speed compare
+	jr c, .flydigcheck_faster	;a set carry bit means the ai 'mon is faster
+	ld a, [wEnemyMoveNum]
+	cp QUICK_ATTACK
+	jr z, .flydigcheck_faster
+
+.flydigcheck_notfaster
+	jr .endflydigcheck
+
+.flydigcheck_faster
+	;slightly discourage stuff that will just miss
+	ld a, [wEnemyMoveEffect]
+	push hl
+	push de
+	push bc
+	ld hl, MistBlockEffects
+	ld de, $0001
+	call IsInArray
+	pop bc
+	pop de
+	pop hl
+	jr c, .flydigcheck_discourage
+
 	ld a, [wEnemyMoveEffect]
 	push hl
 	push de
@@ -613,12 +887,36 @@ AIMoveChoiceModification3:
 	pop bc
 	pop de
 	pop hl
-	jr nc, .nostatusconflict
-	ld a, [wBattleMonStatus]
+
+	jr c, .flydigcheck_discourage
+	ld a, [wEnemyMoveEffect]
+	push hl
+	push de
+	push bc
+	ld hl, OtherZeroBPEffects
+	ld de, $0001
+	call IsInArray
+	pop bc
+	pop de
+	pop hl
+	jr c, .flydigcheck_discourage
+
+	ld a, [wEnemyMovePower]
 	and a
-	jr nz, .heavydiscourage2
-.nostatusconflict
-	;check on certain moves with zero bp but are handled differently
+	jr z, .endflydigcheck
+
+	ld a, [wEnemyMoveEffect]
+	cp FLY_EFFECT
+	jr z, .endflydigcheck
+	cp CHARGE_EFFECT
+	jr z, .endflydigcheck
+	
+.flydigcheck_discourage
+	inc [hl]
+.endflydigcheck
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;check on certain moves with zero bp but are handled differently
 	ld a, [wEnemyMoveNum]
 	push hl
 	push de
@@ -629,53 +927,16 @@ AIMoveChoiceModification3:
 	pop bc
 	pop de
 	pop hl
-	jp c, .skipout	;carry flag means the move was found in the list
-	;don't use poison-effect moves on poison-tpe pokemon
-	ld a, [wEnemyMoveEffect]
-	cp POISON_EFFECT
-	jr nz, .notpoisoneffect
-	ld a, [wBattleMonType]
-	cp POISON
-	jr z, .heavydiscourage2
-	ld a, [wBattleMonType + 1]
-	cp POISON
-	jr z, .heavydiscourage2
-.notpoisoneffect
-	;See if the move has an effect that should not be dissuaded
-	ld a, [wEnemyMoveEffect]
-	push hl
-	push de
-	push bc
-	ld hl, EffectsToNotDissuade
-	ld de, $0001
-	call IsInArray
-	pop bc
-	pop de
-	pop hl
-	jr nc, .applybias
-.backfromTwave
-	jp .nextMove	;neither encourage nor discourage the status move
-.applybias
-;heavily discourage 0 BP moves if health is below 1/3 max
-	ld a, 3
-	call AICheckIfHPBelowFraction
-	jp c, .heavydiscourage2
-;heavily discourage 0 BP moves if one was used just previously
-	ld a, [wAILastMovePower]
+	jp c, .specialBPend	;If found on list, treat it as if it were a damaging move
+
+	;otherwise only handle moves that deal damage from here on out
+	ld a, [wEnemyMovePower]
 	and a
-	jp z, .heavydiscourage2
-;else apply a random bias to the 0 bp move we are on
-	call Random	
-;outcome desired: 	50% chance to heavily discourage and would rather do damage
-;					12.5% chance to slightly encourage
-;					else neither encourage nor discourage
-	cp 128	;don't set carry flag if number is >= this value
-	jp nc, .heavydiscourage2	
-	cp 32
-	jp c, .givepref	;if not discouraged, then there is a chance to slightly encourage to spice things up
-	jp .nextMove	;neither encourage nor discourage
-.skipout
+	jp z, .nextMove	;go to next move if the current move is zero-power
+.specialBPend
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - heavily discourage attack moves that have no effect due to typing
 	push hl
 	push bc
 	push de
@@ -687,8 +948,7 @@ AIMoveChoiceModification3:
 	pop de
 	pop bc
 	pop hl
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;joenote - heavily discourage attack moves that have no effect due to typing
+
 	ld a, [wTypeEffectiveness]	;get the effectiveness
 	and a 	;check if it's zero
 	jr nz, .skipout2	;skip if it's not immune
@@ -698,23 +958,17 @@ AIMoveChoiceModification3:
 	ld [hl], a
 	jp .nextMove
 .skipout2
-	;if thunder wave is being used against a non-immune target, jump back a bit since it's not a damaging move
+	;if thunder wave is being used against a non-immune target, neither encourage nor discourage it
 	ld a, [wEnemyMoveNum]
 	cp THUNDER_WAVE
-	jp z, .backfromTwave
+	jp z, .nextMove
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - do not use ohko moves on faster opponents, since they will auto-miss
 	ld a, [wEnemyMoveEffect]	;load the move effect
 	cp OHKO_EFFECT	;see if it is ohko move
 	jr nz, .skipout3	;skip ahead if not ohko move
-	push hl
-	push bc
-	push de
 	call StrCmpSpeed	;do a speed compare
-	pop de
-	pop bc
-	pop hl
 	jp c, .nextMove	;ai is fast enough so ohko move viable
 	;else ai is slower so don't bother
 	jp .heavydiscourage2
@@ -722,7 +976,7 @@ AIMoveChoiceModification3:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote: static damage value moves should not be accounted for typing
-;at the same type, randomly bump their preference to spice things up
+;at the same time, randomly bump their preference to spice things up
 	ld a, [wEnemyMovePower]	;get the base power of the enemy's attack
 	cp $1	;check if it is 1. special damage moves assumed to have 1 base power
 	jr nz, .skipout4	;skip down if it's not a special damage move
@@ -732,10 +986,36 @@ AIMoveChoiceModification3:
 	jp .nextMove	;else neither encourage nor discourage
 .skipout4
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;jump if the move is not very effective
 	ld a, [wTypeEffectiveness]
 	cp $0A
-	jp z, .nextMove
 	jr c, .notEffectiveMove
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;if the type effectiveness is neutral, randomly apply slight preference if there is STAB
+	jr nz, .notneutraleffective
+	
+	;25% chance to check for and prefer a stab move
+	call Random
+	cp 192
+	jp c, .nextMove
+	
+	push bc
+	ld a, [wEnemyMoveType]
+	ld b, a
+	ld a, [wEnemyMonType1]
+	cp b
+	pop bc
+	jp z, .givepref
+	push bc
+	ld a, [wEnemyMoveType]
+	ld b, a
+	ld a, [wEnemyMonType2]
+	cp b
+	pop bc
+	jp z, .givepref
+	jp .nextMove
+.notneutraleffective
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	;at this line, move is super effective
 .givepref	;joenote - added marker
 	dec [hl] ; slightly encourage this move
@@ -894,10 +1174,12 @@ AIMoveChoiceModification4:	;this unused routine now handles intelligent trainer 
 	cp b
 	pop bc
 	jp c, .setSwitch	;switch if random number < mod 1 (-1 stage) to 6 (-6 stages)
-.skipSwitchModEnd
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;switch if supereffective move is being used against enemy
+.skipSwitchModEnd
 	ld a, [wPlayerMovePower]	;get the power of the player's move
 	cp $2	;regular damaging moves have power > 1
 	jr c, .skipSwitchEffectiveEnd	;skip out if the move is not a normal damaging move
@@ -1006,6 +1288,140 @@ AIMoveChoiceModification4:	;this unused routine now handles intelligent trainer 
 .skipSwitchEnd
 	ret
 
+; NEW layer.
+; slightly encourage moves with specific effects.
+; in particular, non-damaging status moves.
+AIMoveChoiceModification5:
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;kick out if no-attack bit is set
+	ld a, [wUnusedC000]
+	bit 2, a
+	ret nz
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	call Random
+	cp $AA	;~66.6% chance of activation
+	jr c, .Layer5Activation
+	ret
+.Layer5Activation
+	ld a, [wAILayer5Encouragement]
+	and a ;cp $1 ;ret nz	;AI layer 5 is activated regardless of the turn count
+	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
+	ld de, wEnemyMonMoves ; enemy moves
+	ld b, NUM_MOVES + 1
+.nextMove
+	dec b
+	ret z ; processed all 4 moves
+	inc hl
+	ld a, [de]
+	and a
+	ret z ; no more moves in move set
+	inc de
+	call ReadMove
+	ld a, [wEnemyMoveEffect]
+	cp SLEEP_EFFECT
+	jr z, .preferMove
+	cp CONFUSION_EFFECT
+	jr z, .preferMove
+	cp POISON_EFFECT
+	jr z, .preferMove
+	cp PARALYZE_EFFECT
+	jr z, .preferMove
+	cp LEECH_SEED_EFFECT
+	jr z, .preferMove
+	jr .nextMove
+.preferMove
+	dec [hl] ; slightly encourage this move
+	jr .nextMove
+	
+; NEW layer.
+; encourage certain moves under certain situations (advanced battle strategies).
+AIMoveChoiceModification6:
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;kick out if no-attack bit is set
+	ld a, [wUnusedC000]
+	bit 2, a
+	ret nz
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;do a speed compare, and kick out if the ai 'mon is slower
+	call StrCmpSpeed
+	ret nc
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	ld a, [wPlayerMovePower]	;all regular damage moves have a power of at least 10
+	cp 10
+	jr nc, .jumptolightscreencheck	;skip preferring substitute or mist if the player is using a move that is 10 power or above
+	ld a, [wAILayer6Encouragement]
+	and a ;cp $1 ;ret nz	;AI layer 6 is activated regardless of the turn count
+	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
+	ld de, wEnemyMonMoves ; enemy moves
+	ld b, NUM_MOVES + 1
+.nextMove
+	dec b
+	ret z ; processed all 4 moves
+	inc hl
+	ld a, [de]
+	and a
+	ret z ; no more moves in move set
+	inc de
+	call ReadMove
+	ld a, [wEnemyMoveEffect]
+	cp MIST_EFFECT
+	jr z, .preferMove
+	cp SUBSTITUTE_EFFECT
+	jr z, .preferMove
+	jr .nextMove
+.preferMove
+	dec [hl] ; slightly encourage this move
+	jr .nextMove
+.jumptolightscreencheck
+	ld a, [wPlayerMoveType]		;physical move types are numbers $00 to $08 while special is $14 to $1A
+	cp $14
+	jr c, .reflectencouragement	;if player not using special attacks, jump to reflect
+.lightscreenencouragement
+	ld a, [wAILayer6Encouragement]
+	and a ;cp $1 ;ret nz	;AI layer 6 is activated regardless of the turn count
+	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
+	ld de, wEnemyMonMoves ; enemy moves
+	ld b, NUM_MOVES + 1
+.nextMove2
+	dec b
+	ret z ; processed all 4 moves
+	inc hl
+	ld a, [de]
+	and a
+	ret z ; no more moves in move set
+	inc de
+	call ReadMove
+	ld a, [wEnemyMoveEffect]
+	cp LIGHT_SCREEN_EFFECT
+	jr z, .preferMove2
+	jr .nextMove2
+.preferMove2
+	dec [hl] ; slightly encourage this move
+	jr .nextMove2
+.reflectencouragement
+	ld a, [wAILayer6Encouragement]
+	and a ;cp $1 ;ret nz	;AI layer 6 is activated regardless of the turn count
+	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
+	ld de, wEnemyMonMoves ; enemy moves
+	ld b, NUM_MOVES + 1
+.nextMove3
+	dec b
+	ret z ; processed all 4 moves
+	inc hl
+	ld a, [de]
+	and a
+	ret z ; no more moves in move set
+	inc de
+	call ReadMove
+	ld a, [wEnemyMoveEffect]
+	cp REFLECT_EFFECT
+	jr z, .preferMove3
+	jr .nextMove3
+.preferMove3
+	dec [hl] ; slightly encourage this move
+	jr .nextMove3
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
 ;joenote - function for loading A into B so it can be called conditionally
 CondLDBA:
 	ld b, a
@@ -1044,7 +1460,7 @@ ReadMoveForAIscoring:
 ; move choice modification methods that are applied for each trainer class
 ; 0 is sentinel value
 ;1 - Do not use a move that only statuses (e.g., Thunder Wave) if the player's Pokémon already has a status.
-;2 - On the second turn only the Pokémon is out, prefer a move that heals/buffs/debuffs
+;2 - On the first turn only the Pokémon is out, prefer a move that heals/buffs/debuffs
 ;3 - Try to do type-matching when selecting attacks
 ;4 - switch if active pkmn is in trouble
 TrainerClassMoveChoiceModifications:
@@ -1055,11 +1471,11 @@ TrainerClassMoveChoiceModifications:
 	db 1,3,0    ; JR_TRAINER_M			;Subtracted 4
 	db 1,3,0    ; JR_TRAINER_F			;Subtracted 4
 	db 1,2,3,4,0; POKEMANIAC
-	db 1,2,3,4,0  ; SUPER_NERD
+	db 1,3,4,5,0  ; SUPER_NERD			;Added 5, Subtracted 2
 	db 1,3,0    ; HIKER					;Subtracted 4
 	db 1,0    ; BIKER
 	db 1,2,3,4,0  ; BURGLAR				;Added 2
-	db 1,2,3,0    ; ENGINEER			;Added 2, Subtracted 4
+	db 1,2,3,4,0    ; ENGINEER			;Added 2
 	db 1,2,0  ; JUGGLER_X
 	db 1,3,0  ; FISHER
 	db 1,3,0  ; SWIMMER
@@ -1074,7 +1490,7 @@ TrainerClassMoveChoiceModifications:
 	db 1,3,0    ; BLACKBELT				;Added 3
 	db 1,4,0    ; SONY1					;Added 4
 	db 1,2,3,4,0  ; PROF_OAK			;Added 2
-	db 1,2,3,4,0  ; CHIEF
+	db 1,2,3,4,0  ; CHIEF				
 	db 1,2,3,4,0  ; SCIENTIST			;Added 3,4
 	db 1,2,3,4,0  ; GIOVANNI			;Added 2
 	db 1,3,4,0    ; ROCKET				;Added 3,4
@@ -1084,8 +1500,8 @@ TrainerClassMoveChoiceModifications:
 	db 1,3,4,0    ; BROCK
 	db 1,2,3,4,0  ; MISTY				;Added 2
 	db 1,3,4,0  ; LT_SURGE
-	db 1,2,3,4,0  ; ERIKA				;Added 2
-	db 1,3,4,0  ; KOGA
+	db 1,3,4,5,0  ; ERIKA				;Added 5
+	db 1,2,3,4,0  ; KOGA				;Added 2
 	db 1,3,4,0  ; BLAINE
 	db 1,3,4,0  ; SABRINA
 	db 1,3,4,0  ; GENTLEMAN				;Subtracted 2
@@ -1095,6 +1511,7 @@ TrainerClassMoveChoiceModifications:
 	db 1,2,3,0    ; CHANNELER			;Added 2,3
 	db 1,3,4,0    ; AGATHA
 	db 1,3,4,0  ; LANCE
+	db 1,3,6,0  ; BUG_MASTER	;NEW	;Given 1,3,6
 
 INCLUDE "engine/battle/trainer_pic_money_pointers.asm"
 
@@ -1120,13 +1537,16 @@ TrainerAI:
 	ret z
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - AI should not use actions if in a move that prevents such a thing
+	ld a, [wEnemyBattleStatus2]
+	and %01100000
+	ret nz
 	ld a, [wEnemyBattleStatus1]
-	and $73
+	and %01110011
 	ret nz
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - switch if the switch bit is set	
 	call CheckandResetSwitchBit
-	jp nz, AISwitchIfEnoughMons	;switch if bit was initially set
+	jp nz, AISwitchIfEnoughMonsWithSwitchCancelChecks	;switch if bit was initially set ;dylannote - cancel checks added
 	;jp AISwitchIfEnoughMons	;joedebug - use this to make trainer ai constantly switch
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;	
 	ld a, [wTrainerClass] ; what trainer class is this?
@@ -1147,9 +1567,9 @@ TrainerAI:
 	ld a, [hli]
 	ld [wAICount], a
 	xor a
-	ld [wAICount2], a
+	ld [wAICount2], a	;dylannote - separate counter that restricts an item to 1 use only
 	xor a
-	ld [wAICount3], a
+	ld [wAICount3], a	;dylannote - additional counter that restricts another item to 1 use only
 .getpointer
 	ld a, [hli]
 	ld h, [hl]
@@ -1164,88 +1584,157 @@ TrainerAIPointers:
 	dbw 3,GenericAI
 	dbw 3,GenericAI
 	dbw 3,GenericAI
-	dbw 1,SailorAI	; sailor
-	dbw 1,JrtrainerMAI	; jrtrainerm
-	dbw 1,JrtrainerFAI	; jrtrainerf
-	dbw 5,PokemaniacAI	; pokemaniac
-	dbw 5,SupernerdAI	; supernerd		
-	dbw 1,HikerAI	; hiker
+	dbw 2,SailorAI	; sailor
+	dbw 2,JrtrainerMAI	; jrtrainerm
+	dbw 2,JrtrainerFAI	; jrtrainerf
+	dbw 4,PokemaniacAI	; pokemaniac
+	dbw 4,SupernerdAI	; supernerd		
+	dbw 2,HikerAI	; hiker
 	dbw 3,GenericAI
-	dbw 5,BurglarAI ; burglar
-	dbw 1,EngineerAI	; engineer
-	dbw 3,JugglerAI ; juggler_x
-	dbw 1,FisherAI	; fisher
-	dbw 1,SwimmerAI	; swimmer
+	dbw 4,BurglarAI ; burglar
+	dbw 2,EngineerAI	; engineer
+	dbw 4,JugglerAI ; juggler_x
+	dbw 2,FisherAI	; fisher
+	dbw 2,SwimmerAI	; swimmer
 	dbw 3,GenericAI
 	dbw 3,GenericAI
 	dbw 2,BeautyAI ; beauty				
-	dbw 1,PsychicTRAI	; psychicTR
-	dbw 1,RockerAI	; rocker
+	dbw 2,PsychicTRAI	; psychicTR
+	dbw 2,RockerAI	; rocker
 	dbw 4,JugglerAI ; juggler			
 	dbw 2,TamerAI ; tamer				
-	dbw 1,BirdkeeperAI	; birdkeeper
+	dbw 2,BirdkeeperAI	; birdkeeper
 	dbw 2,BlackbeltAI ; blackbelt
 	dbw 2,Sony1AI ; sony1				
 	dbw 3,GenericAI
 	dbw 8,ChiefAI ; chief
-	dbw 5,ScientistAI	; scientist		
-	dbw 9,GiovanniAI ; giovanni			
+	dbw 4,ScientistAI	; scientist		
+	dbw 8,GiovanniAI ; giovanni			
 	dbw 4,RocketAI ; rocket				
-	dbw 5,CooltrainerMAI ; cooltrainerm	
-	dbw 5,CooltrainerFAI ; cooltrainerf	
-	dbw 9,BrunoAI ; bruno				
-	dbw 5,BrockAI ; brock
-	dbw 5,MistyAI ; misty				
-	dbw 6,LtSurgeAI ; surge
-	dbw 6,ErikaAI ; erika
-	dbw 7,KogaAI ; koga					
+	dbw 4,CooltrainerMAI ; cooltrainerm	
+	dbw 4,CooltrainerFAI ; cooltrainerf	
+	dbw 8,BrunoAI ; bruno				
+	dbw 4,BrockAI ; brock
+	dbw 4,MistyAI ; misty				
+	dbw 4,LtSurgeAI ; surge
+	dbw 4,ErikaAI ; erika
+	dbw 8,KogaAI ; koga					
 	dbw 8,BlaineAI ; blaine				
-	dbw 7,SabrinaAI ; sabrina			
+	dbw 8,SabrinaAI ; sabrina			
 	dbw 4,GentlemanAI ; gentleman
-	dbw 6,Sony2AI ; sony2				
-	dbw 10,Sony3AI ; sony3				
-	dbw 9,LoreleiAI ; lorelei			
+	dbw 4,Sony2AI ; sony2				
+	dbw 8,Sony3AI ; sony3				
+	dbw 8,LoreleiAI ; lorelei			
 	dbw 2,ChannelerAI ; channeler		
-	dbw 9,AgathaAI ; agatha				
-	dbw 10,LanceAI ; lance				
+	dbw 8,AgathaAI ; agatha				
+	dbw 8,LanceAI ; lance
+	dbw 8,BugMasterAI ; bug_master	;NEW
 
 ;joenote - reorganizing these AI routines to jump on carry instead of returning on not-carry
 ;also adding recognition of a switch-pkmn bit
 
+;Dylannote - A.I. items that restore HP are generally used as follows, unless treated as a special case
+;Tier S trainers (37.5% or $60 below 1/2 HP, 50% or $80 below 1/4 HP, 62.5% or $A0 below 1/8 HP) OR (50% or $80 below 1/2 HP)
+;Tier A trainers (12.5% or $20 below 1/2 HP, 25% or $40 below 1/4 HP, 37.5% or $60 below 1/8 HP) OR (25% or $40 below 1/2 HP)
+;Tier B trainers (6.25% or $10 below 1/2 HP, 12.5% or $20 below 1/4 HP, 18.75% or $30 below 1/8 HP) OR (12.5% or $20 below 1/2 HP)
+;"Special Case" items are considered to be Full Heal, X Items, Dire Hit, Guard Spec,
+;or any healing items which do not follow the above guideline.
+;The total probability limit for special case items is unlimited for Tier S, 37.5% or $60 for Tier A,
+;and 12.5% or $20 for Tier B.
+
+;Dylannote - Item tiers. The above probabilities only apply to an item that matches the tier. If a trainer
+;uses an item outside their tier, it is acceptable to add or subtract 12.5% per tier from the general or
+;special case limit.
+;Tier S Items: Full Restore
+;Tier A Items: Max Potion, Hyper Potion, Full Heal, X Items
+;Tier B Items: Lemonade, Soda Pop, Fresh Water, Super Potion, Potion
+
+;Tier S+ has absolutely no limitations and can access extremely specialized A.I.
+;Tier A+ can access items from tier S without penalties.
+;Tier B+ can access items from tier A without penalties.
+
+;Every GYM LEADER in tier A receives a "Gym Leader" unique pool, which serves as a separate special case
+;pool, with a total probability limit of 37.5%.
+
+;Dylannote - If an item is restricted to 1 use only, add 12.5% to the general or special case limits.
+;If giving up general usage healing items, add 12.5% to the special case limit for each layer omitted.
+
 SailorAI:	;NEW
-	cp $10	;6.75%
+	cp $10	;6.25%
 	jr nc, .sailornext1
 	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
 	jp c, AIUseFreshWater
 .sailornext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .sailornext2
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFreshWater
+.sailornext2
+	call Random
+	cp $30	;18.75%
+	jr nc, .sailornext3
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFreshWater
+.sailornext3
 	and a
 	ret
 
 JrtrainerMAI:	;NEW
-	cp $20	;12.5%
+	cp $10	;6.25%
 	jr nc, .jrtrainermnext1
 	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
 	jp c, AIUseSuperPotion
 .jrtrainermnext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .jrtrainermnext2
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSuperPotion
+.jrtrainermnext2
+	call Random
+	cp $30	;18.75%
+	jr nc, .jrtrainermnext3
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSuperPotion
+.jrtrainermnext3
 	and a
 	ret
 
 JrtrainerFAI:	;NEW
-	cp $20	;12.5%
+	cp $10	;6.25%
 	jr nc, .jrtrainerfnext1
 	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
 	jp c, AIUseSuperPotion
 .jrtrainerfnext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .jrtrainerfnext2
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSuperPotion
+.jrtrainerfnext2
+	call Random
+	cp $30	;18.75%
+	jr nc, .jrtrainerfnext3
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSuperPotion
+.jrtrainerfnext3
 	and a
 	ret
 
 PokemaniacAI:	;NEW
 	cp $20	;12.5%
 	jr nc, .pokemaniacnext1
-	jp c, AISwitchIfEnoughMons
+	jp c, AISwitchIfEnoughMons	;SPECIAL CASE 1
 .pokemaniacnext1
 	call Random
 	cp $80	;50%
@@ -1255,48 +1744,101 @@ PokemaniacAI:	;NEW
 	jp c, AIUseHyperPotion
 .pokemaniacnext2
 	call Random
-	ld a, $4	;below fraction 
+	cp $40	;25%
+	jr nc, .pokemaniacnext3
+	ld a, $3	;below fraction 
     call AICheckIfHPBelowFraction
-	jp c, AIUseMaxPotion
+	jp c, AIUseMaxPotion	;SPECIAL CASE 2
+.pokemaniacnext3
+	and a
 	ret
 
 SupernerdAI:	;NEW
-	cp $80	;50%
+	cp $20	;12.5%
 	jr nc, .supernerdnext1
 	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
 	jp c, AIUseMaxPotion
 .supernerdnext1
 	call Random
+	cp $40	;25%
+	jr nc, .supernerdnext2
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseMaxPotion
+.supernerdnext2
+	call Random
+	cp $60	;37.5%
+	jr nc, .supernerdnext3
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseMaxPotion
+.supernerdnext3
+	call Random
+	cp $80	;50%
+	jr nc, .supernerdnext4
+	ld a, $2	;above fraction
+	call AICheckIfHPBelowFraction
+	jr c, .supernerdnext4
 	ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullHeal
+	jp nz, AIFHeaRestricted2	;SPECIAL CASE 1
+.supernerdnext4
+	and a
 	ret 
 	
 HikerAI:	;NEW
-	cp $10	;6.75%
+	cp $20	;12.5%
 	jr nc, .hikernext1
 	ld a, $2	;above fraction 
     call AICheckIfHPBelowFraction
-	jp nc, AIUseXDefend
+	jp nc, AIXDefRestricted2	;SPECIAL CASE 1
 .hikernext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .hikernext2
+	ld a, $8	;below fraction
+	call AICheckIfHPBelowFraction	
+	jp c, AIHPotRestricted3		;SPECIAL CASE 2
+.hikernext2
 	and a
 	ret
 
 BurglarAI:	;NEW
-	cp $80 ;50%
+	cp $20	;12.5%
 	jr nc, .burglarnext1
-    ld a, $2 ;above fraction
+	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
-    jp nc, AIXSpeRestricted2
+	jp c, AIUseMaxPotion
 .burglarnext1
 	call Random
-    cp $80	;50%
+	cp $40	;25%
 	jr nc, .burglarnext2
-    ld a, $3 ;below fraction
+	ld a, $3	;below fraction 
     call AICheckIfHPBelowFraction
-    jp c, AIUseFullRestore
+	jp c, AIUseMaxPotion
 .burglarnext2
+	call Random
+	cp $60	;37.5%
+	jr nc, .burglarnext3
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseMaxPotion
+.burglarnext3
+	call Random
+    cp $30	;18.75%
+	jr nc, .burglarnext4
+    ld a, $2	;above fraction
+    call AICheckIfHPBelowFraction
+    jp nc, AIXSpeRestricted2	;SPECIAL CASE 1
+.burglarnext4
+	call Random
+	cp $30	;18.75%
+	jr nc, .burglarnext5
+	ld a, $2	;above fraction
+	call AICheckIfHPBelowFraction
+	jp nc, AIDHitRestricted3	;SPECIAL CASE 2
+.burglarnext5
 	and a
     ret
 	
@@ -1307,359 +1849,706 @@ EngineerAI:	;NEW
     call AICheckIfHPBelowFraction
 	jp c, AIUseLemonade
 .engineernext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .engineernext2
+	ld a, $6	;below fraction
+	call AICheckIfHPBelowFraction
+	jp c, AIHPotRestricted2		;SPECIAL CASE 1
+.engineernext2
 	and a
 	ret
 
 FisherAI:	;NEW
-	cp $10	;6.75%
+	cp $20	;12.5%
 	jr nc, .fishernext1
 	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
 	jp c, AIUseLemonade
 .fishernext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .fishernext2
+	ld a, $8	;below fraction
+	call AICheckIfHPBelowFraction
+	jp c, AIHPotRestricted2		;SPECIAL CASE 1
+.fishernext2
 	and a
 	ret
 
 SwimmerAI:	;NEW
-	cp $10	;6.75%
+	cp $20	;12.5%
 	jr nc, .swimmernext1
-	ld a, $2	;above fraction 
+	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
-	jp nc, AIUseXSpecial
+	jp c, AIHPotRestricted2
 .swimmernext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .swimmernext2
+	ld a, $2	;above fraction
+	call AICheckIfHPBelowFraction
+	jp nc, AIXSpcRestricted3	;SPECIAL CASE 1
+.swimmernext2
 	and a
 	ret
 	
 BeautyAI:	;NEW
-	cp $C0 ;75%
+	cp $20	;12.5%
 	jr nc, .beautynext1
-	ld a, $4	;below fraction
+	ld a, $2	;below fraction
 	call AICheckIfHPBelowFraction
 	jp c, AIUseHyperPotion
 .beautynext1
+	call Random
+	cp $40	;25%
+	jr nc, .beautynext2
+	ld a, $2	;above fraction
+	call AICheckIfHPBelowFraction
+	jr c, .beautynext2
+	ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIFHeaRestricted2	;SPECIAL CASE 1
+.beautynext2
 	and a
 	ret
 	
 PsychicTRAI:	;NEW
 	cp $20	;12.5%
 	jr nc, .psychictrnext1
-	ld a, $4	;below fraction 
+	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
-	jp c, AIUseHyperPotion
+	jp c, AIHPotRestricted2
 .psychictrnext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .psychictrnext2
+	ld a, $2	;above fraction
+	call AICheckIfHPBelowFraction
+	jp nc, AIXSpcRestricted3	;SPECIAL CASE 1
+.psychictrnext2
 	and a
 	ret
 
 RockerAI:	;NEW
-	cp $20	;12.5%
+	cp $10	;6.25%
 	jr nc, .rockernext1
 	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
 	jp c, AIUseSodaPop
 .rockernext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .rockernext2
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSodaPop
+.rockernext2
+	call Random
+	cp $30	;18.75%
+	jr nc, .rockernext3
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSodaPop
+.rockernext3
 	and a
 	ret
 
 JugglerAI:	;NEW
 	cp $20	;12.5%
 	jr nc, .jugglernext1
-	jp c, AISwitchIfEnoughMons
+	jp c, AISwitchIfEnoughMons	;SPECIAL CASE 1
 .jugglernext1
 	call Random
-	cp $20	;12.5%
+	cp $40	;25%
 	jr nc, .jugglernext2
-	ld a, $1	;below fraction 
+	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
-	jp c, AIMPotRestricted2
+	jp c, AIUseHyperPotion
 .jugglernext2
 	call Random
-    ld a, [wEnemyMonStatus]
+	cp $40	;25%
+	jr nc, .jugglernext3
+	ld a, $2	;above fraction
+	call AICheckIfHPBelowFraction
+	jr c, .jugglernext3
+	ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullHeal
+	jp nz, AIUseFullHeal	;SPECIAL CASE 2
+.jugglernext3
+	and a
     ret
 	
 TamerAI:	;NEW
-	cp $20 ;12.5%
+	cp $20	;12.5%
 	jr nc, .tamernext1
-    ld a, $2 ;below fraction
+    ld a, $2	;below fraction
     call AICheckIfHPBelowFraction
-    jp c, AIHPotRestricted2
+    jp c, AIUseHyperPotion
 .tamernext1
 	call Random
-    cp $60	;37.5%
+    cp $40	;25%
 	jr nc, .tamernext2
-    ld a, $2 ;above fraction
+    ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-    jp nc, AIXAccRestricted3
+    jp nc, AIXAccRestricted2	;SPECIAL CASE 1
 .tamernext2
 	and a
     ret
 	
 BirdkeeperAI:	;NEW
-	cp $10	;6.75%
+	cp $20	;12.5%
 	jr nc, .birdkeepernext1
 	ld a, $2	;above fraction 
     call AICheckIfHPBelowFraction
-	jp nc, AIUseXSpeed
+	jp nc, AIXSpeRestricted2	;SPECIAL CASE 1
 .birdkeepernext1
+	call Random
+	cp $20	;12.5%
+	jr nc, .birdkeepernext2
+	ld a, $2	;below fraction
+	call AICheckIfHPBelowFraction
+	jp c, AIHPotRestricted3
+.birdkeepernext2
 	and a
 	ret
 
 BlackbeltAI:
-	cp $40 ;25%
+	cp $40	;25%
 	jr nc, .blackbeltnext1
-    ld a, $2 ;below fraction
+    ld a, $2	;below fraction
     call AICheckIfHPBelowFraction
     jp c, AIHPotRestricted2
 .blackbeltnext1
 	call Random
     cp $40	;25%
 	jr nc, .blackbeltnext2
-    ld a, $2 ;above fraction
+    ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-    jp nc, AIXAttRestricted3
+    jp nc, AIXAttRestricted3	;SPECIAL CASE 1
 .blackbeltnext2
 	and a
     ret
 	
 Sony1AI:	;NEW
-	cp $60 ;37.5%
+	cp $40 ;25%
 	jr nc, .sony1next1
-	ld a, $2 ;above fraction
+	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
 	jr c, .sony1next1
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIFHeaRestricted2
+	jp nz, AIFHeaRestricted2	;SPECIAL CASE 1
 .sony1next1
-	call Random
-    cp $20	;12.5%
+	cp $10	;6.25%
 	jr nc, .sony1next2
-    ld a, $2 ;below fraction
+	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
-    jp c, AIUseSuperPotion
+	jp c, AIUseSuperPotion
 .sony1next2
+	call Random
+	cp $20	;12.5%
+	jr nc, .sony1next3
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSuperPotion
+.sony1next3
+	call Random
+	cp $30	;18.75%
+	jr nc, .sony1next4
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSuperPotion
+.sony1next4
 	and a
     ret
 	
 ChiefAI:		;NEW
-	cp $C0 ;75%
+	cp $60	;37.5%
 	jr nc, .chiefnext1
-    ld a, $2 ;below fraction
+	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
-    jp c, AIUseFullRestore
+	jp c, AIUseFullRestore
 .chiefnext1
 	call Random
-    cp $C0 ;75%
+	cp $80	;50%
 	jr nc, .chiefnext2
-	ld a, $1 ;below fraction
+	ld a, $3	;below fraction 
     call AICheckIfHPBelowFraction
-	jr nc, .chiefnext2
+	jp c, AIUseFullRestore
+.chiefnext2
+	call Random
+	cp $A0	;62.5%
+	jr nc, .chiefnext3
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.chiefnext3
+	call Random
+    cp $80 ;50%
+	jr nc, .chiefnext4
+	ld a, $2	;below fraction
+    call AICheckIfHPBelowFraction
+	jr nc, .chiefnext4
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullRestore
-.chiefnext2
+	jp nz, AIUseFullRestore		;SPECIAL CASE 1
+.chiefnext4
+	call Random
+    cp $80 ;50%
+	jr nc, .chiefnext5
+	ld a, $2	;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .chiefnext5
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal		;SPECIAL CASE 2
+.chiefnext5
+	call Random
+    cp $20 ;12.5%
+	jr nc, .chiefnext6
+	call StrCmpSpeed	;only use X_SPEED if currently slower than player
+	jr c, .chiefnext6
+	ld a, $2	;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .chiefnext6
+    ld a, [wEnemyMonStatus]
+	and a
+	jp z, AIUseXSpeed		;SPECIAL CASE 3
+.chiefnext6
 	and a
 	ret
 	
 ScientistAI:	;NEW
-	cp $60	;37.5%
+	cp $60	;12.5%
 	jr nc, .scientistnext1
-    ld a, $2 ;above fraction
+    ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-    jp nc, AIXSpcRestricted2
+    jp nc, AIXSpcRestricted2	;SPECIAL CASE 1
 .scientistnext1
 	call Random
-	cp $20	;12.5%
+	cp $20	;25%
 	jr nc, .scientistnext2
-	ld a, $1 ;below fraction
+	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-	jr nc, .scientistnext2
+	jr c, .scientistnext2
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullRestore
+	jp nz, AIUseFullHeal		;SPECIAL CASE 2
 .scientistnext2
 	call Random
-    cp $80	;50%
+    cp $20	;12.5%
 	jr nc, .scientistnext3
-    ld a, $3 ;below fraction
+    ld a, $3	;below fraction
     call AICheckIfHPBelowFraction
     jp c, AIUseFullRestore
 .scientistnext3
+	call Random
+    cp $40	;25%
+	jr nc, .scientistnext4
+    ld a, $6	;below fraction
+    call AICheckIfHPBelowFraction
+    jp c, AIUseFullRestore
+.scientistnext4
 	and a
     ret
 	
 GiovanniAI:
-	cp $C0 ;75%
+	cp $20	;12.5%
+	jr nc, .giovanninext0
+	ld a, $2	;above fraction
+	call AICheckIfHPBelowFraction
+	jr c, .giovanninext0
+	ld a, [wPlayerMovePower]
+	cp 65
+	jr c, .usedirehitinstead
+	ld a, [wPlayerMoveType]
+	cp $14
+	jr c, .useXdefendinstead
+	ld a, [wEnemyBattleStatus3]	;If Guard Spec was already used, then attempt to use Dire Hit instead
+	bit HAS_LIGHT_SCREEN_UP, a
+	jr nz, .usedirehitinstead
+	jp AIUseGuardSpec		;GIOVANNI UNIQUE POOL
+.useXdefendinstead
+	ld a, [wEnemyMonDefenseMod]
+	cp 9	;+2
+	jr nc, .usedirehitinstead
+	jp AIUseXDefend			;GIOVANNI UNIQUE POOL
+.usedirehitinstead
+	call StrCmpSpeed
+	jr nc, .giovanninext0
+	ld a, [wEnemyBattleStatus2]	;If Dire Hit was already used, skip
+	bit GETTING_PUMPED, a
+	jr nz, .giovanninext0
+	jp AIUseDireHit			;GIOVANNI UNIQUE POOL
+; Activates when Giovanni's Mon has at least 1/2 health. When being targeted by a special attack 
+; of 65 power or greater, 12.5% chance to use Guard Spec, or if it is a physical attack instead,
+; 12.5% chance to use X Defend (up to +2 DEF). If being targeted by a weaker attack, or if Giovanni
+; has already used Guard Spec once or X Defend twice, and his Mon is faster, 12.5% chance to 
+; use Dire Hit.
+.giovanninext0
+	call Random
+    cp $60	;37.5%
 	jr nc, .giovanninext1
-    ld a, $2 ;below fraction
+	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
-    jp c, AIUseFullRestore
+	jp c, AIUseFullRestore
 .giovanninext1
 	call Random
-    cp $C0 ;75%
+	cp $80	;50%
 	jr nc, .giovanninext2
-	ld a, $1 ;below fraction
+	ld a, $3	;below fraction 
     call AICheckIfHPBelowFraction
-	jr nc, .giovanninext2
-    ld a, [wEnemyMonStatus]
-	and a
-	jp nz, AIUseFullRestore
+	jp c, AIUseFullRestore
 .giovanninext2
 	call Random
-    cp $40 ;25%
+	cp $A0	;62.5%
 	jr nc, .giovanninext3
-	ld a, $2 ;above fraction
+	ld a, $6	;below fraction 
     call AICheckIfHPBelowFraction
-	jr c, .giovanninext3
+	jp c, AIUseFullRestore
+.giovanninext3
+	call Random
+    cp $80 ;50%
+	jr nc, .giovanninext4
+	ld a, $1	;below fraction
+    call AICheckIfHPBelowFraction
+	jr nc, .giovanninext4
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullHeal
-.giovanninext3
+	jp nz, AIUseFullRestore		;SPECIAL CASE 1
+.giovanninext4
+	call Random
+    cp $E0 ;87.5%
+	jr nc, .giovanninext5
+	ld a, $1	;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .giovanninext5
+    ld a, [wEnemyMonStatus]
 	and a
-    ret
+	jp nz, AIUseFullHeal		;SPECIAL CASE 2
+.giovanninext5
+	and a
+	ret
 
 RocketAI:    ;NEW
-    cp $E0 ;87.5%
+    cp $20	;12.5%
 	jr nc, .rocketnext1
-	ld a, $4	;below fraction 
+	ld a, $2	;below fraction
     call AICheckIfHPBelowFraction
 	jp c, AIUseHyperPotion
 .rocketnext1
 	call Random
-    cp $20	;12.5%
+	cp $40	;25%
 	jr nc, .rocketnext2
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseHyperPotion
+.rocketnext2
+	call Random
+	cp $60	;37.5%
+	jr nc, .rocketnext3
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseHyperPotion
+.rocketnext3
+	call Random
+    cp $20	;12.5%
+	jr nc, .rocketnext4
     ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-    jp nc, AIXSpeRestricted2
-.rocketnext2
+    jp nc, AIXSpeRestricted2	;SPECIAL CASE 1
+.rocketnext4
 	and a
     ret
 
 CooltrainerMAI:
-	cp $80 ;50%
+	cp $40 ;25%
 	jr nc, .cooltrainermnext1
-    ld a, $2 ;below fraction
+    ld a, $2	;below fraction
     call AICheckIfHPBelowFraction
-    jp c, AIUseFullRestore
+    jp c, AIUseMaxPotion
 .cooltrainermnext1
 	call Random
-    cp $80 ;50%
+    cp $60 ;37.5%
 	jr nc, .cooltrainermnext2
-	ld a, $2 ;above fraction
+	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
 	jr c, .cooltrainermnext2
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullHeal
+	jp nz, AIUseFullHeal	;SPECIAL CASE 1
 .cooltrainermnext2
 	and a
     ret
 	
 CooltrainerFAI:
-	cp $80 ;50%
+	cp $40 ;25%
 	jr nc, .cooltrainerfnext1
-    ld a, $2 ;below fraction
+    ld a, $2	;below fraction
     call AICheckIfHPBelowFraction
-    jp c, AIUseFullRestore
+    jp c, AIUseMaxPotion
 .cooltrainerfnext1
 	call Random
-    cp $80 ;50%
+    cp $60 ;37.5%
 	jr nc, .cooltrainerfnext2
-	ld a, $2 ;above fraction
+	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
 	jr c, .cooltrainerfnext2
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullHeal
+	jp nz, AIUseFullHeal	;SPECIAL CASE 1
 .cooltrainerfnext2
 	and a
     ret
 	
 BrockAI:
-	cp $60	;37.5%
+	ld a, [wEnemyMonType1]
+	cp ROCK
+	jr nz, .brocknext0
+	ld a, [wEnemyMonType2]
+	cp GROUND
+	jr nz, .brocknext0
+	ld a, [wPlayerMoveType]
+	cp WATER
+	jr c, .brocknext0	;every type with a lower id than WATER
+	cp ELECTRIC
+	jr nc, .brocknext0	;every type with a higher id than GRASS
+	jp AISwitchIfEnoughMonsL1
+; At the start of battle, Brock is likely to switch out Geodude if Geodude is targeted by a WATER or
+; GRASS type attack
+.brocknext0
+	call Random
+	cp $60 ;37.5%
 	jr nc, .brocknext1
-    ld a, $2 ;above fraction
+	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-    jp nc, AIGSpeRestricted2
+	jr c, .brocknext1
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal	;SPECIAL CASE 1
 .brocknext1
 	call Random
-	cp $20	;12.5%
+	cp $60	;37.5%
 	jr nc, .brocknext2
-    ld a, $2 ;below fraction
+    ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-    jp c, AIMPotRestricted3
+    jp nc, AIGSpeRestricted2	;GYM LEADER UNIQUE POOL
 .brocknext2
 	call Random
-	ld a, [wEnemyMonStatus]
+	cp $40	;25%
+	jr nc, .brocknext3
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIMPotRestricted3
+.brocknext3
+	call Random
+	cp $40	;25%
+	jr nc, .brocknext4
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseMaxPotion
+.brocknext4
+	call Random
+	cp $60	;37.5%
+	jr nc, .brocknext5
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseMaxPotion
+.brocknext5
 	and a
-	jp nz, AIUseFullHeal
 	ret
 
 MistyAI:
-	cp $60	;37.5%
+	cp $60 ;37.5%
 	jr nc, .mistynext1
-    ld a, $2 ;above fraction
+	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-    jp nc, AIXSpcRestricted2
+	jr c, .mistynext1
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal	;SPECIAL CASE 1
 .mistynext1
 	call Random
-	cp $20	;12.5%
+	cp $60	;37.5%
 	jr nc, .mistynext2
-    ld a, $2 ;below fraction
+    ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-    jp c, AIMPotRestricted3
+    jp nc, AIXSpcRestricted2	;GYM LEADER UNIQUE POOL
 .mistynext2
 	call Random
-	ld a, [wEnemyMonStatus]
+	cp $40	;25%
+	jr nc, .mistynext3
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIMPotRestricted3
+.mistynext3
+	call Random
+	cp $40	;25%
+	jr nc, .mistynext4
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseMaxPotion
+.mistynext4
+	call Random
+	cp $60	;37.5%
+	jr nc, .mistynext5
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseMaxPotion
+.mistynext5
 	and a
-	jp nz, AIUseFullHeal
 	ret
 	
 LtSurgeAI:
-	cp $60	;37.5%
+	cp $60 ;37.5%
 	jr nc, .ltsurgenext1
-    ld a, $2 ;above fraction
+	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-    jp nc, AIDHitRestricted2
+	jr c, .ltsurgenext1
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal	;SPECIAL CASE 1
 .ltsurgenext1
 	call Random
 	cp $60	;37.5%
 	jr nc, .ltsurgenext2
-    ld a, $2 ;below fraction
+    ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-    jp c, AIMPotRestricted3
+    jp nc, AIDHitRestricted2	;GYM LEADER UNIQUE POOL
 .ltsurgenext2
 	call Random
-	ld a, [wEnemyMonStatus]
+	cp $40	;25%
+	jr nc, .ltsurgenext3
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIFResRestricted3
+.ltsurgenext3
+	call Random
+	cp $40	;25%
+	jr nc, .ltsurgenext4
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.ltsurgenext4
+	call Random
+	cp $60	;37.5%
+	jr nc, .ltsurgenext5
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.ltsurgenext5
 	and a
-	jp nz, AIUseFullHeal
 	ret
 	
 ErikaAI:
-    cp $60	;37.5%
+    cp $60 ;37.5%
 	jr nc, .erikanext1
-    ld a, $2 ;above fraction
+	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-    jp nc, AIXAccRestricted2
+	jr c, .erikanext1
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal	;SPECIAL CASE 1
 .erikanext1
 	call Random
 	cp $60	;37.5%
 	jr nc, .erikanext2
-    ld a, $2 ;below fraction
+    ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-    jp c, AIMPotRestricted3
+    jp nc, AIXAccRestricted2	;GYM LEADER UNIQUE POOL
 .erikanext2
 	call Random
-	ld a, [wEnemyMonStatus]
+	cp $40	;25%
+	jr nc, .erikanext3
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIFResRestricted3
+.erikanext3
+	call Random
+	cp $40	;25%
+	jr nc, .erikanext4
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.erikanext4
+	call Random
+	cp $60	;37.5%
+	jr nc, .erikanext5
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.erikanext5
 	and a
-	jp nz, AIUseFullHeal
 	ret
 
 KogaAI:
-	ld a, $3
+	cp $60	;37.5%
+	jr nc, .koganext0
+	ld a, $2	;above fraction
 	call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore				
+	jr c, .koganext0
+	ld a, [wEnemyMonEvasionMod]
+	cp 9	;+2
+	jr c, .koganext0
+	ld a, [wEnemyMonAttackMod]
+	cp 9	;+2
+	jr nc, .useXspeedinstead
+	call StrCmpSpeed
+	jr nc, .useXspeedinstead
+	jp AIUseXAttack			;GYM LEADER UNIQUE POOL
+.useXspeedinstead
+	ld a, [wEnemyMonSpeedMod]
+	cp 9	;+2
+	jr nc, .koganext0
+	call StrCmpSpeed
+	jr c, .koganext0
+	jp AIUseXSpeed			;GYM LEADER UNIQUE POOL
+; when Koga's Mon has at least 1/2 health, and +2 Evasion or greater, 37.5% chance to use X Attack
+; if mon is currently faster, else 37.5% chance to use X Speed. This is limited to +2 each.
+.koganext0
+	call Random
+	cp $60	;37.5%
+	jr nc, .koganext1
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.koganext1
+	call Random
+	cp $80	;50%
+	jr nc, .koganext2
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.koganext2
+	call Random
+	cp $A0	;62.5%
+	jr nc, .koganext3
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.koganext3
+	call Random
+    cp $80 ;50%
+	jr nc, .koganext4
+	ld a, $2	;below fraction
+    call AICheckIfHPBelowFraction
+	jr nc, .koganext4
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullRestore		;SPECIAL CASE 1
+.koganext4
+	call Random
+    cp $80 ;50%
+	jr nc, .koganext5
+	ld a, $1	;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .koganext5
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal		;SPECIAL CASE 2
+.koganext5
+	and a
 	ret
 	
 BlaineAI:	;blaine needs to check HP. this was an oversight	
@@ -1678,29 +2567,46 @@ SabrinaAI:
 	ret
 
 GentlemanAI:	;NEW
-	cp $40 ;25%
-	jr nc, .gentlemannext1
-    ld a, $2 ;above fraction
-    call AICheckIfHPBelowFraction
-    jp nc, AIGSpeRestricted2
-.gentlemannext1
-	call Random
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullHeal
-    ret
+	jp nz, AIUseFullHeal	;SPECIAL CASE 1, UNIQUE TO GENTLEMAN (I.E. TIER A- 100% PROBABILITY TO USE
+    ret						;FULL HEAL WHEN UNDER STATUS)
 
 Sony2AI:
-	cp $C0	;75%
+    cp $60 ;37.5%
 	jr nc, .sony2next1
-    ld a, $2 ;below fraction
+	ld a, $1	;below fraction
     call AICheckIfHPBelowFraction
-    jp c, AIUseMaxPotion
+	jr nc, .sony2next1
+	ld a, $2	;above fraction
+	call AICheckIfHPBelowFraction
+	jr c, .sony2next1
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullRestore		;SPECIAL CASE 1
 .sony2next1
 	call Random
-	ld a, [wEnemyMonStatus]
+	cp $30	;12.5%
+	jr nc, .sony2next2
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.sony2next2
+	call Random
+	cp $40	;25%
+	jr nc, .sony2next3
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.sony2next3
+	call Random
+	cp $60	;37.5%
+	jr nc, .sony2next4
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.sony2next4
 	and a
-	jp nz, AIUseFullHeal
 	ret
 
 Sony3AI:
@@ -1722,19 +2628,33 @@ LoreleiAI:
 	ret
 
 ChannelerAI:	;NEW
-	cp $10 ;6.75%
+	cp $8 ;3.125%
 	jr nc, .channelernext1
 	ld a, $1	;below fraction 
     call AICheckIfHPBelowFraction
-	jp c, AIFResRestricted2
+	jp c, AIFResRestricted2	;SPECIAL CASE 1, UNIQUE TO CHANNELER (I.E. TIER B+ USING FULL RESTORE)
 .channelernext1
 	call Random
-    cp $40	;25%
+    cp $10	;6.25%
 	jr nc, .channelernext2
     ld a, $2	;below fraction
     call AICheckIfHPBelowFraction
     jp c, AIUseHyperPotion
 .channelernext2
+	call Random
+	cp $20	;12.5%
+	jr nc, .channelernext3
+	ld a, $3	;below fraction
+	call AICheckIfHPBelowFraction
+	jp c, AIUseHyperPotion
+.channelernext3
+	call Random
+	cp $30	;18.75%
+	jr nc, .channelernext4
+	ld a, $6	;below fraction
+	call AICheckIfHPBelowFraction
+	jp c, AIUseHyperPotion
+.channelernext4
 	and a
     ret
 
@@ -1765,6 +2685,39 @@ LanceAI:
 	jp c, AIUseFullRestore				
 .lancereturn
 	ret
+	
+BugMasterAI:
+	cp $20	;12.5%
+	jr nc, .bugmasternext0
+	jp c, AISwitchIfEnoughMonsL1
+	ret
+; Bug Master has a 12.5% chance to switch once during a battle.
+.bugmasternext0
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+	call Random
+    cp $80 ;50%
+	jr nc, .bugmasternext1
+	ld a, $2	;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .bugmasternext1
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal		;SPECIAL CASE 1
+.bugmasternext1
+	call Random
+    cp $20 ;12.5%
+	jr nc, .bugmasternext2
+	ld a, $2	;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .bugmasternext2
+    ld a, [wEnemyMonStatus]
+	and a
+	jp z, AIXAttRestricted2		;SPECIAL CASE 2
+.bugmasternext2
+	and a
+	ret
 
 GenericAI:
 	and a ; clear carry
@@ -1787,6 +2740,7 @@ SetSwitchBit:
 	ret
 
 DecrementAICount:
+	call UndoEnemySelectionPPDecrement	;joenote - undo the pp decrement of already-selected move if applicable
 	ld hl, wAICount
 	dec [hl]
 	scf
@@ -1930,8 +2884,295 @@ AIPrintItemUseAndUpdateHPBar:
 	predef UpdateHPBar2
 	jp DecrementAICount
 
-AISwitchIfEnoughMons:
-; enemy trainer switches if there are 2 or more unfainted mons in party
+AISwitchIfEnoughMonsWithSwitchCancelChecks:
+;dylannote - The first pre-check to skip all cancel switch tests if the A.I. mon is at critically low health and is slower
+	ld a, $8
+	call AICheckIfHPBelowFraction
+	jr nc, .continueprecheck
+	call StrCmpSpeed
+	jr c, .continueprecheck
+	jp .continueswitching
+.continueprecheck
+;dylannote - Pre-check to skip all cancel switch tests if the A.I. mon's Accuracy modifier is -4 or lower 
+	ld a, [wEnemyMonAccuracyMod]
+	cp 4	;testing for lower than -3
+	jp c, .continueswitching
+;else fallthrough
+;dylannote - More pre-checks to prevent abuse of the cancel switch tests. If the A.I. is currently confused or seeded, 
+;skip all the cancel tests and switch as normal
+	ld a, [wEnemyBattleStatus1]
+	bit CONFUSED, a
+	jp nz, .continueswitching
+	ld a, [wEnemyBattleStatus2]
+	bit SEEDED, a
+	jp nz, .continueswitching
+;else fallthrough
+;dylannote - More pre-checks to prevent player abuse of my glorious A.I., skip to the stat modifier checks if the player is 
+;boosting their stats
+	ld a, [wPlayerMoveEffect]
+	cp ATTACK_UP1_EFFECT
+	jr c, .continuesubstitutecheck
+	cp EVASION_UP1_EFFECT + 1
+	jp c, .continuephysicaloffensivestatmodifierscheck
+	cp ATTACK_UP2_EFFECT
+	jr c, .continuesubstitutecheck
+	cp EVASION_UP2_EFFECT + 1
+	jp c, .continuephysicaloffensivestatmodifierscheck
+;dylannote - fallthrough if all pre-checks have failed and the player is not using a stat-boosting move
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.continuesubstitutecheck
+;dylannote - Significantly discourage switching if the A.I. has an active Substitute
+	ld a, [wEnemyBattleStatus2]
+	bit HAS_SUBSTITUTE_UP, a
+	jr z, .continuereflectcheck	
+	call Random
+	cp $E0	;~87.5% chance to outright cancel the switch
+	jp c, .cancelswitching
+;else fallthrough
+.continuereflectcheck
+;dylannote - Discourage switching if the A.I. has an active reflect and the player uses a physical attack
+	ld a, [wEnemyBattleStatus3]
+	bit HAS_REFLECT_UP, a
+	jr z, .continuelightscreencheck
+	ld a, [wPlayerMovePower]
+	and a
+	jr z, .continuelightscreencheck
+	ld a, [wPlayerMoveType]
+	cp $14
+	jr nc, .continuelightscreencheck
+	call Random
+	cp $A0	;~62.5% chance to outright cancel the switch
+	jp c, .cancelswitching
+;else fallthrough
+.continuelightscreencheck
+;dylannote - Discourage switching if the A.I. has an active light screen or guard spec has been used and the player uses a special attack
+	ld a, [wEnemyBattleStatus3]
+	bit HAS_LIGHT_SCREEN_UP, a
+	jr z, .continuefocusenergyanddirehitcheck
+	ld a, [wPlayerMovePower]
+	and a
+	jr z, .continuefocusenergyanddirehitcheck	
+	ld a, [wPlayerMoveType]
+	cp $14
+	jr c, .continuefocusenergyanddirehitcheck	
+	call Random
+	cp $A0	;~62.5% chance to outright cancel the switch
+	jp c, .cancelswitching
+;else fallthrough
+.continuefocusenergyanddirehitcheck
+;dylannote - Discourage switching if the A.I. has an active focus energy or dire hit has been used and the
+;A.I. mon is faster, while the player's HP is below 1/2
+	ld a, [wEnemyBattleStatus2]
+	bit GETTING_PUMPED, a
+	jr z, .continuemistcheck
+	call StrCmpSpeed	
+	jr nc, .continuemistcheck	
+	ld a, $2	;below fraction 
+    call PlayerCheckIfHPBelowFraction
+	jr nc, .continuemistcheck	
+	call Random
+	cp $A0	;~62.5% chance to outright cancel the switch
+	jp c, .cancelswitching
+;else fallthrough
+.continuemistcheck
+;dylannote - Significantly discourage switching if the A.I. has an active mist and the player uses a non-damaging attack
+	ld a, [wEnemyBattleStatus2]
+	bit PROTECTED_BY_MIST, a
+	jr z, .continueXaccuracycheck
+	ld a, [wPlayerMovePower]
+	and a
+	jr nz, .continueXaccuracycheck
+	call Random
+	cp $E0	;~87.5% chance to outright cancel the switch
+	jp c, .cancelswitching
+;else fallthrough
+.continueXaccuracycheck
+;dylannote - Somewhat discourage switching if the A.I. has used X accuracy and health is 1/2 or greater
+	ld a, [wEnemyBattleStatus2]
+	bit USING_X_ACCURACY, a
+	jr z, .continuetrappingcheck	
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jr c, .continuetrappingcheck
+	call Random
+	cp $60	;~37.5% chance to outright cancel the switch
+	jp c, .cancelswitching
+;else fallthrough
+.continuetrappingcheck
+;dylannote - Significantly discourage switching if the A.I. is currently using a trapping move unless status'd
+	ld a, [wEnemyBattleStatus1]
+	bit USING_TRAPPING_MOVE, a
+	jr z, .finishedpreliminarycheck
+	ld a, [wEnemyMonStatus]
+	and a
+	jr nz, .finishedpreliminarycheck
+	call Random
+	cp $E0	;~87.5% chance to outright cancel the switch
+	jp c, .cancelswitching
+;dylannote - fallthrough if all preliminary switch cancel checks have failed
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;dylannote - this section covers Evasion
+.finishedpreliminarycheck
+;dylannote - Skip the Evasion switch cancel check if the player has an active X accuracy or is using a move with a SWIFT effect
+	ld a, [wPlayerBattleStatus2]
+	bit USING_X_ACCURACY, a
+	jp nz, .continuephysicaloffensivestatmodifierscheck
+	ld a, [wPlayerMoveEffect]
+	cp SWIFT_EFFECT
+	jp z, .continuephysicaloffensivestatmodifierscheck
+;else fallthrough
+;dylannote - Discourage switching if the A.I. has Evasion boosts, with the cancel chance being roughly equivalent to the boost in Evasion
+;divided by 2 (the probability being divided by 2 occurs from jumping to .halfcancelswitching instead of .cancelswitching)
+	ld a, [wEnemyMonEvasionMod]		;load the A.I.'s Evasion modifier
+	cp 13	;+6
+	jr c, .plus5evasionswitchcancelchance
+	call Random
+	cp $C0	;~37.5% chance to cancel the switch
+	jp c, .halfcancelswitching
+	jr .continuephysicaloffensivestatmodifierscheck
+.plus5evasionswitchcancelchance
+	cp 12	;+5
+	jr c, .plus4evasionswitchcancelchance
+	call Random
+	cp $B8	;~36% chance to cancel the switch
+	jp c, .halfcancelswitching
+	jr .continuephysicaloffensivestatmodifierscheck
+.plus4evasionswitchcancelchance
+	cp 11	;+4
+	jr c, .plus3evasionswitchcancelchance
+	call Random
+	cp $AA	;~33.33% chance to cancel the switch
+	jp c, .halfcancelswitching
+	jr .continuephysicaloffensivestatmodifierscheck
+.plus3evasionswitchcancelchance
+	cp 10	;+3
+	jr c, .plus2evasionswitchcancelchance
+	call Random
+	cp $99	;~30% chance to cancel the switch
+	jp c, .halfcancelswitching
+	jr .continuephysicaloffensivestatmodifierscheck
+.plus2evasionswitchcancelchance
+	cp 9	;+2
+	jr c, .plus1evasionswitchcancelchance
+	call Random
+	cp $80	;~25% chance to cancel the switch
+	jp c, .halfcancelswitching
+	jr .continuephysicaloffensivestatmodifierscheck
+.plus1evasionswitchcancelchance
+	cp 8	;+1
+	jr c, .continuephysicaloffensivestatmodifierscheck
+	call Random
+	cp $55	;~16.66% chance to cancel the switch
+	jp c, .halfcancelswitching
+;dylannote - fallthrough if Evasion switch cancel check failed
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;dylannote - this is the final section where checks are run by comparing the stats of the player and the A.I., and the A.I. will cancel
+;from switching if the conditions are deemed in its favour
+.continuephysicaloffensivestatmodifierscheck	
+	ld a, [wPlayerBattleStatus3]	;first, check if the player has an active reflect, and skip to physical defensive check if they do
+	bit HAS_REFLECT_UP, a
+	jr nz, .continuephysicaldefensivestatmodifierscheck
+	ld a, [wEnemyMonStatus]	;second, check the A.I. for status, and skip to physical defensive check if the A.I. mon is status'd
+	and a
+	jr nz, .continuephysicaldefensivestatmodifierscheck
+	call StrCmpSpeed	;third, do a speed compare, and skip to physical defensive check if the A.I. mon is slower
+	jr nc, .continuephysicaldefensivestatmodifierscheck
+	ld a, [wPlayerMonDefenseMod]
+	add a, 4
+	ld b, a
+	ld a, [wEnemyMonAttackMod]
+	cp b	;compare the attack modifier of the A.I. and the defense modifier + 4 of the player
+	jr c, .checkifplus2physicaloffensiveadvantage	;if the A.I. has an insufficient advantage, check for a smaller advantage
+	jp .cancelswitching
+.checkifplus2physicaloffensiveadvantage
+	ld a, [wPlayerMonDefenseMod]
+	add a, 2
+	ld b, a
+	ld a, [wEnemyMonAttackMod]
+	cp b	;compare the attack modifier of the A.I. and the defense modifier + 2 of the player
+	jr c, .continuespecialoffensivestatmodifierscheck	;if the A.I. has an insufficient advantage, check the special side of attack instead
+	jp .halfcancelswitching
+	
+.continuephysicaldefensivestatmodifierscheck
+	ld a, [wPlayerMovePower]	;if the player is using a non-damaging move, then just switch at this point
+	and a
+	jr z, .continueswitching
+	ld a, [wPlayerMoveType]		;if the player is using a special attack, skip to special defensive check
+	cp $14
+	jr nc, .continuespecialdefensivestatmodifierscheck
+	ld a, [wPlayerMonAttackMod]
+	add a, 4
+	ld b, a
+	ld a, [wEnemyMonDefenseMod]
+	cp b	;compare the defense modifier of the A.I. and the attack modifier + 4 of the player
+	jr c, .checkifplus2physicaldefensiveadvantage	;if the A.I. has an insufficient advantage, check for a smaller advantage
+	jp .cancelswitching
+.checkifplus2physicaldefensiveadvantage
+	ld a, [wPlayerMonAttackMod]
+	add a, 2
+	ld b, a
+	ld a, [wEnemyMonDefenseMod]
+	cp b	;compare the defense modifier of the A.I. and the attack modifier + 2 of the player
+	jr c, .continuespecialdefensivestatmodifierscheck	;if the A.I. has an insufficient advantage, check the special side of defense instead
+	jp .halfcancelswitching
+	
+.continuespecialdefensivestatmodifierscheck
+	ld a, [wPlayerMonSpecialMod]
+	add a, 4
+	ld b, a
+	ld a, [wEnemyMonSpecialMod]
+	cp b	;compare the special modifier of the A.I. and the special modifier + 4 of the player
+	jr c, .checkifplus2specialdefensiveadvantage	;if the A.I. has an insufficient advantage, check for a smaller advantage
+	jp .cancelswitching
+.checkifplus2specialdefensiveadvantage
+	ld a, [wPlayerMonSpecialMod]
+	add a, 2
+	ld b, a
+	ld a, [wEnemyMonSpecialMod]
+	cp b	;compare the special modifier of the A.I. and the special modifier + 2 of the player
+	jr c, .continueswitching	;if the A.I. has an insufficient advantage, proceed with switching
+	jp .halfcancelswitching
+
+.continuespecialoffensivestatmodifierscheck
+	ld a, [wPlayerBattleStatus3]	;check if the player has an active light screen, and skip to switching if they do
+	bit HAS_LIGHT_SCREEN_UP, a
+	jr nz, .continueswitching
+	ld a, [wPlayerMonSpecialMod]
+	add a, 4
+	ld b, a
+	ld a, [wEnemyMonSpecialMod]
+	cp b	;compare the special modifier of the A.I. and the special modifier + 4 of the player
+	jr c, .checkifplus2specialoffensiveadvantage	;if the A.I. has an insufficient advantage, check for a smaller advantage
+	jp .cancelswitching
+.checkifplus2specialoffensiveadvantage
+	ld a, [wPlayerMonSpecialMod]
+	add a, 2
+	ld b, a
+	ld a, [wEnemyMonSpecialMod]
+	cp b	;compare the special modifier of the A.I. and the special modifier + 2 of the player
+	jr c, .continueswitching	;if the A.I. has an insufficient advantage, proceed with switching at this point
+;dylannote - fallthrough
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+.halfcancelswitching
+;dylannote - at this point, there is a 50% chance that the switch will be cancelled unless a jump to .continueswitching occured earlier
+	call Random
+	cp $80	;~50% chance to cancel switch
+	jr nc, .continueswitching
+	and a
+	ret
+.cancelswitching	
+;dylannote - at this point, the switch is getting cancelled
+	and a
+	ret
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;dylannote - at this point, every switch cancel test has failed or been skipped, so AISwitchIfEnoughMons now initiates as normal
+.continueswitching
+;enemy trainer switches if there are 2 or more unfainted mons in party
 	ld a, [wEnemyPartyCount]
 	ld c, a
 	ld hl, wEnemyMon1HP
@@ -1956,22 +3197,63 @@ AISwitchIfEnoughMons:
 
 	ld a, d ; how many available monsters are there?
 	cp 2 ; don't bother if only 1
+	
+	push af
+	call nc, UndoEnemySelectionPPDecrement	;joenote - undo the pp decrement of already-selected move if applicable
+	pop af
+	
+	jp nc, SwitchEnemyMon
+	and a
+	ret
+
+AISwitchIfEnoughMons:
+;dylannote - This is the original routine without switch cancel checks
+;enemy trainer switches if there are 2 or more unfainted mons in party
+	ld a, [wEnemyPartyCount]
+	ld c, a
+	ld hl, wEnemyMon1HP
+
+	ld d, 0 ; keep count of unfainted monsters
+
+	; count how many monsters haven't fainted yet
+.loop
+	ld a, [hli]
+	ld b, a
+	ld a, [hld]
+	or b
+	jr z, .Fainted ; has monster fainted?
+	inc d
+.Fainted
+	push bc
+	ld bc, wEnemyMon2 - wEnemyMon1
+	add hl, bc
+	pop bc
+	dec c
+	jr nz, .loop
+
+	ld a, d ; how many available monsters are there?
+	cp 2 ; don't bother if only 1
+	
+	push af
+	call nc, UndoEnemySelectionPPDecrement	;joenote - undo the pp decrement of already-selected move if applicable
+	pop af
+	
 	jp nc, SwitchEnemyMon
 	and a
 	ret
 
 SwitchEnemyMon:
 ;joenote - if player using trapping move, then end their move
-	ld a, [wPlayerBattleStatus1]
-	bit USING_TRAPPING_MOVE, a
-	jr z, .preparewithdraw
-	ld hl, wPlayerBattleStatus1
-	res USING_TRAPPING_MOVE, [hl] 
-	xor a
-	ld [wPlayerNumAttacksLeft], a
-	ld a, $FF
-	ld [wPlayerSelectedMove], a
-.preparewithdraw
+	;ld a, [wPlayerBattleStatus1]
+	;bit USING_TRAPPING_MOVE, a
+	;jr z, .preparewithdraw
+	;ld hl, wPlayerBattleStatus1
+	;res USING_TRAPPING_MOVE, [hl] 
+	;xor a
+	;ld [wPlayerNumAttacksLeft], a
+	;ld a, $FF
+	;ld [wPlayerSelectedMove], a
+;.preparewithdraw					;dylannote - removing this piece of code to re-buff trapping moves
 ; prepare to withdraw the active monster:
 
 	ld a, [wEnemyMonPartyPos]
@@ -2014,6 +3296,9 @@ SwitchEnemyMon:
 	ld a, [wLinkState]
 	cp LINK_STATE_BATTLING
 	ret z
+	;joenote - the act of switching clears H_WHOSETURN, so it needs to be set back to 1
+	ld a, $1					;FIXED TAKING POISON DAMAGE ON SLOWER POKEMON WHEN A.I. SWITCHES
+	ld [H_WHOSETURN], a
 	scf
 	ret
 
@@ -2035,7 +3320,13 @@ AICureStatus:	;joenote - modified to be more robust and also undo stat changes o
 	call AddNTimes
 	xor a
 	ld [hl], a ; clear status in enemy team roster
-	callab UndoBurnParStats ;undo stat changes if burned or paralyzed
+	ld a, [H_WHOSETURN]
+	push af
+	ld a, $01 	;forcibly set it to the AI's turn
+	ld [H_WHOSETURN], a
+	callab UndoBurnParStats	;undo brn/par stat changes
+	pop af
+	ld [H_WHOSETURN], a
 	xor a
 	ld [wEnemyMonStatus], a ; clear status in active enemy data
 	ld [wEnemyToxicCounter], a	;clear toxic counter
@@ -2052,7 +3343,7 @@ AIUseXAccuracy:
 
 AIUseGuardSpec:
 	call AIPlayRestoringSFX
-	ld hl, wEnemyBattleStatus2
+	ld hl, wEnemyBattleStatus3	;dylannote - was wEnemyBattleStatus2
 	set 1, [hl]
 	ld a, GUARD_SPEC
 	jp AIPrintItemUse
@@ -2099,6 +3390,56 @@ AICheckIfHPBelowFraction:
 	ld a, [H_QUOTIENT + 2]
 	ld b, a
 	ld hl, wEnemyMonHP + 1
+	ld a, [hld]
+	ld e, a
+	ld a, [hl]
+	ld d, a
+	ld a, d
+	sub b
+	jr nz, .return
+	ld a, e
+	sub c
+.return	;joenote - consolidating returns with the stack
+	pop de
+	pop bc
+	pop hl
+	ret
+	
+PlayerCheckIfHPBelowFraction:
+; return carry if player trainer's current HP is below 1 / a of the maximum
+;dylannote - first preserve stuff onto the stack
+	push hl
+	push bc
+	push de
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;joenote - handle an 'a' value of 1
+	cp 1
+	jr nz, .not_one
+	ld a, [wBattleMonMaxHP]
+	ld b, a
+	ld a, [wBattleMonHP]
+	cp b	;a = HP MSB an b = MAXHP MSB so do a - b and set carry if negative
+	jr c, .return
+	ld a, [wBattleMonMaxHP + 1]
+	ld b, a
+	ld a, [wBattleMonHP + 1]
+	cp b	;a = HP LSB an b = MAXHP LSB so do a - b and set carry if negative
+	jr .return
+.not_one
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	ld [H_DIVISOR], a
+	ld hl, wBattleMonMaxHP
+	ld a, [hli]
+	ld [H_DIVIDEND], a
+	ld a, [hl]
+	ld [H_DIVIDEND + 1], a
+	ld b, 2
+	call Divide
+	ld a, [H_QUOTIENT + 3]
+	ld c, a
+	ld a, [H_QUOTIENT + 2]
+	ld b, a
+	ld hl, wBattleMonHP + 1
 	ld a, [hld]
 	ld e, a
 	ld a, [hl]
@@ -2175,13 +3516,16 @@ AIBattleUseItemText:
 	db "@"
 
 StrCmpSpeed:	;joenote - function for AI to compare pkmn speeds
+	push bc
+	push de
+	push hl
 	ld de, wBattleMonSpeed ; player speed value
 	ld hl, wEnemyMonSpeed ; enemy speed value
 	ld c, $2	;bytes to copy
 .spdcmploop	
 	ld a, [de]	
 	cp [hl]
-	ret nz
+	jr nz, .return
 	inc de
 	inc hl
 	dec c
@@ -2190,6 +3534,69 @@ StrCmpSpeed:	;joenote - function for AI to compare pkmn speeds
 	;zero flag set means speeds equal
 	;carry flag not set means player pkmn faster
 	;carry flag set means ai pkmn faster
+.return
+	pop hl
+	pop de
+	pop bc
+	ret
+	
+StrCmpSpecial:	;dylannote - function for AI to compare pkmn specials
+	push bc
+	push de
+	push hl
+	ld de, wBattleMonSpecial ; player special value
+	ld hl, wEnemyMonSpecial ; enemy special value
+	ld c, $2	;bytes to copy
+.spccmploop	
+	ld a, [de]	
+	cp [hl]
+	jr nz, .return
+	inc de
+	inc hl
+	dec c
+	jr nz, .spccmploop
+	;At this point:
+	;zero flag set means specials equal
+	;carry flag not set means player pkmn has higher special
+	;carry flag set means ai pkmn has higher special
+.return
+	pop hl
+	pop de
+	pop bc
+	ret
+
+;joenote - get the enemy move that has already been selected
+;if it is found in the move list, increment the pp that was deducted when selecting the move
+UndoEnemySelectionPPDecrement:
+	push hl
+	push bc
+	push de
+	ld a, [wEnemySelectedMove]
+	and a
+	jr z, .return	;return if the selected move is 00
+	cp NUM_ATTACKS + 1
+	jr nc, .return	;return if the selected move is invalid (> max number of moves)
+	ld d, a
+	ld e, NUM_MOVES
+	ld bc, wEnemyMonPP - wEnemyMonMoves
+	ld hl, wEnemyMonMoves
+.loop
+	ld a, [hl]
+	and a
+	jr z, .return
+	cp d
+	jr z, .found
+	inc hl
+	dec e
+	jr z, .return
+	jr .loop
+.found
+	add hl, bc
+	inc [hl]
+.return
+	pop de
+	pop bc
+	pop hl
 	ret
 	
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -2455,5 +3862,150 @@ AIXSpcRestricted3:
 	inc a
 	ld [wAICount3], a
 	jp AIUseXSpecial
-
 	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; wAISwitchLimiter ; NEW - Restricts the execution of AISwitchIfEnoughMons
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+AISwitchIfEnoughMonsL1:
+	ld a, [wAISwitchLimiter]
+	cp 1
+	ret nc
+	inc a
+	ld [wAISwitchLimiter], a
+	jp AISwitchIfEnoughMons
+	
+AISwitchIfEnoughMonsL3:
+	ld a, [wAISwitchLimiter]
+	cp 3
+	ret nc
+	inc a
+	ld [wAISwitchLimiter], a
+	jp AISwitchIfEnoughMons
+	
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+; TrickyXItem Routines ; NEW - A.I. will use X items, Dire Hit, or Guard Spec.
+; if the player attempts to use a Sleep, Poison, or Paralysis status move when 
+; the A.I. Mon is already status'd and has at least 1/2 HP
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+AITrickyUseXAccuracy:
+	ld a, [wEnemyMonStatus]
+	and a
+	jr nz, .checkplayer
+	ret
+.checkplayer
+	ld a, [wPlayerMoveEffect]
+	cp SLEEP_EFFECT
+	jr z, .useitem
+	cp POISON_EFFECT
+	jr z, .useitem
+	cp PARALYZE_EFFECT
+	jr z, .useitem
+	ret
+.useitem
+	jp AIUseXAccuracy
+
+AITrickyUseGuardSpec:
+	ld a, [wEnemyMonStatus]
+	and a
+	jr nz, .checkplayer
+	ret
+.checkplayer
+	ld a, [wPlayerMoveEffect]
+	cp SLEEP_EFFECT
+	jr z, .useitem
+	cp POISON_EFFECT
+	jr z, .useitem
+	cp PARALYZE_EFFECT
+	jr z, .useitem
+	ret
+.useitem
+	jp AIUseGuardSpec
+
+AITrickyUseDireHit:
+	ld a, [wEnemyMonStatus]
+	and a
+	jr nz, .checkplayer
+	ret
+.checkplayer
+	ld a, [wPlayerMoveEffect]
+	cp SLEEP_EFFECT
+	jr z, .useitem
+	cp POISON_EFFECT
+	jr z, .useitem
+	cp PARALYZE_EFFECT
+	jr z, .useitem
+	ret
+.useitem
+	jp AIUseDireHit
+
+AITrickyUseXAttack:
+	ld a, [wEnemyMonStatus]
+	and a
+	jr nz, .checkplayer
+	ret
+.checkplayer
+	ld a, [wPlayerMoveEffect]
+	cp SLEEP_EFFECT
+	jr z, .useitem
+	cp POISON_EFFECT
+	jr z, .useitem
+	cp PARALYZE_EFFECT
+	jr z, .useitem
+	ret
+.useitem
+	jp AIUseXAttack
+
+AITrickyUseXDefend:
+	ld a, [wEnemyMonStatus]
+	and a
+	jr nz, .checkplayer
+	ret
+.checkplayer
+	ld a, [wPlayerMoveEffect]
+	cp SLEEP_EFFECT
+	jr z, .useitem
+	cp POISON_EFFECT
+	jr z, .useitem
+	cp PARALYZE_EFFECT
+	jr z, .useitem
+	ret
+.useitem
+	jp AIUseXDefend
+
+AITrickyUseXSpeed:
+	ld a, [wEnemyMonStatus]
+	and a
+	jr nz, .checkplayer
+	ret
+.checkplayer
+	ld a, [wPlayerMoveEffect]
+	cp SLEEP_EFFECT
+	jr z, .useitem
+	cp POISON_EFFECT
+	jr z, .useitem
+	cp PARALYZE_EFFECT
+	jr z, .useitem
+	ret
+.useitem
+	jp AIUseXSpeed
+
+AITrickyUseXSpecial:
+	ld a, [wEnemyMonStatus]
+	and a
+	jr nz, .checkplayer
+	ret
+.checkplayer
+	ld a, [wPlayerMoveEffect]
+	cp SLEEP_EFFECT
+	jr z, .useitem
+	cp POISON_EFFECT
+	jr z, .useitem
+	cp PARALYZE_EFFECT
+	jr z, .useitem
+	ret
+.useitem
+	jp AIUseXSpecial
+
+

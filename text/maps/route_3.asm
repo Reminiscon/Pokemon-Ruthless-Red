@@ -6,6 +6,12 @@ _Route3Text1::
 	para "That tunnel from"
 	line "CERULEAN takes a"
 	cont "lot out of you!"
+	
+	para "Also, I heard"
+	line "that TEAM ROCKET"
+	cont "was conducting"
+	cont "some experiments"
+	cont "in there!"
 	done
 
 _Route3BattleText1::
@@ -91,25 +97,32 @@ _Route3AfterBattleText5::
 	text "Avoid fights by"
 	line "not letting"
 	cont "people see you!"
+	
+	para "Easier said than"
+	line "done in this game,"
+	cont "isn't it?"
 	done
 
 _Route3BattleText6::						;modified text
 	text "My RATTATA is two"
-	line "standard"
-	cont "deviations"
+	line "standard deviat-"
+	cont "ions above the"
+	cont "mean!"
 	
-	para "above the mean!"
 	done
 
 _Route3EndBattleText6::						;modified text
 	text "But the"
-	line "Z-SCORE..."
+	line "Plus 2 Z-Score?!"
 	prompt
 
 _Route3AfterBattleText6::					;modified text
-	text "Statistics is much"
-	line "better than"
-	cont "gender studies."
+	text "If what you study"
+	line "is not backed by"
+	cont "statistics, then"
+	cont "that is a great"
+	cont "sign that it is"
+	cont "complete nonsense!"
 	done
 
 _Route3BattleText7::
@@ -143,8 +156,8 @@ _Route3AfterBattleText8::
 	done
 	
 _Route3BattleText9::									;NEW
-	text "I will show"
-	line "no mercy!"
+	text "I know the"
+	line "toughest combos!"
 	done
 
 _Route3EndBattleText9::

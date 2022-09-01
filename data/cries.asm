@@ -94,7 +94,7 @@ CryData:
 	db $19, $99, $10; Horsea
 	db $19, $3C, $01; Seadra
 	db $17, $AA, $00; Gligar
-	db $1C, $FF, $FF; Dimonix
+	db $17, $CC, $FF; Dimonix
 	db $00, $20, $40; Sandshrew
 	db $00, $FF, $FF; Sandslash
 	db $1F, $F0, $01; Omanyte

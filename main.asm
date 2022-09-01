@@ -14,6 +14,7 @@ PICS_6 EQU $30
 PICS_7 EQU $31
 PICS_8 EQU $32			;NEW
 
+
 INCLUDE "home.asm"
 
 
@@ -160,6 +161,7 @@ ClipboardSprite:       INCBIN "gfx/sprites/clipboard.2bpp"
 SnorlaxSprite:         INCBIN "gfx/sprites/snorlax.2bpp"
 OldAmberSprite:        INCBIN "gfx/sprites/old_amber.2bpp"
 LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
+BugMasterSprite:	   INCBIN "gfx/sprites/bug_master.2bpp"
 
 
 SECTION "Graphics", ROMX, BANK[GFX]
@@ -375,8 +377,9 @@ SchoolBlocks: INCBIN "maps/school.blk"
 
 CeruleanHouseTrashedBlocks: INCBIN "maps/ceruleanhousetrashed.blk"
 
-DiglettsCaveEntranceRoute11Blocks:
-DiglettsCaveRoute2Blocks: INCBIN "maps/diglettscaveroute2.blk"
+DiglettsCaveEntranceRoute11Blocks: INCBIN "maps/diglettscaveentranceroute11.blk"
+
+MoltenCavernBlocks: INCBIN "maps/moltencavern.blk"	;dylannote - used to be Diglett's Cave Exit (Route 2)
 
 INCLUDE "text/monster_names.asm"
 
@@ -465,9 +468,9 @@ INCLUDE "data/mapHeaders/saffronhouse2.asm"
 INCLUDE "scripts/saffronhouse2.asm"
 INCLUDE "data/mapObjects/saffronhouse2.asm"
 
-INCLUDE "data/mapHeaders/diglettscaveroute2.asm"
-INCLUDE "scripts/diglettscaveroute2.asm"
-INCLUDE "data/mapObjects/diglettscaveroute2.asm"
+INCLUDE "data/mapHeaders/moltencavern.asm"
+INCLUDE "scripts/moltencavern.asm"
+INCLUDE "data/mapObjects/moltencavern.asm"
 
 INCLUDE "data/mapHeaders/route2house.asm"
 INCLUDE "scripts/route2house.asm"
@@ -1388,13 +1391,14 @@ SECTION "Battle (bank D)", ROMX, BANK[$D]
 
 SECTION "Battle (bank 33)", ROMX, BANK[$33]			;NEW
 
-INCLUDE "engine/evos_moves.asm" ;Moved from Bank[$E]
-BaseStats: INCLUDE "data/base_stats.asm" ;Moved from Bank[$E]
+INCLUDE "engine/evos_moves.asm" ;moved from Bank[$E]
+BaseStats: INCLUDE "data/base_stats.asm" ;moved from Bank[$E]
 
 SECTION "bankE",ROMX,BANK[$E]
 
 INCLUDE "data/moves.asm"
-;Moved data/base_stats.asm
+;INCLUDE "engine/evos_moves.asm" ;moved to Bank[$33]
+;BaseStats: INCLUDE "data/base_stats.asm" ;moved to Bank[$33]
 INCLUDE "data/cries.asm"
 ;INCLUDE "engine/battle/unused_stats_functions.asm" ;joenote - putting this back into use and moving to bank 2d
 INCLUDE "engine/battle/scroll_draw_trainer_pic.asm"
@@ -1414,6 +1418,8 @@ INCLUDE "engine/battle/draw_hud_pokeball_gfx.asm"
 INCLUDE "engine/battle/moveEffects/heal_effect.asm" 
 INCLUDE "engine/battle/moveEffects/transform_effect.asm"
 INCLUDE "engine/battle/moveEffects/reflect_light_screen_effect.asm" 
+INCLUDE "engine/battle/calcenemystatexp.asm"	;dylannote - NEW, bank switches to Bank F in core.asm
+
 
 SECTION "bankF",ROMX,BANK[$F]
 
@@ -1590,8 +1596,10 @@ RockTunnelPokecenterBlocks:
 MtMoonPokecenterBlocks: INCBIN "maps/mtmoonpokecenter.blk"
 
 Route18GateBlocks:
-Route15GateBlocks:
+;Route15GateBlocks:
 Route11GateBlocks: INCBIN "maps/route11gate.blk"
+
+Route15GateBlocks: INCBIN "maps/route15gate.blk"
 
 Route18GateUpstairsBlocks:
 Route16GateUpstairsBlocks:
@@ -1786,7 +1794,7 @@ BirdKeeperPic::    INCBIN "pic/trainer/birdkeeper.pic"
 BlackbeltPic::     INCBIN "pic/trainer/blackbelt.pic"
 Rival1Pic::        INCBIN "pic/trainer/rival1.pic"
 ProfOakPic::       INCBIN "pic/trainer/prof.oak.pic"
-ChiefPic::		   ;INCBIN "pic/trainer/chief.pic"	;joenote - not enough rom space
+ChiefPic::		   INCBIN "pic/trainer/chief.pic"	;RE-ADDED
 ScientistPic::     INCBIN "pic/trainer/scientist.pic"
 GiovanniPic::      INCBIN "pic/trainer/giovanni.pic"
 RocketPic::        INCBIN "pic/trainer/rocket.pic"
@@ -1807,21 +1815,22 @@ LoreleiPic::       INCBIN "pic/trainer/lorelei.pic"
 ChannelerPic::     INCBIN "pic/trainer/channeler.pic"
 AgathaPic::        INCBIN "pic/trainer/agatha.pic"
 LancePic::         INCBIN "pic/trainer/lance.pic"
+BugMasterPic::	   INCBIN "pic/trainer/bugmaster.pic"	;NEW
 
-INCLUDE "data/mapHeaders/tradecenter.asm"
-INCLUDE "scripts/tradecenter.asm"
-INCLUDE "data/mapObjects/tradecenter.asm"
-TradeCenterBlocks: INCBIN "maps/tradecenter.blk"
+;moved this garbage to BANK[$2E] to provide more space for additional trainer classes
+;INCLUDE "data/mapHeaders/tradecenter.asm"
+;INCLUDE "scripts/tradecenter.asm"
+;INCLUDE "data/mapObjects/tradecenter.asm"
+;TradeCenterBlocks: INCBIN "maps/tradecenter.blk"
 
-INCLUDE "data/mapHeaders/colosseum.asm"
-INCLUDE "scripts/colosseum.asm"
-INCLUDE "data/mapObjects/colosseum.asm"
-ColosseumBlocks: INCBIN "maps/colosseum.blk"
+;INCLUDE "data/mapHeaders/colosseum.asm"
+;INCLUDE "scripts/colosseum.asm"
+;INCLUDE "data/mapObjects/colosseum.asm"
+;ColosseumBlocks: INCBIN "maps/colosseum.blk"
 
-INCLUDE "engine/give_pokemon.asm"
+;INCLUDE "engine/give_pokemon.asm"
 
-INCLUDE "engine/predefs.asm"
-
+;INCLUDE "engine/predefs.asm"
 
 SECTION "bank14",ROMX,BANK[$14]
 
@@ -2601,7 +2610,9 @@ INCLUDE "engine/overworld/ssanne.asm"
 
 INCLUDE "data/animations.asm"
 
-INCLUDE "engine/evolution.asm"
+;INCLUDE "engine/evolution.asm"
+
+;INCLUDE "engine/overworld/elevator.asm"
 
 
 SECTION "bank2D",ROMX,BANK[$2D]	;joenote - This is a known empty bank. Going to start moving stuff here
@@ -2614,7 +2625,8 @@ INCLUDE "custom_functions/func_enc_gen.asm"
 INCLUDE "custom_functions/func_misc.asm"
 INCLUDE "custom_functions/func_overworld.asm"
 INCLUDE "engine/battle/stats_functions.asm"	
-INCLUDE "engine/overworld/elevator.asm"				;Moved from Bank1E
+INCLUDE "engine/overworld/elevator.asm"				;moved from Bank1E
+INCLUDE "engine/evolution.asm"						;moved from Bank1E
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 TradingAnimationGraphics:
@@ -2628,9 +2640,9 @@ TradingAnimationGraphics2End:
 
 ;joenote - moved this out of trainer_ai.asm in bank $E to here. 
 ;Now there is lots of space for custom trainers and rosters
-INCLUDE "engine/battle/read_trainer_party.asm"
-INCLUDE "data/trainer_moves.asm"
-INCLUDE "data/trainer_parties.asm"
+;INCLUDE "engine/battle/read_trainer_party.asm"
+;INCLUDE "data/trainer_moves.asm"
+;INCLUDE "data/trainer_parties.asm"
 
 RedFishingTilesFront: INCBIN "gfx/red_fishing_tile_front.2bpp"
 RedFishingTilesBack:  INCBIN "gfx/red_fishing_tile_back.2bpp"
@@ -2649,3 +2661,27 @@ INCLUDE "engine/bg_map_attributes.asm"
 
 INCLUDE "engine/gamefreak.asm"	;gbcnote - moved here to make space
 
+;dylannote - moved these here from BANK[$13]
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+INCLUDE "data/mapHeaders/tradecenter.asm"
+INCLUDE "scripts/tradecenter.asm"
+INCLUDE "data/mapObjects/tradecenter.asm"
+TradeCenterBlocks: INCBIN "maps/tradecenter.blk"
+
+INCLUDE "data/mapHeaders/colosseum.asm"
+INCLUDE "scripts/colosseum.asm"
+INCLUDE "data/mapObjects/colosseum.asm"
+ColosseumBlocks: INCBIN "maps/colosseum.blk"
+
+INCLUDE "engine/give_pokemon.asm"
+
+INCLUDE "engine/predefs.asm"
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+SECTION "Battle (bank 35)", ROMX, BANK[$35]			;NEW
+
+;dylannote - created this bank and moved these here to provide even more space for custom trainers and rosters
+INCLUDE "engine/battle/read_trainer_party.asm"
+INCLUDE "data/trainer_moves.asm"
+INCLUDE "data/trainer_parties.asm"
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;

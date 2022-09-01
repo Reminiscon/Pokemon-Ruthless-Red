@@ -21,7 +21,7 @@ db 3 ; growth rate, changed from 0 to 3 to slow down early game level-ups
 	tmlearn 6,8
 	tmlearn 9,10
 	tmlearn 20
-	tmlearn 31,32
+	tmlearn 28,31,32
 	tmlearn 33,34,39,40
 	tmlearn 44
 	tmlearn 50

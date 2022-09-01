@@ -31,7 +31,7 @@ Route12Script0:
 	call DisplayTextID
 	ld a, SNORLAX
 	ld [wCurOpponent], a
-	ld a, 30
+	ld a, 60
 	ld [wCurEnemyLVL], a
 	ld a, HS_ROUTE_12_SNORLAX
 	ld [wMissableObjectIndex], a
@@ -132,7 +132,7 @@ Route12TrainerHeader5:
 
 Route12TrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_ROUTE_12_TRAINER_6, 1
-	db ($1 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_12_TRAINER_6, 1
 	dw Route12BattleText7 ; TextBeforeBattle
 	dw Route12AfterBattleText7 ; TextAfterBattle

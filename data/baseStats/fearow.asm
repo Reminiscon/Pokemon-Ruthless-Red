@@ -23,6 +23,6 @@ db 3 ; growth rate, changed from 0 to 3 to slow down early game level-ups
 	tmlearn 20
 	tmlearn 31,32
 	tmlearn 34,39
-	tmlearn 43,44,49
-	tmlearn 50,52
+	tmlearn 43,44
+	tmlearn 49,50,52
 db 0 ; padding

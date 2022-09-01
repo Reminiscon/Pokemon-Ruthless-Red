@@ -57,7 +57,7 @@ _FuchsiaCityText18::
 	line "#MON GYM"
 	cont "LEADER: KOGA"
 
-	para "The Poisonous"
+	para "The evasive"
 	line "Ninja Master"
 	done
 

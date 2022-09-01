@@ -24,11 +24,12 @@ Route15TextPointers:
 	dw Route15Text9
 	dw Route15Text10
 	dw PickUpItemText
-	dw Route15Text12
+	dw PickUpItemText				;NEW
+	dw Route15Text13
 
 Route15TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_15_TRAINER_0
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_15_TRAINER_0
 	dw Route15BattleText1 ; TextBeforeBattle
 	dw Route15AfterBattleText1 ; TextAfterBattle
@@ -37,7 +38,7 @@ Route15TrainerHeader0:
 
 Route15TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROUTE_15_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_15_TRAINER_1
 	dw Route15BattleText2 ; TextBeforeBattle
 	dw Route15AfterBattleText2 ; TextAfterBattle
@@ -46,7 +47,7 @@ Route15TrainerHeader1:
 
 Route15TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROUTE_15_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_15_TRAINER_2
 	dw Route15BattleText3 ; TextBeforeBattle
 	dw Route15AfterBattleText3 ; TextAfterBattle
@@ -55,7 +56,7 @@ Route15TrainerHeader2:
 
 Route15TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_ROUTE_15_TRAINER_3
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_15_TRAINER_3
 	dw Route15BattleText4 ; TextBeforeBattle
 	dw Route15AfterBattleText4 ; TextAfterBattle
@@ -64,7 +65,7 @@ Route15TrainerHeader3:
 
 Route15TrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_ROUTE_15_TRAINER_4
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_15_TRAINER_4
 	dw Route15BattleText5 ; TextBeforeBattle
 	dw Route15AfterBattleText5 ; TextAfterBattle
@@ -73,7 +74,7 @@ Route15TrainerHeader4:
 
 Route15TrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_ROUTE_15_TRAINER_5
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_15_TRAINER_5
 	dw Route15BattleText6 ; TextBeforeBattle
 	dw Route15AfterBattleText6 ; TextAfterBattle
@@ -82,7 +83,7 @@ Route15TrainerHeader5:
 
 Route15TrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_ROUTE_15_TRAINER_6
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_15_TRAINER_6
 	dw Route15BattleText7 ; TextBeforeBattle
 	dw Route15AfterBattleText7 ; TextAfterBattle
@@ -91,7 +92,7 @@ Route15TrainerHeader6:
 
 Route15TrainerHeader7:
 	dbEventFlagBit EVENT_BEAT_ROUTE_15_TRAINER_7, 1
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_15_TRAINER_7, 1
 	dw Route15BattleText8 ; TextBeforeBattle
 	dw Route15AfterBattleText8 ; TextAfterBattle
@@ -100,7 +101,7 @@ Route15TrainerHeader7:
 
 Route15TrainerHeader8:
 	dbEventFlagBit EVENT_BEAT_ROUTE_15_TRAINER_8, 1
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_15_TRAINER_8, 1
 	dw Route15BattleText9 ; TextBeforeBattle
 	dw Route15AfterBattleText9 ; TextAfterBattle
@@ -109,7 +110,7 @@ Route15TrainerHeader8:
 
 Route15TrainerHeader9:
 	dbEventFlagBit EVENT_BEAT_ROUTE_15_TRAINER_9, 1
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_15_TRAINER_9, 1
 	dw Route15BattleText10 ; TextBeforeBattle
 	dw Route15AfterBattleText10 ; TextAfterBattle
@@ -290,6 +291,6 @@ Route15AfterBattleText10:
 	TX_FAR _Route15AfterBattleText10
 	db "@"
 
-Route15Text12:
-	TX_FAR _Route15Text12
+Route15Text13:
+	TX_FAR _Route15Text13
 	db "@"

@@ -170,11 +170,17 @@ ROMX $30
 ROMX $31
   "Pics 7" ; PICS_7
   
-ROMX $32
+ROMX $32 ;NEW
   "Pics 8" ; PICS_8
   
-ROMX $33
+ROMX $33 ;NEW
   "Battle (bank 33)"
+  
+ROMX $34 ;NEW
+  "Pokedex Text2" ; POKEDEX_TEXT2
+  
+ROMX $35 ;NEW
+  "Battle (bank 35)"
   
 WRAM0
   "WRAM Bank 0"

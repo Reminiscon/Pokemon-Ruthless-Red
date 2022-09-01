@@ -27,46 +27,46 @@ ItemPrices:
 	money 0     ; MARSHBADGE
 	money 0     ; VOLCANOBADGE
 	money 0     ; EARTHBADGE
-	money 2200  ; ESCAPE_ROPE				;modified 550 -> 2200
+	money 5500  ; ESCAPE_ROPE				;modified 550 -> 5500
 	money 350   ; REPEL
 	money 0     ; OLD_AMBER
 	money 2100  ; FIRE_STONE
 	money 2100  ; THUNDER_STONE
 	money 2100  ; WATER_STONE
-	money 2000  ; HP_UP						;modified 9800 -> 2000
-	money 2000  ; PROTEIN					;modified 9800 -> 2000
-	money 2000  ; IRON						;modified 9800 -> 2000
-	money 2000  ; CARBOS					;modified 9800 -> 2000
-	money 2000  ; CALCIUM					;modified 9800 -> 2000
-	money 0  ; RARE_CANDY				;modified 4800 -> 1000
+	money 980   ; HP_UP						;modified 9800 -> 980
+	money 980   ; PROTEIN					;modified 9800 -> 980
+	money 980   ; IRON						;modified 9800 -> 980
+	money 980   ; CARBOS					;modified 9800 -> 980
+	money 980   ; CALCIUM					;modified 9800 -> 980
+	money 480   ; RARE_CANDY				;modified 4800 -> 480
 	money 0     ; DOME_FOSSIL
 	money 0     ; HELIX_FOSSIL
 	money 0     ; SECRET_KEY
-	money 0  ; MIST_STONE				;NEW, 4800
+	money 8400  ; MIST_STONE				;NEW, 8400
 	money 0     ; BIKE_VOUCHER
 	money 1800  ; X_ACCURACY				;modified 950 -> 1800
 	money 2100  ; LEAF_STONE
 	money 0     ; CARD_KEY
 	money 10000 ; NUGGET
 	money 9800  ; XXX PP_UP
-	money 100   ; POKE_DOLL					;modified 1000 -> 100
+	money 1000  ; POKE_DOLL				
 	money 1200  ; FULL_HEAL					;modified 600 -> 1200
 	money 1500  ; REVIVE
 	money 4000  ; MAX_REVIVE
-	money 700   ; GUARD_SPEC
+	money 1400  ; GUARD_SPEC				;modified 700 -> 1400
 	money 500   ; SUPER_REPEL
 	money 700   ; MAX_REPEL
-	money 1300  ; DIRE_HIT					;modified 650 -> 1300
+	money 2600  ; DIRE_HIT					;modified 650 -> 2600
 	money 10    ; COIN
 	money 200   ; FRESH_WATER
 	money 300   ; SODA_POP
 	money 350   ; LEMONADE
 	money 0     ; S_S_TICKET
 	money 0     ; GOLD_TEETH
-	money 1250  ; X_ATTACK					;modified 500 -> 1250
-	money 700   ; X_DEFEND					;modified 550 -> 700
-	money 700   ; X_SPEED					;modified 350 -> 700
-	money 1800  ; X_SPECIAL					;modified 350 -> 1800
+	money 2000  ; X_ATTACK					;modified 500 -> 2000
+	money 1100  ; X_DEFEND					;modified 550 -> 1100
+	money 1100  ; X_SPEED					;modified 350 -> 1100
+	money 2800  ; X_SPECIAL					;modified 350 -> 2800
 	money 0     ; COIN_CASE
 	money 0     ; OAKS_PARCEL
 	money 0     ; ITEMFINDER

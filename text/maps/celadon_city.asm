@@ -62,6 +62,10 @@ _CeladonCityText6::
 	para "It evolved from"
 	line "POLIWHIRL when I"
 	cont "used WATER STONE!"
+	
+	para "But I heard it"
+	line "could evolve from"
+	cont "MIST STONE too!"
 	done
 
 _CeladonCityText7::
@@ -76,6 +80,12 @@ _CeladonCityText8::
 _CeladonCityText9::
 	text "Keep out of TEAM"
 	line "ROCKET's way!"
+	
+	para "Huh? AWAKENING"
+	line "shortage?"
+	
+	para "It's got nothing"
+	line "to do with us!"
 	done
 
 _CeladonCityText10::
@@ -124,10 +134,9 @@ _CeladonCityText16::							;modified text
 
 	para "GUARD SPEC."
 	line "protects #MON"
-	cont "against stat"
-	cont "lowering moves"
-	cont "such as LEER and"
-	cont "NIGHT SHADE!"
+	cont "against SPECIAL"
+	cont "attacks such as"
+	cont "fire and water!"
 
 	para "Get your items at"
 	line "CELADON DEPT."

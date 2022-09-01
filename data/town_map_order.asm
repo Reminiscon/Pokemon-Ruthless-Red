@@ -11,6 +11,7 @@ TownMapOrder:
 	db ROUTE_4
 	db CERULEAN_CITY
 	db ROUTE_24
+	db MOLTEN_CAVERN
 	db ROUTE_25
 	db BILLS_HOUSE
 	db ROUTE_5

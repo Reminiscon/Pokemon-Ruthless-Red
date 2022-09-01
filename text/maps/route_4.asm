@@ -5,8 +5,8 @@ _Route4Text1::							;modified text
 	cont "FOSSILS."
 	
 	para "Nerds know too"
-	line "much! I would"
-	cont "not want to"
+	line "much! I wouldn't"
+	cont "want to battle"
 	cont "battle them!"
 	done
 
@@ -38,6 +38,14 @@ _Route4Text6::
 	text "ROUTE 4"
 	line "MT.MOON -"
 	cont "CERULEAN CITY"
+	
+	para "To the LEFT,"
+	line "return to the"
+	cont "POKECENTER!"
+	
+	para "To the RIGHT,"
+	line "continue to"
+	cont "CERULEAN CITY!"
 	done
 	
 _Route4BattleText2::							;NEW
@@ -58,10 +66,30 @@ _Route4EndBattleText2::
 	prompt
 
 _Route4AfterBattleText2::
-	text "One day, I"
-	line "want to teach"
-	cont "HITMONCHAN the"
-	cont "three elemental"
-	cont "punches!"
+	text "One day, I want"
+	line "to teach HITMON-"
+	cont "CHAN the three"
+	cont "elemental punch-"
+	cont "es!"
+	done
+	
+_Route4Text8::
+	text "WARNING"
+	
+	para "There are no"
+	line "training areas"
+	cont "prior to NUGGET"
+	cont "BRIDGE beyond"
+	cont "this point!"
+	done
+	
+_Route4Text9::
+	text "WARNING"
+	
+	para "There are no"
+	line "training areas"
+	cont "prior to NUGGET"
+	cont "BRIDGE beyond"
+	cont "this point!"
 	done
 

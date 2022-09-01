@@ -5,7 +5,7 @@ db 50 ; base defense
 db 95 ; base speed
 db 110 ; base special
 db FIRE ; species type 1
-db FIRE ; species type 2
+db DEMON ; species type 2
 db 45 ; catch rate
 db 204 ; base exp yield
 INCBIN HOUNDOOM_FR,0,1 ; 77, sprite dimensions
@@ -15,7 +15,7 @@ dw HoundoomPicBack
 db LEER
 db EMBER
 db SMOG
-db RAGE
+db 0
 db 5 ; growth rate
 ; learnset
 	tmlearn 6,8

@@ -105,3 +105,6 @@ CeruleanCaveName:
 	db "CERULEAN CAVE@"
 PowerPlantName:
 	db "POWER PLANT@"
+MoltenCavernName:				;NEW
+	db "MOLTEN CAVERN@"
+	

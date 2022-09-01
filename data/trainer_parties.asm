@@ -46,6 +46,7 @@ TrainerDataPointers:
 	dw ChannelerData
 	dw AgathaData
 	dw LanceData
+	dw BugMasterData
 
 ; if first byte != FF, then
 	; first byte is level (of all pokemon on this team)
@@ -61,7 +62,7 @@ YoungsterData:
 	db 15,RATTATA,EKANS,0
 	db 16,RATTATA,0												;Custom Moves Applied
 ; Mt. Moon 1F
-	db 18,ZUBAT,GEODUDE,DROWZEE,0
+	db 18,RATTATA,SPEAROW,PIDGEOTTO,0
 ; Route 24
 	db 22,PIDGEOTTO,RATICATE,NIDORINO,0
 ; Route 25
@@ -80,17 +81,17 @@ YoungsterData:
 BugCatcherData:
 ; Viridian Forest
 	db 8,METAPOD,KAKUNA,0								
-	db 10,VENONAT,BEEDRILL,BUTTERFREE,0					
-	db 10,PINSIR,0												;Custom Moves Applied
+	db 9,PARAS,PARAS,0					
+	db 10,BEEDRILL,BUTTERFREE,0									
 ; Route 3
-	db 15,PARAS,PARAS,TANGELA,0									;Custom Moves Applied
+	db 15,PARAS,PARAS,0											;Custom Moves Applied
 	db 16,VENONAT,VENONAT,METAPOD,KAKUNA,METAPOD,KAKUNA,0		;Custom Moves Applied
 	db 17,BUTTERFREE,BEEDRILL,0						
 ; Mt. Moon 1F
 	db 18,BEEDRILL,BEEDRILL,0
-	db 17,KAKUNA,BUTTERFREE,PINSIR,0
+	db 17,KAKUNA,VENONAT,BUTTERFREE,0
 ; Route 24
-	db 23,SCYTHER,0												;Custom Moves Applied
+	db 23,BUTTERFREE,BEEDRILL,0											
 ; Route 6
 	db 29,BUTTERFREE,BEEDRILL,PARASECT,0
 	db 30,SCYTHER,0												;Custom Moves Applied
@@ -102,7 +103,7 @@ BugCatcherData:
 LassData:
 ; Route 3
 	db 16,EKANS,SANDSHREW,0
-	db 17,NIDORAN_M,NIDORINO,0
+	db 17,NIDORAN_F,NIDORINA,0
 	db 18,JIGGLYPUFF,CLEFAIRY,0									;Custom Moves Applied
 ; Route 4
 	db 18,PARAS,VENONAT,PARAS,VENONAT,PARAS,0
@@ -110,11 +111,11 @@ LassData:
 	db 19,ODDISH,BELLSPROUT,0
 	db 20,CLEFAIRY,0											;Custom Moves Applied
 ; Route 24
-	db 23,CLEFABLE,NIDOQUEEN,0									;Custom Moves Applied
+	db 23,CLEFABLE,NIDORINA,0									;Custom Moves Applied
 	db 22,CLEFAIRY,CLEFAIRY,CLEFAIRY,0							;Custom Moves Applied
 ; Route 25
 	db 24,NIDORINA,NIDORINO,0
-	db 23,GLOOM,WEEPINBELL,0									;Custom Moves Applied
+	db 24,SKIPLOOM,GLOOM,0										;Custom Moves Applied
 ; SS Anne 1F Rooms
 	db 33,FEAROW,CLEFABLE,0
 ; SS Anne 2F Rooms
@@ -128,7 +129,7 @@ LassData:
 	db 46,GLOOM,BEEDRILL,EXEGGCUTE,0							;Custom Moves Applied
 	db 46,WEEPINBELL,BUTTERFREE,EXEGGCUTE,0						;Custom Moves Applied
 ; Route 2
-	db 6,NIDORAN_F,NIDORAN_M,DITTO,0							;NEW
+	db 9,NIDORAN_F,MAREEP,DITTO,0								;NEW
 SailorData:
 ; SS Anne Stern
 	db 33,MACHOKE,CLOYSTER,0
@@ -143,11 +144,11 @@ SailorData:
 	db 36,PERSIAN,ELECTRODE,STARMIE,0							;Custom Moves Applied
 JrTrainerMData:
 ; Pewter Gym
-	db 13,GEODUDE,DIGLETT,KABUTO,0								;Custom Moves Applied
+	db 13,RHYHORN,OMANYTE,KABUTO,0								;Custom Moves Applied
 ; Route 24/Route 25
 	db 24,EXEGGUTOR,0											;Custom Moves Applied
 ; Route 24
-	db 24,TANGELA,0												;Custom Moves Applied
+	db 24,QUAGSIRE,0											;Custom Moves Applied
 ; Route 6
 	db 30,WARTORTLE,FEAROW,0									;Custom Moves Applied
 	db 31,MAROWAK,NIDOKING,0									;Custom Moves Applied
@@ -155,7 +156,7 @@ JrTrainerMData:
 	db 38,NIDOKING,VICTREEBEL,0									;Custom Moves Applied
 	db 37,ARBOK,SANDSLASH,RATICATE,DUGTRIO,0					;Custom Moves Applied
 ; Route 12
-	db 29,NIDORAN_M,NIDORINO,0
+	db 56,NIDORINO,SANDSLASH,NIDOKING,0							;Custom Moves Applied
 ; Unused
 	;db 18,DIGLETT,DIGLETT,SANDSHREW,0
 	
@@ -177,10 +178,10 @@ JrTrainerFData:
 ; Celadon Gym
 	db 46,TANGELA,TANGELA,TANGELA,0								;Custom Moves Applied
 ; Route 13
-	db 24,PIDGEY,MEOWTH,RATTATA,PIKACHU,MEOWTH,0
-	db 30,POLIWAG,POLIWAG,0
-	db 27,PIDGEY,MEOWTH,PIDGEY,PIDGEOTTO,0
-	db 28,GOLDEEN,POLIWAG,HORSEA,0
+	db 57,RATICATE,RAICHU,PERSIAN,0								;Custom Moves Applied
+	db 58,POLIWHIRL,VICTREEBEL,0								;Custom Moves Applied
+	db 57,GROWLITHE,GLOOM,POLIWHIRL,0
+	db 56,SEAKING,WIGGLYTUFF,POLIWHIRL,CLEFABLE,0
 ; Route 20
 	db 31,GOLDEEN,SEAKING,0
 	db 30,TENTACOOL,HORSEA,SEEL,0
@@ -189,10 +190,10 @@ JrTrainerFData:
 	db 41,NIDOQUEEN,0											;Custom Moves Applied
 	db 39,STARYU,WIGGLYTUFF,KADABRA,0							;Custom Moves Applied
 ; Route 15
-	db 28,GLOOM,ODDISH,ODDISH,0
-	db 29,PIKACHU,RAICHU,0
-	db 33,CLEFAIRY,0
-	db 29,BELLSPROUT,ODDISH,TANGELA,0
+	db 58,NIDORINA,SANDSLASH,NIDOQUEEN,0						;Custom Moves Applied
+	db 58,GROWLITHE,CLEFABLE,POLIWRATH,0						;Custom Moves Applied
+	db 60,NIDOQUEEN,0											;Custom Moves Applied
+	db 60,NIDOQUEEN,0											;Custom Moves Applied
 ; Unused
 	;db 22,BULBASAUR,0
 
@@ -212,7 +213,7 @@ PokemaniacData:
 	db 19,MEOWTH,SLOWPOKE,PONYTA,0											;NEW				;Custom Moves Applied
 SuperNerdData:
 ; Mt. Moon 1F
-	db 20,ABRA,MAGNEMITE,0													;Custom Moves Applied
+	db 20,ABRA,SLUGMA,MAGNEMITE,0											;Custom Moves Applied
 ; Mt. Moon B2F
 	db 22,GRIMER,MR_MIME,MAGNEMITE,0										;Custom Moves Applied
 ; Route 8
@@ -237,7 +238,7 @@ HikerData:
 ; Mt. Moon 1F
 	db 18,MACHOP,RHYHORN,MACHOP,0
 ; Route 25
-	db 24,MACHOP,HITMONLEE,0
+	db 24,MACHOP,SUDOWOODO,0
 	db 23,ONIX,ONIX,ONIX,ONIX,0												;Custom Moves Applied
 	db 25,GRAVELER,0														;Custom Moves Applied
 ; Route 9
@@ -257,26 +258,26 @@ HikerData:
 	db 40,RHYHORN,MACHOKE,0
 BikerData:
 ; Route 13
-	db 28,KOFFING,KOFFING,KOFFING,0
+	db 57,WEEZING,0															;Custom Moves Applied
 ; Route 14
-	db 29,KOFFING,GRIMER,0
+	db 56,WEEZING,FLAREON,0													;Custom Moves Applied
 ; Route 15
-	db 25,KOFFING,KOFFING,WEEZING,KOFFING,GRIMER,0
-	db 28,KOFFING,GRIMER,WEEZING,0											
+	db 55,EXEGGCUTE,MUK,MAGMAR,0											;Custom Moves Applied
+	db 57,WEEZING,0															;Custom Moves Applied		
 ; Route 16
 	db 58,GRIMER,GRAVELER,MUK,0												;Custom Moves Applied
 	db 60,WEEZING,0															;Custom Moves Applied
 	db 58,GOLBAT,ELECTRODE,VICTREEBEL,0										;Custom Moves Applied
 ; Route 17
-	db 28,WEEZING,KOFFING,WEEZING,0
-	db 33,MUK,0
-	db 29,VOLTORB,VOLTORB,0
-	db 29,WEEZING,MUK,0
-	db 25,KOFFING,WEEZING,KOFFING,KOFFING,WEEZING,0
+	db 60,TENTACRUEL,0														;Custom Moves Applied
+	db 58,DITTO,WEEZING,EXEGGCUTE,0											;Custom Moves Applied
+	db 58,ELECTRODE,DITTO,MUK,0												;Custom Moves Applied
+	db 58,GOLBAT,POLIWHIRL,DITTO,0											;Custom Moves Applied
+	db 60,SNEASEL,0
 ; Route 14
-	db 26,KOFFING,KOFFING,GRIMER,KOFFING,0
-	db 28,GRIMER,GRIMER,KOFFING,0
-	db 29,KOFFING,MUK,0
+	db 56,ARBOK,MAGCARGO,0													;Custom Moves Applied
+	db 55,WEEZING,ELECTRODE,TENTACRUEL,0									;Custom Moves Applied
+	db 54,MUK,HOUNDOUR,WEEZING,HOUNDOUR,0									;Custom Moves Applied
 BurglarData:
 ; Cinnabar Gym
 	db 36,GROWLITHE,VULPIX,NINETALES,0
@@ -299,9 +300,12 @@ BurglarData:
 ;	db 28,VULPIX,CHARMANDER,PONYTA,0
 EngineerData:
 ; Route 11
-	db 38,MUK,0																;Custom Moves Applied
-	db 34,GRIMER,MAGNETON,PORYGON,0											;Custom Moves Applied
+	db 38,MAGCARGO,MUK,0													;Custom Moves Applied
+	db 35,GRIMER,MAGNETON,PORYGON,0											;Custom Moves Applied
+; Route 10
+	db 42,ELECTABUZZ,WEEZING,HOUNDOOM,0										;NEW	;Custom Moves Applied										
 ; Unused
+;	db 42,RAPIDASH,ARBOK,AMPHAROS,0											;NEW
 ;	db 21,VOLTORB,MAGNEMITE,0
 Juggler1Data:
 ; none
@@ -311,17 +315,17 @@ FisherData:
 ; SS Anne B1F Rooms
 	db 34,MAGIKARP,KRABBY,GYARADOS,0										;Custom Moves Applied
 ; Route 12
-	db 22,GOLDEEN,POLIWAG,GOLDEEN,0
-	db 24,TENTACOOL,GOLDEEN,0
-	db 27,GOLDEEN,0
-	db 21,POLIWAG,SHELLDER,GOLDEEN,HORSEA,0
+	db 56,SEAKING,POLIWHIRL,SEAKING,0										;Custom Moves Applied
+	db 57,POLIWRATH,TENTACRUEL,0											;Custom Moves Applied
+	db 55,SEADRA,DEWGONG,CLOYSTER,CORSOLA,0									;Custom Moves Applied
+	db 58,QUAGSIRE,0														;Custom Moves Applied
 ; Route 21
 	db 28,SEAKING,GOLDEEN,SEAKING,SEAKING,0
 	db 31,SHELLDER,CLOYSTER,0
 	db 27,MAGIKARP,MAGIKARP,MAGIKARP,MAGIKARP,MAGIKARP,MAGIKARP,0
 	db 33,SEAKING,GOLDEEN,0
 ; Route 12
-	db 24,MAGIKARP,MAGIKARP,0
+	db 57,QWILFISH,GYARADOS,0												;Custom Moves Applied
 SwimmerData:
 ; Cerulean Gym
 	db 26,HORSEA,SHELLDER,0													;Custom Moves Applied
@@ -348,13 +352,15 @@ CueBallData:
 	db 59,ELECTRODE,ELECTRODE,0												;Custom Moves Applied
 	db 58,WEEZING,PRIMEAPE,MACHOKE,0										;Custom Moves Applied
 ; Route 17
-	db 29,MANKEY,PRIMEAPE,0
-	db 29,MACHOP,MACHOKE,0
-	db 33,MACHOKE,0
-	db 26,MANKEY,MANKEY,MACHOKE,MACHOP,0
-	db 29,PRIMEAPE,MACHOKE,0
+	db 59,MACHOKE,ELECTRODE,0												;Custom Moves Applied
+	db 59,ELECTRODE,MACHOKE,0												;Custom Moves Applied
+	db 58,MACHOKE,PRIMEAPE,MACHOKE,0										;Custom Moves Applied
+	db 58,PRIMEAPE,MACHOKE,PRIMEAPE,0										;Custom Moves Applied
+	db 59,HITMONCHAN,HITMONLEE,0											;Custom Moves Applied
 ; Route 21
 	db 31,TENTACOOL,TENTACOOL,TENTACRUEL,0
+; Route 2
+	db 6,TEDDIURSA,MANKEY,0											;NEW	;Custom Moves Applied
 GamblerData:
 ; Route 11
 	db 33,POLIWHIRL,SEADRA,0												;Custom Moves Applied
@@ -372,17 +378,17 @@ BeautyData:
 ; Celadon Gym
 	db 46,VICTREEBEL,TENTACRUEL,PARASECT,0									;Custom Moves Applied
 	db 46,VILEPLUME,WIGGLYTUFF,TANGELA,0									;Custom Moves Applied
-	db 46,VENUSAUR,PINSIR,PARASECT,0										;Custom Moves Applied
+	db 46,VENUSAUR,ARBOK,PARASECT,0											;Custom Moves Applied
 ; Route 13
-	db 27,RATTATA,PIKACHU,RATTATA,0
-	db 29,CLEFAIRY,MEOWTH,0
+	db 59,NINETALES,VILEPLUME,0												;Custom Moves Applied
+	db 59,PERSIAN,POLIWRATH,0												;Custom Moves Applied
 ; Route 20
 	db 35,SEAKING,0
 	db 30,SHELLDER,SHELLDER,CLOYSTER,0
 	db 31,POLIWAG,SEAKING,0
 ; Route 15
-	db 29,PIDGEOTTO,WIGGLYTUFF,0
-	db 29,BULBASAUR,IVYSAUR,0
+	db 59,VENUSAUR,STARMIE,WIGGLYTUFF,0										;Custom Moves Applied
+	db 61,HOUNDOOM,0														;Custom Moves Applied
 ; Route 19
 	db 27,POLIWAG,GOLDEEN,SEAKING,GOLDEEN,POLIWAG,0
 	db 30,GOLDEEN,SEAKING,0
@@ -401,7 +407,7 @@ RockerData:
 ; Vermilion Gym
 	db 37,WEEZING,ELECTRODE,MAGNETON,0										;Custom Moves Applied
 ; Route 12
-	db 29,VOLTORB,ELECTRODE,0
+	db 56,ELECTRODE,ELECTABUZZ,AMPHAROS,ELECTRODE,0							;Custom Moves Applied
 JugglerData:
 ; Silph Co. 5F
 	db 29,KADABRA,MR_MIME,0
@@ -409,22 +415,22 @@ JugglerData:
 	db 41,DROWZEE,HYPNO,KADABRA,KADABRA,0
 	db 48,MR_MIME,0
 ; Fuchsia Gym
-	db 31,DROWZEE,DROWZEE,KADABRA,DROWZEE,0
-	db 38,HYPNO,0
-	db 34,DROWZEE,HYPNO,0
-	db 34,DROWZEE,KADABRA,0
+	db 60,KADABRA,EXEGGCUTE,WEEZING,0										;Custom Moves Applied
+	db 60,HAUNTER,HYPNO,ELECTRODE,0											;Custom Moves Applied
+	db 57,GASTLY,ELECTRODE,GASTLY,ELECTRODE,GASTLY,ELECTRODE,0				;Custom Moves Applied
+	db 62,MR_MIME,0															;Custom Moves Applied
 ; Rocket Hideout B4F
 	db 50,HYPNO,MR_MIME,GRAVELER,ELECTABUZZ,0								;NEW	;Custom Moves Applied
 	db 50,MACHOKE,PRIMEAPE,JYNX,MAGMAR,0									;NEW	;Custom Moves Applied
 ; Pokemon Tower 7F
-	db 57,ELECTRODE,GOLEM,ELECTRODE,0										;NEW	;Custom Moves Applied
+	db 57,ELECTRODE,GRAVELER,ELECTRODE,0									;NEW	;Custom Moves Applied
 	db 57,ONIX,HYPNO,ONIX,0													;NEW	;Custom Moves Applied
 ; Unused
 	;db 33,HYPNO,0
 TamerData:
 ; Fuchsia Gym
-	db 34,SANDSLASH,ARBOK,0
-	db 33,ARBOK,SANDSLASH,ARBOK,0
+	db 61,STARMIE,0															;Custom Moves Applied
+	db 61,SCYTHER,0															;Custom Moves Applied
 ; Viridian Gym
 	db 43,RHYHORN,0
 	db 39,ARBOK,TAUROS,0
@@ -434,26 +440,26 @@ TamerData:
 	;db 42,RHYHORN,PRIMEAPE,ARBOK,TAUROS,0
 BirdKeeperData:
 ; Route 13
-	db 29,PIDGEY,PIDGEOTTO,0
-	db 25,SPEAROW,PIDGEY,PIDGEY,SPEAROW,SPEAROW,0
-	db 26,PIDGEY,PIDGEOTTO,SPEAROW,FEAROW,0
+	db 57,FARFETCHD,PIDGEOT,0
+	db 54,FEAROW,FARFETCHD,PIDGEOT,FARFETCHD,FEAROW,0
+	db 57,FEAROW,DODRIO,0
 ; Route 14
-	db 33,FARFETCHD,0
-	db 29,SPEAROW,FEAROW,0
+	db 59,DODRIO,0
+	db 58,PIDGEOT,FEAROW,0
 ; Route 15
-	db 26,PIDGEOTTO,FARFETCHD,DODUO,PIDGEY,0
-	db 28,DODRIO,DODUO,DODUO,0
+	db 57,DODRIO,DODRIO,DODRIO,0
+	db 59,AERODACTYL,0
 ; Route 18
-	db 29,SPEAROW,FEAROW,0
-	db 34,DODRIO,0
-	db 26,SPEAROW,SPEAROW,FEAROW,SPEAROW,0
+	db 59,PIDGEOT,FEAROW,FARFETCHD,0
+	db 59,FARFETCHD,FEAROW,PIDGEOT,0
+	db 60,DODRIO,AERODACTYL,0
 ; Route 20
 	db 30,FEAROW,FEAROW,PIDGEOTTO,0
 ; Route 14
-	db 28,PIDGEY,DODUO,PIDGEOTTO,0
-	db 26,PIDGEY,SPEAROW,PIDGEY,FEAROW,0
-	db 29,PIDGEOTTO,FEAROW,0
-	db 28,SPEAROW,DODUO,FEAROW,0
+	db 58,FEAROW,PIDGEOT,0
+	db 56,FEAROW,GOLBAT,PIDGEOT,GOLBAT,0
+	db 57,FARFETCHD,GOLBAT,GLIGAR,0
+	db 57,FARFETCHD,BUTTERFREE,GYARADOS,0
 ; Unused
 	;db 39,PIDGEOTTO,PIDGEOTTO,PIDGEY,PIDGEOTTO,0
 	;db 42,FARFETCHD,FEAROW,0
@@ -490,8 +496,12 @@ ProfOakData:
 	db $FF,66,TAUROS,67,EXEGGUTOR,68,ARCANINE,69,VENUSAUR,70,GYARADOS,0
 	db $FF,66,TAUROS,67,EXEGGUTOR,68,ARCANINE,69,CHARIZARD,70,GYARADOS,0
 ChiefData:
+; Rocket Hideout B4F
 	db 52,DRAGONAIR,RAICHU,RAPIDASH,SLOWBRO,CHANSEY,AERODACTYL,0			;NEW				;Custom Moves Applied
+; Pokemon Tower 7F
 	db 58,NIDOKING,RAPIDASH,DUGTRIO,LAPRAS,PINSIR,DRAGONITE,0				;NEW				;Custom Moves Applied
+; Mt. Moon B2F
+	db 24,ARM_MEWTWO,0														;NEW				;Custom Moves Applied
 ScientistData:
 ; Silph Co. 2F
 	db 26,GRIMER,WEEZING,KOFFING,WEEZING,0
@@ -540,7 +550,7 @@ RocketData:
 ; Route 24
 	db 24,GEODUDE,GASTLY,MACHOP,ABRA,0											;Custom Moves Applied
 ; Game Corner
-	db 20,RATICATE,ZUBAT,0
+	db 50,URSARING,0															;Custom Moves Applied
 ; Rocket Hideout B1F
 	db 48,HYPNO,MACHOKE,MACHOKE,HYPNO,0											;Custom Moves Applied
 	db 48,BEEDRILL,RATICATE,RATICATE,BEEDRILL,0									;Custom Moves Applied
@@ -615,7 +625,7 @@ CooltrainerMData:
 	;db 44,KINGLER,CLOYSTER,0
 CooltrainerFData:
 ; Celadon Gym
-	db 47,PARASECT,VICTREEBEL,FARFETCHD,TANGELA,0										;Custom Moves Applied
+	db 47,VILEPLUME,VICTREEBEL,TANGELA,VENUSAUR,0										;Custom Moves Applied
 ; Victory Road 3F
 	db 43,BELLSPROUT,WEEPINBELL,VICTREEBEL,0
 	db 43,PARASECT,DEWGONG,CHANSEY,0
@@ -635,13 +645,13 @@ BrunoData:
 BrockData:
 	db $FF,13,GEODUDE,13,SUDOWOODO,14,ZUBAT,14,TANGELA,15,ONIX,15,DIMONIX,0				;Custom Moves Applied
 MistyData:
-	db $FF,28,STARYU,28,PSYDUCK,29,GYARADOS,30,DRAGONAIR,30,STARMIE,0					;Custom Moves Applied
+	db $FF,28,STARYU,28,POLITOED,29,NIDOQUEEN,29,GYARADOS,30,DRAGONAIR,30,STARMIE,0		;Custom Moves Applied
 LtSurgeData:
-	db $FF,38,MAGNETON,38,ELECTABUZZ,39,TAUROS,40,JOLTEON,40,RAICHU,0					;Custom Moves Applied
+	db $FF,38,ELECTABUZZ,38,PRIMEAPE,39,JOLTEON,39,TAUROS,40,RAICHU,40,ZAPDOS,0			;Custom Moves Applied
 ErikaData:
-	db $FF,48,VENUSAUR,48,VICTREEBEL,49,CLEFABLE,49,GENGAR,50,EXEGGUTOR,50,VILEPLUME,0	;Custom Moves Applied
+	db $FF,48,JUMPLUFF,48,EXEGGUTOR,49,LAPRAS,49,CHANSEY,50,LEAFEON,50,BELLOSSOM,0		;Custom Moves Applied
 KogaData:
-	db $FF,37,KOFFING,39,MUK,37,KOFFING,43,WEEZING,0
+	db $FF,63,GOLBAT,63,GENGAR,64,PINSIR,64,VENOMOTH,65,SCIZOR,65,CROBAT,0				;Custom Moves Applied
 BlaineData:
 	db $FF,42,GROWLITHE,40,PONYTA,42,RAPIDASH,47,ARCANINE,0
 SabrinaData:
@@ -668,9 +678,9 @@ Green2Data:
 	db $FF,53,RHYDON,53,HYPNO,54,GYARADOS,54,NIDOKING,55,VAPOREON,55,VENUSAUR,0			;Custom Moves Applied
 	db $FF,53,RHYDON,53,HYPNO,54,GYARADOS,54,NIDOKING,55,JOLTEON,55,CHARIZARD,0			;Custom Moves Applied
 ; Route 18 (NEW)
-	db $FF,53,RHYDON,53,HYPNO,54,GYARADOS,54,NIDOKING,55,FLAREON,55,BLASTOISE,0			;Custom Moves Applied
-	db $FF,53,RHYDON,53,HYPNO,54,GYARADOS,54,NIDOKING,55,VAPOREON,55,VENUSAUR,0			;Custom Moves Applied
-	db $FF,53,RHYDON,53,HYPNO,54,GYARADOS,54,NIDOKING,55,JOLTEON,55,CHARIZARD,0			;Custom Moves Applied
+	db $FF,58,MAROWAK,58,KANGASKHAN,59,PARASECT,59,SNORLAX,60,FLAREON,60,BLASTOISE,0	;Custom Moves Applied
+	db $FF,58,MAROWAK,58,KANGASKHAN,59,PARASECT,59,SNORLAX,60,VAPOREON,60,VENUSAUR,0	;Custom Moves Applied
+	db $FF,58,MAROWAK,58,KANGASKHAN,59,PARASECT,59,SNORLAX,60,JOLTEON,60,CHARIZARD,0	;Custom Moves Applied
 ; Silph Co. 7F
 	db $FF,37,PIDGEOT,38,GROWLITHE,35,EXEGGCUTE,35,ALAKAZAM,40,BLASTOISE,0
 	db $FF,37,PIDGEOT,38,GYARADOS,35,GROWLITHE,35,ALAKAZAM,40,VENUSAUR,0
@@ -727,3 +737,7 @@ AgathaData:
 	db $FF,56,GENGAR,56,GOLBAT,55,HAUNTER,58,ARBOK,60,GENGAR,0
 LanceData:
 	db $FF,58,GYARADOS,56,DRAGONAIR,56,DRAGONAIR,60,AERODACTYL,62,DRAGONITE,0
+BugMasterData:	;NEW
+; Viridian Forest
+	db 12,METAPOD,PINSIR,0																;Custom Moves Applied
+

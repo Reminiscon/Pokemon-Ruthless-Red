@@ -46,7 +46,7 @@ MapHeaderPointers::
 	dw School_h
 	dw ViridianHouse_h
 	dw ViridianGym_h
-	dw DiglettsCaveRoute2_h
+	dw MoltenCavern_h
 	dw ViridianForestExit_h
 	dw Route2House_h
 	dw Route2Gate_h

@@ -19,7 +19,7 @@ _ViridianHouseText2::						;modified text
 
 _ViridianHouseText_1d5b1::					;modified text
 	text "SPEARY: Tetweet!"
-	line "(looks terrified)"
+	line "(it's terrified)"
 	done
 
 _ViridianHouseText4::

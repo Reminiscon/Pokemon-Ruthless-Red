@@ -14,7 +14,7 @@ TEXT_11 EQU TEXT_10 + 1
 
 POKEDEX_TEXT EQU TEXT_11 + 1
 MOVE_NAMES   EQU POKEDEX_TEXT + 1
-POKEDEX_TEXT2 EQU MOVE_NAMES + 7		;NEW
+POKEDEX_TEXT2 EQU MOVE_NAMES + 8		;NEW
 
 INCLUDE "macros.asm"
 INCLUDE "hram.asm"
@@ -1119,10 +1119,10 @@ _UseNextMonText::
 	text "Use next #MON?"
 	done
 
-_Sony1WinText::
-	text "<RIVAL>: Yeah! Am"
-	line "I great or what?"
-	prompt
+;_Sony1WinText::	;joenote - made redundant
+;	text "<RIVAL>: Yeah! Am"
+;	line "I great or what?"
+;	prompt
 
 _PlayerBlackedOutText2::
 	text "<PLAYER> is out of"
@@ -1944,7 +1944,7 @@ _Char00Text::
 _Char55Text::
 	text $4B,"@@"
 
-INCLUDE "text/maps/digletts_cave_route_2_entrance.asm"
+INCLUDE "text/maps/moltencavern.asm"
 INCLUDE "text/maps/viridian_forest_exit.asm"
 INCLUDE "text/maps/route_2_house.asm"
 INCLUDE "text/maps/route_2_gate.asm"
@@ -2171,7 +2171,8 @@ _LoweredItsHeadText::
 
 _SkyAttackGlowingText::
 	text ""
-	line "is glowing!"
+	line "has emitted a"
+	cont "stunning light!"
 	prompt
 
 _FlewUpHighText::
@@ -2315,12 +2316,14 @@ _LightScreenProtectedText::
 
 _ReflectGainedArmorText::
 	text "<USER>"
-	line "gained armor!"
+	line "doubled its"
+	cont "DEFENSE!"
 	prompt
 
 _ShroudedInMistText::
 	text "<USER>'s"
-	line "shrouded in mist!"
+	line "protected against"
+	cont "all status moves!"
 	prompt
 
 _SuckedHealthText::
@@ -2704,10 +2707,10 @@ _WarpToLastPokemonCenterText::
 	line "#MON CENTER."
 	done
 
-_CannotUseTeleportNowText::
-	TX_RAM wcd6d
-	text " can't"
-	line "use TELEPORT now."
+_CannotUseTeleportNowText:: ;TX_RAM wcd6d removed for new text
+	text "A mysterious"
+	line "force blocks the"
+	cont "teleportation!"
 	prompt
 
 _CannotFlyHereText::

@@ -84,6 +84,7 @@ Route24TextPointers:
 	dw Route24Text6
 	dw Route24Text7
 	dw PickUpItemText
+	dw Route24Text8
 
 Route24TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_ROUTE_24_TRAINER_0
@@ -316,4 +317,8 @@ Route24EndBattleText6:
 
 Route24AfterBattleText6:
 	TX_FAR _Route24AfterBattleText6
+	db "@"
+	
+Route24Text8:
+	TX_FAR _Route24Text8
 	db "@"

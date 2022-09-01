@@ -38,6 +38,7 @@ const_value = 0
 	const HS_ROUTE_2_ITEM_5
 	const HS_ROUTE_4_ITEM                 ; 1B X
 	const HS_ROUTE_9_ITEM                 ; 1C X
+	const HS_ROUTE_10_ITEM_1
 	const HS_ROUTE_11_ITEM_1
 	const HS_ROUTE_11_ITEM_2
 	const HS_ROUTE_11_ITEM_3
@@ -45,6 +46,7 @@ const_value = 0
 	const HS_ROUTE_12_ITEM_1              ; 1E X
 	const HS_ROUTE_12_ITEM_2              ; 1F X
 	const HS_ROUTE_15_ITEM                ; 20 X
+	const HS_ROUTE_15_ITEM_2
 	const HS_ROUTE_16_SNORLAX             ; 21
 	const HS_ROUTE_18_RIVAL				  
 	const HS_ROUTE_22_RIVAL_1             ; 22
@@ -65,6 +67,13 @@ const_value = 0
 	const HS_OAKS_LAB_OAK_2               ; 31
 	const HS_VIRIDIAN_GYM_GIOVANNI        ; 32
 	const HS_VIRIDIAN_GYM_ITEM            ; 33 X
+	const HS_MOLTRES
+	const HS_MOLTEN_CAVERN_ITEM_2
+	const HS_MOLTEN_CAVERN_ITEM_3
+	const HS_MOLTEN_CAVERN_ITEM_4
+	const HS_MOLTEN_CAVERN_ITEM_5
+	const HS_MOLTEN_CAVERN_ITEM_6
+	const HS_MOLTEN_CAVERN_ITEM_7
 	const HS_OLD_AMBER                    ; 34
 	const HS_UNKNOWN_DUNGEON_1_ITEM_1     ; 35 X
 	const HS_UNKNOWN_DUNGEON_1_ITEM_2     ; 36 X
@@ -106,7 +115,7 @@ const_value = 0
 	const HS_POWER_PLANT_ITEM_3           ; 58 X
 	const HS_POWER_PLANT_ITEM_4           ; 59 X
 	const HS_POWER_PLANT_ITEM_5           ; 5A X
-	const HS_MOLTRES                      ; 5B X
+	const HS_VICTORY_ROAD_2_ITEM_0        ; 5B X ;This used to be HS_MOLTRES
 	const HS_VICTORY_ROAD_2_ITEM_1        ; 5C X
 	const HS_VICTORY_ROAD_2_ITEM_2        ; 5D X
 	const HS_VICTORY_ROAD_2_ITEM_3        ; 5E X
@@ -118,12 +127,19 @@ const_value = 0
 	const HS_VIRIDIAN_FOREST_ITEM_1       ; 64 X
 	const HS_VIRIDIAN_FOREST_ITEM_2       ; 65 X
 	const HS_VIRIDIAN_FOREST_ITEM_3       ; 66 X
+	const HD_VIRIDIAN_FOREST_ITEM_4
 	const HS_MT_MOON_1_ITEM_1             ; 67 X
 	const HS_MT_MOON_1_ITEM_2             ; 68 X
 	const HS_MT_MOON_1_ITEM_3             ; 69 X
 	const HS_MT_MOON_1_ITEM_4             ; 6A X
 	const HS_MT_MOON_1_ITEM_5             ; 6B X
 	const HS_MT_MOON_1_ITEM_6             ; 6C X
+	const HS_MT_MOON_2_ITEM_1
+	const HS_MT_MOON_2_ITEM_2
+	const HS_MT_MOON_2_ITEM_3
+	const HS_MT_MOON_2_ITEM_4
+	const HS_MT_MOON_2_CHIEF
+	const HS_MT_MOON_2_ARMED_MEWTWO
 	const HS_MT_MOON_3_FOSSIL_1           ; 6D
 	const HS_MT_MOON_3_FOSSIL_2           ; 6E
 	const HS_MT_MOON_3_ITEM_1             ; 6F X

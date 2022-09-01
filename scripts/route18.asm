@@ -232,15 +232,15 @@ Route18Text4:
 	ld a, [wRivalStarter]
 	cp STARTER2
 	jr nz, .NotSquirtle
-	ld a, $4
+	ld a, $7
 	jr .done
 .NotSquirtle
 	cp STARTER3
 	jr nz, .Charmander
-	ld a, $5
+	ld a, $8
 	jr .done
 .Charmander
-	ld a, $6
+	ld a, $9
 .done
 	ld [wTrainerNo], a
 

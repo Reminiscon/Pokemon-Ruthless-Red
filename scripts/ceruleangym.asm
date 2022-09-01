@@ -64,9 +64,28 @@ CeruleanGymScript_5c70d:
 	set 1, [hl]
 	;ld hl, wBeatGymFlags	;joenote - redundant
 	;set 1, [hl]
+	
+	;dylannote - Make it so that Chief in Mt.Moon disappears after Misty is defeated
+	ld a, HS_MT_MOON_2_CHIEF
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	
+	;dylannote - Make it so that Arm.Mewtwo in Mt.Moon disappears after Misty is defeated
+	ld a, HS_MT_MOON_2_ARMED_MEWTWO
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	
+	;dylannote - Make it so that Moltres disappears after Misty is defeated
+	ld a, HS_MOLTRES
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	
+	ResetEvents EVENT_BEAT_MOLTRES
 
 	; deactivate gym trainers
-	SetEvents EVENT_BEAT_CERULEAN_GYM_TRAINER_0, EVENT_BEAT_CERULEAN_GYM_TRAINER_1
+	SetEvent EVENT_BEAT_CERULEAN_GYM_TRAINER_0
+	SetEvent EVENT_BEAT_CERULEAN_GYM_TRAINER_1
+	SetEvent EVENT_BEAT_CHIEF_AT_MT_MOON			;NEW
 
 	jp CeruleanGymScript_5c6ed
 

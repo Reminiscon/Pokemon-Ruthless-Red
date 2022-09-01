@@ -4,7 +4,7 @@ db 85 ; base attack
 db 200 ; base defense
 db 70 ; base speed			;Speed increased from 30 to 70 for balancing purposes
 db 65 ; base special
-db GROUND ; species type 1
+db ARMOR ; species type 1
 db GROUND ; species type 2
 db 13 ; catch rate
 db 216 ; base exp yield

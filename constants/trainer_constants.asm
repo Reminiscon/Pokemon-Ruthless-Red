@@ -53,3 +53,5 @@ const_value = 1
 	trainer_const CHANNELER     ; $2D
 	trainer_const AGATHA        ; $2E
 	trainer_const LANCE         ; $2F
+	trainer_const BUG_MASTER	; $30	;NEW
+	

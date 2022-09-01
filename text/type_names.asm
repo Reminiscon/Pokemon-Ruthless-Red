@@ -9,8 +9,8 @@ TypeNames:
 	dw .Bird
 	dw .Bug
 	dw .Ghost
+	dw .Armor
 
-	dw .Normal
 	dw .Normal
 	dw .Normal
 	dw .Normal
@@ -29,6 +29,8 @@ TypeNames:
 	dw .Psychic
 	dw .Ice
 	dw .Dragon
+	dw .Demon
+	dw .Glitch
 
 .Normal:   db "NORMAL@"
 .Fighting: db "FIGHTING@"
@@ -45,4 +47,7 @@ TypeNames:
 .Bird:     db "TYPELESS@"	;joenote - Bird type will be used as a neutral typless dummy type for Struggle
 .Bug:      db "BUG@"
 .Ghost:    db "GHOST@"
+.Armor:	   db "ARMOR@"		;NEW
 .Dragon:   db "DRAGON@"
+.Demon:	   db "DEMON@"		;NEW
+.Glitch:   db "GLITCH@"		;NEW

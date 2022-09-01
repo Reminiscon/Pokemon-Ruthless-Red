@@ -10,11 +10,9 @@ _KogaExplainToxicText::
 	done
 
 _FuchsiaGymText9::
-	text "Now that you have"
-	line "the SOULBADGE,"
-	cont "the SPEED of"	;joenote - changed DEFENSE to SPEED in order to fix a typo
-	cont "your #MON"
-	cont "increases!"
+	text "The SOULBADGE"
+	line "will make #MON"
+	cont "up to L75 obey."
 
 	para "It also lets you"
 	line "SURF outside of"
@@ -37,7 +35,16 @@ _TM06ExplanationText::
 
 	para "It is a secret"
 	line "technique over"
-	cont "400 years old!"
+	cont "four hundred-"
+	
+	para "Huh? What's that?"
+	line "You wanted TM32"
+	cont "DOUBLE TEAM?"
+	
+	para "HAH! HAH! HAH!"
+	line "That's a good one!"
+	
+	para "Get out."
 	done
 
 _TM06NoRoomText::
@@ -184,6 +191,19 @@ _FuchsiaGymText_7564e::
 	para "You have to find"
 	line "gaps in the walls"
 	cont "to reach him!"
+	
+	para "In battle, it may"
+	line "be difficult to"
+	cont "land a hit on him!"
+	
+	para "Stick with tech-"
+	line "niques of high"
+	cont "accuracy!"
+	
+	para "Other than that?"
+	line "Say your prayers"
+	cont "and hope for the"
+	cont "best!"
 	done
 
 _FuchsiaGymText_75653::

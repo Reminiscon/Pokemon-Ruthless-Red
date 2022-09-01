@@ -925,7 +925,13 @@ ItemUseMedicine:
 	push hl
 	ld hl, wPlayerBattleStatus3
 	res BADLY_POISONED, [hl] ; heal Toxic status
+	ld a, [H_WHOSETURN]
+	push af
+	xor a	;forcibly set it to the player's turn
+	ld [H_WHOSETURN], a
 	callab UndoBurnParStats	;undo brn/par stat changes
+	pop af
+	ld [H_WHOSETURN], a
 	pop hl
 	xor a
 	ld [wBattleMonStatus], a ; remove the status ailment in the in-battle pokemon data
@@ -1188,7 +1194,13 @@ ItemUseMedicine:
 	jr z, .clearParBrn	;do not adjust the stats if not currently in battle
 	push hl
 	push de
-	callab UndoBurnParStats
+	ld a, [H_WHOSETURN]
+	push af
+	xor a	;forcibly set it to the player's turn
+	ld [H_WHOSETURN], a
+	callab UndoBurnParStats	;undo brn/par stat changes
+	pop af
+	ld [H_WHOSETURN], a
 	pop de
 	pop hl
 .clearParBrn
@@ -1486,7 +1498,8 @@ ItemUseRock:
 	call PrintText
 	ld hl, wEnemyMonActualCatchRate ; catch rate
 	ld a, [hl]
-	add a ; double catch rate
+	sla a 	;add a is commented out and replaced with sla a
+	sla a ; dylannote - When rock is used, catch rate is multiplied by 4 instead of 2
 	jr nc, .noCarry
 	ld a, $ff
 .noCarry
@@ -1534,6 +1547,11 @@ ItemUseEscapeRope:
 	ld a, [wCurMap]
 	cp AGATHAS_ROOM
 	jr z, .notUsable
+;joenote - added from pokeyellow; do not allow in Bill's house or the Fan Club
+	cp BILLS_HOUSE
+	jr z, .notUsable
+	cp POKEMON_FAN_CLUB
+	jr z, .notUsable
 	ld a, [wCurMapTileset]
 	ld b, a
 	ld hl, EscapeRopeTilesets
@@ -1566,7 +1584,7 @@ ItemUseEscapeRope:
 	jp ItemUseNotTime
 
 EscapeRopeTilesets:
-	db FOREST, CEMETERY, CAVERN, FACILITY, INTERIOR
+	db FOREST, CAVERN ;Removed CEMETERY, FACILITY, and INTERIOR
 	db $ff ; terminator
 
 ItemUseRepel:
@@ -1701,8 +1719,8 @@ ItemUseGuardSpec:
 	ld a, [wIsInBattle]
 	and a
 	jp z, ItemUseNotTime
-	ld hl, wPlayerBattleStatus2
-	set PROTECTED_BY_MIST, [hl] ; Mist bit
+	ld hl, wPlayerBattleStatus3	  ; Changed from wPlayerBattleStatus2
+	set HAS_LIGHT_SCREEN_UP, [hl] ; Changed from Mist bit to Light Screen bit
 	jp PrintItemUseTextAndRemoveItem
 
 ItemUseSuperRepel:
@@ -2118,6 +2136,12 @@ ItemUsePPRestore:
 	ld a, [wPlayerMonNumber]
 	cp b ; is the pokemon whose PP was restored active in battle?
 	jr nz, .skipUpdatingInBattleData
+	
+	;joenote - do not update active mon if it is transformed
+	ld a, [wPlayerBattleStatus3]
+	bit 3, a ; is the mon transformed?
+	jp nz, .skipUpdatingInBattleData
+	
 	ld hl, wPartyMon1PP
 	ld bc, wPartyMon2 - wPartyMon1
 	call AddNTimes

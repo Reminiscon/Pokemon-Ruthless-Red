@@ -138,7 +138,7 @@ MainMenu:
 InitOptions:
 	ld a, 1 ; no delay
 	ld [wLetterPrintingDelayFlags], a
-	ld a, 3 ; medium speed
+	ld a, %01000001 ; medium speed
 	ld [wOptions], a
 	ret
 
@@ -348,7 +348,7 @@ HandshakeList:	;this serves as a version control passcode with FF as an end-of-l
 	db $b
 	db $ff
 VersionText:
-	db "v1.18L@"
+	db "V0.5 ALPHA@"	;dylannote - Switched to Ruthless Red version
 
 WhereWouldYouLikeText:
 	TX_FAR _WhereWouldYouLikeText
@@ -419,7 +419,7 @@ DisplayContinueGameInfo:
 	call PrintPlayTime
 	ld a, 1
 	ld [H_AUTOBGTRANSFERENABLED], a
-	ld c, 30
+	ld c, 5 ; Shorter time while displaying stats than before, which was 30
 	jp DelayFrames
 
 PrintSaveScreenText:
@@ -665,7 +665,7 @@ BattleAnimationOptionText:
 
 BattleStyleOptionText:
 	db   "BATTLE STYLE"
-	next " SET         @"
+	next " SHIFT    SET@"
 
 OptionMenuCancelText:
 	db "CANCEL@"

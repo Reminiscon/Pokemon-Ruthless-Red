@@ -328,7 +328,7 @@ ScoreAIParty:
 	jr nz, .next0	;go to next check if hp > 0
 	ld a, $0F
 	ld [de], a
-	jp .next6
+	jp .end_scoring_modules
 .next0	
 	
 	;+2 score if faster than current player mon's speed
@@ -357,20 +357,20 @@ ScoreAIParty:
 	call nc, .plus
 	pop af
 	jr nc, .next2
-	;-2 score if less than 3/4 base hp
+	;-1 score if less than 3/4 base hp
 	ld a, $34
+	call AIRosterScoringCheckIfHPBelowFraction
+	ld b, 1
+	call c, .minus
+	;-2 more (total of -3) score if less than 1/2 base hp
+	ld a, 2
 	call AIRosterScoringCheckIfHPBelowFraction
 	ld b, 2
 	call c, .minus
-	;-3 more (total of -5) score if less than 1/2 base hp
-	ld a, 2
-	call AIRosterScoringCheckIfHPBelowFraction
-	ld b, 3
-	call c, .minus
-	;-5 more (total of -10) score if less than 1/4 base hp
+	;-2 more (total of -5) score if less than 1/4 base hp
 	ld a, 4
 	call AIRosterScoringCheckIfHPBelowFraction
-	ld b, 5
+	ld b, 2
 	call c, .minus
 .next2	
 
@@ -402,74 +402,108 @@ ScoreAIParty:
 .next3
 
 
-	;adjust score for most recent player move
-	ld a, [wActionResultOrTookBattleTurn]
+	;adjust score for the active player mon moves
+	;first back up player move power and type
+	ld a, [wPlayerMovePower]
+	ld b, a
+	ld a, [wPlayerMoveType]
+	ld c, a
+	push bc
+	;back up wBuffer, then use wBuffer to store the current enemy mon score
+	ld a, [wBuffer]
+	push af
+	ld a, [de]
+	ld [wBuffer], a
+	;set loop counter to 4
+	ld c, $04
+.playermoveloop
+	;update the current score to be the lowest
+	ld a, [de]
+	ld b, a
+	ld a, [wBuffer]
+	cp b
+	jr c, .playermoveloop_wBuffer	;if wBuffer < DE score, set DE score to wBuffer
+	ld a, b	;else update wBuffer 
+	ld [wBuffer], a
+.playermoveloop_wBuffer
+	ld [de], a
+	;decrement counter, then exit out of loop if 4 moves reached
+	ld a, c
+	sub $01	;use sub instead of dec in order to affect carry bit
+	ld c, a
+	jp c, .playermoveloop_done
+	;grab a player mon move
+	push hl
+	ld b, $00
+	ld hl, wBattleMonMoves
+	add hl, bc
+	ld a, [hl]
+	pop hl
+	;do nothing if this is a null move
 	and a
-	jr nz, .next4	;skip if the player switched or used an item
+	jr z, .playermoveloop
+	;save the player move power and type
+	push bc
+	push de
+	push hl
+	ld d, a
+	callba ReadMoveForAIscoring
+	ld a, e
+	ld [wPlayerMoveType], a
+	ld a, d
+	ld [wPlayerMovePower], a
+	pop hl
+	pop de
+	pop bc
+	
 	ld a, [wPlayerMovePower]	;get the power of the player's move
 	cp $02	;regular damaging moves have power > 1
-	jr c, .next4	;skip out if the move is not a normal damaging move
+	jr c, .playermoveloop	;skip out if the move is not a normal damaging move
 	;get effectiveness of the most recent player move
-	ld a, [wUnusedC000]
-	set 3, a 
-	ld [wUnusedC000], a
-	;preserve the current enemy mon typing
-	ld a, [wEnemyMonType]
-	ld [wAIPartyMonScores + 6], a
-	ld a, [wEnemyMonType + 1]
-	ld [wAIPartyMonScores + 7], a
-	;override the current enemy mon typing with that from the roster pointer
-	ld bc, $05
-	call GetRosterStructData
-	ld [wEnemyMonType], a
-	ld bc, $06
-	call GetRosterStructData
-	ld [wEnemyMonType + 1], a
-	;now get the typing effectiveness
-	push hl
-	push de
-	callab AIGetTypeEffectiveness
-	pop de
-	pop hl
-	;now undo the current mon type override
-	ld a, [wAIPartyMonScores + 6]
-	ld [wEnemyMonType], a
-	ld a, [wAIPartyMonScores + 7]
-	ld [wEnemyMonType + 1], a
+	call .get_effectiveness_to_enemy
 	;now get the move-to-type effectiveness
 	ld a, [wTypeEffectiveness]
 	;skip if effectiveness is neutral
 	cp $0A
-	jr z, .next4
-	;+10 to score if move has no effect
+	jp z, .playermoveloop
+	;+15 to score if move has no effect
 	cp $01
-	ld b, 10
+	ld b, 15 ;changed from 10 to 15
 	push af
 	call c, .plus
 	pop af
-	jr c, .next4
-	;+5 to score if move has little effect
+	jp c, .playermoveloop
+	;+10 to score if move has little effect
 	cp $03
-	ld b, 5
+	ld b, 10 ;changed from 5 to 10
 	push af
 	call c, .plus
 	pop af
-	jr c, .next4
-	;+2 to score if move is less effective
+	jp c, .playermoveloop
+	;+5 to score if move is less effective
 	cp $0A
-	ld b, 2
+	ld b, 5 ;changed from 2 to 5
 	push af
 	call c, .plus
 	pop af
-	jr c, .next4
+	jp c, .playermoveloop
 	;at this point the move must be super effective
 	;minus based on the power of the move
 	ld a, [wPlayerMovePower]
-	srl a
-	srl a
-	srl a
+	srl a	;-1/2 power
+	srl a	;-1/4 power
 	ld b, a
-	call nc, .minus
+	call .minus	
+	jp .playermoveloop
+.playermoveloop_done
+	;restore player move power and type as well as wBuffer
+	pop af
+	ld [wBuffer], a
+	pop bc
+	ld a, c
+	ld [wPlayerMoveType], a
+	ld a, b
+	ld [wPlayerMovePower], a
 .next4
 
 	
@@ -558,6 +592,44 @@ ScoreAIParty:
 .next7	
 
 
+	;score penalty if opponent could have STAB against the pointed-to enemy mon
+	ld a, [wPlayerMoveType]
+	push af
+	;check player type 1 effectiveness
+	ld a, [wBattleMonType]
+	ld [wPlayerMoveType], a
+	call .get_effectiveness_to_enemy
+	ld b, 3	;-3 for 2x effective or -6 if 4x effective
+	ld a, [wTypeEffectiveness]
+	push af
+	cp $10
+	call nc, .minus
+	pop af
+	cp $15
+	call nc, .minus
+	;jump if there is no type 2
+	push hl
+	ld hl, wBattleMonType
+	ld a, [wBattleMonType + 1]
+	cp [hl]
+	pop hl
+	jr z, .next8
+	;else do type 2 now
+	ld [wPlayerMoveType], a
+	call .get_effectiveness_to_enemy
+	ld b, 3	;-3 for 2x effective or -6 if 4x effective
+	ld a, [wTypeEffectiveness]
+	push af
+	cp $10
+	call nc, .minus
+	pop af
+	cp $15
+	call nc, .minus
+.next8	
+	pop af
+	ld [wPlayerMoveType], a
+	
+.end_scoring_modules
 	pop bc
 	dec b
 	jr z, .donescoring
@@ -575,14 +647,53 @@ ScoreAIParty:
 .plus
 	ld a, [de]
 	add b
+	call c, .overflow
 	ld [de], a
 	ret
 .minus
 	ld a, [de]
 	sub b
+	call c, .underflow
 	ld [de], a
 	ret
-
+.overflow
+	ld a, $FF
+	ret
+.underflow
+	ld a, $00
+	ret
+.get_effectiveness_to_enemy
+	ld a, [wUnusedC000]
+	set 3, a 
+	ld [wUnusedC000], a
+	;preserve the current enemy mon typing
+	ld a, [wEnemyMonType]
+	ld [wAIPartyMonScores + 6], a
+	ld a, [wEnemyMonType + 1]
+	ld [wAIPartyMonScores + 7], a
+	;override the current enemy mon typing with that from the roster pointer
+	push bc
+	ld bc, $05
+	call GetRosterStructData
+	ld [wEnemyMonType], a
+	ld bc, $06
+	call GetRosterStructData
+	ld [wEnemyMonType + 1], a
+	pop bc
+	;now get the typing effectiveness
+	push bc
+	push hl
+	push de
+	callab AIGetTypeEffectiveness
+	pop de
+	pop hl
+	pop bc
+	;now undo the current mon type override
+	ld a, [wAIPartyMonScores + 6]
+	ld [wEnemyMonType], a
+	ld a, [wAIPartyMonScores + 7]
+	ld [wEnemyMonType + 1], a
+	ret
 	
 	
 
@@ -863,7 +974,7 @@ ChooseMovePPTrack:
 	jp .back
 .PPexhausted	;return zero flag if no PP left
 	pop hl
-.flagset
+.flagset	;d is holding flags for unusable moves
 	ld e, 0
 	ld a,  b
 	cp 4
@@ -890,44 +1001,94 @@ ChooseMovePPTrack:
 	ld [wUnusedCF8D + 1], a
 	ret
 
+
+;this function will try to pick a trainer's preferred choice of move
+;while also taking into account unusable moves
 IsTrainerBattlePPCheck:
 	ld a, [wIsInBattle]
 	cp 2
 	ret nz
+	
+;first, adjust the scores in the backup buffer so that unusable moves are maxed out (based on flags in d)
+	push hl
 	push de
+	ld hl, wBuffer + NUM_MOVES
+	ld e, NUM_MOVES
+.loop
+	rr d
+	call c, .disabled_move
+	inc hl
+	dec e
+	jr nz, .loop
+	pop de
+	pop hl
+	
+;now determine if the randomly chosen move is a preferred move that is usuable
+	ld a, [hl]
+	and a
+	jr z, .next	;not preferred if zero; else check against backup score
 	push hl
 	push bc
-	
-.loop1
-	dec b
-	jr z, .doneloop1
-	dec hl
-	jr .loop1
-.doneloop1
+	ld bc, NUM_MOVES
+	add hl, bc
+	pop bc
+	ld a, [hl]
+	pop hl
+	cp $ff
+	jr nz, .done	;the preferred move is not unuseable so we're good to go
+.next	
 
-	ld c, NUM_MOVES
-	ld de, wEnemyMonPP
+;so the randomly picked move is either not preferred or is preferred but unusable
+;in that case, pick the move with the lowest score moving towards the left and circling back if needed
+	push hl
+	push de
+	push bc
+	;move HL to the backup score buffer and set the loop counter
+	push bc
+	ld bc, NUM_MOVES
+	add hl, bc
+	pop bc
+	ld c, NUM_MOVES	
+	;initialize current score as best score
+	ld a, [hl]
+	ld e, a
+	;initialize current move position as best move
+	ld d, b
 .loop2
-	ld a, [de]
-	ld b, a
-	ld a, [hl]	
-	and b
-	jr nz, .done	
-	inc hl
-	inc de
+	ld a, [hl]
+	cp e
+	call c, .updateBestScore
+	dec hl
+	dec b
+	call z, .circleB
 	dec c
 	jr nz, .loop2
-.done
-	;zero flag set by this point if all moves were ran through
 	pop bc
-	pop hl
+	ld b, d
 	pop de
-	ret nz
+	pop hl
+
+.done
 	ld hl, wEnemyMonMoves
 	push bc
 	ld c, b
 	ld b, 0
 	dec bc
+	add hl, bc
+	pop bc
+	ret
+.disabled_move
+	ld a, $ff
+	ld [hl], a
+	ret
+.updateBestScore
+	ld e, a
+	ld d, b
+	ret
+.circleB
+	ld b, NUM_MOVES
+	push bc
+	ld bc, NUM_MOVES
 	add hl, bc
 	pop bc
 	ret

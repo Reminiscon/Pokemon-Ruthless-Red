@@ -120,14 +120,7 @@ _RocketHideout4AfterBattleText6::
 	done
 	
 _RocketHideout4BattleText7::
-	text "I know who you"
-	line "are."
-	
-	para "But you do not"
-	line "know who I am."
-	
-	para "How is this for"
-	line "an introduction?"
+	text "Greetings!"
 	done
 
 _RocketHideout4EndBattleText7::
@@ -146,8 +139,7 @@ _RocketHideout4AfterBattleText7::
 	line "again."
 	
 	para "That is, if you"
-	line "survive"
-	cont "GIOVANNI."
+	line "survive GIOVANNI."
 	
 	para "HAH HAH HAH!!!"
 	done

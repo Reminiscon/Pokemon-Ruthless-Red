@@ -161,6 +161,13 @@ CinnabarGymScript3_75857:
 	set 6, [hl]
 	;ld hl, wBeatGymFlags	;joenote - redundant
 	;set 6, [hl]
+	
+	;dylannote - Make it so that Articuno disappears after Blaine is defeated
+	ld a, HS_ARTICUNO
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	
+	ResetEvents EVENT_BEAT_ARTICUNO
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_CINNABAR_GYM_TRAINER_0, EVENT_BEAT_CINNABAR_GYM_TRAINER_6

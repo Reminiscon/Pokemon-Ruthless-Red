@@ -1,6 +1,7 @@
 _Route8BattleText1::						;modified text
 	text "I'm a master of"
-	line "substitution jutsu!"
+	line "substitution"
+	cont "jutsu!"
 	done
 
 _Route8EndBattleText1::

@@ -4,6 +4,13 @@ _ViridianForestText1::
 
 	para "They're out for"
 	line "#MON fights!"
+	
+	para "That BUG MASTER"
+	line "dude is scary"
+	cont "though."
+	
+	para "Do NOT challenge"
+	line "him!"
 	done
 
 _ViridianForestBattleText1::
@@ -14,7 +21,7 @@ _ViridianForestBattleText1::
 
 _ViridianForestEndBattleText1::
 	text "No!"
-	line "CATERPIE can't"
+	line "Cocoons can't"
 	cont "cut it!"
 	prompt
 
@@ -42,8 +49,8 @@ _ViridianFrstAfterBattleText2::
 	done
 
 _ViridianForestBattleText3::
-	text "Get ready to"
-	line "cry."
+	text "This might sting"
+	line "a little bit."
 	done
 
 _ViridianForestEndBattleText3::
@@ -61,8 +68,29 @@ _ViridianFrstAfterBattleText3::
 	line "the stuff I"
 	cont "dropped!"
 	done
+	
+_ViridianForestBattleText4::
+	text "No BADGES?"
+	line "Easy prey!"
+	
+	para "Prepare yourself,"
+	line "NOVICE!"
+	done
 
-_ViridianForestText8::
+_ViridianForestEndBattleText4::
+	text "I"
+	line "see! A worthy"
+	cont "adversary!"
+	prompt
+
+_ViridianFrstAfterBattleText4::
+	text "..."
+	
+	para "(He seems to"
+	line "be meditating)"
+	done
+
+_ViridianForestText10::
 	text "I ran out of #"
 	line "BALLs to catch"
 	cont "#MON with!"
@@ -71,7 +99,7 @@ _ViridianForestText8::
 	line "extras!"
 	done
 
-_ViridianForestText9::
+_ViridianForestText11::
 	text "TRAINER TIPS"
 
 	para "If you want to"
@@ -80,32 +108,34 @@ _ViridianForestText9::
 	cont "grassy areas!"
 	done
 
-_ViridianForestText10::
+_ViridianForestText12::
 	text "For poison, use"
 	line "ANTIDOTE! Get it"
 	cont "at #MON MARTs!"
 	done
 
-_ViridianForestText11::
-	text "TRAINER TIPS"
-
-	para "Contact PROF.OAK"
-	line "via PC to get"
-	cont "your #DEX"
-	cont "evaluated!"
-	done
-
-_ViridianForestText12::
-	text "TRAINER TIPS"
-
-	para "No stealing of"
-	line "#MON from"
-	cont "other trainers!"
-	cont "Catch only wild"
-	cont "#MON!"
-	done
-
 _ViridianForestText13::
+	text "TRAINER TIPS"
+
+	para "Some trainers"
+	line "cannot be fought"
+	cont "after acquiring"
+	cont "a BADGE!"
+	done
+
+_ViridianForestText14::
+	text "TRAINER TIPS"
+
+	para "There is no"
+	line "such thing as"
+	cont "a free lunch!"
+	
+	para "Spend your money"
+	line "wisely, as it is"
+	cont "finite!"
+	done
+
+_ViridianForestText15::
 	text "TRAINER TIPS"
 
 	para "Weaken #MON"
@@ -116,8 +146,11 @@ _ViridianForestText13::
 	line "they may escape!"
 	done
 
-_ViridianForestText14::
+_ViridianForestText16::
 	text "LEAVING"
 	line "VIRIDIAN FOREST"
 	cont "PEWTER CITY AHEAD"
 	done
+
+	
+	

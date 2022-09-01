@@ -578,6 +578,15 @@ CheckIfInOutsideMap::
 	ret z
 	cp PLATEAU ; Route 23 / Indigo Plateau
 	ret
+	
+CheckIfTeleportWorks::		;NEW
+; Teleport can now be used almost anywhere
+	ld a, [wCurMapTileset]
+	cp CEMETERY	; Teleport gets blocked in CEMETERY maps
+	ret z
+	cp PLATEAU ; Route 23 / Indigo Plateau
+	ret c
+	ret
 
 ; this function is an extra check that sometimes has to pass in order to warp, beyond just standing on a warp
 ; the "sometimes" qualification is necessary because of CheckWarpsNoCollision's behavior

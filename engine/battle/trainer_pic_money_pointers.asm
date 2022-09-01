@@ -80,7 +80,7 @@ TrainerPicAndMoneyPointers:
 	money 9900
 
 	dw ChiefPic
-	money 3000
+	money 9900 ;3000
 
 	dw ScientistPic
 	money 5000
@@ -98,7 +98,7 @@ TrainerPicAndMoneyPointers:
 	money 3500
 
 	dw BrunoPic
-	money 9900
+	money 0 ;9900
 
 	dw BrockPic
 	money 9900
@@ -128,16 +128,19 @@ TrainerPicAndMoneyPointers:
 	money 6500
 
 	dw Rival3Pic
-	money 9900
+	money 0 ;9900
 
 	dw LoreleiPic
-	money 9900
+	money 0 ;9900
 
 	dw ChannelerPic
 	money 3000
 
 	dw AgathaPic
-	money 9900
+	money 0 ;9900
 
 	dw LancePic
+	money 0 ;9900
+	
+	dw BugMasterPic	;NEW
 	money 9900

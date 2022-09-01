@@ -57,7 +57,7 @@ MtMoon1TrainerHeader2:
 
 MtMoon1TrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_MT_MOON_1_TRAINER_3
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MT_MOON_1_TRAINER_3
 	dw MtMoon1BattleText5 ; TextBeforeBattle
 	dw MtMoon1AfterBattleText5 ; TextAfterBattle

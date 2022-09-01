@@ -1428,8 +1428,9 @@ DisplayListMenuID::
 	ld [wTopMenuItemX], a
 	ld a, A_BUTTON | B_BUTTON | SELECT
 	ld [wMenuWatchedKeys], a
-	ld c, 10
-	call DelayFrames
+	homecall PrepareOAMData	;joenote - makes mart menus cleaner by updating the OAM sprite table ahead of vblank
+	;ld c, 10
+	;call DelayFrames
 
 DisplayListMenuIDLoop::	
 	xor a
@@ -2397,8 +2398,8 @@ TalkToTrainer::
 	ld a, $4
 	call ReadTrainerHeaderInfo     ; print before battle text
 	call PrintText
-	;ld a, $a	;joenote - commenting out to free up space
-	;call ReadTrainerHeaderInfo     ; (?) does nothing apparently (maybe bug in ReadTrainerHeaderInfo)
+	ld a, $a	;joenote - commenting out to free up space
+	call ReadTrainerHeaderInfo     ; (?) does nothing apparently (maybe bug in ReadTrainerHeaderInfo)
 	push de
 	ld a, $8
 	call ReadTrainerHeaderInfo     ; read end battle text

@@ -70,7 +70,7 @@ _Route18Text_60632::
 	prompt
 
 _Route18Text_60637::
-	text "<RIVAL>: Your"
+	text "Your"
 	line "#MON are still"
 	cont "whimps!"
 

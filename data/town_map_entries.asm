@@ -38,8 +38,10 @@ ExternalMapEntries:
 	EMAP $B,$0,Route25Name
 
 InternalMapEntries:
+; maximum map id subject to this rule, x, y, name
 	IMAP OAKS_LAB,                  $2,$B,PalletTownName
 	IMAP VIRIDIAN_GYM,              $2,$8,ViridianCityName
+	IMAP MOLTEN_CAVERN,				$A,$0,MoltenCavernName			;NEW
 	IMAP VIRIDIAN_FOREST_ENTRANCE,  $2,$6,Route2Name
 	IMAP VIRIDIAN_FOREST,           $2,$4,ViridianForestName
 	IMAP PEWTER_POKECENTER,         $2,$3,PewterCityName

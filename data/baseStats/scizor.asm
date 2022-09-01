@@ -5,7 +5,7 @@ db 100 ; base defense
 db 65 ; base speed
 db 80 ; base special
 db BUG ; species type 1
-db BUG ; species type 2
+db ARMOR ; species type 2
 db 13 ; catch rate
 db 220 ; base exp yield
 INCBIN SCIZOR_FR,0,1 ; 77, sprite dimensions

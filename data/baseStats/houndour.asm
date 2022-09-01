@@ -5,7 +5,7 @@ db 30 ; base defense
 db 65 ; base speed
 db 80 ; base special
 db FIRE ; species type 1
-db FIRE ; species type 2
+db DEMON ; species type 2
 db 120 ; catch rate
 db 114 ; base exp yield
 INCBIN HOUNDOUR_FR,0,1 ; 77, sprite dimensions
@@ -14,7 +14,7 @@ dw HoundourPicBack
 ; attacks known at lvl 0
 db LEER
 db EMBER
-db RAGE
+db 0
 db 0
 db 5 ; growth rate
 ; learnset

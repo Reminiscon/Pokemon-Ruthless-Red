@@ -5,7 +5,7 @@ db 134 ; base defense		;+44 DEF
 db 106 ; base speed			;-24 SPE
 db 106 ; base special		;-48 SPC
 db PSYCHIC ; species type 1
-db PSYCHIC ; species type 2
+db ARMOR ; species type 2
 db 3 ; catch rate
 db 220 ; base exp yield
 INCBIN ARM_MEWTWO_FR,0,1 ; 77, sprite dimensions

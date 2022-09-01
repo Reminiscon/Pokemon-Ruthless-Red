@@ -23,6 +23,6 @@ db 0 ; growth rate, reduced from 3 to 0 for balancing purposes
 	tmlearn 21,22
 	tmlearn 31,32
 	tmlearn 33
-	tmlearn 44
+	tmlearn 42,44
 	tmlearn 50,55
 db 0 ; padding

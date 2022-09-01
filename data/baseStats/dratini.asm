@@ -14,8 +14,8 @@ dw DratiniPicBack
 ; attacks known at lvl 0
 db WRAP
 db LEER
-db 0
-db 0
+db MIST
+db HAZE
 db 5 ; growth rate
 ; learnset
 	tmlearn 6,8

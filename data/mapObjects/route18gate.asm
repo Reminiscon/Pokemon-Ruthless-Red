@@ -4,8 +4,8 @@ Route18GateObject:
 	db 5 ; warps
 	warp 0, 4, 0, -1
 	warp 0, 5, 1, -1
-	warp 7, 4, 2, -1
-	warp 7, 5, 3, -1
+	warp 7, 4, 9, FUCHSIA_CITY
+	warp 7, 5, 10, FUCHSIA_CITY
 	warp 6, 8, 0, ROUTE_18_GATE_2F
 
 	db 0 ; signs
