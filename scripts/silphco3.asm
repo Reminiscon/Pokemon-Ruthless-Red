@@ -63,7 +63,7 @@ SilphCo3TextPointers:
 
 SilphCo3TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_3F_TRAINER_0
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_3F_TRAINER_0
 	dw SilphCo3BattleText1 ; TextBeforeBattle
 	dw SilphCo3AfterBattleText1 ; TextAfterBattle
@@ -72,7 +72,7 @@ SilphCo3TrainerHeader0:
 
 SilphCo3TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_3F_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_3F_TRAINER_1
 	dw SilphCo3BattleText2 ; TextBeforeBattle
 	dw SilphCo3AfterBattleText2 ; TextAfterBattle

@@ -403,6 +403,7 @@ MapHSB1:
 	db FIGHTING_DOJO,$07,Show
 MapHSB5:
 	db SILPH_CO_1F,$01,Hide
+	db SILPH_CO_1F,$02,Hide						;NEW
 MapHS53:
 	db POWER_PLANT,$01,Show
 	db POWER_PLANT,$02,Show
@@ -487,66 +488,68 @@ MapHSCA:
 	db ROCKET_HIDEOUT_4,$0B,Hide
 	db ROCKET_HIDEOUT_4,$0C,Hide
 MapHSCF:
-	db SILPH_CO_2F,$01,Show
-	db SILPH_CO_2F,$02,Show
-	db SILPH_CO_2F,$03,Show
-	db SILPH_CO_2F,$04,Show
-	db SILPH_CO_2F,$05,Show
+	;dylannote - Removing trainers of these to save space; placing a Guard that remains hidden, but shown
+	;once Giovanni is defeated, instead.
+	;db SILPH_CO_2F,$01,Show
+	;db SILPH_CO_2F,$02,Show
+	;db SILPH_CO_2F,$03,Show
+	;db SILPH_CO_2F,$04,Show
+	;db SILPH_CO_2F,$05,Show
 MapHSD0:
-	db SILPH_CO_3F,$02,Show
-	db SILPH_CO_3F,$03,Show
+	;db SILPH_CO_3F,$02,Show
+	;db SILPH_CO_3F,$03,Show
 	db SILPH_CO_3F,$04,Show
 MapHSD1:
-	db SILPH_CO_4F,$02,Show
-	db SILPH_CO_4F,$03,Show
-	db SILPH_CO_4F,$04,Show
+	;db SILPH_CO_4F,$02,Show
+	;db SILPH_CO_4F,$03,Show
+	;db SILPH_CO_4F,$04,Show
 	db SILPH_CO_4F,$05,Show
 	db SILPH_CO_4F,$06,Show
 	db SILPH_CO_4F,$07,Show
 MapHSD2:
-	db SILPH_CO_5F,$02,Show
-	db SILPH_CO_5F,$03,Show
-	db SILPH_CO_5F,$04,Show
-	db SILPH_CO_5F,$05,Show
+	;db SILPH_CO_5F,$02,Show
+	;db SILPH_CO_5F,$03,Show
+	;db SILPH_CO_5F,$04,Show
+	;db SILPH_CO_5F,$05,Show
 	db SILPH_CO_5F,$06,Show
 	db SILPH_CO_5F,$07,Show
 	db SILPH_CO_5F,$08,Show
 MapHSD3:
-	db SILPH_CO_6F,$06,Show
-	db SILPH_CO_6F,$07,Show
-	db SILPH_CO_6F,$08,Show
+	;db SILPH_CO_6F,$06,Show
+	;db SILPH_CO_6F,$07,Show
+	;db SILPH_CO_6F,$08,Show
 	db SILPH_CO_6F,$09,Show
 	db SILPH_CO_6F,$0A,Show
 MapHSD4:
-	db SILPH_CO_7F,$05,Show
-	db SILPH_CO_7F,$06,Show
-	db SILPH_CO_7F,$07,Show
-	db SILPH_CO_7F,$08,Show
+	;db SILPH_CO_7F,$05,Show
+	;db SILPH_CO_7F,$06,Show
+	;db SILPH_CO_7F,$07,Show
+	;db SILPH_CO_7F,$08,Show
 	db SILPH_CO_7F,$09,Show
 	db SILPH_CO_7F,$0A,Show
 	db SILPH_CO_7F,$0B,Show
-	db SILPH_CO_7F,$0C,Show
+	;db SILPH_CO_7F,$0C,Show
 MapHSD5:
-	db SILPH_CO_8F,$02,Show
-	db SILPH_CO_8F,$03,Show
-	db SILPH_CO_8F,$04,Show
+	;db SILPH_CO_8F,$02,Show
+	;db SILPH_CO_8F,$03,Show
+	;db SILPH_CO_8F,$04,Show
 MapHSE9:
-	db SILPH_CO_9F,$02,Show
-	db SILPH_CO_9F,$03,Show
-	db SILPH_CO_9F,$04,Show
+	;db SILPH_CO_9F,$02,Show
+	;db SILPH_CO_9F,$03,Show
+	;db SILPH_CO_9F,$04,Show
 MapHSEA:
-	db SILPH_CO_10F,$01,Show
-	db SILPH_CO_10F,$02,Show
-	db SILPH_CO_10F,$03,Show
+	;db SILPH_CO_10F,$01,Show
+	;db SILPH_CO_10F,$02,Show
+	;db SILPH_CO_10F,$03,Show
 	db SILPH_CO_10F,$04,Show
 	db SILPH_CO_10F,$05,Show
 	db SILPH_CO_10F,$06,Show
 MapHSEB:
-	db SILPH_CO_11F,$03,Show
-	db SILPH_CO_11F,$04,Show
-	db SILPH_CO_11F,$05,Show
+	db SILPH_CO_11F,$03,Show	;dylannote - This is Giovanni himself, so have him hide after defeat
+	;db SILPH_CO_11F,$04,Show
+	;db SILPH_CO_11F,$05,Show
 MapHSF4:
-	db $F4,$02,Show
+	db SAFFRON_GYM_2,$02,Show
 MapHSD6:
 	db MANSION_2,$02,Show
 MapHSD7:

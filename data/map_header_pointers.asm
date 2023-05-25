@@ -244,7 +244,7 @@ MapHeaderPointers::
 	dw SilphCo2_h ; unused
 	dw SilphCo2_h ; unused
 	dw SilphCo2_h ; unused
-	dw SilphCo2_h ; unused
+	dw SaffronGym2_h ; NEW, was unused
 	dw Lorelei_h
 	dw Bruno_h
 	dw Agatha_h ;247

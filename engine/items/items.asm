@@ -1808,6 +1808,9 @@ ItemUsePokeflute:
 	ld hl, PlayedFluteNoEffectText
 	jp PrintText
 .inBattle
+	call Random
+	cp $80 ;dylannote - now a 50% chance it fails
+	jr c, .pokeflutefailed
 	xor a
 	ld [wWereAnyMonsAsleep], a
 	ld b, ~SLP & $ff
@@ -1831,7 +1834,7 @@ ItemUsePokeflute:
 	call LoadScreenTilesFromBuffer2 ; restore saved screen
 	ld a, [wWereAnyMonsAsleep]
 	and a ; were any pokemon asleep before playing the flute?
-	ld hl, PlayedFluteNoEffectText
+	ld hl, FluteFailedText ;PlayedFluteNoEffectText
 	jp z, PrintText ; if no pokemon were asleep
 ; if some pokemon were asleep
 	ld hl, PlayedFluteHadEffectText
@@ -1848,8 +1851,10 @@ ItemUsePokeflute:
 .skipMusic
 	ld hl, FluteWokeUpText
 	jp PrintText
+.pokeflutefailed
+	ld hl, FluteFailedText
+	jp PrintText
 	
-
 ; wakes up all party pokemon
 ; INPUT:
 ; hl must point to status of first pokemon in party (player's or enemy's)
@@ -1900,6 +1905,10 @@ PlayedFluteNoEffectText:
 
 FluteWokeUpText:
 	TX_FAR _FluteWokeUpText
+	db "@"
+	
+FluteFailedText:	;dylannote - added for the 50% failure rate of the Poke Flute (nerfed Poke Flute)
+	TX_FAR _FluteFailedText
 	db "@"
 
 PlayedFluteHadEffectText:

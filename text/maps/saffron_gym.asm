@@ -39,7 +39,7 @@ _SaffronGymText_5d16e::
 _SaffronGymText_5d173::
 	text "The MARSHBADGE"
 	line "makes #MON up"
-	cont "to L70 obey you!"
+	cont "to L75 obey you!"
 
 	para "Stronger #MON"
 	line "will become wild,"
@@ -54,19 +54,24 @@ _SaffronGymText_5d173::
 	line "this TM with you!"
 	done
 
-ReceivedTM46Text::
+ReceivedTM29Text::
 	text "<PLAYER> received"
-	line "TM46!@@"
+	line "TM29!@@"
 
-_TM46ExplanationText::
+_TM29ExplanationText::
 	db $0
-	para "TM46 is PSYWAVE!"
-	line "It uses powerful"
-	cont "psychic waves to"
-	cont "inflict damage!"
+	para "TM29 is PSYCHIC!"
+	line "It has a high"
+	cont "chance to lower"
+	cont "SPECIAL!"
+	
+	para "Oh, right.."
+	
+	para "The exit is the"
+	line "TOP-LEFT!"
 	done
 
-_TM46NoRoomText::
+_TM29NoRoomText::
 	text "Your pack is full"
 	line "of other items!"
 	done
@@ -79,13 +84,13 @@ _SaffronGymText_5d1e6::
 	line "use psychic power"
 	cont "instead of force!"
 
-	para "Fighting #MON"
-	line "are weak against"
-	cont "psychic #MON!"
-
-	para "They get creamed"
-	line "before they can"
-	cont "even aim a punch!"
+	para "Psychic #MON"
+	line "tend to have low"
+	cont "DEFENSE!"
+	
+	para "But be cautious!"
+	line "SABRINA knows it"
+	cont "well!"
 	done
 
 _SaffronGymText_5d1eb::
@@ -216,13 +221,9 @@ _SaffronGymAfterBattleText6::
 	done
 
 _SaffronGymBattleText7::
-	text "SAFFRON #MON"
-	line "GYM is famous for"
-	cont "its psychics!"
-
-	para "You want to see"
-	line "SABRINA!"
-	cont "I can tell!"
+	text "Yah better side-"
+	line "step me if yah"
+	cont "win!"
 	done
 
 _SaffronGymEndBattleText7::

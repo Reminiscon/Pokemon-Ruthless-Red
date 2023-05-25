@@ -210,28 +210,16 @@ AIMoveChoiceModification1:
 	and a
 	jp z, .heavydiscourage	;heavily discourage counter if enemy is using zero-power move
 	ld a, [wPlayerMoveType]
-	cp NORMAL
-	jr z, .countercheck_end	; continue on if countering a normal move
-	cp FIGHTING
-	jr z, .countercheck_end	; continue on if countering a fighting move
-    cp FLYING
-    jr z, .countercheck_end ; NEW, continue on if countering a flying move
-    cp POISON
-    jr z, .countercheck_end ; NEW, continue on if countering a poison move
-    cp GROUND
-    jr z, .countercheck_end ; NEW, continue on if countering a ground move
-    cp ROCK
-    jr z, .countercheck_end ; NEW, continue on if countering a rock move
-    cp BUG
-    jr z, .countercheck_end ; NEW, continue on if countering a bug move
-    cp GHOST
-    jr z, .countercheck_end ; NEW, continue on if countering a ghost move
-    cp ARMOR
-    jr z, .countercheck_end ; NEW, continue on if countering an armor move
-	cp BIRD
-	jr z, .countercheck_end	; MOVED TO END, continue on if countering STRUGGLE or other typeless move
+	cp $14
+	jr c, .countercheck_end	; continue on if countering STRUGGLE or other typeless move
 	jp .heavydiscourage	;else heavily discourage since the player move type is not applicable to counter
 .countercheck_end
+	ld a, $6
+	call AICheckIfHPBelowFraction
+	jp c, .heavydiscourage	;dylannote - adding this to heavily discourage counter below 1/6 HP
+	ld a, $2
+	call AICheckIfHPBelowFraction
+	jp nc, .givepref		;dylannote - adding this to lightly encourage counter above 1/2 HP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - do not use moves that are ineffective against substitute if a substitute is up
@@ -1368,6 +1356,14 @@ AIMoveChoiceModification6:
 	jr z, .preferMove
 	cp SUBSTITUTE_EFFECT
 	jr z, .preferMove
+	cp ACCURACY_DOWN1_EFFECT
+	jr z, .preferMove
+	cp ACCURACY_DOWN2_EFFECT
+	jr z, .preferMove
+	cp EVASION_UP1_EFFECT
+	jr z, .preferMove
+	cp EVASION_UP2_EFFECT
+	jr z, .preferMove
 	jr .nextMove
 .preferMove
 	dec [hl] ; slightly encourage this move
@@ -1394,6 +1390,14 @@ AIMoveChoiceModification6:
 	ld a, [wEnemyMoveEffect]
 	cp LIGHT_SCREEN_EFFECT
 	jr z, .preferMove2
+	cp SPECIAL_DOWN1_EFFECT
+	jr z, .preferMove2
+	cp SPECIAL_DOWN2_EFFECT
+	jr z, .preferMove2
+	cp SPECIAL_UP1_EFFECT
+	jr z, .preferMove2
+	cp SPECIAL_UP2_EFFECT
+	jr z, .preferMove2
 	jr .nextMove2
 .preferMove2
 	dec [hl] ; slightly encourage this move
@@ -1415,6 +1419,14 @@ AIMoveChoiceModification6:
 	call ReadMove
 	ld a, [wEnemyMoveEffect]
 	cp REFLECT_EFFECT
+	jr z, .preferMove3
+	cp ATTACK_DOWN1_EFFECT
+	jr z, .preferMove3
+	cp ATTACK_DOWN2_EFFECT
+	jr z, .preferMove3
+	cp DEFENSE_UP1_EFFECT
+	jr z, .preferMove3
+	cp DEFENSE_UP2_EFFECT
 	jr z, .preferMove3
 	jr .nextMove3
 .preferMove3
@@ -1476,7 +1488,7 @@ TrainerClassMoveChoiceModifications:
 	db 1,0    ; BIKER
 	db 1,2,3,4,0  ; BURGLAR				;Added 2
 	db 1,2,3,4,0    ; ENGINEER			;Added 2
-	db 1,2,0  ; JUGGLER_X
+	db 1,3,4,6,0  ; JUGGLER_X			;Added 3,6
 	db 1,3,0  ; FISHER
 	db 1,3,0  ; SWIMMER
 	db 0      ; CUE_BALL
@@ -1584,59 +1596,59 @@ TrainerAIPointers:
 	dbw 3,GenericAI
 	dbw 3,GenericAI
 	dbw 3,GenericAI
-	dbw 2,SailorAI	; sailor
-	dbw 2,JrtrainerMAI	; jrtrainerm
-	dbw 2,JrtrainerFAI	; jrtrainerf
-	dbw 4,PokemaniacAI	; pokemaniac
-	dbw 4,SupernerdAI	; supernerd		
-	dbw 2,HikerAI	; hiker
+	dbw 1,SailorAI	; sailor					B-
+	dbw 1,JrtrainerMAI	; jrtrainerm			B
+	dbw 1,JrtrainerFAI	; jrtrainerf			B
+	dbw 3,PokemaniacAI	; pokemaniac			A
+	dbw 3,SupernerdAI	; supernerd				A
+	dbw 1,HikerAI	; hiker						B-
 	dbw 3,GenericAI
-	dbw 4,BurglarAI ; burglar
-	dbw 2,EngineerAI	; engineer
-	dbw 4,JugglerAI ; juggler_x
-	dbw 2,FisherAI	; fisher
-	dbw 2,SwimmerAI	; swimmer
+	dbw 3,BurglarAI ; burglar					A
+	dbw 1,EngineerAI	; engineer				B
+	dbw 4,JugglerXAI ; juggler_x	;NEW		S-
+	dbw 1,FisherAI	; fisher					B-
+	dbw 1,SwimmerAI	; swimmer					B-
 	dbw 3,GenericAI
 	dbw 3,GenericAI
-	dbw 2,BeautyAI ; beauty				
-	dbw 2,PsychicTRAI	; psychicTR
-	dbw 2,RockerAI	; rocker
-	dbw 4,JugglerAI ; juggler			
-	dbw 2,TamerAI ; tamer				
-	dbw 2,BirdkeeperAI	; birdkeeper
-	dbw 2,BlackbeltAI ; blackbelt
-	dbw 2,Sony1AI ; sony1				
+	dbw 2,BeautyAI ; beauty						B+
+	dbw 1,PsychicTRAI	; psychicTR				B
+	dbw 1,RockerAI	; rocker					B
+	dbw 2,JugglerAI ; juggler					A-
+	dbw 2,TamerAI ; tamer						B+
+	dbw 1,BirdkeeperAI	; birdkeeper			B-
+	dbw 2,BlackbeltAI ; blackbelt				B+
+	dbw 2,Sony1AI ; sony1						B+
 	dbw 3,GenericAI
-	dbw 8,ChiefAI ; chief
-	dbw 4,ScientistAI	; scientist		
-	dbw 8,GiovanniAI ; giovanni			
-	dbw 4,RocketAI ; rocket				
-	dbw 4,CooltrainerMAI ; cooltrainerm	
-	dbw 4,CooltrainerFAI ; cooltrainerf	
-	dbw 8,BrunoAI ; bruno				
-	dbw 4,BrockAI ; brock
-	dbw 4,MistyAI ; misty				
-	dbw 4,LtSurgeAI ; surge
-	dbw 4,ErikaAI ; erika
-	dbw 8,KogaAI ; koga					
-	dbw 8,BlaineAI ; blaine				
-	dbw 8,SabrinaAI ; sabrina			
-	dbw 4,GentlemanAI ; gentleman
-	dbw 4,Sony2AI ; sony2				
-	dbw 8,Sony3AI ; sony3				
-	dbw 8,LoreleiAI ; lorelei			
-	dbw 2,ChannelerAI ; channeler		
-	dbw 8,AgathaAI ; agatha				
-	dbw 8,LanceAI ; lance
-	dbw 8,BugMasterAI ; bug_master	;NEW
+	dbw 4,ChiefAI ; chief			;NEW		S-
+	dbw 3,ScientistAI	; scientist				A
+	dbw 4,GiovanniAI ; giovanni					S
+	dbw 2,RocketAI ; rocket						A-
+	dbw 3,CooltrainerMAI ; cooltrainerm			A
+	dbw 3,CooltrainerFAI ; cooltrainerf			A
+	dbw 4,BrunoAI ; bruno						S
+	dbw 3,BrockAI ; brock						A
+	dbw 3,MistyAI ; misty						A
+	dbw 3,LtSurgeAI ; surge						A+
+	dbw 3,ErikaAI ; erika						A+
+	dbw 4,KogaAI ; koga							S-
+	dbw 4,BlaineAI ; blaine						S
+	dbw 4,SabrinaAI ; sabrina					S-
+	dbw 2,GentlemanAI ; gentleman				A-
+	dbw 3,Sony2AI ; sony2						A+
+	dbw 5,Sony3AI ; sony3						S+
+	dbw 4,LoreleiAI ; lorelei					S
+	dbw 2,ChannelerAI ; channeler				B+
+	dbw 4,AgathaAI ; agatha						S
+	dbw 5,LanceAI ; lance						S+
+	dbw 4,BugMasterAI ; bug_master	;NEW		S-
 
 ;joenote - reorganizing these AI routines to jump on carry instead of returning on not-carry
 ;also adding recognition of a switch-pkmn bit
 
 ;Dylannote - A.I. items that restore HP are generally used as follows, unless treated as a special case
-;Tier S trainers (37.5% or $60 below 1/2 HP, 50% or $80 below 1/4 HP, 62.5% or $A0 below 1/8 HP) OR (50% or $80 below 1/2 HP)
-;Tier A trainers (12.5% or $20 below 1/2 HP, 25% or $40 below 1/4 HP, 37.5% or $60 below 1/8 HP) OR (25% or $40 below 1/2 HP)
-;Tier B trainers (6.25% or $10 below 1/2 HP, 12.5% or $20 below 1/4 HP, 18.75% or $30 below 1/8 HP) OR (12.5% or $20 below 1/2 HP)
+;Tier S trainers (37.5% or $60 below 1/2 HP, 50% or $80 below 1/3 HP, 62.5% or $A0 below 1/6 HP) OR (50% or $80 below 1/2 HP; more % is proportional to the fraction)
+;Tier A trainers (12.5% or $20 below 1/2 HP, 25% or $40 below 1/3 HP, 37.5% or $60 below 1/6 HP) OR (25% or $40 below 1/2 HP; more %/2 is proportional to the fraction)
+;Tier B trainers (6.25% or $10 below 1/2 HP, 12.5% or $20 below 1/3 HP, 18.75% or $30 below 1/6 HP) OR (12.5% or $20 below 1/2 HP; more %/4 is proportional to the fraction)
 ;"Special Case" items are considered to be Full Heal, X Items, Dire Hit, Guard Spec,
 ;or any healing items which do not follow the above guideline.
 ;The total probability limit for special case items is unlimited for Tier S, 37.5% or $60 for Tier A,
@@ -1733,8 +1745,15 @@ JrtrainerFAI:	;NEW
 
 PokemaniacAI:	;NEW
 	cp $20	;12.5%
-	jr nc, .pokemaniacnext1
+	jr nc, .pokemaniacnext0
 	jp c, AISwitchIfEnoughMons	;SPECIAL CASE 1
+.pokemaniacnext0
+	call Random
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .pokemaniacnext1
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .pokemaniacnext3
 .pokemaniacnext1
 	call Random
 	cp $80	;50%
@@ -1754,6 +1773,13 @@ PokemaniacAI:	;NEW
 	ret
 
 SupernerdAI:	;NEW
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .supernerdnext0
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .supernerdnext3
+.supernerdnext0
+	call Random
 	cp $20	;12.5%
 	jr nc, .supernerdnext1
 	ld a, $2	;below fraction 
@@ -1805,6 +1831,13 @@ HikerAI:	;NEW
 	ret
 
 BurglarAI:	;NEW
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .burglarnext0
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .burglarnext3
+.burglarnext0
+	call Random
 	cp $20	;12.5%
 	jr nc, .burglarnext1
 	ld a, $2	;below fraction 
@@ -1858,6 +1891,36 @@ EngineerAI:	;NEW
 .engineernext2
 	and a
 	ret
+	
+JugglerXAI:	;NEW
+	cp $20	;12.5%
+	jr nc, .jugglerXnext00
+	jp c, AISwitchIfEnoughMonsWithSwitchCancelChecks	;SPECIAL CASE 1
+.jugglerXnext00
+	call Random
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .jugglerXnext0
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .jugglerXnext1
+.jugglerXnext0
+	call Random
+	cp $AA	;66.6%
+	jr nc, .jugglerXnext1
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.jugglerXnext1
+	call Random
+	cp $AA	;66.6%
+	jr nc, .jugglerXnext2
+	ld a, $3	;above fraction
+	call AICheckIfHPBelowFraction
+	jr c, .jugglerXnext2
+	jp AIUseFullRestoreSLPFRZPAR		;SPECIAL CASE 2
+.jugglerXnext2
+	and a
+    ret
 
 FisherAI:	;NEW
 	cp $20	;12.5%
@@ -1956,26 +2019,26 @@ RockerAI:	;NEW
 
 JugglerAI:	;NEW
 	cp $20	;12.5%
-	jr nc, .jugglernext1
+	jr nc, .jugglernext0
 	jp c, AISwitchIfEnoughMons	;SPECIAL CASE 1
+.jugglernext0
+	call Random
+	cp $40	;25%
+	jr nc, .jugglernext1
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseHyperPotion
 .jugglernext1
 	call Random
 	cp $40	;25%
 	jr nc, .jugglernext2
-	ld a, $2	;below fraction 
-    call AICheckIfHPBelowFraction
-	jp c, AIUseHyperPotion
-.jugglernext2
-	call Random
-	cp $40	;25%
-	jr nc, .jugglernext3
 	ld a, $2	;above fraction
 	call AICheckIfHPBelowFraction
-	jr c, .jugglernext3
+	jr c, .jugglernext2
 	ld a, [wEnemyMonStatus]
 	and a
 	jp nz, AIUseFullHeal	;SPECIAL CASE 2
-.jugglernext3
+.jugglernext2
 	and a
     ret
 	
@@ -2064,6 +2127,13 @@ Sony1AI:	;NEW
     ret
 	
 ChiefAI:		;NEW
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .chiefnext0
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .chiefnext3
+.chiefnext0
+	call Random
 	cp $60	;37.5%
 	jr nc, .chiefnext1
 	ld a, $2	;below fraction 
@@ -2090,9 +2160,7 @@ ChiefAI:		;NEW
 	ld a, $2	;below fraction
     call AICheckIfHPBelowFraction
 	jr nc, .chiefnext4
-    ld a, [wEnemyMonStatus]
-	and a
-	jp nz, AIUseFullRestore		;SPECIAL CASE 1
+    jp AIUseFullRestoreSLPFRZPAR		;SPECIAL CASE 1
 .chiefnext4
 	call Random
     cp $80 ;50%
@@ -2102,7 +2170,7 @@ ChiefAI:		;NEW
 	jr c, .chiefnext5
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullHeal		;SPECIAL CASE 2
+	jp nz, AIUseFullHeal				;SPECIAL CASE 2
 .chiefnext5
 	call Random
     cp $20 ;12.5%
@@ -2114,27 +2182,34 @@ ChiefAI:		;NEW
 	jr c, .chiefnext6
     ld a, [wEnemyMonStatus]
 	and a
-	jp z, AIUseXSpeed		;SPECIAL CASE 3
+	jp z, AIUseXSpeed					;SPECIAL CASE 3
 .chiefnext6
 	and a
 	ret
 	
 ScientistAI:	;NEW
 	cp $60	;12.5%
-	jr nc, .scientistnext1
+	jr nc, .scientistnext0
     ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
     jp nc, AIXSpcRestricted2	;SPECIAL CASE 1
-.scientistnext1
+.scientistnext0
 	call Random
 	cp $20	;25%
-	jr nc, .scientistnext2
+	jr nc, .scientistnext1
 	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-	jr c, .scientistnext2
+	jr c, .scientistnext1
     ld a, [wEnemyMonStatus]
 	and a
 	jp nz, AIUseFullHeal		;SPECIAL CASE 2
+.scientistnext1
+	call Random
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .scientistnext2
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .scientistnext4
 .scientistnext2
 	call Random
     cp $20	;12.5%
@@ -2188,50 +2263,62 @@ GiovanniAI:
 ; use Dire Hit.
 .giovanninext0
 	call Random
-    cp $60	;37.5%
-	jr nc, .giovanninext1
-	ld a, $2	;below fraction 
-    call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .giovanninext1
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .giovanninext4
 .giovanninext1
 	call Random
-	cp $80	;50%
+    cp $60	;37.5%
 	jr nc, .giovanninext2
-	ld a, $3	;below fraction 
+	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
 	jp c, AIUseFullRestore
 .giovanninext2
 	call Random
-	cp $A0	;62.5%
+	cp $80	;50%
 	jr nc, .giovanninext3
-	ld a, $6	;below fraction 
+	ld a, $3	;below fraction 
     call AICheckIfHPBelowFraction
 	jp c, AIUseFullRestore
 .giovanninext3
 	call Random
-    cp $80 ;50%
+	cp $A0	;62.5%
 	jr nc, .giovanninext4
-	ld a, $1	;below fraction
+	ld a, $6	;below fraction 
     call AICheckIfHPBelowFraction
-	jr nc, .giovanninext4
-    ld a, [wEnemyMonStatus]
-	and a
-	jp nz, AIUseFullRestore		;SPECIAL CASE 1
+	jp c, AIUseFullRestore
 .giovanninext4
 	call Random
-    cp $E0 ;87.5%
+    cp $80 ;50%
 	jr nc, .giovanninext5
+	ld a, $1	;below fraction
+    call AICheckIfHPBelowFraction
+	jr nc, .giovanninext5
+    jp AIUseFullRestoreSLPFRZPAR		;SPECIAL CASE 1
+.giovanninext5
+	call Random
+    cp $E0 ;87.5%
+	jr nc, .giovanninext6
 	ld a, $1	;above fraction
     call AICheckIfHPBelowFraction
-	jr c, .giovanninext5
+	jr c, .giovanninext6
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullHeal		;SPECIAL CASE 2
-.giovanninext5
+	jp nz, AIUseFullHeal				;SPECIAL CASE 2
+.giovanninext6
 	and a
 	ret
 
 RocketAI:    ;NEW
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .rocketnext0
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .rocketnext3
+.rocketnext0
+	call Random
     cp $20	;12.5%
 	jr nc, .rocketnext1
 	ld a, $2	;below fraction
@@ -2305,35 +2392,42 @@ CooltrainerFAI:
 BrockAI:
 	ld a, [wEnemyMonType1]
 	cp ROCK
-	jr nz, .brocknext0
+	jr nz, .brocknext00
 	ld a, [wEnemyMonType2]
 	cp GROUND
-	jr nz, .brocknext0
+	jr nz, .brocknext00
 	ld a, [wPlayerMoveType]
 	cp WATER
-	jr c, .brocknext0	;every type with a lower id than WATER
+	jr c, .brocknext00	;every type with a lower id than WATER
 	cp ELECTRIC
-	jr nc, .brocknext0	;every type with a higher id than GRASS
+	jr nc, .brocknext00	;every type with a higher id than GRASS
 	jp AISwitchIfEnoughMonsL1
 ; At the start of battle, Brock is likely to switch out Geodude if Geodude is targeted by a WATER or
 ; GRASS type attack
-.brocknext0
+.brocknext00
 	call Random
 	cp $60 ;37.5%
-	jr nc, .brocknext1
+	jr nc, .brocknext0
 	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-	jr c, .brocknext1
+	jr c, .brocknext0
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullHeal	;SPECIAL CASE 1
-.brocknext1
+	jp nz, AIUseFullHeal		;SPECIAL CASE 1
+.brocknext0
 	call Random
 	cp $60	;37.5%
-	jr nc, .brocknext2
+	jr nc, .brocknext1
     ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
     jp nc, AIGSpeRestricted2	;GYM LEADER UNIQUE POOL
+.brocknext1
+	call Random
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .brocknext2
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .brocknext5
 .brocknext2
 	call Random
 	cp $40	;25%
@@ -2361,20 +2455,27 @@ BrockAI:
 
 MistyAI:
 	cp $60 ;37.5%
-	jr nc, .mistynext1
+	jr nc, .mistynext0
 	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-	jr c, .mistynext1
+	jr c, .mistynext0
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullHeal	;SPECIAL CASE 1
-.mistynext1
+	jp nz, AIUseFullHeal		;SPECIAL CASE 1
+.mistynext0
 	call Random
 	cp $60	;37.5%
-	jr nc, .mistynext2
+	jr nc, .mistynext1
     ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
     jp nc, AIXSpcRestricted2	;GYM LEADER UNIQUE POOL
+.mistynext1
+	call Random
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .mistynext2
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .mistynext5
 .mistynext2
 	call Random
 	cp $40	;25%
@@ -2402,20 +2503,27 @@ MistyAI:
 	
 LtSurgeAI:
 	cp $60 ;37.5%
-	jr nc, .ltsurgenext1
+	jr nc, .ltsurgenext0
 	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-	jr c, .ltsurgenext1
+	jr c, .ltsurgenext0
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullHeal	;SPECIAL CASE 1
-.ltsurgenext1
+	jp nz, AIUseFullHeal		;SPECIAL CASE 1
+.ltsurgenext0
 	call Random
 	cp $60	;37.5%
-	jr nc, .ltsurgenext2
+	jr nc, .ltsurgenext1
     ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
     jp nc, AIDHitRestricted2	;GYM LEADER UNIQUE POOL
+.ltsurgenext1
+	call Random
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .ltsurgenext2
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .ltsurgenext5
 .ltsurgenext2
 	call Random
 	cp $40	;25%
@@ -2443,20 +2551,27 @@ LtSurgeAI:
 	
 ErikaAI:
     cp $60 ;37.5%
-	jr nc, .erikanext1
+	jr nc, .erikanext0
 	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-	jr c, .erikanext1
+	jr c, .erikanext0
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullHeal	;SPECIAL CASE 1
-.erikanext1
+	jp nz, AIUseFullHeal		;SPECIAL CASE 1
+.erikanext0
 	call Random
 	cp $60	;37.5%
-	jr nc, .erikanext2
+	jr nc, .erikanext1
     ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
     jp nc, AIXAccRestricted2	;GYM LEADER UNIQUE POOL
+.erikanext1
+	call Random
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .erikanext2
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .erikanext5
 .erikanext2
 	call Random
 	cp $40	;25%
@@ -2505,49 +2620,54 @@ KogaAI:
 	jr c, .koganext0
 	jp AIUseXSpeed			;GYM LEADER UNIQUE POOL
 ; when Koga's Mon has at least 1/2 health, and +2 Evasion or greater, 37.5% chance to use X Attack
-; if mon is currently faster, else 37.5% chance to use X Speed. This is limited to +2 each.
+; if Koga's mon is currently faster, else 37.5% chance to use X Speed. This is limited to +2 each.
 .koganext0
 	call Random
-	cp $60	;37.5%
-	jr nc, .koganext1
-	ld a, $2	;below fraction 
-    call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .koganext1
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .koganext4
 .koganext1
 	call Random
-	cp $80	;50%
+	cp $60	;37.5%
 	jr nc, .koganext2
-	ld a, $3	;below fraction 
+	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
 	jp c, AIUseFullRestore
 .koganext2
 	call Random
-	cp $A0	;62.5%
+	cp $80	;50%
 	jr nc, .koganext3
-	ld a, $6	;below fraction 
+	ld a, $3	;below fraction 
     call AICheckIfHPBelowFraction
 	jp c, AIUseFullRestore
 .koganext3
 	call Random
-    cp $80 ;50%
+	cp $A0	;62.5%
 	jr nc, .koganext4
-	ld a, $2	;below fraction
+	ld a, $6	;below fraction 
     call AICheckIfHPBelowFraction
-	jr nc, .koganext4
-    ld a, [wEnemyMonStatus]
-	and a
-	jp nz, AIUseFullRestore		;SPECIAL CASE 1
+	jp c, AIUseFullRestore
 .koganext4
 	call Random
     cp $80 ;50%
 	jr nc, .koganext5
+	ld a, $2	;below fraction
+    call AICheckIfHPBelowFraction
+	jr nc, .koganext5
+    jp AIUseFullRestoreSLPFRZPAR		;SPECIAL CASE 1
+.koganext5
+	call Random
+    cp $80 ;50%
+	jr nc, .koganext6
 	ld a, $1	;above fraction
     call AICheckIfHPBelowFraction
-	jr c, .koganext5
+	jr c, .koganext6
     ld a, [wEnemyMonStatus]
 	and a
-	jp nz, AIUseFullHeal		;SPECIAL CASE 2
-.koganext5
+	jp nz, AIUseFullHeal				;SPECIAL CASE 2
+.koganext6
 	and a
 	ret
 	
@@ -2561,9 +2681,89 @@ BlaineAI:	;blaine needs to check HP. this was an oversight
 	ret
 
 SabrinaAI:
-	ld a, $3
+	cp $60	;37.5%
+	jr nc, .sabrinanext0
+	ld a, $2	;above fraction
 	call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore				
+	jr c, .useXdefendinstead
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .attemptXspecialanyway
+	ld a, [wPlayerMoveType]
+	cp $14
+	jr c, .useXdefendinstead
+.attemptXspecialanyway
+	call StrCmpSpecial
+	jr c, .useXdefendinstead
+	jp AIUseXSpecial			;GYM LEADER UNIQUE POOL
+.useXdefendinstead
+	ld a, $6	;below fraction
+	call AICheckIfHPBelowFraction
+	jr c, .sabrinanext0
+	ld a, $2	;above fraction
+	call AICheckIfHPBelowFraction
+	jr nc, .sabrinanext0
+	call StrCmpSpeed
+	jr c, .sabrinanext0
+	ld a, [wPlayerMoveType]
+	cp $14
+	jr nc, .sabrinanext0
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .sabrinanext0
+	jp AIUseXDefend				;GYM LEADER UNIQUE POOL
+; when Sabrina's Mon has at least 1/2 health, and the player uses a special attack OR non-damaging move, 
+; while the player has a higher special stat than Sabrina's Mon, 37.5% chance to use X Special. 
+; Otherwise, 37.5% chance to use X Defend if Sabrina's Mon is between 1/6 and 1/2 health, and the 
+; player is using a physical attack and is faster.
+.sabrinanext0
+	call Random
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .sabrinanext1
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .sabrinanext4
+.sabrinanext1
+	call Random
+	cp $60	;37.5%
+	jr nc, .sabrinanext2
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.sabrinanext2
+	call Random
+	cp $80	;50%
+	jr nc, .sabrinanext3
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.sabrinanext3
+	call Random
+	cp $A0	;62.5%
+	jr nc, .sabrinanext4
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.sabrinanext4
+	call Random
+    cp $80 ;50%
+	jr nc, .sabrinanext5
+	ld a, $2	;below fraction
+    call AICheckIfHPBelowFraction
+	jr nc, .sabrinanext5
+	jp AIUseFullRestoreSLPFRZPAR		;SPECIAL CASE 1
+.sabrinanext5
+	call Random
+    cp $80 ;50%
+	jr nc, .sabrinanext6
+	ld a, $1	;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .sabrinanext6
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal				;SPECIAL CASE 2
+.sabrinanext6
+	and a		
 	ret
 
 GentlemanAI:	;NEW
@@ -2574,16 +2774,21 @@ GentlemanAI:	;NEW
 
 Sony2AI:
     cp $60 ;37.5%
-	jr nc, .sony2next1
+	jr nc, .sony2next0
 	ld a, $1	;below fraction
     call AICheckIfHPBelowFraction
-	jr nc, .sony2next1
+	jr nc, .sony2next0
 	ld a, $2	;above fraction
 	call AICheckIfHPBelowFraction
+	jr c, .sony2next0
+	jp AIUseFullRestoreSLPFRZPAR		;SPECIAL CASE 1
+.sony2next0
+	call Random
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
 	jr c, .sony2next1
-    ld a, [wEnemyMonStatus]
-	and a
-	jp nz, AIUseFullRestore		;SPECIAL CASE 1
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .sony2next4
 .sony2next1
 	call Random
 	cp $30	;12.5%
@@ -2749,6 +2954,42 @@ DecrementAICount:
 AIPlayRestoringSFX:
 	ld a, SFX_HEAL_AILMENT
 	jp PlaySoundWaitForCurrent
+
+AIUseFullRestoreSLPFRZPAR:
+    ld a, [wEnemyMonStatus]
+	bit PSN, a
+	jr nz, .returntotrainerAI
+	bit BRN, a
+	jr nz, .returntotrainerAI
+	cp 0
+	jr nz, .proceedtoheal
+.returntotrainerAI
+	and a
+	ret
+; condition added so that A.I. only uses Full Restore when Asleep, Paralyzed, or Frozen
+.proceedtoheal
+	call AICureStatus
+	ld a, FULL_RESTORE
+	ld [wAIItem], a
+	ld de, wHPBarOldHP
+	ld hl, wEnemyMonHP + 1
+	ld a, [hld]
+	ld [de], a
+	inc de
+	ld a, [hl]
+	ld [de], a
+	inc de
+	ld hl, wEnemyMonMaxHP + 1
+	ld a, [hld]
+	ld [de], a
+	inc de
+	ld [wHPBarMaxHP], a
+	ld [wEnemyMonHP + 1], a
+	ld a, [hl]
+	ld [de], a
+	ld [wHPBarMaxHP+1], a
+	ld [wEnemyMonHP], a
+	jp AIPrintItemUseAndUpdateHPBar
 
 AIUseFullRestore:
 	call AICureStatus
@@ -3306,6 +3547,26 @@ AIBattleWithdrawText:
 	TX_FAR _AIBattleWithdrawText
 	db "@"
 
+AIUseFullHealPSNBRN:
+	ld a, [wEnemyMonStatus]
+	bit SLP, a
+	jr nz, .returntotrainerAI2
+	bit FRZ, a
+	jr nz, .returntotrainerAI2
+	bit PAR, a
+	jr nz, .returntotrainerAI2
+	cp 0
+	jr nz, .proceedtoheal2
+.returntotrainerAI2
+	and a
+	ret
+; condition added so that A.I. only uses Full Heal when Poisoned or Burned
+.proceedtoheal2
+	call AIPlayRestoringSFX
+	call AICureStatus
+	ld a, FULL_HEAL
+	jp AIPrintItemUse
+	
 AIUseFullHeal:
 	call AIPlayRestoringSFX
 	call AICureStatus

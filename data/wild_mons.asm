@@ -206,13 +206,13 @@ WildDataPointers:
 	dw NoMons
 	dw NoMons
 	dw NoMons
-	dw NoMons
-	dw NoMons
-	dw NoMons
-	dw NoMons
-	dw NoMons
-	dw NoMons
-	dw NoMons
+	dw SilphCoMons2		;NEW
+	dw SilphCoMons3		;NEW
+	dw SilphCoMons4		;NEW
+	dw SilphCoMons5		;NEW
+	dw SilphCoMons6		;NEW
+	dw SilphCoMons7		;NEW
+	dw SilphCoMons8		;NEW
 	dw MansionMons2
 	dw MansionMons3
 	dw MansionMonsB1
@@ -232,9 +232,9 @@ WildDataPointers:
 	dw NoMons
 	dw NoMons
 	dw TunnelMonsB2
-	dw NoMons
-	dw NoMons
-	dw NoMons
+	dw SilphCoMons9		;NEW
+	dw SilphCoMons10	;NEW
+	dw SilphCoMons11	;NEW
 	dw NoMons
 	dw NoMons
 	dw NoMons
@@ -323,3 +323,13 @@ INCLUDE "data/wildPokemon/viridiancity.asm"					;NEW
 INCLUDE "data/wildPokemon/celadoncity.asm"					;NEW
 INCLUDE "data/wildPokemon/waterpokemon2.asm"				;NEW
 INCLUDE "data/wildPokemon/moltencavern.asm"					;NEW
+INCLUDE "data/wildPokemon/silphco2.asm"						;NEW
+INCLUDE "data/wildPokemon/silphco3.asm"						;NEW
+INCLUDE "data/wildPokemon/silphco4.asm"						;NEW
+INCLUDE "data/wildPokemon/silphco5.asm"						;NEW
+INCLUDE "data/wildPokemon/silphco6.asm"						;NEW
+INCLUDE "data/wildPokemon/silphco7.asm"						;NEW
+INCLUDE "data/wildPokemon/silphco8.asm"						;NEW
+INCLUDE "data/wildPokemon/silphco9.asm"						;NEW
+INCLUDE "data/wildPokemon/silphco10.asm"					;NEW
+INCLUDE "data/wildPokemon/silphco11.asm"					;NEW

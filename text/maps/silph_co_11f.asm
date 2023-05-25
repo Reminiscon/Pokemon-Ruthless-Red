@@ -96,40 +96,48 @@ _SilphCo10Text_62335::
 	line "shall return!"
 	done
 
-_SilphCo11BattleText1::
-	text "Stop right there!"
-	line "Don't you move!"
-	done
-
-_SilphCo11EndBattleText1::
-	text "Don't..."
-	line "Please!"
-	prompt
-
-_SilphCo11AfterBattleText1::
-	text "So, you want to"
-	line "see my BOSS?"
-	done
-
-_SilphCo11BattleText2::
+_SilphCo11BattleTextChief::
 	text "Halt! Do you have"
 	line "an appointment"
 	cont "with my BOSS?"
 	done
 
-_SilphCo11EndBattleText2::
+_SilphCo11EndBattleTextChief::
 	text "Gaah!"
 	line "Demolished!"
 	prompt
 
-_SilphCo11AfterBattleText2::
+_SilphCo11AfterBattleTextChief::
 	text "Watch your step,"
 	line "my BOSS likes his"
 	cont "#MON tough!"
+	done
+	
+_SilphCo11BattleTextJugglerX::
+	text "This is as far as"
+	line "you go!"
+	
+	para "BOSS ROCKET will"
+	line "grant me a wage"
+	cont "that suits my"
+	cont "title!"
+	done
+
+_SilphCo11EndBattleTextJugglerX::
+	text "I lost"
+	line "my rhythm!"
+	prompt
+
+_SilphCo11AfterBattleTextJugglerX::
+	text "Impossible! I"
+	line "am a super elite"
+	cont "among JUGGLERS!"
 	done
 
 _SilphCo10Text_6237b::
 	text "The monitor has"
 	line "#MON on it!"
 	done
+	
+
 

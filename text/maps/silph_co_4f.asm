@@ -25,13 +25,13 @@ _SilphCo4AfterBattleText2::
 	done
 
 _SilphCo4BattleText3::
-	text "My #MON are my"
-	line "loyal soldiers!"
+	text "My AMPHAROS"
+	line "will fry you!"
 	done
 
 _SilphCo4EndBattleText3::
 	text "Darn!"
-	line "You weak #MON!"
+	line "THUNDER failed!"
 	prompt
 
 _SilphCo4AfterBattleText3::

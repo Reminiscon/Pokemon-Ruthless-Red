@@ -56,19 +56,20 @@ _SilphCo6Text_1a2ab::
 	done
 
 _SilphCo6BattleText2::
-	text "I am one of the 4"
-	line "ROCKET BROTHERS!"
+	text "I am just a"
+	line "plain ol'"
+	cont "ROCKET!"
 	done
 
 _SilphCo6EndBattleText2::
-	text "Flame"
-	line "out!"
+	text "I lost"
+	line "the battle!"
 	prompt
 
 _SilphCo6AfterBattleText2::
-	text "No matter!"
-	line "My brothers will"
-	cont "avenge me!"
+	text "Well, you can't"
+	line "tell me that was"
+	cont "a surprise!"
 	done
 
 _SilphCo6BattleText3::
@@ -91,17 +92,17 @@ _SilphCo6AfterBattleText3::
 	done
 
 _SilphCo6BattleText4::
-	text "You dare betray"
-	line "TEAM ROCKET?"
+	text "I am one of the 4"
+	line "ROCKET BROTHERS!"
 	done
 
 _SilphCo6EndBattleText4::
-	text "You"
-	line "traitor!"
+	text "Blown"
+	line "out!"
 	prompt
 
 _SilphCo6AfterBattleText4::
-	text "If you stand for"
-	line "justice, you"
-	cont "betray evil!"
+	text "No matter!"
+	line "My brothers will"
+	cont "avenge me!"
 	done

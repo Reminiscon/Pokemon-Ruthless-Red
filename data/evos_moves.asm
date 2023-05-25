@@ -288,6 +288,10 @@ VoltorbEvosMoves:
 	db 39, BARRAGE
 	db 43, EXPLOSION
 	db 44, AMNESIA
+	db 66, THUNDERBOLT							;Added, for wild Voltorbs in Silph Co.
+	db 66, TAKE_DOWN							;Added, for wild Voltorbs in Silph Co.
+	db 66, THUNDER_WAVE							;Added, for wild Voltorbs in Silph Co.
+	db 66, EXPLOSION							;Added, for wild Voltorbs in Silph Co.
 	db 0
 
 NidokingEvosMoves:
@@ -473,6 +477,7 @@ ArcanineEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 66, BODY_SLAM							;Added, for wild Arcanines in Silph Co.
 	db 0
 
 MewEvosMoves:
@@ -619,6 +624,7 @@ CrobatEvosMoves:
 ; Evolutions
 	db 0
 ; Learnset
+	db 66, TOXIC								;Added, for wild Crobats in Silph Co.
 	db 0
 
 MareepEvosMoves:
@@ -1953,6 +1959,9 @@ GolbatEvosMoves:
 	db 32, WING_ATTACK
 	db 43, HAZE
 	db 56, SLUDGE
+	db 66, TOXIC									;Added, for wild Golbats in Silph Co.
+	db 66, BITE										;Added, for wild Golbats in Silph Co.
+	db 66, CONFUSE_RAY								;Added, for wild Golbats in Silph Co.
 	db 0
 
 MewtwoEvosMoves:
@@ -2101,6 +2110,10 @@ ElectrodeEvosMoves:
 	db 41, EXPLOSION								;Added, so Electrode uses it at the Power Plant
 	db 50, EXPLOSION
 	db 54, BARRAGE
+	db 66, THUNDERBOLT								;Added, for wild Electrodes in Silph Co.
+	db 66, THUNDERBOLT								;Added, for wild Electrodes in Silph Co.
+	db 66, THUNDER_WAVE								;Added, for wild Electrodes in Silph Co.
+	db 66, EXPLOSION								;Added, for wild Electrodes in Silph Co.
 	db 68, AMNESIA
 	db 0
 

@@ -8,8 +8,10 @@ _ViridianPokeCenterText2::
 
 _ViridianPokeCenterText3::						;modified text
 	text "PSYCHIC may seem"
-	line "powerful, but"
-	cont "BUG resists it"
-	cont "and GHOST is"
-	cont "immune to it!"
+	line "too powerful."
+	
+	para "However, BUG can"
+	line "resist it!"
+	
+	para "GHOST is immune!"
 	done

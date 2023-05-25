@@ -47,13 +47,13 @@ SaffronGymText_5d068:
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
 	SetEvent EVENT_BEAT_SABRINA
-	lb bc, TM_46, 1
+	lb bc, TM_29, 1
 	call GiveItem
 	jr nc, .BagFull
 	ld a, $b
 	ld [hSpriteIndexOrTextID], a
 	call DisplayTextID
-	SetEvent EVENT_GOT_TM46
+	SetEvent EVENT_GOT_TM29
 	jr .asm_5d091
 .BagFull
 	ld a, $c
@@ -86,8 +86,8 @@ SaffronGymTextPointers:
 
 SaffronGymTrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_0
-	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_0
+	db ($4 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_36A		;dylannote - Shifting the following addresses so they won't be set until Sabrina is beaten
 	dw SaffronGymBattleText1 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText1 ; TextAfterBattle
 	dw SaffronGymEndBattleText1 ; TextEndBattle
@@ -95,7 +95,7 @@ SaffronGymTrainerHeader0:
 
 SaffronGymTrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_1
 	dw SaffronGymBattleText2 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText2 ; TextAfterBattle
@@ -104,7 +104,7 @@ SaffronGymTrainerHeader1:
 
 SaffronGymTrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_2
 	dw SaffronGymBattleText3 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText3 ; TextAfterBattle
@@ -113,7 +113,7 @@ SaffronGymTrainerHeader2:
 
 SaffronGymTrainerHeader3:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_3
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_3
 	dw SaffronGymBattleText4 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText4 ; TextAfterBattle
@@ -122,7 +122,7 @@ SaffronGymTrainerHeader3:
 
 SaffronGymTrainerHeader4:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_4
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_4
 	dw SaffronGymBattleText5 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText5 ; TextAfterBattle
@@ -131,7 +131,7 @@ SaffronGymTrainerHeader4:
 
 SaffronGymTrainerHeader5:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_5
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_5
 	dw SaffronGymBattleText6 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText6 ; TextAfterBattle
@@ -140,7 +140,7 @@ SaffronGymTrainerHeader5:
 
 SaffronGymTrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_SAFFRON_GYM_TRAINER_6, 1
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SAFFRON_GYM_TRAINER_6, 1
 	dw SaffronGymBattleText7 ; TextBeforeBattle
 	dw SaffronGymAfterBattleText7 ; TextAfterBattle
@@ -153,7 +153,7 @@ SaffronGymText1:
 	TX_ASM
 	CheckEvent EVENT_BEAT_SABRINA
 	jr z, .asm_5d134
-	CheckEventReuseA EVENT_GOT_TM46
+	CheckEventReuseA EVENT_GOT_TM29
 	jr nz, .asm_5d12c
 	call z, SaffronGymText_5d068
 	call DisableWaitingAfterTextDisplay
@@ -202,13 +202,13 @@ SaffronGymText10:
 	db "@"
 
 SaffronGymText11:
-	TX_FAR ReceivedTM46Text
+	TX_FAR ReceivedTM29Text
 	TX_SFX_ITEM_1
-	TX_FAR _TM46ExplanationText
+	TX_FAR _TM29ExplanationText
 	db "@"
 
 SaffronGymText12:
-	TX_FAR _TM46NoRoomText
+	TX_FAR _TM29NoRoomText
 	db "@"
 
 SaffronGymText2:

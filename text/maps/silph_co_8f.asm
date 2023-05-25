@@ -46,8 +46,8 @@ _SilphCo8BattleText3::
 	done
 
 _SilphCo8EndBattleText3::
-	text "Whoo!"
-	line "Oh brothers!"
+	text "Grounded"
+	line "out!"
 	prompt
 
 _SilphCo8AfterBattleText3::

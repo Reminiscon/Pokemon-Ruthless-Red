@@ -20,7 +20,7 @@ MtMoon2Object:
 	object SPRITE_BALL,  7,  6, STAY, NONE, 2, MIST_STONE
 	object SPRITE_BALL,  7,  7, STAY, NONE, 3, TM_02
 	object SPRITE_BALL,  6,  6, STAY, NONE, 4, MAX_REPEL
-	object SPRITE_OAK_AIDE,  3, 21, STAY, DOWN, 5, OPP_CHIEF, 3
+	object SPRITE_CHIEF,  3, 21, STAY, DOWN, 5, OPP_CHIEF, 3
 	object SPRITE_SLOWBRO,  1, 24, STAY, NONE, 6 ; person
 
 	; warp-to

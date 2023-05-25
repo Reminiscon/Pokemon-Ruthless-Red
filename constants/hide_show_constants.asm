@@ -101,6 +101,7 @@ const_value = 0
 	const HS_FIGHTING_DOJO_GIFT_1         ; 4A
 	const HS_FIGHTING_DOJO_GIFT_2         ; 4B
 	const HS_SILPH_CO_1F_RECEPTIONIST     ; 4C
+	const HS_SILPH_CO_1F_GUARD
 	const HS_VOLTORB_1                    ; 4D X
 	const HS_VOLTORB_2                    ; 4E X
 	const HS_VOLTORB_3                    ; 4F X
@@ -168,55 +169,55 @@ const_value = 0
 	const HS_ROCKET_HIDEOUT_4_ITEM_3      ; 86 X
 	const HS_ROCKET_HIDEOUT_4_ITEM_4      ; 87
 	const HS_ROCKET_HIDEOUT_4_ITEM_5      ; 88
-	const HS_SILPH_CO_2F_1                ; 89 XXX never (de)activated?
-	const HS_SILPH_CO_2F_2                ; 8A
-	const HS_SILPH_CO_2F_3                ; 8B
-	const HS_SILPH_CO_2F_4                ; 8C
-	const HS_SILPH_CO_2F_5                ; 8D
-	const HS_SILPH_CO_3F_1                ; 8E
-	const HS_SILPH_CO_3F_2                ; 8F
+	;const HS_SILPH_CO_2F_1                ; 89 XXX never (de)activated?
+	;const HS_SILPH_CO_2F_2                ; 8A
+	;const HS_SILPH_CO_2F_3                ; 8B
+	;const HS_SILPH_CO_2F_4                ; 8C
+	;const HS_SILPH_CO_2F_5                ; 8D
+	;const HS_SILPH_CO_3F_1                ; 8E
+	;const HS_SILPH_CO_3F_2                ; 8F
 	const HS_SILPH_CO_3F_ITEM             ; 90 X
-	const HS_SILPH_CO_4F_1                ; 91
-	const HS_SILPH_CO_4F_2                ; 92
-	const HS_SILPH_CO_4F_3                ; 93
+	;const HS_SILPH_CO_4F_1                ; 91
+	;const HS_SILPH_CO_4F_2                ; 92
+	;const HS_SILPH_CO_4F_3                ; 93
 	const HS_SILPH_CO_4F_ITEM_1           ; 94 X
 	const HS_SILPH_CO_4F_ITEM_2           ; 95 X
 	const HS_SILPH_CO_4F_ITEM_3           ; 96 X
-	const HS_SILPH_CO_5F_1                ; 97
-	const HS_SILPH_CO_5F_2                ; 98
-	const HS_SILPH_CO_5F_3                ; 99
-	const HS_SILPH_CO_5F_4                ; 9A
+	;const HS_SILPH_CO_5F_1                ; 97
+	;const HS_SILPH_CO_5F_2                ; 98
+	;const HS_SILPH_CO_5F_3                ; 99
+	;const HS_SILPH_CO_5F_4                ; 9A
 	const HS_SILPH_CO_5F_ITEM_1           ; 9B X
 	const HS_SILPH_CO_5F_ITEM_2           ; 9C X
 	const HS_SILPH_CO_5F_ITEM_3           ; 9D X
-	const HS_SILPH_CO_6F_1                ; 9E
-	const HS_SILPH_CO_6F_2                ; 9F
-	const HS_SILPH_CO_6F_3                ; A0
+	;const HS_SILPH_CO_6F_1                ; 9E
+	;const HS_SILPH_CO_6F_2                ; 9F
+	;const HS_SILPH_CO_6F_3                ; A0
 	const HS_SILPH_CO_6F_ITEM_1           ; A1 X
 	const HS_SILPH_CO_6F_ITEM_2           ; A2 X
-	const HS_SILPH_CO_7F_1                ; A3
-	const HS_SILPH_CO_7F_2                ; A4
-	const HS_SILPH_CO_7F_3                ; A5
-	const HS_SILPH_CO_7F_4                ; A6
+	;const HS_SILPH_CO_7F_1                ; A3
+	;const HS_SILPH_CO_7F_2                ; A4
+	;const HS_SILPH_CO_7F_3                ; A5
+	;const HS_SILPH_CO_7F_4                ; A6
 	const HS_SILPH_CO_7F_RIVAL            ; A7
 	const HS_SILPH_CO_7F_ITEM_1           ; A8 X
 	const HS_SILPH_CO_7F_ITEM_2           ; A9 X
-	const HS_SILPH_CO_7F_8                ; AA XXX sprite doesn't exist
-	const HS_SILPH_CO_8F_1                ; AB
-	const HS_SILPH_CO_8F_2                ; AC
-	const HS_SILPH_CO_8F_3                ; AD
-	const HS_SILPH_CO_9F_1                ; AE
-	const HS_SILPH_CO_9F_2                ; AF
-	const HS_SILPH_CO_9F_3                ; B0
-	const HS_SILPH_CO_10F_1               ; B1
-	const HS_SILPH_CO_10F_2               ; B2
-	const HS_SILPH_CO_10F_3               ; B3 XXX never (de)activated?
+	;const HS_SILPH_CO_7F_8                ; AA XXX sprite doesn't exist
+	;const HS_SILPH_CO_8F_1                ; AB
+	;const HS_SILPH_CO_8F_2                ; AC
+	;const HS_SILPH_CO_8F_3                ; AD
+	;const HS_SILPH_CO_9F_1                ; AE
+	;const HS_SILPH_CO_9F_2                ; AF
+	;const HS_SILPH_CO_9F_3                ; B0
+	;const HS_SILPH_CO_10F_1               ; B1
+	;const HS_SILPH_CO_10F_2               ; B2
+	;const HS_SILPH_CO_10F_3               ; B3 XXX never (de)activated?
 	const HS_SILPH_CO_10F_ITEM_1          ; B4 X
 	const HS_SILPH_CO_10F_ITEM_2          ; B5 X
 	const HS_SILPH_CO_10F_ITEM_3          ; B6 X
 	const HS_SILPH_CO_11F_1               ; B7
-	const HS_SILPH_CO_11F_2               ; B8
-	const HS_SILPH_CO_11F_3               ; B9
+	;const HS_SILPH_CO_11F_2               ; B8
+	;const HS_SILPH_CO_11F_3               ; B9
 	const HS_MAP_F4_1                     ; BA XXX sprite doesn't exist
 	const HS_MANSION_2_ITEM               ; BB X
 	const HS_MANSION_3_ITEM_1             ; BC X

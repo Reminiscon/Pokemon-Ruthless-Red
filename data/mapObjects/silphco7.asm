@@ -1,33 +1,48 @@
 SilphCo7Object:
 	db $2e ; border block
 
-	db 6 ; warps
-	warp 16, 0, 1, SILPH_CO_8F
+	db 13 ; warps
+	warp 16,  0, 1, SILPH_CO_8F
 	warp 22, 0, 0, SILPH_CO_6F
 	warp 18, 0, 0, SILPH_CO_ELEVATOR
-	warp 5, 7, 3, SILPH_CO_11F
+	warp 5, 7, 17, SILPH_CO_1F ; ONE-WAY WARP
 	warp 5, 3, 8, SILPH_CO_3F
-	warp 21, 15, 3, SILPH_CO_5F
+	warp 11, 11, 3, SILPH_CO_5F
+	warp  3, 13, 10, SILPH_CO_1F ; ONE-WAY WARP
+	warp 21, 15, 11, SILPH_CO_1F ; ONE-WAY WARP
+	warp  5, 11,  5, SILPH_CO_11F ; ONE-WAY WARP
+	warp 19,  7,  8, SILPH_CO_8F
+	warp  9,  5,  9, SILPH_CO_8F
+	warp 13,  5, 22, SILPH_CO_1F ; ONE-WAY WARP
+	warp  2, 15, 27, SILPH_CO_1F ; ONE-WAY WARP
 
 	db 0 ; signs
 
 	db 11 ; objects
 	object SPRITE_LAPRAS_GIVER, 1, 5, STAY, NONE, 1 ; person
 	object SPRITE_LAPRAS_GIVER, 13, 13, STAY, UP, 2 ; person
-	object SPRITE_LAPRAS_GIVER, 7, 10, STAY, NONE, 3 ; person
-	object SPRITE_ERIKA, 10, 8, STAY, NONE, 4 ; person
-	object SPRITE_ROCKET, 13, 1, STAY, DOWN, 5, OPP_ROCKET, 31
-	object SPRITE_OAK_AIDE, 2, 13, STAY, DOWN, 6, OPP_SCIENTIST, 7
-	object SPRITE_ROCKET, 20, 2, STAY, LEFT, 7, OPP_ROCKET, 32
-	object SPRITE_ROCKET, 19, 14, STAY, RIGHT, 8, OPP_ROCKET, 33
+	object SPRITE_LAPRAS_GIVER,  9,  7, STAY, NONE, 3 ; person
+	object SPRITE_ERIKA, 13,  7, STAY, NONE, 4 ; person
+	object SPRITE_ROCKET, 13,  2, STAY, DOWN, 5, OPP_ROCKET, 31
+	object SPRITE_OAK_AIDE,  1, 12, STAY, RIGHT, 6, OPP_SCIENTIST, 7
+	object SPRITE_ROCKET,  5, 15, STAY, LEFT, 7, OPP_ROCKET, 32
+	object SPRITE_ROCKET, 16,  7, STAY, UP, 8, OPP_ROCKET, 33
 	object SPRITE_BLUE, 3, 7, STAY, UP, 9 ; person
-	object SPRITE_BALL, 1, 9, STAY, NONE, 10, CALCIUM
-	object SPRITE_BALL, 24, 11, STAY, NONE, 11, TM_03
+	object SPRITE_BALL,  7, 10, STAY, NONE, 10, CARD_KEY
+	object SPRITE_BALL,  1,  9, STAY, NONE, 11, TM_26
 
 	; warp-to
-	warp_to 16, 0, SILPH_CO_7F_WIDTH ; SILPH_CO_8F
+	warp_to 16,  0, SILPH_CO_7F_WIDTH ; SILPH_CO_8F
 	warp_to 22, 0, SILPH_CO_7F_WIDTH ; SILPH_CO_6F
 	warp_to 18, 0, SILPH_CO_7F_WIDTH ; SILPH_CO_ELEVATOR
-	warp_to 5, 7, SILPH_CO_7F_WIDTH ; SILPH_CO_11F
+	warp_to 5, 7, SILPH_CO_7F_WIDTH ; SILPH_CO_1F (ONE-WAY WARP)
 	warp_to 5, 3, SILPH_CO_7F_WIDTH ; SILPH_CO_3F
-	warp_to 21, 15, SILPH_CO_7F_WIDTH ; SILPH_CO_5F
+	warp_to 11, 11, SILPH_CO_7F_WIDTH ; SILPH_CO_5F
+	warp_to  3, 13, SILPH_CO_7F_WIDTH ; SILPH_CO_1F (ONE-WAY WARP)
+	warp_to 21, 15, SILPH_CO_7F_WIDTH ; SILPH_CO_1F (ONE-WAY WARP)
+	warp_to  5, 11, SILPH_CO_7F_WIDTH ; SILPH_CO_11F (ONE-WAY WARP)
+	warp_to 19,  7, SILPH_CO_7F_WIDTH ; SILPH_CO_8F
+	warp_to  9,  5, SILPH_CO_7F_WIDTH ; SILPH_CO_8F
+	warp_to 13,  5, SILPH_CO_7F_WIDTH ; SILPH_CO_1F (ONE-WAY WARP)
+	warp_to  2, 15, SILPH_CO_7F_WIDTH ; SILPH_CO_1F (ONE-WAY WARP)
+	

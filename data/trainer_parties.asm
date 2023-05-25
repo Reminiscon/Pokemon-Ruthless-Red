@@ -11,7 +11,7 @@ TrainerDataPointers:
 	dw BikerData
 	dw BurglarData
 	dw EngineerData
-	dw Juggler1Data
+	dw JugglerXData
 	dw FisherData
 	dw SwimmerData
 	dw CueBallData
@@ -307,8 +307,9 @@ EngineerData:
 ; Unused
 ;	db 42,RAPIDASH,ARBOK,AMPHAROS,0											;NEW
 ;	db 21,VOLTORB,MAGNEMITE,0
-Juggler1Data:
-; none
+JugglerXData:
+; Silph Co. 11F
+	db 70,ELECTRODE,EXEGGUTOR,ELECTRODE,STARMIE,ELECTRODE,ALAKAZAM,0		;NEW	;Custom Moves Applied
 FisherData:
 ; SS Anne 2F Rooms
 	db 34,SLOWPOKE,SEAKING,CLOYSTER,0										;Custom Moves Applied
@@ -399,10 +400,10 @@ BeautyData:
 	;db 33,WEEPINBELL,BELLSPROUT,WEEPINBELL,0
 PsychicData:
 ; Saffron Gym
-	db 31,KADABRA,SLOWPOKE,MR_MIME,KADABRA,0
-	db 34,MR_MIME,KADABRA,0
-	db 33,SLOWPOKE,SLOWPOKE,SLOWBRO,0
-	db 38,SLOWBRO,0
+	db 70,SLOWBRO,0															;Custom Moves Applied
+	db 70,JYNX,0															;Custom Moves Applied
+	db 70,MR_MIME,0															;Custom Moves Applied
+	db 70,EXEGGUTOR,0														;Custom Moves Applied
 RockerData:
 ; Vermilion Gym
 	db 37,WEEZING,ELECTRODE,MAGNETON,0										;Custom Moves Applied
@@ -410,7 +411,7 @@ RockerData:
 	db 56,ELECTRODE,ELECTABUZZ,AMPHAROS,ELECTRODE,0							;Custom Moves Applied
 JugglerData:
 ; Silph Co. 5F
-	db 29,KADABRA,MR_MIME,0
+	db 66,GRAVELER,EXEGGCUTE,ELECTRODE,0									;Custom Moves Applied
 ; Victory Road 2F
 	db 41,DROWZEE,HYPNO,KADABRA,KADABRA,0
 	db 48,MR_MIME,0
@@ -465,7 +466,7 @@ BirdKeeperData:
 	;db 42,FARFETCHD,FEAROW,0
 BlackbeltData:
 ; Fighting Dojo
-	db 37,HITMONLEE,HITMONCHAN,0
+	db 65,MACHOKE,PRIMEAPE,HITMONCHAN,HITMONLEE,POLIWRATH,MACHAMP,0				;Custom Moves Applied
 	db 31,MANKEY,MANKEY,PRIMEAPE,0
 	db 32,MACHOP,MACHOKE,0
 	db 36,PRIMEAPE,0
@@ -502,26 +503,28 @@ ChiefData:
 	db 58,NIDOKING,RAPIDASH,DUGTRIO,LAPRAS,PINSIR,DRAGONITE,0				;NEW				;Custom Moves Applied
 ; Mt. Moon B2F
 	db 24,ARM_MEWTWO,0														;NEW				;Custom Moves Applied
+; Silph Co. 11F
+	db 70,PRIMEAPE,SCIZOR,KABUTOPS,LICKILICKI,VILEPLUME,PORYGON2,0			;NEW				;Custom Moved Applied
 ScientistData:
 ; Silph Co. 2F
-	db 26,GRIMER,WEEZING,KOFFING,WEEZING,0
-	db 28,MAGNEMITE,VOLTORB,MAGNETON,0
+	db 67,ABRA,MAGNETON,TANGELA,0												;Custom Moves Applied
+	db 67,ELECTRODE,WEEZING,PORYGON,0											;Custom Moves Applied
 ; Silph Co. 3F
-	db 29,ELECTRODE,WEEZING,0
+	db 68,KADABRA,MR_MIME,0														;Custom Moves Applied
 ; Silph Co. 4F
-	db 33,ELECTRODE,0
+	db 69,AMPHAROS,0															;Custom Moves Applied
 ; Silph Co. 5F
-	db 26,MAGNETON,KOFFING,WEEZING,MAGNEMITE,0
+	db 65,WEEZING,KADABRA,ELECTRODE,MR_MIME,ARBOK,0								;Custom Moves Applied
 ; Silph Co. 6F
-	db 25,VOLTORB,KOFFING,MAGNETON,MAGNEMITE,KOFFING,0
+	db 71,DITTO,0
 ; Silph Co. 7F
-	db 29,ELECTRODE,MUK,0
+	db 69,MAGNETON,TANGELA,MUK,0												;Custom Moves Applied
 ; Silph Co. 8F
-	db 29,GRIMER,ELECTRODE,0
+	db 67,DITTO,MR_MIME,DITTO,MR_MIME,DITTO,0									;Custom Moves Applied
 ; Silph Co. 9F
-	db 28,VOLTORB,KOFFING,MAGNETON,0
+	db 69,WEEZING,HYPNO,ELECTRODE,0												;Custom Moves Applied
 ; Silph Co. 10F
-	db 29,MAGNEMITE,KOFFING,0
+	db 71,DITTO,0
 ; Mansion 3F
 	db 33,MAGNEMITE,MAGNETON,VOLTORB,0
 ; Mansion B1F
@@ -536,9 +539,9 @@ GiovanniData:
 ; Rocket Hideout B4F
 	db $FF,53,KINGLER,53,GOLEM,54,MACHAMP,54,RHYDON,55,CLOYSTER,55,PERSIAN,0	;Custom Moves Applied
 ; Silph Co. 11F
-	db $FF,37,NIDORINO,35,KANGASKHAN,37,RHYHORN,41,NIDOQUEEN,0
+	db $FF,70,DUGTRIO,70,KANGASKHAN,71,KINGLER,71,MACHAMP,72,PILOSWINE,72,PERSIAN,0	;Custom Moves Applied
 ; Viridian Gym
-	db $FF,60,ARM_MEWTWO,0														;Custom Moves Applied
+	db $FF,93,TAUROS,93,DUGTRIO,94,NIDOQUEEN,94,NIDOKING,95,DONPHAN,95,ARM_MEWTWO,0	;Custom Moves Applied												;Custom Moves Applied
 RocketData:
 ; Mt. Moon B2F
 	db 21,EKANS,KOFFING,ZUBAT,0													;Custom Moves Applied
@@ -571,34 +574,34 @@ RocketData:
 	db 57,MR_MIME,RATICATE,RATICATE,MR_MIME,0									;Custom Moves Applied
 	db 57,ARBOK,HAUNTER,MACHOKE,SNORLAX,0										;Custom Moves Applied
 ; Silph Co. 2F
-	db 29,CUBONE,ZUBAT,0
-	db 25,GOLBAT,ZUBAT,ZUBAT,RATICATE,ZUBAT,0
+	db 65,RATICATE,GOLBAT,LICKITUNG,ARBOK,0										;Custom Moves Applied	
+	db 68,DROWZEE,0																;Custom Moves Applied
 ; Silph Co. 3F
-	db 28,RATICATE,HYPNO,RATICATE,0
+	db 66,RATICATE,HYPNO,RATICATE,0												;Custom Moves Applied
 ; Silph Co. 4F
-	db 29,MACHOP,DROWZEE,0
-	db 28,EKANS,ZUBAT,CUBONE,0
+	db 67,MAROWAK,VICTREEBEL,0													;Custom Moves Applied
+	db 64,ARBOK,KOFFING,HYPNO,KOFFING,ARBOK,0									;Custom Moves Applied
 ; Silph Co. 5F
-	db 33,ARBOK,0
-	db 33,HYPNO,0
+	db 67,DUGTRIO,WEEZING,0														;Custom Moves Applied
+	db 68,VENOMOTH,0															;Custom Moves Applied
 ; Silph Co. 6F
-	db 29,MACHOP,MACHOKE,0
-	db 28,ZUBAT,ZUBAT,GOLBAT,0
+	db 68,MACHOKE,VICTREEBEL,HYPNO,0											;Custom Moves Applied
+	db 69,FEAROW,BEEDRILL,PIDGEOT,ELECTABUZZ,0		;#30, ROCKET BROTHER		;Custom Moves Applied
 ; Silph Co. 7F
-	db 26,RATICATE,ARBOK,KOFFING,GOLBAT,0
-	db 29,CUBONE,CUBONE,0
-	db 29,SANDSHREW,SANDSLASH,0
+	db 67,MACHOKE,HYPNO,MACHOKE,HYPNO,0											;Custom Moves Applied
+	db 69,DEWGONG,ARBOK,POLIWRATH,BELLOSSOM,0		;#32, ROCKET BROTHER		;Custom Moves Applied
+	db 68,SANDSLASH,VICTREEBEL,0												;Custom Moves Applied
 ; Silph Co. 8F
-	db 26,RATICATE,ZUBAT,GOLBAT,RATTATA,0
-	db 28,WEEZING,GOLBAT,KOFFING,0
+	db 69,RATICATE,LICKITUNG,0													;Custom Moves Applied
+	db 69,GLIGAR,VENOMOTH,GOLEM,JYNX,0				;#35, ROCKET BROTHER		;Custom Moves Applied
 ; Silph Co. 9F
-	db 28,DROWZEE,GRIMER,MACHOP,0
-	db 28,GOLBAT,DROWZEE,HYPNO,0
+	db 68,GOLBAT,DROWZEE,HYPNO,0												;Custom Moves Applied
+	db 69,MAGCARGO,WEEZING,MAGMAR,SUDOWOODO,0		;#37, ROCKET BROTHER		;Custom Moves Applied
 ; Silph Co. 10F
-	db 33,MACHOKE,0
-; Silph Co. 11F
-	db 25,RATTATA,RATTATA,ZUBAT,RATTATA,EKANS,0
-	db 32,CUBONE,DROWZEE,MAROWAK,0
+	db 68,BEEDRILL,PRIMEAPE,MAROWAK,0											;Custom Moves Applied
+; Silph Co. 11F ;dylannote - removed these
+	;db 25,RATTATA,RATTATA,ZUBAT,RATTATA,EKANS,0
+	;db 32,CUBONE,DROWZEE,MAROWAK,0
 ; Lavender Pokecenter
 	db 42,GOLBAT,HAUNTER,CLOYSTER,0							;NEW
 ; Unused
@@ -645,7 +648,7 @@ BrunoData:
 BrockData:
 	db $FF,13,GEODUDE,13,SUDOWOODO,14,ZUBAT,14,TANGELA,15,ONIX,15,DIMONIX,0				;Custom Moves Applied
 MistyData:
-	db $FF,28,STARYU,28,POLITOED,29,NIDOQUEEN,29,GYARADOS,30,DRAGONAIR,30,STARMIE,0		;Custom Moves Applied
+	db $FF,28,STARYU,28,POLITOED,29,NIDOQUEEN,29,CORSOLA,30,DRAGONAIR,30,STARMIE,0		;Custom Moves Applied
 LtSurgeData:
 	db $FF,38,ELECTABUZZ,38,PRIMEAPE,39,JOLTEON,39,TAUROS,40,RAICHU,40,ZAPDOS,0			;Custom Moves Applied
 ErikaData:
@@ -655,7 +658,7 @@ KogaData:
 BlaineData:
 	db $FF,42,GROWLITHE,40,PONYTA,42,RAPIDASH,47,ARCANINE,0
 SabrinaData:
-	db $FF,38,KADABRA,37,MR_MIME,38,VENOMOTH,43,ALAKAZAM,0
+	db $FF,73,WIGGLYTUFF,73,HYPNO,74,SNORLAX,74,SLOWKING,75,ALAKAZAM,75,MEW,0
 GentlemanData:
 ; SS Anne 1F Rooms
 	db 35,DRAGONAIR,LICKITUNG,ARCANINE,0												;Custom Moves Applied
@@ -682,9 +685,9 @@ Green2Data:
 	db $FF,58,MAROWAK,58,KANGASKHAN,59,PARASECT,59,SNORLAX,60,VAPOREON,60,VENUSAUR,0	;Custom Moves Applied
 	db $FF,58,MAROWAK,58,KANGASKHAN,59,PARASECT,59,SNORLAX,60,JOLTEON,60,CHARIZARD,0	;Custom Moves Applied
 ; Silph Co. 7F
-	db $FF,37,PIDGEOT,38,GROWLITHE,35,EXEGGCUTE,35,ALAKAZAM,40,BLASTOISE,0
-	db $FF,37,PIDGEOT,38,GYARADOS,35,GROWLITHE,35,ALAKAZAM,40,VENUSAUR,0
-	db $FF,37,PIDGEOT,38,EXEGGCUTE,35,GYARADOS,35,ALAKAZAM,40,CHARIZARD,0
+	db $FF,67,PARASECT,67,RHYDON,68,GYARADOS,68,HYPNO,69,FLAREON,69,BLASTOISE,0			;Custom Moves Applied
+	db $FF,67,PARASECT,67,RHYDON,68,GYARADOS,68,HYPNO,69,VAPOREON,69,VENUSAUR,0			;Custom Moves Applied
+	db $FF,67,PARASECT,67,RHYDON,68,GYARADOS,68,HYPNO,69,JOLTEON,69,CHARIZARD,0			;Custom Moves Applied
 ; Route 22
 	db $FF,47,PIDGEOT,45,RHYHORN,45,GROWLITHE,47,EXEGGCUTE,50,ALAKAZAM,53,BLASTOISE,0
 	db $FF,47,PIDGEOT,45,RHYHORN,45,GYARADOS,47,GROWLITHE,50,ALAKAZAM,53,VENUSAUR,0
@@ -714,9 +717,9 @@ ChannelerData:
 	db 56,KADABRA,GENGAR,VILEPLUME,0													;Custom Moves Applied
 	db 56,HAUNTER,EXEGGUTOR,HAUNTER,0													;Custom Moves Applied
 ; Saffron Gym
-	db 34,GASTLY,HAUNTER,0
-	db 38,HAUNTER,0
-	db 33,GASTLY,GASTLY,HAUNTER,0
+	db 34,GASTLY,HAUNTER,0	;unused in the map
+	db 70,GENGAR,0																		;Custom Moves Applied
+	db 70,KADABRA,0																		;Custom Moves Applied
 ; Pokemon Tower 3F (Additional)
 	db 52,GASTLY,MAROWAK,EXEGGUTOR,GASTLY,0												;Custom Moves Applied
 	db 53,KADABRA,VILEPLUME,HAUNTER,0													;Custom Moves Applied

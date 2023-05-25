@@ -111,7 +111,7 @@ SilphCo4TrainerHeader0:
 
 SilphCo4TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_4F_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_4F_TRAINER_1
 	dw SilphCo4BattleText3 ; TextBeforeBattle
 	dw SilphCo4AfterBattleText3 ; TextAfterBattle

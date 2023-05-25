@@ -188,15 +188,15 @@ SilphCo7Script3:
 	ld a, [wRivalStarter]
 	cp STARTER2
 	jr nz, .asm_51cb6
-	ld a, $7
+	ld a, $A ;$7
 	jr .asm_51cc0
 .asm_51cb6
 	cp STARTER3
 	jr nz, .asm_51cbe
-	ld a, $8
+	ld a, $B ;$8
 	jr .asm_51cc0
 .asm_51cbe
-	ld a, $9
+	ld a, $C ;$9
 .asm_51cc0
 	ld [wTrainerNo], a
 	ld a, $4
@@ -281,7 +281,7 @@ SilphCo7TextPointers:
 
 SilphCo7TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_7F_TRAINER_0
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_7F_TRAINER_0
 	dw SilphCo7BattleText1 ; TextBeforeBattle
 	dw SilphCo7AfterBattleText1 ; TextAfterBattle
@@ -290,7 +290,7 @@ SilphCo7TrainerHeader0:
 
 SilphCo7TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_7F_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_7F_TRAINER_1
 	dw SilphCo7BattleText2 ; TextBeforeBattle
 	dw SilphCo7AfterBattleText2 ; TextAfterBattle
@@ -299,7 +299,7 @@ SilphCo7TrainerHeader1:
 
 SilphCo7TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_7F_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_7F_TRAINER_2
 	dw SilphCo7BattleText3 ; TextBeforeBattle
 	dw SilphCo7AfterBattleText3 ; TextAfterBattle
@@ -331,7 +331,7 @@ SilphCo7Text1:
 .givelapras
 	ld hl, .MeetLaprasGuyText
 	call PrintText
-	lb bc, LAPRAS, 15
+	lb bc, LAPRAS, 65
 	call GivePokemon
 	jr nc, .done
 	ld a, [wSimulatedJoypadStatesEnd]

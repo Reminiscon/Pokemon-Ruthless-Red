@@ -118,8 +118,8 @@ _SilphCo7BattleText3::
 	done
 
 _SilphCo7EndBattleText3::
-	text "Aack!"
-	line "Brothers, I lost!"
+	text "Washed"
+	line "out!"
 	prompt
 
 _SilphCo7AfterBattleText3::

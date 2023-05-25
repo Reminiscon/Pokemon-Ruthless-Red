@@ -28,7 +28,7 @@ ItemPrices:
 	money 0     ; VOLCANOBADGE
 	money 0     ; EARTHBADGE
 	money 5500  ; ESCAPE_ROPE				;modified 550 -> 5500
-	money 350   ; REPEL
+	money 1400  ; REPEL						;modified 350 -> 1400
 	money 0     ; OLD_AMBER
 	money 2100  ; FIRE_STONE
 	money 2100  ; THUNDER_STONE
@@ -54,8 +54,8 @@ ItemPrices:
 	money 1500  ; REVIVE
 	money 4000  ; MAX_REVIVE
 	money 1400  ; GUARD_SPEC				;modified 700 -> 1400
-	money 500   ; SUPER_REPEL
-	money 700   ; MAX_REPEL
+	money 2000  ; SUPER_REPEL				;modified 500 -> 2000
+	money 2800  ; MAX_REPEL					;modified 700 -> 2800
 	money 2600  ; DIRE_HIT					;modified 650 -> 2600
 	money 10    ; COIN
 	money 200   ; FRESH_WATER

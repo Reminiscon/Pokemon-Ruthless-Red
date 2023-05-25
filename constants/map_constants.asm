@@ -51,7 +51,7 @@ ENDM
 	mapconst VIRIDIAN_SCHOOL,             4,  4 ; $2B
 	mapconst VIRIDIAN_HOUSE,              4,  4 ; $2C
 	mapconst VIRIDIAN_GYM,                9, 10 ; $2D
-	mapconst MOLTEN_CAVERN,         	 16, 16 ; $2E
+	mapconst MOLTEN_CAVERN,         	 16, 16 ; $2E		;was diglett's cave exit
 	mapconst VIRIDIAN_FOREST_EXIT,        4,  5 ; $2F
 	mapconst ROUTE_2_HOUSE,               4,  4 ; $30
 	mapconst ROUTE_2_GATE,                4,  5 ; $31
@@ -183,10 +183,10 @@ ENDM
 	mapconst COPYCATS_HOUSE_1F,           4,  4 ; $AF
 	mapconst COPYCATS_HOUSE_2F,           4,  4 ; $B0
 	mapconst FIGHTING_DOJO,               6,  5 ; $B1
-	mapconst SAFFRON_GYM,                 9, 10 ; $B2
+	mapconst SAFFRON_GYM,                17, 12 ; $B2
 	mapconst SAFFRON_HOUSE_1,             4,  4 ; $B3
 	mapconst SAFFRON_MART,                4,  4 ; $B4
-	mapconst SILPH_CO_1F,                 9, 15 ; $B5
+	mapconst SILPH_CO_1F,                16, 17 ; $B5
 	mapconst SAFFRON_POKECENTER,          4,  7 ; $B6
 	mapconst SAFFRON_HOUSE_2,             4,  4 ; $B7
 	mapconst ROUTE_15_GATE_1F,            5,  4 ; $B8
@@ -249,7 +249,7 @@ ENDM
 	mapconst UNUSED_MAP_F1,               0,  0 ; $F1
 	mapconst UNUSED_MAP_F2,               0,  0 ; $F2
 	mapconst UNUSED_MAP_F3,               0,  0 ; $F3
-	mapconst UNUSED_MAP_F4,               0,  0 ; $F4
+	mapconst SAFFRON_GYM_2,              12, 12 ; $F4		;was UNUSED_MAP_F4
 	mapconst LORELEIS_ROOM,               6,  5 ; $F5
 	mapconst BRUNOS_ROOM,                 6,  5 ; $F6
 	mapconst AGATHAS_ROOM,                6,  5 ; $F7

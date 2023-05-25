@@ -1,16 +1,20 @@
-_SilphCo9Text_5d8e5::
-	text "You look tired!"
-	line "You should take a"
-	cont "quick nap!"
-	prompt
+;_SilphCo9Text_5d8e5::
+	;text "You look tired!"
+	;line "You should take a"
+	;cont "quick nap!"
+	;prompt
 
-_SilphCo9Text_5d8ea::
-	text "Don't give up!"
-	done
+;_SilphCo9Text_5d8ea::
+	;text "Don't give up!"
+	;done
 
-_SilphCo9Text_5d8ef::
-	text "Thank you so"
-	line "much!"
+;_SilphCo9Text_5d8ef::
+	;text "Thank you so"
+	;line "much!"
+	;done
+	
+_SilphCo9Text1::			;MODIFIED
+	text "EEK!"
 	done
 
 _SilphCo9BattleText1::
@@ -29,21 +33,18 @@ _SilphCo9AfterBattleText1::
 	done
 
 _SilphCo9BattleText2::
-	text "Your #MON have"
-	line "weak points! I"
-	cont "can nail them!"
+	text "I must fight to"
+	line "defend this"
+	cont "refurbished PC!"
 	done
 
 _SilphCo9EndBattleText2::
-	text "You"
-	line "hammered me!"
+	text "No!"
+	line "It's Linux!"
 	prompt
 
 _SilphCo9AfterBattleText2::
-	text "Exploiting weak"
-	line "spots does work!"
-	cont "Think about"
-	cont "element types!"
+	text "Scram!"
 	done
 
 _SilphCo9BattleText3::
@@ -52,8 +53,8 @@ _SilphCo9BattleText3::
 	done
 
 _SilphCo9EndBattleText3::
-	text "Warg!"
-	line "Brothers, I lost!"
+	text "Flamed"
+	line "out!"
 	prompt
 
 _SilphCo9AfterBattleText3::

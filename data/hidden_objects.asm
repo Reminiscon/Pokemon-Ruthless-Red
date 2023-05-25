@@ -85,6 +85,7 @@ HiddenObjectMaps:
 	db CERULEAN_CITY
 	db ROUTE_4
 	db VERMILION_DOCK
+	db SILPH_CO_9F			;NEW
 	db $FF
 
 HiddenObjectPointers:
@@ -622,6 +623,9 @@ SilphCo5FHiddenObjects:
 SilphCo9FHiddenObjects:
 	db $0f,$02,MAX_POTION
 	dbw BANK(HiddenItems),HiddenItems
+	db $0B,$07,$04		;dylannote - adding functional PC to Silph Co. 9F
+	db BANK(OpenPokemonCenterPC)
+	dw OpenPokemonCenterPC
 	db $FF
 CopycatsHouse2FHiddenObjects:
 	db $01,$01,NUGGET
@@ -805,7 +809,7 @@ Route12HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SilphCo11FHiddenObjects:
-	db $0c,$0a,$04
+	db $0E,$0C,$04
 	db BANK(OpenPokemonCenterPC)
 	dw OpenPokemonCenterPC
 	db $FF

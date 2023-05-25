@@ -125,6 +125,16 @@ _TM42Explanation::
 	text "TM42 contains"
 	line "DREAM EATER..."
 	cont "...Snore..."
+	
+	para "Oh! Almost for-"
+	line "got! Non-POISON"
+	cont "#MON of the"
+	cont "GRASS type can"
+	cont "all learn it too!"
+	
+	para "..........."
+	
+	para "...Snore..."
 	done
 
 _TM42NoRoomText::

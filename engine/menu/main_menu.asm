@@ -348,7 +348,7 @@ HandshakeList:	;this serves as a version control passcode with FF as an end-of-l
 	db $b
 	db $ff
 VersionText:
-	db "V0.5 ALPHA@"	;dylannote - Switched to Ruthless Red version
+	db "V0.6 ALPHA@"	;dylannote - Switched to Ruthless Red version
 
 WhereWouldYouLikeText:
 	TX_FAR _WhereWouldYouLikeText
@@ -677,7 +677,7 @@ OptionMenuSoundText:
 	dw OptionMenuEar2
 	dw OptionMenuEar3
 OptionMenuMono:
-	db "MONO     @"
+	db "@"
 OptionMenuEar1:
 	db "EARPHONE1@"
 OptionMenuEar2:

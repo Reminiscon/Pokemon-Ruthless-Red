@@ -45,7 +45,5 @@ _SilphCo5AfterBattleText3::
 	done
 
 _SilphCo5BattleText4::
-	text "Whaaat? There"
-	line "shouldn't be any"
-	cont "children here?"
+	text "KABLAMO!!"
 	done

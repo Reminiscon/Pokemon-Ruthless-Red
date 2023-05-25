@@ -28,7 +28,7 @@ SaffronCityObject:
 	object SPRITE_ROCKET, 20, 8, WALK, 2, 2 ; person
 	object SPRITE_ROCKET, 34, 4, STAY, NONE, 3 ; person
 	object SPRITE_ROCKET, 13, 12, STAY, NONE, 4 ; person
-	object SPRITE_ROCKET, 11, 25, WALK, 2, 5 ; person
+	object SPRITE_ROCKET,  8, 23, WALK, 2, 5 ; person
 	object SPRITE_ROCKET, 32, 13, WALK, 2, 6 ; person
 	object SPRITE_ROCKET, 18, 30, WALK, 2, 7 ; person
 	object SPRITE_OAK_AIDE, 8, 14, WALK, 0, 8 ; person
@@ -49,3 +49,4 @@ SaffronCityObject:
 	warp_to 18, 21, SAFFRON_CITY_WIDTH ; SILPH_CO_1F
 	warp_to 9, 29, SAFFRON_CITY_WIDTH ; SAFFRON_POKECENTER
 	warp_to 29, 29, SAFFRON_CITY_WIDTH ; SAFFRON_HOUSE_2
+	warp_to 31,  7, SAFFRON_CITY_WIDTH ; SAFFRON_GYM_2 (ONE-WAY WARP)

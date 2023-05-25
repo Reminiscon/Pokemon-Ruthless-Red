@@ -159,7 +159,7 @@ MoveEnd:
 	move DIZZY_PUNCH,  CONFUSION_SIDE_EFFECT,       70, GHOST,    100, 10		;10% chance to Confuse, Normal -> Ghost
 	move SPORE,        SLEEP_EFFECT,                 0, GRASS,    100, 15
 	move FLASH,        ACCURACY_DOWN1_EFFECT,        0, NORMAL,   100, 10		;100 ACC, 10 PP
-	move PSYWAVE,      SPECIAL_DAMAGE_EFFECT,        1, PSYCHIC,  100, 15		;100 ACC
+	move PSYWAVE,      SPECIAL_DAMAGE_EFFECT,        1, PSYCHIC,   80, 10		;Does damage equal to 1x to 2x the user's level, 10 PP
 	move SPLASH,       SPLASH_EFFECT,                0, NORMAL,   100, 40
 	move ACID_ARMOR,   DEFENSE_UP2_EFFECT,           0, POISON,   100, 40
 	move CRABHAMMER,   NO_ADDITIONAL_EFFECT,        90, WATER,     85, 10

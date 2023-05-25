@@ -14,7 +14,7 @@ PokemonTower7Object:
 	object SPRITE_ROCKER,  4, 10, STAY, RIGHT, 4, OPP_JUGGLER, 10
 	object SPRITE_ROCKER,  4,  8, STAY, RIGHT, 5, OPP_JUGGLER, 11
 	object SPRITE_BLACK_HAIR_BOY_2, 17,  9, STAY, LEFT, 6, OPP_BURGLAR, 9
-	object SPRITE_OAK_AIDE,  9,  5, STAY, RIGHT, 7, OPP_CHIEF, 2
+	object SPRITE_CHIEF,  9,  5, STAY, RIGHT, 7, OPP_CHIEF, 2
 	object SPRITE_MR_FUJI, 10, 3, STAY, DOWN, 8 ; person
 
 	; warp-to

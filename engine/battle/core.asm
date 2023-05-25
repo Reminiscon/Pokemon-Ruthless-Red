@@ -4408,7 +4408,7 @@ CheckForDisobedience:
 	ld a, 85
 	jr nz, .next
 	bit 4, [hl]		;Soul Badge
-	ld a, 100
+	ld a, 75
 	jr nz, .next
 	bit 3, [hl]		;Rainbow Badge
 	ld a, 65
@@ -4422,7 +4422,7 @@ CheckForDisobedience:
 	bit 0, [hl]		;Pewter Badge
 	ld a, 30
 	jr nz, .next
-	ld a, 15
+	ld a, 15 ;15 but set to 100 when testing
 .next
 	ld b, a
 	ld c, a
@@ -5332,32 +5332,33 @@ ApplyAttackToEnemyPokemon:
 	ld a, $01
 	ld [de], a
 	jr ApplyDamageToEnemyPokemon
-.specialDamage
+.specialDamage	;dylannote - These moves have been changed to not be set damage moves, so this code is omitted
 	ld hl, wBattleMonLevel
-	ld a, [hl]
-	ld b, a ; Seismic Toss deals damage equal to the user's level
-	ld a, [wPlayerMoveNum]
-	cp SEISMIC_TOSS
-	jr z, .storeDamage
-	cp NIGHT_SHADE
-	jr z, .storeDamage
-	ld b, SONICBOOM_DAMAGE ; 20
-	cp SONICBOOM
-	jr z, .storeDamage
-	ld b, DRAGON_RAGE_DAMAGE ; 40
-	cp DRAGON_RAGE
-	jr z, .storeDamage
+	;ld a, [hl]
+	;ld b, a ; Seismic Toss deals damage equal to the user's level
+	;ld a, [wPlayerMoveNum]
+	;cp SEISMIC_TOSS
+	;jr z, .storeDamage
+	;cp NIGHT_SHADE
+	;jr z, .storeDamage
+	;ld b, SONICBOOM_DAMAGE ; 20
+	;cp SONICBOOM
+	;jr z, .storeDamage
+	;ld b, DRAGON_RAGE_DAMAGE ; 40
+	;cp DRAGON_RAGE
+	;jr z, .storeDamage
 ; Psywave
 	ld a, [hl]
 	ld b, a
-	srl a
+	;srl a
 	add b
-	ld b, a ; b = level * 1.5
-; loop until a random number in the range [1, b) is found
+	ld b, a ; b = level * 2 -dylannote: changed to 1x to 2x own level
+; loop until a random number in the range [hl, b) is found
 .loop
+	ld hl, wBattleMonLevel
 	call BattleRandom
-	and a
-	jr z, .loop
+	cp [hl]
+	jr c, .loop
 	cp b
 	jr nc, .loop
 	ld b, a
@@ -5456,33 +5457,34 @@ ApplyAttackToPlayerPokemon:
 	jr ApplyDamageToPlayerPokemon
 .specialDamage
 	ld hl, wEnemyMonLevel
-	ld a, [hl]
-	ld b, a
-	ld a, [wEnemyMoveNum]
-	cp SEISMIC_TOSS
-	jr z, .storeDamage
-	cp NIGHT_SHADE
-	jr z, .storeDamage
-	ld b, SONICBOOM_DAMAGE
-	cp SONICBOOM
-	jr z, .storeDamage
-	ld b, DRAGON_RAGE_DAMAGE
-	cp DRAGON_RAGE
-	jr z, .storeDamage
+	;ld a, [hl]
+	;ld b, a
+	;ld a, [wEnemyMoveNum]
+	;cp SEISMIC_TOSS
+	;jr z, .storeDamage
+	;cp NIGHT_SHADE
+	;jr z, .storeDamage
+	;ld b, SONICBOOM_DAMAGE
+	;cp SONICBOOM
+	;jr z, .storeDamage
+	;ld b, DRAGON_RAGE_DAMAGE
+	;cp DRAGON_RAGE
+	;jr z, .storeDamage
 ; Psywave
 	ld a, [hl]
 	ld b, a
-	srl a
+	;srl a
 	add b
-	ld b, a ; b = attacker's level * 1.5
-; loop until a random number in the range [0, b) is found
+	ld b, a ; b = attacker's level * 2
+; loop until a random number in the range [hl, b) is found -dylannote: changed to 1x to 2x own level
 ; this differs from the range when the player attacks, which is [1, b)
 ; it's possible for the enemy to do 0 damage with Psywave, but the player always does at least 1 damage
 .loop
+	ld hl, wEnemyMonLevel	;dylannote - added this to make the minimum damage 1x level for psywave
 	call BattleRandom
 ;;;joenote - add these two lines to make enemy psywave match [1, b)
-	and a
-	jr z, .loop
+	cp [hl]
+	jr c, .loop
 ;;;
 	cp b
 	jr nc, .loop
@@ -7713,8 +7715,14 @@ _LoadTrainerPic:
 	ld d, a ; de contains pointer to trainer pic
 	ld a, [wLinkState]
 	and a
-	ld a, Bank(TrainerPics) ; this is where all the trainer pics are (not counting Red's)
-	jr z, .loadSprite
+ 	jr nz, .useRed
+ 	ld a, [wTrainerClass]
+ 	cp PROF_OAK ; first trainer class in "Trainer Pics 2"
+ 	ld a, BANK("bank36")
+ 	jr nc, .loadSprite
+ 	ld a, BANK("bank13")
+ 	jr .loadSprite
+    .useRed
 	ld a, Bank(RedPicFront)
 .loadSprite
 	call UncompressSpriteFromDE

@@ -38,6 +38,18 @@ TryDoWildEncounter:
 ; even if not in grass/water, standing anywhere we can encounter pokemon
 ; so long as the map is "indoor" and has wild pokemon defined.
 ; ...as long as it's not Viridian Forest or Safari Zone.
+	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI	; dylannote - If Giovanni was beaten, no more wild mons at Silph
+	jr z,.skipgiovannicheck
+	ld a, [wCurMap]
+	cp SILPH_CO_2F ;SILPH_CO_2F to SILPH_CO_8F remove wild pokemon if Giovanni was defeated
+	jr c, .skipgiovannicheck
+	cp MANSION_2
+	jr c, .CantEncounter2
+	cp SILPH_CO_9F	;SILPH_CO_9F to SILPH_CO_11F remove wild pokemon if Giovanni was defeated
+	jr c, .skipgiovannicheck
+	cp SILPH_CO_ELEVATOR
+	jr c, .CantEncounter2
+.skipgiovannicheck
 	ld a, [wCurMap]
 	cp REDS_HOUSE_1F ; is this an indoor map?
 	jr c, .CantEncounter2

@@ -1,15 +1,18 @@
 _FightingDojoText_5ce8e::
 	text "Grunt!"
-
-	para "I am the KARATE"
-	line "MASTER! I am the"
-	cont "LEADER here!"
-
-	para "You wish to"
-	line "challenge us?"
-	cont "Expect no mercy!"
-
-	para "Fwaaa!"
+	line "Another one!"
+	
+	para "I am SICK and"
+	line "TIRED of every-"
+	cont "body calling us"
+	cont "TRASH!"
+	
+	para "I AM the STRONG-"
+	line "EST BLACKBLET!"
+	
+	para "I WILL SHOW"
+	line "SAFFRON THAT WE"
+	cont "HAVE OUR PLACE!"
 	done
 
 _FightingDojoText_5ce93::
@@ -18,27 +21,19 @@ _FightingDojoText_5ce93::
 	prompt
 
 _FightingDojoText_5ce98::
-	text "Indeed, I have"
-	line "lost!"
-
-	para "But, I beseech"
-	line "you, do not take"
-	cont "our emblem as"
-	cont "your trophy!"
-
-	para "In return, I will"
-	line "give you a prized"
-	cont "fighting #MON!"
-
-	para "Choose whichever"
-	line "one you like!"
+	text "OUR GYM IS"
+	line "DOOMED!"
+	
+	para "Just.. take one"
+	line "and get out of"
+	cont "here."
 	done
 
 _FightingDojoText_5ce9d::
-	text "Ho!"
-
-	para "Stay and train at"
-	line "Karate with us!"
+	text "We're officially"
+	line "shuttin' down!"
+	
+	para "GYYYET OUT!"
 	done
 
 _FightingDojoBattleText1::

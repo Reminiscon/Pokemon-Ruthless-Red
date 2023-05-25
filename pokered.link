@@ -182,6 +182,9 @@ ROMX $34 ;NEW
 ROMX $35 ;NEW
   "Battle (bank 35)"
   
+ROMX $36 ;NEW
+  "bank36"
+  
 WRAM0
   "WRAM Bank 0"
 

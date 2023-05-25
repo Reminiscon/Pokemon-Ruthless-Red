@@ -1,13 +1,18 @@
 _SaffronMartText2::
-	text "MAX REPEL lasts"
-	line "longer than SUPER"
-	cont "REPEL for keeping"
-	cont "weaker #MON"
-	cont "away!"
+	text "REPEL might help"
+	line "you out!"
+	
+	para "I heard that"
+	line "TEAM ROCKET let"
+	cont "their #MON"
+	cont "roam SILPH CO.!"
+	
+	para "The fastest"
+	line "ones!"
 	done
 
 _SaffronMartText3::
-	text "REVIVE is costly,"
-	line "but it revives"
-	cont "fainted #MON!"
+	text "ESCAPE ROPE only"
+	line "works in forests"
+	cont "and caves!"
 	done

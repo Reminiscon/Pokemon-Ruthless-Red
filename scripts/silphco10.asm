@@ -49,7 +49,7 @@ SilphCo10TextPointers:
 
 SilphCo10TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_10F_TRAINER_0
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_10F_TRAINER_0
 	dw SilphCo10BattleText1 ; TextBeforeBattle
 	dw SilphCo10AfterBattleText1 ; TextAfterBattle

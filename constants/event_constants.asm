@@ -864,7 +864,7 @@ const_value = 0
 	const EVENT_35D                                  ; 35D, (D7B2, bit 5)
 	const EVENT_35E                                  ; 35E, (D7B2, bit 6)
 	const EVENT_35F                                  ; 35F, (D7B2, bit 7)
-	const EVENT_GOT_TM46                             ; 360, (D7B3, bit 0)
+	const EVENT_GOT_TM29                             ; 360, (D7B3, bit 0)
 	const EVENT_BEAT_SABRINA                         ; 361, (D7B3, bit 1)
 	const EVENT_BEAT_SAFFRON_GYM_TRAINER_0           ; 362, (D7B3, bit 2)
 	const EVENT_BEAT_SAFFRON_GYM_TRAINER_1           ; 363, (D7B3, bit 3)
@@ -874,13 +874,13 @@ const_value = 0
 	const EVENT_BEAT_SAFFRON_GYM_TRAINER_5           ; 367, (D7B3, bit 7)
 	const EVENT_BEAT_SAFFRON_GYM_TRAINER_6           ; 368, (D7B4, bit 0)
 	const EVENT_369                                  ; 369, (D7B4, bit 1)
-	const EVENT_36A                                  ; 36A, (D7B4, bit 2)
-	const EVENT_36B                                  ; 36B, (D7B4, bit 3)
-	const EVENT_36C                                  ; 36C, (D7B4, bit 4)
-	const EVENT_36D                                  ; 36D, (D7B4, bit 5)
-	const EVENT_36E                                  ; 36E, (D7B4, bit 6)
-	const EVENT_36F                                  ; 36F, (D7B4, bit 7)
-	const EVENT_370                                  ; 370, (D7B5, bit 0)
+	const EVENT_36A                                  ; 36A, (D7B4, bit 2)		;Saffron Gym Trainer Flag
+	const EVENT_36B                                  ; 36B, (D7B4, bit 3)		;Saffron Gym Trainer Flag
+	const EVENT_36C                                  ; 36C, (D7B4, bit 4)		;Saffron Gym Trainer Flag
+	const EVENT_36D                                  ; 36D, (D7B4, bit 5)		;Saffron Gym Trainer Flag
+	const EVENT_36E                                  ; 36E, (D7B4, bit 6)		;Saffron Gym Trainer Flag
+	const EVENT_36F                                  ; 36F, (D7B4, bit 7)		;Saffron Gym Trainer Flag
+	const EVENT_370                                  ; 370, (D7B5, bit 0)		;Saffron Gym Trainer Flag
 	const EVENT_371                                  ; 371, (D7B5, bit 1)
 	const EVENT_372                                  ; 372, (D7B5, bit 2)
 	const EVENT_373                                  ; 373, (D7B5, bit 3)
@@ -920,7 +920,7 @@ const_value = 0
 	const EVENT_395                                  ; 395, (D7B9, bit 5)
 	const EVENT_396                                  ; 396, (D7B9, bit 6)
 	const EVENT_SILPH_CO_RECEPTIONIST_AT_DESK        ; 397, (D7B9, bit 7)
-	const EVENT_398                                  ; 398, (D7BA, bit 0)
+	const EVENT_SILPH_CO_GUARD_ON_FIRST_FLOOR        ; 398, (D7BA, bit 0)			;NEW
 	const EVENT_399                                  ; 399, (D7BA, bit 1)
 	const EVENT_39A                                  ; 39A, (D7BA, bit 2)
 	const EVENT_39B                                  ; 39B, (D7BA, bit 3)
@@ -944,7 +944,7 @@ const_value = 0
 	const EVENT_3AD                                  ; 3AD, (D7BC, bit 5)
 	const EVENT_3AE                                  ; 3AE, (D7BC, bit 6)
 	const EVENT_3AF                                  ; 3AF, (D7BC, bit 7)
-	const EVENT_GOT_TM29                             ; 3B0, (D7BD, bit 0)
+	const EVENT_GOT_TM46                             ; 3B0, (D7BD, bit 0)
 	const EVENT_3B1                                  ; 3B1, (D7BD, bit 1)
 	const EVENT_3B2                                  ; 3B2, (D7BD, bit 2)
 	const EVENT_3B3                                  ; 3B3, (D7BD, bit 3)
@@ -1924,10 +1924,10 @@ const_value = 0
 	const EVENT_781                                  ; 781, (D837, bit 1)
 	const EVENT_782                                  ; 782, (D837, bit 2)
 	const EVENT_783                                  ; 783, (D837, bit 3)
-	const EVENT_BEAT_SILPH_CO_11F_TRAINER_0          ; 784, (D837, bit 4)
-	const EVENT_BEAT_SILPH_CO_11F_TRAINER_1          ; 785, (D837, bit 5)
-	const EVENT_786                                  ; 786, (D837, bit 6)
-	const EVENT_787                                  ; 787, (D837, bit 7)
+	const EVENT_BEAT_SILPH_CO_11F_TRAINER_2          ; 784, (D837, bit 4)			;CHANGED
+	const EVENT_BEAT_SILPH_CO_11F_TRAINER_3          ; 785, (D837, bit 5)			;CHANGED
+	const EVENT_786          						 ; 786, (D837, bit 6)		    
+	const EVENT_787          						 ; 787, (D837, bit 7)			
 	const EVENT_SILPH_CO_11_UNLOCKED_DOOR            ; 788, (D838, bit 0)
 	const EVENT_789                                  ; 789, (D838, bit 1)
 	const EVENT_78A                                  ; 78A, (D838, bit 2)

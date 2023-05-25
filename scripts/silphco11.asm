@@ -112,37 +112,37 @@ MissableObjectIDs_6219b:
 	db HS_SAFFRON_CITY_7
 	db HS_SAFFRON_CITY_E
 	db HS_SAFFRON_CITY_F
-	db HS_SILPH_CO_2F_2
-	db HS_SILPH_CO_2F_3
-	db HS_SILPH_CO_2F_4
-	db HS_SILPH_CO_2F_5
-	db HS_SILPH_CO_3F_1
-	db HS_SILPH_CO_3F_2
-	db HS_SILPH_CO_4F_1
-	db HS_SILPH_CO_4F_2
-	db HS_SILPH_CO_4F_3
-	db HS_SILPH_CO_5F_1
-	db HS_SILPH_CO_5F_2
-	db HS_SILPH_CO_5F_3
-	db HS_SILPH_CO_5F_4
-	db HS_SILPH_CO_6F_1
-	db HS_SILPH_CO_6F_2
-	db HS_SILPH_CO_6F_3
-	db HS_SILPH_CO_7F_1
-	db HS_SILPH_CO_7F_2
-	db HS_SILPH_CO_7F_3
-	db HS_SILPH_CO_7F_4
-	db HS_SILPH_CO_8F_1
-	db HS_SILPH_CO_8F_2
-	db HS_SILPH_CO_8F_3
-	db HS_SILPH_CO_9F_1
-	db HS_SILPH_CO_9F_2
-	db HS_SILPH_CO_9F_3
-	db HS_SILPH_CO_10F_1
-	db HS_SILPH_CO_10F_2
+	;db HS_SILPH_CO_2F_2
+	;db HS_SILPH_CO_2F_3
+	;db HS_SILPH_CO_2F_4
+	;db HS_SILPH_CO_2F_5
+	;db HS_SILPH_CO_3F_1
+	;db HS_SILPH_CO_3F_2
+	;db HS_SILPH_CO_4F_1
+	;db HS_SILPH_CO_4F_2
+	;db HS_SILPH_CO_4F_3
+	;db HS_SILPH_CO_5F_1
+	;db HS_SILPH_CO_5F_2
+	;db HS_SILPH_CO_5F_3
+	;db HS_SILPH_CO_5F_4
+	;db HS_SILPH_CO_6F_1
+	;db HS_SILPH_CO_6F_2
+	;db HS_SILPH_CO_6F_3
+	;db HS_SILPH_CO_7F_1
+	;db HS_SILPH_CO_7F_2
+	;db HS_SILPH_CO_7F_3
+	;db HS_SILPH_CO_7F_4
+	;db HS_SILPH_CO_8F_1
+	;db HS_SILPH_CO_8F_2
+	;db HS_SILPH_CO_8F_3
+	;db HS_SILPH_CO_9F_1
+	;db HS_SILPH_CO_9F_2
+	;db HS_SILPH_CO_9F_3
+	;db HS_SILPH_CO_10F_1
+	;db HS_SILPH_CO_10F_2
 	db HS_SILPH_CO_11F_1
-	db HS_SILPH_CO_11F_2
-	db HS_SILPH_CO_11F_3
+	;db HS_SILPH_CO_11F_2
+	;db HS_SILPH_CO_11F_3
 	db $FF
 
 SilphCo11Script_621c4:
@@ -276,27 +276,27 @@ SilphCo11TextPointers:
 	dw SilphCo11Text1
 	dw SilphCo11Text2
 	dw SilphCo11Text3
-	dw SilphCo11Text4
-	dw SilphCo11Text5
+	dw SilphCo11TextChief		;CHANGED
+	dw SilphCo11TextJugglerX	;CHANGED
 	dw SilphCo11Text6
-
+	
 SilphCo11TrainerHeader0:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_11F_TRAINER_0
+	dbEventFlagBit EVENT_BEAT_SILPH_CO_11F_TRAINER_2
 	db ($4 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_11F_TRAINER_0
-	dw SilphCo11BattleText1 ; TextBeforeBattle
-	dw SilphCo11AfterBattleText1 ; TextAfterBattle
-	dw SilphCo11EndBattleText1 ; TextEndBattle
-	dw SilphCo11EndBattleText1 ; TextEndBattle
-
+	dwEventFlagAddress EVENT_BEAT_SILPH_CO_11F_TRAINER_2
+	dw SilphCo11BattleTextChief ; TextBeforeBattle
+	dw SilphCo11AfterBattleTextChief ; TextAfterBattle
+	dw SilphCo11EndBattleTextChief ; TextEndBattle
+	dw SilphCo11EndBattleTextChief ; TextEndBattle
+	
 SilphCo11TrainerHeader1:
-	dbEventFlagBit EVENT_BEAT_SILPH_CO_11F_TRAINER_1
-	db ($3 << 4) ; trainer's view range
-	dwEventFlagAddress EVENT_BEAT_SILPH_CO_11F_TRAINER_1
-	dw SilphCo11BattleText2 ; TextBeforeBattle
-	dw SilphCo11AfterBattleText2 ; TextAfterBattle
-	dw SilphCo11EndBattleText2 ; TextEndBattle
-	dw SilphCo11EndBattleText2 ; TextEndBattle
+	dbEventFlagBit EVENT_BEAT_SILPH_CO_11F_TRAINER_3
+	db ($4 << 4) ; trainer's view range
+	dwEventFlagAddress EVENT_BEAT_SILPH_CO_11F_TRAINER_3
+	dw SilphCo11BattleTextJugglerX ; TextBeforeBattle
+	dw SilphCo11AfterBattleTextJugglerX ; TextAfterBattle
+	dw SilphCo11EndBattleTextJugglerX ; TextEndBattle
+	dw SilphCo11EndBattleTextJugglerX ; TextEndBattle
 
 	db $ff
 
@@ -356,40 +356,40 @@ SilphCo11Text6:
 	TX_FAR _SilphCo10Text_62335
 	db "@"
 
-SilphCo11Text4:
+SilphCo11TextChief:	;NEW
 	TX_ASM
 	ld hl, SilphCo11TrainerHeader0
 	call TalkToTrainer
 	jp TextScriptEnd
 
-SilphCo11BattleText1:
-	TX_FAR _SilphCo11BattleText1
+SilphCo11BattleTextChief:
+	TX_FAR _SilphCo11BattleTextChief
 	db "@"
 
-SilphCo11EndBattleText1:
-	TX_FAR _SilphCo11EndBattleText1
+SilphCo11EndBattleTextChief:
+	TX_FAR _SilphCo11EndBattleTextChief
 	db "@"
 
-SilphCo11AfterBattleText1:
-	TX_FAR _SilphCo11AfterBattleText1
+SilphCo11AfterBattleTextChief:
+	TX_FAR _SilphCo11AfterBattleTextChief
 	db "@"
 
-SilphCo11Text5:
+SilphCo11TextJugglerX:	;NEW
 	TX_ASM
 	ld hl, SilphCo11TrainerHeader1
 	call TalkToTrainer
 	jp TextScriptEnd
 
-SilphCo11BattleText2:
-	TX_FAR _SilphCo11BattleText2
+SilphCo11BattleTextJugglerX:
+	TX_FAR _SilphCo11BattleTextJugglerX
 	db "@"
 
-SilphCo11EndBattleText2:
-	TX_FAR _SilphCo11EndBattleText2
+SilphCo11EndBattleTextJugglerX:
+	TX_FAR _SilphCo11EndBattleTextJugglerX
 	db "@"
 
-SilphCo11AfterBattleText2:
-	TX_FAR _SilphCo11AfterBattleText2
+SilphCo11AfterBattleTextJugglerX:
+	TX_FAR _SilphCo11AfterBattleTextJugglerX
 	db "@"
 
 SilphCo10Text_6236c:
@@ -403,4 +403,4 @@ SilphCo10Text_6236c:
 SilphCo10Text_6237b:
 	TX_FAR _SilphCo10Text_6237b
 	db "@"
-
+	

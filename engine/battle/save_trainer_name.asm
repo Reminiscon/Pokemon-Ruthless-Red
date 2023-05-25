@@ -88,7 +88,7 @@ BurglarName:
 EngineerName:
 	db "ENGINEER@"
 JugglerXName:
-	db "JUGGLER@"
+	db "JUGGLER X@"
 SwimmerName:
 	db "SWIMMER@"
 BeautyName:

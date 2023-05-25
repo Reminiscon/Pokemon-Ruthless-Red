@@ -21,6 +21,11 @@ _SaffronCityText4::
 _SaffronCityText5::
 	text "Being evil makes"
 	line "me feel so alive!"
+	
+	para "Heh heh.. all of"
+	line "the EVEN number"
+	cont "floors are barri-"
+	cont "caded so far!"
 	done
 
 _SaffronCityText6::
@@ -115,7 +120,7 @@ _SaffronCityText20::
 	line "all ailments like"
 	cont "sleep and burns."
 
-	para "It costs a bit"
+	para "It costs a lot"
 	line "more, but it's"
 	cont "more convenient."
 	done
@@ -123,7 +128,7 @@ _SaffronCityText20::
 _SaffronCityText21::
 	text "TRAINER TIPS"
 
-	para "New GREAT BALL"
+	para "New ULTRA BALL"
 	line "offers improved"
 	cont "capture rates."
 

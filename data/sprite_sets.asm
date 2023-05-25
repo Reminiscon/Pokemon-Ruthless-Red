@@ -504,10 +504,20 @@ SpriteSheetPointerTable:
 	db $c0 ; byte count
 	db BANK(SeelSprite)
 	
+	; SPRITE_CHIEF	;NEW
+	dw ChiefSprite
+	db $c0 ; byte count
+	db BANK(ChiefSprite)
+	
 	; SPRITE_BUG_MASTER	;NEW
 	dw BugMasterSprite
 	db $c0 ; byte count
 	db BANK(BugMasterSprite)
+	
+	; SPRITE_JUGGLER_X	;NEW
+	dw JugglerXSprite
+	db $c0 ; byte count
+	db BANK(JugglerXSprite)
 
 	; SPRITE_BALL
 	dw BallSprite

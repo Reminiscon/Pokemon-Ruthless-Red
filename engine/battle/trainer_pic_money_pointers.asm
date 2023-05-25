@@ -37,8 +37,8 @@ TrainerPicAndMoneyPointers:
 	dw EngineerPic
 	money 5000
 
-	dw JugglerPic
-	money 3500
+	dw JugglerXPic
+	money 9900 				;3500
 
 	dw FisherPic
 	money 3500
@@ -56,7 +56,7 @@ TrainerPicAndMoneyPointers:
 	money 7000
 
 	dw PsychicPic
-	money 1000
+	money 0					;1000
 
 	dw RockerPic
 	money 2500
@@ -74,13 +74,13 @@ TrainerPicAndMoneyPointers:
 	money 2500
 
 	dw Rival1Pic
-	money 3500
+	money 0 				;3500
 
 	dw ProfOakPic
 	money 9900
 
 	dw ChiefPic
-	money 9900 ;3000
+	money 9900 				;3000
 
 	dw ScientistPic
 	money 5000
@@ -98,7 +98,7 @@ TrainerPicAndMoneyPointers:
 	money 3500
 
 	dw BrunoPic
-	money 0 ;9900
+	money 0 				;9900
 
 	dw BrockPic
 	money 9900
@@ -125,22 +125,22 @@ TrainerPicAndMoneyPointers:
 	money 7000
 
 	dw Rival2Pic
-	money 6500
+	money 0 				;6500
 
 	dw Rival3Pic
-	money 0 ;9900
+	money 0 				;9900
 
 	dw LoreleiPic
-	money 0 ;9900
+	money 0 				;9900
 
 	dw ChannelerPic
-	money 3000
+	money 0					;3000
 
 	dw AgathaPic
-	money 0 ;9900
+	money 0 				;9900
 
 	dw LancePic
-	money 0 ;9900
+	money 0 				;9900
 	
 	dw BugMasterPic	;NEW
 	money 9900

@@ -161,7 +161,9 @@ ClipboardSprite:       INCBIN "gfx/sprites/clipboard.2bpp"
 SnorlaxSprite:         INCBIN "gfx/sprites/snorlax.2bpp"
 OldAmberSprite:        INCBIN "gfx/sprites/old_amber.2bpp"
 LyingOldManSprite:     INCBIN "gfx/sprites/lying_old_man.2bpp"
+ChiefSprite:		   INCBIN "gfx/sprites/chief.2bpp"
 BugMasterSprite:	   INCBIN "gfx/sprites/bug_master.2bpp"
+JugglerXSprite:		   INCBIN "gfx/sprites/juggler_x.2bpp"
 
 
 SECTION "Graphics", ROMX, BANK[GFX]
@@ -344,6 +346,7 @@ INCLUDE "engine/overworld/npc_movement.asm"
 INCLUDE "engine/overworld/doors.asm"
 INCLUDE "engine/overworld/ledges.asm"
 
+DiglettsCaveEntranceRoute11Blocks: INCBIN "maps/diglettscaveentranceroute11.blk"
 
 SECTION "bank7",ROMX,BANK[$7]
 
@@ -377,7 +380,8 @@ SchoolBlocks: INCBIN "maps/school.blk"
 
 CeruleanHouseTrashedBlocks: INCBIN "maps/ceruleanhousetrashed.blk"
 
-DiglettsCaveEntranceRoute11Blocks: INCBIN "maps/diglettscaveentranceroute11.blk"
+;dylannote - moved this to make room for move deleter and move relearner
+;DiglettsCaveEntranceRoute11Blocks: INCBIN "maps/diglettscaveentranceroute11.blk"
 
 MoltenCavernBlocks: INCBIN "maps/moltencavern.blk"	;dylannote - used to be Diglett's Cave Exit (Route 2)
 
@@ -462,6 +466,9 @@ FuchsiaMartBlocks: INCBIN "maps/fuchsiamart.blk"
 INCLUDE "data/mapHeaders/saffronhouse1.asm"
 INCLUDE "scripts/saffronhouse1.asm"
 INCLUDE "data/mapObjects/saffronhouse1.asm"
+;joenote - adding Mateo's move relearner/deleter files
+INCLUDE "scripts/move_deleter.asm"
+INCLUDE "scripts/move_relearner.asm"
 
 
 INCLUDE "data/mapHeaders/saffronhouse2.asm"
@@ -1768,7 +1775,6 @@ SafariZoneSecretHouseBlocks: INCBIN "maps/safarizonesecrethouse.blk"
 
 SECTION "bank13",ROMX,BANK[$13]
 
-TrainerPics::
 YoungsterPic::     INCBIN "pic/trainer/youngster.pic"
 BugCatcherPic::    INCBIN "pic/trainer/bugcatcher.pic"
 LassPic::          INCBIN "pic/trainer/lass.pic"
@@ -1781,6 +1787,7 @@ HikerPic::         INCBIN "pic/trainer/hiker.pic"
 BikerPic::         INCBIN "pic/trainer/biker.pic"
 BurglarPic::       INCBIN "pic/trainer/burglar.pic"
 EngineerPic::      INCBIN "pic/trainer/engineer.pic"
+JugglerXPic::	   INCBIN "pic/trainer/jugglerx.pic"	;RE-ADDED
 FisherPic::        INCBIN "pic/trainer/fisher.pic"
 SwimmerPic::       INCBIN "pic/trainer/swimmer.pic"
 CueBallPic::       INCBIN "pic/trainer/cueball.pic"
@@ -1793,6 +1800,9 @@ TamerPic::         INCBIN "pic/trainer/tamer.pic"
 BirdKeeperPic::    INCBIN "pic/trainer/birdkeeper.pic"
 BlackbeltPic::     INCBIN "pic/trainer/blackbelt.pic"
 Rival1Pic::        INCBIN "pic/trainer/rival1.pic"
+
+SECTION "bank36",ROMX,BANK[$36]	;New section added to make more space for additional trainer classes
+
 ProfOakPic::       INCBIN "pic/trainer/prof.oak.pic"
 ChiefPic::		   INCBIN "pic/trainer/chief.pic"	;RE-ADDED
 ScientistPic::     INCBIN "pic/trainer/scientist.pic"
@@ -2672,6 +2682,11 @@ INCLUDE "data/mapHeaders/colosseum.asm"
 INCLUDE "scripts/colosseum.asm"
 INCLUDE "data/mapObjects/colosseum.asm"
 ColosseumBlocks: INCBIN "maps/colosseum.blk"
+
+INCLUDE "data/mapHeaders/saffrongym2.asm"				;NEW
+INCLUDE "scripts/saffrongym2.asm"						;NEW
+INCLUDE "data/mapObjects/saffrongym2.asm"				;NEW
+SaffronGym2Blocks: INCBIN "maps/saffrongym2.blk"			;NEW
 
 INCLUDE "engine/give_pokemon.asm"
 

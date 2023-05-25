@@ -1,0 +1,14 @@
+SilphCoMons8:
+	db $05
+	db 67,GOLBAT
+	db 67,ARCANINE
+	db 67,GOLBAT
+	db 67,ARCANINE
+	db 68,GOLBAT		
+	db 68,ELECTRODE		
+	db 68,CROBAT
+	db 68,ELECTRODE
+	db 68,HOUNDOOM
+	db 69,HOUNDOOM
+	db $00
+	

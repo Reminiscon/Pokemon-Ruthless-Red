@@ -140,7 +140,7 @@ SilphCo9TrainerHeader0:
 
 SilphCo9TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_SILPH_CO_9F_TRAINER_1
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_SILPH_CO_9F_TRAINER_1
 	dw SilphCo9BattleText2 ; TextBeforeBattle
 	dw SilphCo9AfterBattleText2 ; TextAfterBattle
@@ -158,36 +158,40 @@ SilphCo9TrainerHeader2:
 
 	db $ff
 
-SilphCo9Text1:
-	TX_ASM
-	CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
-	jr nz, .asm_5d8dc
-	ld hl, SilphCo9Text_5d8e5
-	call PrintText
-	predef HealParty
-	call GBFadeOutToWhite
-	call Delay3
-	call GBFadeInFromWhite
-	ld hl, SilphCo9Text_5d8ea
-	call PrintText
-	jr .asm_5d8e2
-.asm_5d8dc
-	ld hl, SilphCo9Text_5d8ef
-	call PrintText
-.asm_5d8e2
-	jp TextScriptEnd
-
-SilphCo9Text_5d8e5:
-	TX_FAR _SilphCo9Text_5d8e5
+SilphCo9Text1:					;MODIFIED
+	TX_FAR _SilphCo9Text1
 	db "@"
+	
+;SilphCo9Text1:
+	;TX_ASM
+	;CheckEvent EVENT_BEAT_SILPH_CO_GIOVANNI
+	;jr nz, .asm_5d8dc
+	;ld hl, SilphCo9Text_5d8e5
+	;call PrintText
+	;predef HealParty
+	;call GBFadeOutToWhite
+	;call Delay3
+	;call GBFadeInFromWhite
+	;ld hl, SilphCo9Text_5d8ea
+	;call PrintText
+	;jr .asm_5d8e2
+;.asm_5d8dc
+	;ld hl, SilphCo9Text_5d8ef
+	;call PrintText
+;.asm_5d8e2
+	;jp TextScriptEnd
 
-SilphCo9Text_5d8ea:
-	TX_FAR _SilphCo9Text_5d8ea
-	db "@"
+;SilphCo9Text_5d8e5:
+	;TX_FAR _SilphCo9Text_5d8e5
+	;db "@"
 
-SilphCo9Text_5d8ef:
-	TX_FAR _SilphCo9Text_5d8ef
-	db "@"
+;SilphCo9Text_5d8ea:
+	;TX_FAR _SilphCo9Text_5d8ea
+	;db "@"
+
+;SilphCo9Text_5d8ef:
+	;TX_FAR _SilphCo9Text_5d8ef
+	;db "@"
 
 SilphCo9Text2:
 	TX_ASM

@@ -229,6 +229,9 @@ SECTION "Text 3", ROMX, BANK[TEXT_3]
 
 INCLUDE "text/maps/rock_tunnel_b2f_2.asm"
 INCLUDE "text/maps/seafoam_islands_b4f.asm"
+;joenote - adding Mateo's move relearner/deleter files
+INCLUDE "text/move_deleter.asm"
+INCLUDE "text/move_relearner.asm"
 
 
 _AIBattleWithdrawText::
@@ -2892,6 +2895,13 @@ _PlayedFluteNoEffectText::
 _FluteWokeUpText::
 	text "All sleeping"
 	line "#MON woke up."
+	prompt
+
+_FluteFailedText::
+	text "Played the #"
+	line "FLUTE."
+	
+	para "But it failed!"
 	prompt
 
 _PlayedFluteHadEffectText::
