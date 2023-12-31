@@ -29,8 +29,8 @@ WildDataPointers:
 	dw Route16Mons ; ROUTE_16
 	dw Route17Mons ; ROUTE_17
 	dw Route18Mons ; ROUTE_18
-	dw WaterMons2  ; ROUTE_19
-	dw WaterMons2  ; ROUTE_20
+	dw Route19Mons ; ROUTE_19
+	dw WaterMons   ; ROUTE_20
 	dw Route21Mons ; ROUTE_21
 	dw Route22Mons ; ROUTE_22
 	dw Route23Mons ; ROUTE_23
@@ -333,3 +333,4 @@ INCLUDE "data/wildPokemon/silphco8.asm"						;NEW
 INCLUDE "data/wildPokemon/silphco9.asm"						;NEW
 INCLUDE "data/wildPokemon/silphco10.asm"					;NEW
 INCLUDE "data/wildPokemon/silphco11.asm"					;NEW
+INCLUDE "data/wildPokemon/route19.asm"						;NEW

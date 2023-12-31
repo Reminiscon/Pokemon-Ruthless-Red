@@ -35,7 +35,7 @@ MapHSPointers:
 	dw MapHS1B
 	dw MapHSXX
 	dw MapHS1D	;NEW, Route 18
-	dw MapHSXX
+	dw MapHS1E  ;NEW, Route 19
 	dw MapHSXX
 	dw MapHSXX
 	dw MapHS21
@@ -328,6 +328,8 @@ MapHS1B:
 	db ROUTE_16,$08,Show
 MapHS1D:
 	db ROUTE_18,$04,Show						;NEW
+MapHS1E:
+	db ROUTE_19,$0B,Show						;NEW
 MapHS21:
 	db ROUTE_22,$01,Hide
 	db ROUTE_22,$02,Hide
@@ -603,9 +605,10 @@ MapHSA1:
 	db SEAFOAM_ISLANDS_4,$03,Show
 	db SEAFOAM_ISLANDS_4,$05,Hide
 	db SEAFOAM_ISLANDS_4,$06,Hide
+	db SEAFOAM_ISLANDS_4,$07,Show
 MapHSA2:
-	db SEAFOAM_ISLANDS_5,$01,Hide
-	db SEAFOAM_ISLANDS_5,$02,Hide
-	db SEAFOAM_ISLANDS_5,$03,Show
+	;db SEAFOAM_ISLANDS_5,$01,Hide
+	;db SEAFOAM_ISLANDS_5,$02,Hide
+	db SEAFOAM_ISLANDS_5,$01,Show
 	
 	db $FF,$01,Show

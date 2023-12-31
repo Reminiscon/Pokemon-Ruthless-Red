@@ -39,7 +39,7 @@ _SaffronGymText_5d16e::
 _SaffronGymText_5d173::
 	text "The MARSHBADGE"
 	line "makes #MON up"
-	cont "to L75 obey you!"
+	cont "to L85 obey you!"
 
 	para "Stronger #MON"
 	line "will become wild,"

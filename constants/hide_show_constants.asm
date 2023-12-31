@@ -49,6 +49,7 @@ const_value = 0
 	const HS_ROUTE_15_ITEM_2
 	const HS_ROUTE_16_SNORLAX             ; 21
 	const HS_ROUTE_18_RIVAL				  
+	const HS_ROUTE_19_ITEM_1
 	const HS_ROUTE_22_RIVAL_1             ; 22
 	const HS_ROUTE_22_RIVAL_2             ; 23
 	const HS_NUGGET_BRIDGE_GUY            ; 24
@@ -257,6 +258,7 @@ const_value = 0
 	const HS_SEAFOAM_ISLANDS_4_BOULDER_2  ; DE
 	const HS_SEAFOAM_ISLANDS_4_BOULDER_3  ; DF
 	const HS_SEAFOAM_ISLANDS_4_BOULDER_4  ; E0
-	const HS_SEAFOAM_ISLANDS_5_BOULDER_1  ; E1
-	const HS_SEAFOAM_ISLANDS_5_BOULDER_2  ; E2
+	const HS_SEAFOAM_ISLANDS_4_ITEM_1
+	;const HS_SEAFOAM_ISLANDS_5_BOULDER_1  ; E1
+	;const HS_SEAFOAM_ISLANDS_5_BOULDER_2  ; E2
 	const HS_ARTICUNO                     ; E3 X

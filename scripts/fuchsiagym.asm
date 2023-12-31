@@ -70,7 +70,7 @@ FuchsiaGymScript3_75497:
 	ld [wMissableObjectIndex], a
 	predef HideObject
 	
-	ResetEvents EVENT_BEAT_ROUTE_18_RIVAL
+	SetEvent EVENT_BEAT_ROUTE_18_RIVAL
 
 	; deactivate gym trainers
 	SetEventRange EVENT_BEAT_FUCHSIA_GYM_TRAINER_0, EVENT_BEAT_FUCHSIA_GYM_TRAINER_5

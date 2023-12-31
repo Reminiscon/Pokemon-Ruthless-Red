@@ -10,10 +10,11 @@ _KogaBeforeBattleText::
 	cont "true terror as a"
 	cont "ninja master!"
 
-	para "You shall feel"
-	line "the despair of"
-	cont "poison and sleep"
-	cont "techniques!"
+	para "Hmm? Fool! I"
+	line "will not hint"
+	cont "at my strategy!"
+	
+	para "En guarde!"
 	done
 
 _KogaAfterBattleText::

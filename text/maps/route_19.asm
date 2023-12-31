@@ -24,8 +24,9 @@ _Route19EndBattleText2::
 	prompt
 
 _Route19AfterBattleText2::
-	text "Watch out for"
-	line "TENTACOOL!"
+	text "Are you going to"
+	line "try to catch"
+	cont "ARTICUNO?"
 	done
 
 _Route19BattleText3::

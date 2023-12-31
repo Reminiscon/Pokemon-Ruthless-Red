@@ -14,14 +14,14 @@ SeafoamIslands4Script:
 	SetEventReuseHL EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE
 	ld a, HS_SEAFOAM_ISLANDS_4_BOULDER_1
 	ld [wObjectToHide], a
-	ld a, HS_SEAFOAM_ISLANDS_5_BOULDER_1
+	;ld a, HS_SEAFOAM_ISLANDS_5_BOULDER_1
 	ld [wObjectToShow], a
 	jr .asm_465c4
 .asm_465b8
 	SetEventAfterBranchReuseHL EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE, EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE
 	ld a, HS_SEAFOAM_ISLANDS_4_BOULDER_2
 	ld [wObjectToHide], a
-	ld a, HS_SEAFOAM_ISLANDS_5_BOULDER_2
+	;ld a, HS_SEAFOAM_ISLANDS_5_BOULDER_2
 	ld [wObjectToShow], a
 .asm_465c4
 	ld a, [wObjectToHide]
@@ -172,3 +172,4 @@ SeafoamIslands4TextPointers:
 	dw BoulderText
 	dw BoulderText
 	dw BoulderText
+	dw PickUpItemText

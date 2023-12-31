@@ -291,7 +291,7 @@ LinkMenu:
 	inc a ; LINK_STATE_IN_CABLE_CLUB (makes a = 1)
 	ld [wLinkState], a
 	ld [wEnteringCableClub], a
-	jr SpecialEnterMap
+	jp SpecialEnterMap
 .choseCancel
 	xor a
 	ld [wMenuJoypadPollCount], a
@@ -348,7 +348,7 @@ HandshakeList:	;this serves as a version control passcode with FF as an end-of-l
 	db $b
 	db $ff
 VersionText:
-	db "V0.6 ALPHA@"	;dylannote - Switched to Ruthless Red version
+	db "          V0.6 ALPHA@"	;dylannote - Switched to Ruthless Red version
 
 WhereWouldYouLikeText:
 	TX_FAR _WhereWouldYouLikeText

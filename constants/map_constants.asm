@@ -167,7 +167,7 @@ ENDM
 	mapconst SEAFOAM_ISLANDS_2,           9, 15 ; $9F
 	mapconst SEAFOAM_ISLANDS_3,           9, 15 ; $A0
 	mapconst SEAFOAM_ISLANDS_4,           9, 15 ; $A1
-	mapconst SEAFOAM_ISLANDS_5,           9, 15 ; $A2
+	mapconst SEAFOAM_ISLANDS_5,          40, 18 ; $A2
 	mapconst VERMILION_HOUSE_2,           4,  4 ; $A3
 	mapconst FUCHSIA_HOUSE_3,             4,  4 ; $A4
 	mapconst MANSION_1,                  14, 15 ; $A5

@@ -23,6 +23,7 @@ Route19TextPointers:
 	dw Route19Text8
 	dw Route19Text9
 	dw Route19Text10
+	dw PickUpItemText
 	dw Route19Text11
 
 Route19TrainerHeader0:
@@ -36,7 +37,7 @@ Route19TrainerHeader0:
 
 Route19TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_ROUTE_19_TRAINER_1
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_19_TRAINER_1
 	dw Route19BattleText2 ; TextBeforeBattle
 	dw Route19AfterBattleText2 ; TextAfterBattle
@@ -45,7 +46,7 @@ Route19TrainerHeader1:
 
 Route19TrainerHeader2:
 	dbEventFlagBit EVENT_BEAT_ROUTE_19_TRAINER_2
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_19_TRAINER_2
 	dw Route19BattleText3 ; TextBeforeBattle
 	dw Route19AfterBattleText3 ; TextAfterBattle
@@ -81,7 +82,7 @@ Route19TrainerHeader5:
 
 Route19TrainerHeader6:
 	dbEventFlagBit EVENT_BEAT_ROUTE_19_TRAINER_6
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_ROUTE_19_TRAINER_6
 	dw Route19BattleText7 ; TextBeforeBattle
 	dw Route19AfterBattleText7 ; TextAfterBattle

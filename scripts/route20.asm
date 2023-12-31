@@ -50,9 +50,9 @@ Route20Script_50cc6:
 	call Route20Script_50d0c
 	ld a, HS_SEAFOAM_ISLANDS_4_BOULDER_2
 	call Route20Script_50d0c
-	ld a, HS_SEAFOAM_ISLANDS_5_BOULDER_1
+	;ld a, HS_SEAFOAM_ISLANDS_5_BOULDER_1
 	call Route20Script_50d14
-	ld a, HS_SEAFOAM_ISLANDS_5_BOULDER_2
+	;ld a, HS_SEAFOAM_ISLANDS_5_BOULDER_2
 	call Route20Script_50d14
 	; wispnote - Also reset the individual events.
 	ResetEvents EVENT_SEAFOAM4_BOULDER1_DOWN_HOLE, EVENT_SEAFOAM4_BOULDER2_DOWN_HOLE

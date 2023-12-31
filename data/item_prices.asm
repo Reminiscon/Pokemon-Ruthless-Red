@@ -14,8 +14,8 @@ ItemPrices:
 	money 250   ; ICE_HEAL
 	money 200   ; AWAKENING
 	money 200   ; PARLYZ_HEAL
-	money 3000  ; FULL_RESTORE
-	money 2500  ; MAX_POTION
+	money 0 ;3000  ; FULL_RESTORE
+	money 0 ;2500  ; MAX_POTION
 	money 1500  ; HYPER_POTION
 	money 700   ; SUPER_POTION
 	money 300   ; POTION
@@ -38,7 +38,7 @@ ItemPrices:
 	money 980   ; IRON						;modified 9800 -> 980
 	money 980   ; CARBOS					;modified 9800 -> 980
 	money 980   ; CALCIUM					;modified 9800 -> 980
-	money 480   ; RARE_CANDY				;modified 4800 -> 480
+	money 0 ;480   ; RARE_CANDY				;modified 4800 -> 480
 	money 0     ; DOME_FOSSIL
 	money 0     ; HELIX_FOSSIL
 	money 0     ; SECRET_KEY

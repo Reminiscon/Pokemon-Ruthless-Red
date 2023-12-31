@@ -53,10 +53,10 @@ SeafoamIslands5Script0:
 	ret
 
 .Coords
-	db $11,$14
-	db $11,$15
-	db $10,$14
-	db $10,$15
+	db $23,$14
+	db $23,$15
+	db $22,$14
+	db $22,$15
 	db $FF
 
 SeafoamIslands5Script1:
@@ -131,9 +131,21 @@ SeaFoamIslands5Script_46872:
 	jp ForceBikeOrSurf
 
 SeafoamIslands5TextPointers:
-	dw BoulderText
-	dw BoulderText
 	dw ArticunoText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
 	dw SeafoamIslands5Text4
 	dw SeafoamIslands5Text5
 
