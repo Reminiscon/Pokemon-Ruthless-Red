@@ -1,13 +1,15 @@
 CinnabarGymObject:
 	db $2e ; border block
 
-	db 2 ; warps
+	db 4 ; warps
 	warp 16, 17, 1, -1
 	warp 17, 17, 1, -1
+	warp 19, 15, 2, CINNABAR_GYM ; ONE-WAY WARP
+	warp  1,  0, 5, CINNABAR_ISLAND ; ONE-WAY WARP
 
 	db 0 ; signs
 
-	db 9 ; objects
+	db 13 ; objects
 	object SPRITE_FAT_BALD_GUY, 3, 3, STAY, DOWN, 1, OPP_BLAINE, 1
 	object SPRITE_BLACK_HAIR_BOY_2, 17, 2, STAY, DOWN, 2, OPP_SUPER_NERD, 6
 	object SPRITE_BLACK_HAIR_BOY_2, 17, 8, STAY, DOWN, 3, OPP_BURGLAR, 1
@@ -17,7 +19,12 @@ CinnabarGymObject:
 	object SPRITE_BLACK_HAIR_BOY_2, 3, 14, STAY, DOWN, 7, OPP_BURGLAR, 3
 	object SPRITE_BLACK_HAIR_BOY_2, 3, 8, STAY, DOWN, 8, OPP_SUPER_NERD, 9
 	object SPRITE_GYM_HELPER, 16, 13, STAY, DOWN, 9 ; person
+	object SPRITE_FAT_BALD_GUY, 24, 22, STAY, DOWN, 10 ; person
+	object SPRITE_FAT_BALD_GUY, 24, 22, STAY, DOWN, 11 ; person
+	object SPRITE_FAT_BALD_GUY, 24, 22, STAY, DOWN, 12 ; person
+	object SPRITE_GUARD,  1,  1, STAY, DOWN, 13 ; person
 
 	; warp-to
 	warp_to 16, 17, CINNABAR_GYM_WIDTH
 	warp_to 17, 17, CINNABAR_GYM_WIDTH
+	warp_to 17,  9, CINNABAR_GYM_WIDTH ; CINNABAR_GYM (ONE-WAY WARP)

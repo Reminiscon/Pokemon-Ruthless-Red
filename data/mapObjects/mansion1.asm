@@ -13,10 +13,12 @@ Mansion1Object:
 
 	db 0 ; signs
 
-	db 3 ; objects
+	db 5 ; objects
 	object SPRITE_OAK_AIDE, 17, 17, STAY, LEFT, 1, OPP_SCIENTIST, 13
 	object SPRITE_BALL, 14, 3, STAY, NONE, 2, ESCAPE_ROPE
 	object SPRITE_BALL, 18, 21, STAY, NONE, 3, CARBOS
+	object SPRITE_FAT_BALD_GUY, 34, 13, STAY, DOWN, 4 ; person
+	object SPRITE_GUARD,  5, 25, STAY, DOWN, 5 ; person
 
 	; warp-to
 	warp_to 4, 27, MANSION_1_WIDTH

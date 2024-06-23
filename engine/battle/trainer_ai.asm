@@ -129,7 +129,8 @@ AIMoveChoiceModificationFunctionPointers:
 	dw AIMoveChoiceModification3
 	dw AIMoveChoiceModification4 ; ;joenote - repurposed unused routine for trainer switching
 	dw AIMoveChoiceModification5 ; dylannote - added to work like routine #2, but with status effects and no turn limit
-	dw AIMoveChoiceModification6 ; dylannote - added for advanced strategies involving a few select moves
+	dw AIMoveChoiceModification6 ; dylannote - added for advanced DEFENSIVE strategies involving a few select moves
+	dw AIMoveChoiceModification7 ; dylannote - added for advanced OFFENSIVE strategies involving a few select moves
 
 ; discourages moves that cause no damage but only a status ailment if player's mon already has one
 ; joenote - reworked so that it now discourages doing things that are generally useless
@@ -209,17 +210,14 @@ AIMoveChoiceModification1:
 	ld a, [wPlayerMovePower]
 	and a
 	jp z, .heavydiscourage	;heavily discourage counter if enemy is using zero-power move
+	ld a, $4
+	call AICheckIfHPBelowFraction
+	jp c, .heavydiscourage	;dylannote - adding this to heavily discourage counter below 1/4 HP
 	ld a, [wPlayerMoveType]
 	cp $14
 	jr c, .countercheck_end	; continue on if countering STRUGGLE or other typeless move
 	jp .heavydiscourage	;else heavily discourage since the player move type is not applicable to counter
 .countercheck_end
-	ld a, $6
-	call AICheckIfHPBelowFraction
-	jp c, .heavydiscourage	;dylannote - adding this to heavily discourage counter below 1/6 HP
-	ld a, $2
-	call AICheckIfHPBelowFraction
-	jp nc, .givepref		;dylannote - adding this to lightly encourage counter above 1/2 HP
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - do not use moves that are ineffective against substitute if a substitute is up
@@ -378,10 +376,15 @@ AIMoveChoiceModification1:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;joenote - do not use defense-up moves if opponent is special attacking
+;dylannote - do not use light screen if opponent is physical attacking
 	ld a, [wEnemyMoveEffect]	;get the move effect
+	cp LIGHT_SCREEN_EFFECT
+	jr z, .do_light_screen_check
 	cp DEFENSE_UP1_EFFECT	
 	jr z, .do_def_check
 	cp DEFENSE_UP2_EFFECT
+	jr z, .do_def_check
+	cp REFLECT_EFFECT			;dylannote - include Reflect as well, since it is useless against special attacks
 	jr nz, .nodefupmove
 .do_def_check
 	ld a, [wPlayerMoveEffect]
@@ -395,6 +398,18 @@ AIMoveChoiceModification1:
 	ld a, [wPlayerMoveType]	;physical move types are numbers $00 to $08 while special is $14 to $1A
 	cp $14
 	jp nc, .heavydiscourage	;at this point, heavy discourage defense-boosting because player is using a special move of 10+ power
+.do_light_screen_check
+	ld a, [wPlayerMoveEffect]
+	cp SPECIAL_DAMAGE_EFFECT
+	jp z, .heavydiscourage	;don't bother using light screen against static damage attacks
+	cp OHKO_EFFECT
+	jp z, .heavydiscourage	;don't bother using light screen against OHKO attacks
+	ld a, [wPlayerMovePower]	;all regular damage moves have a power of at least 10
+	cp 10
+	jr c, .nodefupmove
+	ld a, [wPlayerMoveType]	;physical move types are numbers $00 to $08 while special is $14 to $1A
+	cp $14
+	jp c, .heavydiscourage	;at this point, heavy discourage light screen because player is using a physical move of 10+ power
 .nodefupmove
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
@@ -409,6 +424,7 @@ AIMoveChoiceModification1:
 	jr z, .evasionlightdiscouragecheck
 	cp EVASION_UP2_EFFECT
 	jr z, .evasionlightdiscouragecheck
+	jp .movetoheavydiscouragecheck
 .accuracylightdiscouragecheck
 	ld a, [wPlayerMonAccuracyMod]
 	cp 4	;-3
@@ -678,7 +694,6 @@ EffectsToNotDissuade:
 	db SUBSTITUTE_EFFECT
 	db REFLECT_EFFECT
 	db LIGHT_SCREEN_EFFECT
-	db SUBSTITUTE_EFFECT
 	db MIST_EFFECT
 	db ACCURACY_DOWN1_EFFECT
 	db ACCURACY_DOWN2_EFFECT
@@ -1322,7 +1337,8 @@ AIMoveChoiceModification5:
 	jr .nextMove
 	
 ; NEW layer.
-; encourage certain moves under certain situations (advanced battle strategies).
+; encourage defensive strategies (defense increasing, special increasing, accuracy/evasion/substitute/mist)
+; under certain situations (advanced battle strategies)
 AIMoveChoiceModification6:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;kick out if no-attack bit is set
@@ -1432,6 +1448,85 @@ AIMoveChoiceModification6:
 .preferMove3
 	dec [hl] ; slightly encourage this move
 	jr .nextMove3
+	
+; NEW layer.
+; encourage offensive strategies (paraflinch, parafusion, parablind, partial trapping)
+; under certain situations (advanced battle strategies)
+AIMoveChoiceModification7:
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;kick out if no-attack bit is set
+	ld a, [wUnusedC000]
+	bit 2, a
+	ret nz
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;do a speed compare, and kick out if the ai 'mon is slower
+;if the player is not paralyzed, skip encouraging flinch/confusion/accuracy/evasion
+;and check for trapping moves instead
+	call StrCmpSpeed
+	ret nc
+    ld a, [wBattleMonStatus]
+	bit PAR, a
+	jr nz, .skiptotrapping
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+	ld a, [wAILayer7Encouragement]
+	and a ;cp $1 ;ret nz	;AI layer 7 is activated regardless of the turn count
+	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
+	ld de, wEnemyMonMoves ; enemy moves
+	ld b, NUM_MOVES + 1
+.nextMove
+	dec b
+	ret z ; processed all 4 moves
+	inc hl
+	ld a, [de]
+	and a
+	ret z ; no more moves in move set
+	inc de
+	call ReadMove
+	ld a, [wEnemyMoveEffect]
+	cp FLINCH_SIDE_EFFECT1
+	jr z, .preferMove
+	cp FLINCH_SIDE_EFFECT2
+	jr z, .preferMove
+	cp CONFUSION_EFFECT
+	jr z, .preferMove
+	cp ACCURACY_DOWN1_EFFECT
+	jr z, .preferMove
+	cp ACCURACY_DOWN2_EFFECT
+	jr z, .preferMove
+	cp EVASION_UP1_EFFECT
+	jr z, .preferMove
+	cp EVASION_UP2_EFFECT
+	jr z, .preferMove
+	jr .nextMove
+.preferMove
+	dec [hl] ; moderately encourage this move
+	dec [hl]
+	dec [hl]
+	jr .nextMove
+.skiptotrapping
+	ld a, [wAILayer7Encouragement]
+	and a ;cp $1 ;ret nz	;AI layer 7 is activated regardless of the turn count
+	ld hl, wBuffer - 1 ; temp move selection array (-1 byte offset)
+	ld de, wEnemyMonMoves ; enemy moves
+	ld b, NUM_MOVES + 1
+.nextMove2
+	dec b
+	ret z ; processed all 4 moves
+	inc hl
+	ld a, [de]
+	and a
+	ret z ; no more moves in move set
+	inc de
+	call ReadMove
+	ld a, [wEnemyMoveEffect]
+	cp TRAPPING_EFFECT
+	jr z, .preferMove2
+	jr .nextMove2
+.preferMove2
+	dec [hl] ; moderately encourage this move
+	dec [hl]
+	dec [hl]
+	jr .nextMove2
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 ;joenote - function for loading A into B so it can be called conditionally
@@ -1475,6 +1570,9 @@ ReadMoveForAIscoring:
 ;2 - On the first turn only the Pokémon is out, prefer a move that heals/buffs/debuffs
 ;3 - Try to do type-matching when selecting attacks
 ;4 - switch if active pkmn is in trouble
+;5 - Prefer status moves (NEW)
+;6 - Defensive advanced battle strategies (NEW)
+;7 - Offensive advanced battle strategies (NEW)
 TrainerClassMoveChoiceModifications:
 	db 0      ; YOUNGSTER
 	db 1,0    ; BUG CATCHER
@@ -1511,7 +1609,7 @@ TrainerClassMoveChoiceModifications:
 	db 1,3,4,0    ; BRUNO
 	db 1,3,4,0    ; BROCK
 	db 1,2,3,4,0  ; MISTY				;Added 2
-	db 1,3,4,0  ; LT_SURGE
+	db 1,3,4,7,0  ; LT_SURGE			;Added 7
 	db 1,3,4,5,0  ; ERIKA				;Added 5
 	db 1,2,3,4,0  ; KOGA				;Added 2
 	db 1,3,4,0  ; BLAINE
@@ -1658,7 +1756,7 @@ TrainerAIPointers:
 ;uses an item outside their tier, it is acceptable to add or subtract 12.5% per tier from the general or
 ;special case limit.
 ;Tier S Items: Full Restore
-;Tier A Items: Max Potion, Hyper Potion, Full Heal, X Items
+;Tier A Items: Max Potion, Hyper Potion, Full Heal, X Items, Dire Hit, Guard Spec.
 ;Tier B Items: Lemonade, Soda Pop, Fresh Water, Super Potion, Potion
 
 ;Tier S+ has absolutely no limitations and can access extremely specialized A.I.
@@ -1858,6 +1956,8 @@ BurglarAI:	;NEW
     call AICheckIfHPBelowFraction
 	jp c, AIUseMaxPotion
 .burglarnext3
+	call StrCmpSpeed	;only use X_SPEED if slower than the player
+	jr c, .burglarnext4
 	call Random
     cp $30	;18.75%
 	jr nc, .burglarnext4
@@ -1865,6 +1965,8 @@ BurglarAI:	;NEW
     call AICheckIfHPBelowFraction
     jp nc, AIXSpeRestricted2	;SPECIAL CASE 1
 .burglarnext4
+	call StrCmpSpeed	;only use DIRE HIT if faster than the player
+	jr nc, .burglarnext5
 	call Random
 	cp $30	;18.75%
 	jr nc, .burglarnext5
@@ -2671,13 +2773,85 @@ KogaAI:
 	and a
 	ret
 	
-BlaineAI:	;blaine needs to check HP. this was an oversight	
-	cp $40
-	jr nc, .blainereturn
+BlaineAI:		
 	ld a, $2
-	call AICheckIfHPBelowFraction	
-	jp c, AIUseFullRestore				
-.blainereturn
+	call AICheckIfHPBelowFraction
+	jr c, .blainenext0
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .blainenext0
+	call Random
+	cp $C0 ;75%
+	jr nc, .blainenext0
+	ld a, [wEnemyMonType1]
+	cp FIRE
+	jr nz, .notfiretype
+	ld a, [wPlayerMoveType]
+	cp WATER
+	jp z, AIGSpeRestricted2			;GYM LEADER UNIQUE POOL
+.notfiretype
+	ld a, [wEnemyMonType1]
+	cp POISON
+	jr nz, .notpoisontype
+	ld a, [wPlayerMoveType]
+	cp PSYCHIC
+	jp z, AIGSpeRestricted2			;GYM LEADER UNIQUE POOL
+.notpoisontype
+	ld a, [wPlayerMoveType]
+	cp DRAGON
+	jp z, AIGSpeRestricted2			;GYM LEADER UNIQUE POOL
+; when Blaine's Mon has at least 1/2 health and the player is attacking with a move that deals damage and
+; matches the correct typing weakness,  75% chance to use Guard Spec. This holds true if Blaine has a fire 
+; type out and the player uses a water type attack, or if Blaine has a poison type out and the player uses 
+; a psychic type attack, else if the player uses a dragon type attack.
+.blainenext0
+	call Random
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .blainenext1
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .blainenext4
+.blainenext1
+	call Random
+    cp $60	;37.5%
+	jr nc, .blainenext2
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.blainenext2
+	call Random
+	cp $80	;50%
+	jr nc, .blainenext3
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.blainenext3
+	call Random
+	cp $A0	;62.5%
+	jr nc, .blainenext4
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.blainenext4
+	call Random
+    cp $80 ;50%
+	jr nc, .blainenext5
+	ld a, $1	;below fraction
+    call AICheckIfHPBelowFraction
+	jr nc, .blainenext5
+    jp AIUseFullRestoreSLPFRZPAR		;SPECIAL CASE 1
+.blainenext5
+	call Random
+    cp $E0 ;87.5%
+	jr nc, .blainenext6
+	ld a, $1	;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .blainenext6
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal				;SPECIAL CASE 2
+.blainenext6
+	and a
 	ret
 
 SabrinaAI:

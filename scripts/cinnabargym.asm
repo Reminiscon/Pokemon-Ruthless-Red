@@ -162,6 +162,16 @@ CinnabarGymScript3_75857:
 	;ld hl, wBeatGymFlags	;joenote - redundant
 	;set 6, [hl]
 	
+	;dylannote - Make it so that the Cinnabar Mansion guard disappears after Blaine is defeated
+	ld a, HS_GUARD_CINNABAR_MANSION
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	
+	;dylannote - Make it so that the Cinnabar Gym guard disappears after Blaine is defeated
+	ld a, HS_GUARD_CINNABAR_GYM
+	ld [wMissableObjectIndex], a
+	predef HideObject
+	
 	;dylannote - Make it so that Articuno disappears after Blaine is defeated
 	ld a, HS_ARTICUNO
 	ld [wMissableObjectIndex], a
@@ -190,6 +200,7 @@ CinnabarGymTextPointers:
 	dw BlaineBadgeText
 	dw ReceivedTM38Text
 	dw TM38NoRoomText
+	dw GuardText			;NEW
 
 CinnabarGymScript_758b7:
 	ld a, [hSpriteIndexOrTextID]
@@ -484,4 +495,8 @@ CinnabarGymText_75ac2:
 
 CinnabarGymText_75ac7:
 	TX_FAR _CinnabarGymText_75ac7
+	db "@"
+	
+GuardText:
+	TX_FAR _GuardText
 	db "@"

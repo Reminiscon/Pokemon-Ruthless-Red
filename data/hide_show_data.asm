@@ -169,9 +169,9 @@ MapHSPointers:
 	dw MapHSA1
 	dw MapHSA2
 	dw MapHSXX
-	dw MapHSXX
+	dw MapHSXX	
 	dw MapHSA5
-	dw MapHSXX
+	dw MapHSA6	;NEW, Cinnabar Gym
 	dw MapHSXX
 	dw MapHSXX
 	dw MapHSXX
@@ -400,6 +400,9 @@ MapHS9B:
 MapHSA5:
 	db MANSION_1,$02,Show
 	db MANSION_1,$03,Show
+	db MANSION_1,$05,Show						;NEW
+MapHSA6:
+	db CINNABAR_GYM,$0D,Show					;NEW
 MapHSB1:
 	db FIGHTING_DOJO,$06,Show
 	db FIGHTING_DOJO,$07,Show

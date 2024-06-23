@@ -73,7 +73,7 @@ TypeEffects:
 	db BUG,FLYING,05
 	db BUG,PSYCHIC,20
 	db BUG,GHOST,05
-	db BUG,POISON,20
+	db BUG,POISON,20		;Bug remains super effective against Poison
 	db ROCK,FIRE,20
 	db ROCK,FIGHTING,05
 	db ROCK,GROUND,05
@@ -102,4 +102,5 @@ TypeEffects:
 	db FIGHTING,DEMON,20	;NEW	;Fighting is super effective against Demon
 	db NORMAL,GLITCH,20		;NEW	;Normal is super effective against Glitch
 	db GLITCH,NORMAL,20		;NEW	;Glitch is super effective against Normal
+	db ICE,FIRE,05			;NEW	;Ice is not very effective against Fire, like in later generations
 	db $FF

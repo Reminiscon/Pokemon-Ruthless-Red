@@ -1,5 +1,11 @@
 # Pokemon Ruthless Red
 
+Version 0.7
+
+Seafoam Island is completed. Cinnabar Gym is completed; this does not include Pokemon Mansion, which will serve as an area between Blaine and Giovanni. 
+Fire now resists Ice like in later generations. A critical error in a very common A.I. routine that was causing the A.I. to make stupid decisions
+has been fixed.
+
 Version 0.6
 
 Saffron City is completed. This includes Silph Co., Saffron Gym, and the Fighting Dojo. There is also a Move Reminder and Move Deleter in Saffron City.

@@ -221,10 +221,10 @@ SuperNerdData:
 	db 44,HYPNO,GOLDUCK,MAGMAR,ELECTABUZZ,0									;Custom Moves Applied
 	db 45,ARBOK,RAPIDASH,SLOWBRO,0											;Custom Moves Applied
 ; Cinnabar Gym
-	db 36,VULPIX,VULPIX,NINETALES,0
-	db 34,PONYTA,CHARMANDER,VULPIX,GROWLITHE,0
-	db 41,RAPIDASH,0
-	db 37,GROWLITHE,VULPIX,0
+	db 82,DRAGONAIR,0														;Custom Moves Applied
+	db 79,ARBOK,NINETALES,SLOWBRO,NINETALES,0								;Custom Moves Applied
+	db 79,VILEPLUME,FLAREON,ARBOK,SLOWBRO,0									;Custom Moves Applied
+	db 82,LICKILICKI,0														;Custom Moves Applied
 ; Route 6
 	db 32,ELECTRODE,KADABRA,HAUNTER,0										;NEW				;Custom Moves Applied
 ; Celadon Mart Roof
@@ -280,9 +280,9 @@ BikerData:
 	db 54,MUK,HOUNDOUR,WEEZING,HOUNDOUR,0									;Custom Moves Applied
 BurglarData:
 ; Cinnabar Gym
-	db 36,GROWLITHE,VULPIX,NINETALES,0
-	db 41,PONYTA,0
-	db 37,VULPIX,GROWLITHE,0
+	db 79,FLAREON,MAROWAK,RAPIDASH,TENTACRUEL,0								;Custom Moves Applied
+	db 79,RAPIDASH,WEEZING,MAGCARGO,TENTACRUEL,0							;Custom Moves Applied
+	db 79,MAGCARGO,HITMONCHAN,CHARIZARD,TENTACRUEL,0						;Custom Moves Applied
 ; Mansion 2F
 	db 34,CHARMANDER,CHARMELEON,0
 ; Mansion 3F
@@ -656,9 +656,9 @@ ErikaData:
 KogaData:
 	db $FF,63,GOLBAT,63,GENGAR,64,PINSIR,64,VENOMOTH,65,SCIZOR,65,CROBAT,0				;Custom Moves Applied
 BlaineData:
-	db $FF,42,GROWLITHE,40,PONYTA,42,RAPIDASH,47,ARCANINE,0
+	db $FF,83,MAGMAR,83,ARCANINE,84,MUK,84,HOUNDOOM,85,DRAGONITE,85,MOLTRES,0			;Custom Moves Applied
 SabrinaData:
-	db $FF,73,WIGGLYTUFF,73,HYPNO,74,SNORLAX,74,SLOWKING,75,ALAKAZAM,75,MEW,0
+	db $FF,73,WIGGLYTUFF,73,HYPNO,74,SNORLAX,74,SLOWKING,75,ALAKAZAM,75,MEW,0			;Custom Moves Applied
 GentlemanData:
 ; SS Anne 1F Rooms
 	db 35,DRAGONAIR,LICKITUNG,ARCANINE,0												;Custom Moves Applied

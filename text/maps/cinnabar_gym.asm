@@ -9,8 +9,8 @@ _BlaineBattleText::
 	line "will incinerate"
 	cont "all challengers!"
 
-	para "Hah! You better"
-	line "have BURN HEAL!"
+	para "It's blasting"
+	line "time!"
 	done
 
 _BlaineEndBattleText::
@@ -30,12 +30,15 @@ _BlaineFireBlastText::
 	done
 
 _BlaineBadgeText::
-	text "Hah!"
+	text "The VOLCANOBADGE"
+	line "makes #MON up"
+	cont "to L95 obey you!"
+	
+	para "Hah!"
 
-	para "The VOLCANOBADGE"
-	line "heightens the"
-	cont "SPECIAL abilities"
-	cont "of your #MON!"
+	para "I'll give you"
+	line "access to the"
+	cont "MANSION!"
 
 	para "Here, you can"
 	line "have this too!"
@@ -55,8 +58,8 @@ _TM38ExplanationText::
 	para "Teach it to fire-"
 	line "type #MON!"
 
-	para "CHARMELEON or"
-	line "PONYTA would be"
+	para "HOUNDOOM or"
+	line "MAGMAR would be"
 	cont "good bets!"
 	done
 
@@ -168,8 +171,8 @@ _CinnabarGymText_75a6d::
 
 _CinnabarGymText_75a72::
 	text "Us fire #MON"
-	line "fans like PONYTA"
-	cont "and NINETALES!"
+	line "fans like SLUGMA"
+	cont "and ARCANINE!"
 	done
 
 _CinnabarGymText_75a9d::
@@ -196,14 +199,29 @@ _CinnabarGymText_75ac2::
 	line "BLAINE is a fire"
 	cont "#MON pro!"
 
-	para "Douse his spirits"
-	line "with water!"
+	para "You can attempt"
+	line "to douse his spi-"
+	cont "rits with water!"
+	
+	para "But the fire can"
+	line "be intense!"
 
-	para "You better take"
-	line "some BURN HEALs!"
+	para "You might need to"
+	line "rely on physical"
+	cont "attacks!"
 	done
 
 _CinnabarGymText_75ac7::
 	text "<PLAYER>! You beat"
 	line "that fire brand!"
 	done
+
+_GuardText::
+	text "Now hold it right"
+	line "there!"
+	
+	para "Ain't no one goin'"
+	line "'till a winner's"
+	cont "decided!"
+	done
+	

@@ -76,6 +76,8 @@ InternalMapEntries:
 	IMAP VERMILION_HOUSE_2,         $A,$9,VermilionCityName
 	IMAP FUCHSIA_HOUSE_3,           $8,$D,FuchsiaCityName
 	IMAP MANSION_1,                 $2,$F,PokemonMansionName
+	IMAP CINNABAR_GYM,				$2,$F,CinnabarIslandName		;NEW
+	IMAP CINNABAR_LAB_4,			$4,$F,Route20Name				;NEW
 	IMAP CINNABAR_MART_COPY,        $2,$F,CinnabarIslandName
 	IMAP INDIGO_PLATEAU_LOBBY,      $0,$2,IndigoPlateauName
 	IMAP SAFFRON_HOUSE_2,           $A,$5,SaffronCityName

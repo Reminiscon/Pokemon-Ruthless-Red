@@ -1113,6 +1113,7 @@ DragoniteEvosMoves:
 	db 35, SLAM
 	db 40, FLAMETHROWER
 	db 45, DRAGON_RAGE
+	db 55, WING_ATTACK
 	db 60, HYPER_BEAM
 	db 65, LIGHT_SCREEN
 	db 0

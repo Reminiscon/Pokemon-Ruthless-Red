@@ -99,6 +99,8 @@ const_value = 0
 	const HS_FUCHSIA_HOUSE_2_ITEM         ; 47 X
 	const HS_MANSION_1_ITEM_1             ; 48 X
 	const HS_MANSION_1_ITEM_2             ; 49 X
+	const HS_GUARD_CINNABAR_MANSION
+	const HS_GUARD_CINNABAR_GYM
 	const HS_FIGHTING_DOJO_GIFT_1         ; 4A
 	const HS_FIGHTING_DOJO_GIFT_2         ; 4B
 	const HS_SILPH_CO_1F_RECEPTIONIST     ; 4C

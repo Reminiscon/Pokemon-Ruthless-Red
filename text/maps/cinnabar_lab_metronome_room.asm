@@ -30,8 +30,15 @@ _TM35NoRoomText::
 
 _Lab3Text2::
 	text "EEVEE can evolve"
-	line "into 1 of 3 kinds"
+	line "into 1 of 4 kinds"
 	cont "of #MON."
+	
+	para "Use either a..."
+	line "FIRE STONE..."
+	cont "WATER STONE..."
+	cont "THUNDERSTONE..."
+	
+	para "...or LEAF STONE."
 	done
 
 _Lab3Text3::

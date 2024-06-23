@@ -27,3 +27,10 @@ _MansionSwitchPressedText::
 _MansionSwitchNotPressedText::
 	text "Not quite yet!"
 	done
+
+_MansionGuardText::
+	text "No BADGE?"
+	
+	para "No ENTRY!"
+	done
+	

@@ -198,7 +198,7 @@ _CeladonGymBattleText7::
 
 _CeladonGymEndBattleText7::
 	text "Evil"
-	line "meat eater!"
+	line "milk drinker!"
 	prompt
 
 _CeladonGymAfterBattleText7::					;modified text

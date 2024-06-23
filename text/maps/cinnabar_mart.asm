@@ -1,7 +1,7 @@
 _CinnabarMartText2::
-	text "Don't they have X"
-	line "ATTACK? It's good"
-	cont "for battles!"
+	text "Don't they have"
+	line "LEMONADE? It's"
+	cont "cost efficient!"
 	done
 
 _CinnabarMartText3::

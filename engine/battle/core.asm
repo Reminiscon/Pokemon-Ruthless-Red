@@ -4408,7 +4408,7 @@ CheckForDisobedience:
 	ld a, 85
 	jr nz, .next
 	bit 4, [hl]		;Soul Badge
-	ld a, 100 ;75
+	ld a, 75
 	jr nz, .next
 	bit 3, [hl]		;Rainbow Badge
 	ld a, 65
@@ -4422,7 +4422,7 @@ CheckForDisobedience:
 	bit 0, [hl]		;Pewter Badge
 	ld a, 30
 	jr nz, .next
-	ld a, 100 ;15 but set to 100 when testing
+	ld a, 15 ;15 but set to 100 when testing
 .next
 	ld b, a
 	ld c, a

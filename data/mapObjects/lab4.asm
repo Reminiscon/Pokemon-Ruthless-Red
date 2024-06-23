@@ -2,8 +2,8 @@ Lab4Object:
 	db $17 ; border block
 
 	db 2 ; warps
-	warp 2, 7, 4, CINNABAR_LAB_1
-	warp 3, 7, 4, CINNABAR_LAB_1
+	warp 2, 7, 2, CINNABAR_LAB_1
+	warp 3, 7, 2, CINNABAR_LAB_1
 
 	db 0 ; signs
 

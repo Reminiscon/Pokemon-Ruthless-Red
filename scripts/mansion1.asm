@@ -65,6 +65,7 @@ Mansion1TextPointers:
 	dw PickUpItemText
 	dw PickUpItemText
 	dw Mansion1Text4
+	dw MansionGuardText			;NEW
 
 Mansion1TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_MANSION_1_TRAINER_0
@@ -132,3 +133,8 @@ MansionSwitchPressedText:
 MansionSwitchNotPressedText:
 	TX_FAR _MansionSwitchNotPressedText
 	db "@"
+
+MansionGuardText:
+	TX_FAR _MansionGuardText
+	db "@"
+	

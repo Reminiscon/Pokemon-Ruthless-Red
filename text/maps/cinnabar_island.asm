@@ -24,7 +24,7 @@ _CinnabarIslandText3::
 	done
 
 _CinnabarIslandText6::
-	text "#MON LAB"
+	text "Not here anymore"
 	done
 
 _CinnabarIslandText7::

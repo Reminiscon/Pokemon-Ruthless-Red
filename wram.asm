@@ -707,7 +707,10 @@ wAILayer6Encouragement:: ; cce4
 	
 wTotalPayDayMoney:: ; cce5
 ; total amount of money made using Pay Day during the current battle
-	ds 3
+	ds 1
+	
+wAILayer7Encouragement:: ; cce6
+	ds 2
 
 wSafariEscapeFactor:: ; cce8
 	ds 1

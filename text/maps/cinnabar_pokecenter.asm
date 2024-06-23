@@ -9,13 +9,12 @@ _CinnabarPokecenterText2::
 	done
 
 _CinnabarPokecenterText3::
-	text "Do you have any"
-	line "friends?"
-
-	para "#MON you get"
-	line "in trades grow"
-	cont "very quickly."
-
-	para "I think it's"
-	line "worth a try!"
+	text "I heard the MANS-"
+	line "ION has a ton of"
+	cont "good loot!"
+	
+	para "Heh heh.. if only"
+	line "I could defeat"
+	cont "BLAINE to get"
+	cont "access..."
 	done
