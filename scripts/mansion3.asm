@@ -1,5 +1,5 @@
 Mansion3Script:
-	call Mansion3Script_52204
+	call Mansion3Subscript1
 	call EnableAutoTextBoxDrawing
 	ld hl, Mansion3TrainerHeader0
 	ld de, Mansion3ScriptPointers
@@ -8,27 +8,63 @@ Mansion3Script:
 	ld [wMansion3CurScript], a
 	ret
 
-Mansion3Script_52204:
+Mansion3Subscript1:
 	ld hl, wCurrentMapScriptFlags
 	bit 5, [hl]
 	res 5, [hl]
 	ret z
 	CheckEvent EVENT_MANSION_SWITCH_ON
-	jr nz, .asm_52224
-	ld a, $e
-	ld bc, $207
-	call Mansion2Script_5202f
+	jr nz, .switchedon3
+	lb bc, 11, 5
+	call Mansion3Script_vertical
+	lb bc, 11, 11
+	call Mansion3Script_empty
+	lb bc, 6, 13
+	call Mansion3Script_empty
+	lb bc, 10, 13
+	call Mansion3Script_horizontalup
+	lb bc, 2, 7
+	call Mansion3Script_vertical
+	lb bc, 5, 7
+	call Mansion3Script_empty
+	lb bc, 1, 2
+	jp Mansion3Script_horizontalup
+.switchedon3
+	lb bc, 11, 5
+	call Mansion3Script_empty
+	lb bc, 11, 11
+	call Mansion3Script_vertical
+	lb bc, 6, 13
+	call Mansion3Script_horizontalup
+	lb bc, 10, 13
+	call Mansion3Script_empty
+	lb bc, 2, 7
+	call Mansion3Script_empty
+	lb bc, 5, 7
+	call Mansion3Script_vertical
+	lb bc, 1, 2
+	jp Mansion3Script_empty
+
+Mansion3Script_horizontalup:
+	ld a, $54
+	ld [wNewTileBlockID], a
+	jr Mansion3ReplaceBlock
+	
+Mansion3Script_horizontaldown:
+	ld a, $2d
+	ld [wNewTileBlockID], a
+	jr Mansion3ReplaceBlock
+	
+Mansion3Script_vertical:
 	ld a, $5f
-	ld bc, $507
-	call Mansion2Script_5202f
-	ret
-.asm_52224
-	ld a, $5f
-	ld bc, $207
-	call Mansion2Script_5202f
+	ld [wNewTileBlockID], a
+	jr Mansion3ReplaceBlock
+
+Mansion3Script_empty:
 	ld a, $e
-	ld bc, $507
-	call Mansion2Script_5202f
+	ld [wNewTileBlockID], a
+Mansion3ReplaceBlock:
+	predef ReplaceTileBlock
 	ret
 
 Mansion3ScriptPointers:
@@ -92,7 +128,7 @@ Mansion3TextPointers:
 
 Mansion3TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_MANSION_3_TRAINER_0
-	db ($0 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MANSION_3_TRAINER_0
 	dw Mansion3BattleText1 ; TextBeforeBattle
 	dw Mansion3AfterBattleText1 ; TextAfterBattle
@@ -101,7 +137,7 @@ Mansion3TrainerHeader0:
 
 Mansion3TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_MANSION_3_TRAINER_1
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MANSION_3_TRAINER_1
 	dw Mansion3BattleText2 ; TextBeforeBattle
 	dw Mansion3AfterBattleText2 ; TextAfterBattle

@@ -1,15 +1,16 @@
 CinnabarIslandObject:
 	db $43 ; border block
 
-	db 5 ; warps
+	db 6 ; warps
 	warp 6, 3, 1, MANSION_1
 	warp 18, 11, 0, CINNABAR_GYM
 	warp  1, 21, 0, CINNABAR_LAB_1
 	warp  3, 11, 0, CINNABAR_POKECENTER
 	warp  9, 11, 0, CINNABAR_MART
+	warp 12,  2, 6, MANSION_1
 
 	db 5 ; signs
-	sign 9, 5, 3 ; CinnabarIslandText3
+	sign  5,  5, 3 ; CinnabarIslandText3
 	sign 10, 11, 4 ; MartSignText
 	sign  4, 11, 5 ; PokeCenterSignText
 	sign  2, 21, 6 ; CinnabarIslandText6
@@ -26,3 +27,4 @@ CinnabarIslandObject:
 	warp_to  3, 11, CINNABAR_ISLAND_WIDTH ; CINNABAR_POKECENTER
 	warp_to  9, 11, CINNABAR_ISLAND_WIDTH ; CINNABAR_MART
 	warp_to 15,  7, CINNABAR_ISLAND_WIDTH ; CINNABAR_GYM (ONE-WAY WARP)
+	warp_to 12,  2, CINNABAR_ISLAND_WIDTH ; MANSION_1

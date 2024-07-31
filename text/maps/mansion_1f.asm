@@ -1,7 +1,6 @@
 _Mansion1BattleText2::
-	text "Who are you? There"
-	line "shouldn't be"
-	cont "anyone here."
+	text "All hail"
+	line "GIOVANNI!"
 	done
 
 _Mansion1EndBattleText2::
@@ -9,9 +8,14 @@ _Mansion1EndBattleText2::
 	prompt
 
 _Mansion1AfterBattleText2::
-	text "A key? I don't"
-	line "know what you're"
-	cont "talking about."
+	text "Oh yeah? Good"
+	line "luck at VIRID-"
+	cont "IAN GYM, kid."
+	
+	para "..."
+	
+	para "You heard"
+	line "nothing!"
 	done
 
 _MansionSwitchText::

@@ -50,7 +50,7 @@ ENDM
 	mapconst VIRIDIAN_MART,               4,  4 ; $2A
 	mapconst VIRIDIAN_SCHOOL,             4,  4 ; $2B
 	mapconst VIRIDIAN_HOUSE,              4,  4 ; $2C
-	mapconst VIRIDIAN_GYM,                9, 10 ; $2D
+	mapconst VIRIDIAN_GYM,               28,  8 ; $2D
 	mapconst MOLTEN_CAVERN,         	 16, 16 ; $2E		;was diglett's cave exit
 	mapconst VIRIDIAN_FOREST_EXIT,        4,  5 ; $2F
 	mapconst ROUTE_2_HOUSE,               4,  4 ; $30
@@ -220,8 +220,8 @@ ENDM
 	mapconst SILPH_CO_7F,                 9, 13 ; $D4
 	mapconst SILPH_CO_8F,                 9, 13 ; $D5
 	mapconst MANSION_2,                  14, 15 ; $D6
-	mapconst MANSION_3,                   9, 15 ; $D7
-	mapconst MANSION_4,                  14, 15 ; $D8
+	mapconst MANSION_3,                  14, 15 ; $D7
+	mapconst MANSION_4,                  28, 32 ; $D8
 	mapconst SAFARI_ZONE_EAST,           13, 15 ; $D9
 	mapconst SAFARI_ZONE_NORTH,          18, 20 ; $DA
 	mapconst SAFARI_ZONE_WEST,           13, 15 ; $DB

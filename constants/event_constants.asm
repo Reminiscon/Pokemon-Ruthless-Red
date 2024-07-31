@@ -2083,7 +2083,7 @@ const_value = 0
 	const EVENT_820                                  ; 820, (D84B, bit 0)
 	const EVENT_BEAT_MANSION_4_TRAINER_0             ; 821, (D84B, bit 1)
 	const EVENT_BEAT_MANSION_4_TRAINER_1             ; 822, (D84B, bit 2)
-	const EVENT_823                                  ; 823, (D84B, bit 3)
+	const EVENT_BEAT_MANSION_4_TRAINER_2             ; 823, (D84B, bit 3)
 	const EVENT_824                                  ; 824, (D84B, bit 4)
 	const EVENT_825                                  ; 825, (D84B, bit 5)
 	const EVENT_826                                  ; 826, (D84B, bit 6)

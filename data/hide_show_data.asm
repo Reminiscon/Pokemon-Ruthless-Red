@@ -353,7 +353,7 @@ MapHS28:
 	db OAKS_LAB,$08,Hide
 MapHS2D:
 	db VIRIDIAN_GYM,$01,Show
-	db VIRIDIAN_GYM,$0B,Show
+	;db VIRIDIAN_GYM,$0B,Show
 MapHS2E:
 	db MOLTEN_CAVERN,$01,Show					;NEW
 	db MOLTEN_CAVERN,$02,Show					;NEW
@@ -561,11 +561,11 @@ MapHSD7:
 	db MANSION_3,$03,Show
 	db MANSION_3,$04,Show
 MapHSD8:
-	db MANSION_4,$03,Show
 	db MANSION_4,$04,Show
 	db MANSION_4,$05,Show
 	db MANSION_4,$06,Show
-	db MANSION_4,$08,Show
+	;db MANSION_4,$06,Show
+	db MANSION_4,$09,Show
 MapHSD9:
 	db SAFARI_ZONE_EAST,$01,Show
 	db SAFARI_ZONE_EAST,$02,Show

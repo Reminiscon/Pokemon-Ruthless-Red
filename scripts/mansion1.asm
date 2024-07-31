@@ -14,31 +14,69 @@ Mansion1Subscript1:
 	res 5, [hl]
 	ret z
 	CheckEvent EVENT_MANSION_SWITCH_ON
-	jr nz, .asm_442ec
+	jr nz, .switchedon1
+	lb bc, 8, 12
+	call Mansion1Script_horizontaldown
+	lb bc, 4, 10
+	call Mansion1Script_vertical
+	lb bc, 2, 13
+	call Mansion1Script_horizontalup
+	lb bc, 7, 14
+	call Mansion1Script_empty
+	lb bc, 2, 4
+	call Mansion1Script_empty
+	lb bc, 10, 6
+	call Mansion1Script_horizontalup
+	lb bc, 8, 5
+	call Mansion1Script_empty
 	lb bc, 6, 12
-	call Mansion1Script_4430b
-	lb bc, 3, 8
-	call Mansion1Script_44304
+	call Mansion1Script_empty
+	lb bc, 2, 8
+	call Mansion1Script_empty
 	lb bc, 8, 10
-	call Mansion1Script_44304
-	lb bc, 13, 13
-	jp Mansion1Script_44304
-.asm_442ec
+	call Mansion1Script_horizontaldown
+	lb bc, 6, 7
+	jp Mansion1Script_horizontaldown
+.switchedon1
+	lb bc, 8, 12
+	call Mansion1Script_empty
+	lb bc, 4, 10
+	call Mansion1Script_empty
+	lb bc, 2, 13
+	call Mansion1Script_empty
+	lb bc, 7, 14
+	call Mansion1Script_vertical
+	lb bc, 2, 4
+	call Mansion1Script_vertical
+	lb bc, 10, 6
+	call Mansion1Script_empty
+	lb bc, 8, 5
+	call Mansion1Script_vertical	
 	lb bc, 6, 12
-	call Mansion1Script_44304
-	lb bc, 3, 8
-	call Mansion1Script_4430b
+	call Mansion1Script_horizontaldown	
+	lb bc, 2, 8
+	call Mansion1Script_horizontalup
 	lb bc, 8, 10
-	call Mansion1Script_4430b
-	lb bc, 13, 13
-	jp Mansion1Script_4430b
+	call Mansion1Script_empty
+	lb bc, 6, 7
+	jp Mansion1Script_empty
 
-Mansion1Script_44304:
+Mansion1Script_horizontalup:
+	ld a, $54
+	ld [wNewTileBlockID], a
+	jr Mansion1ReplaceBlock
+	
+Mansion1Script_horizontaldown:
 	ld a, $2d
 	ld [wNewTileBlockID], a
 	jr Mansion1ReplaceBlock
+	
+Mansion1Script_vertical:
+	ld a, $5f
+	ld [wNewTileBlockID], a
+	jr Mansion1ReplaceBlock
 
-Mansion1Script_4430b:
+Mansion1Script_empty:
 	ld a, $e
 	ld [wNewTileBlockID], a
 Mansion1ReplaceBlock:
@@ -69,7 +107,7 @@ Mansion1TextPointers:
 
 Mansion1TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_MANSION_1_TRAINER_0
-	db ($3 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MANSION_1_TRAINER_0
 	dw Mansion1BattleText2 ; TextBeforeBattle
 	dw Mansion1AfterBattleText2 ; TextAfterBattle

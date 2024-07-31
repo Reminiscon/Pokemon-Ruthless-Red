@@ -220,14 +220,18 @@ _ViridianGymText_74bd4::
 	line "VIRIDIAN LEADER's"
 	cont "identity!"
 
+	para "I heard that this"
+	line "GYM LEADER likes"
+	cont "ground-type tech-"
+	cont "niques!"
+	
+	para "And that he has"
+	line "a terrifying sec-"
+	cont "ret weapon!"
+	
 	para "This will be the"
 	line "toughest of all"
 	cont "the GYM LEADERs!"
-
-	para "I heard that the"
-	line "trainers here"
-	cont "like ground-type"
-	cont "#MON!"
 	done
 
 _ViridianGymText_74bd9::

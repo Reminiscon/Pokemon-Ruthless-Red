@@ -1,5 +1,11 @@
 # Pokemon Ruthless Red
 
+Version 0.8
+
+Pokemon Mansion is completed. Viridian Gym is completed. The game is complete up until the penultimate Rival battle, which is right before
+Victory Road and the Elite Four. It is now possible to collect all eight badges. Ditto received another buff (Transform now provides 20 PP
+per move).
+
 Version 0.7
 
 Seafoam Island is completed. Cinnabar Gym is completed; this does not include Pokemon Mansion, which will serve as an area between Blaine and Giovanni. 

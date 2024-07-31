@@ -2,14 +2,14 @@ WaterMons2:
 	db $00
 	db $05
 	
-	db 90,TENTACRUEL				
-	db 90,GOLDUCK				
-	db 91,TENTACRUEL				
-	db 91,GOLDUCK					
-	db 90,STARMIE					
-	db 90,GYARADOS					
-	db 91,STARMIE					
-	db 91,GYARADOS					
-	db 92,QUAGSIRE				
-	db 92,LAPRAS				
+	db 86,TENTACRUEL				
+	db 86,GOLDUCK				
+	db 87,TENTACRUEL				
+	db 87,GOLDUCK					
+	db 86,STARMIE					
+	db 86,GYARADOS					
+	db 87,STARMIE					
+	db 87,GYARADOS					
+	db 88,QUAGSIRE				
+	db 88,LAPRAS				
 	

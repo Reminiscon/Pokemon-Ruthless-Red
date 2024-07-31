@@ -129,11 +129,11 @@ TransformEffect_:
 	add hl, bc ; ld hl, wBattleMonMoves
 	ld b, NUM_MOVES
 .copyPPLoop
-; 5 PP for all moves
+; dylannote - 20 PP for all moves instead of 5 PP
 	ld a, [hli]
 	and a
 	jr z, .lessThanFourMoves
-	ld a, $5
+	ld a, $14
 	ld [de], a
 	inc de
 	dec b

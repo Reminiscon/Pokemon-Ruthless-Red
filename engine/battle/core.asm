@@ -1749,52 +1749,72 @@ NoWillText:
 ; try to run from battle (hl = player speed, de = enemy speed)
 ; stores whether the attempt was successful in carry flag
 TryRunningFromBattle:
-	call IsGhostBattle
-	jp z, .canEscape ; jump if it's a ghost battle
-	ld a, [wBattleType]
-	cp BATTLE_TYPE_SAFARI
-	jp z, .canEscape ; jump if it's a safari battle
-	ld a, [wLinkState]
-	cp LINK_STATE_BATTLING
-	jp z, .canEscape
-	ld a, [wIsInBattle]
-	dec a
-	jr nz, .trainerBattle ; jump if it's a trainer battle
-	ld a, [wNumRunAttempts]
-	inc a
-	ld [wNumRunAttempts], a
-	ld a, [hli]
-	ld [H_MULTIPLICAND + 1], a
-	ld a, [hl]
-	ld [H_MULTIPLICAND + 2], a
-	ld a, [de]
-	ld [hEnemySpeed], a
-	inc de
-	ld a, [de]
-	ld [hEnemySpeed + 1], a
-	call LoadScreenTilesFromBuffer1
-	ld de, H_MULTIPLICAND + 1
-	ld hl, hEnemySpeed
-	ld c, 2
-	call StringCmp
-	jr nc, .canEscape ; jump if player speed greater than enemy speed
-	xor a
-	ld [H_MULTIPLICAND], a
-	ld a, 32
-	ld [H_MULTIPLIER], a
-	call Multiply ; multiply player speed by 32
-	ld a, [H_PRODUCT + 2]
-	ld [H_DIVIDEND], a
-	ld a, [H_PRODUCT + 3]
-	ld [H_DIVIDEND + 1], a
-	ld a, [hEnemySpeed]
-	ld b, a
-	ld a, [hEnemySpeed + 1]
+    call IsGhostBattle
+    jp z, .canEscape ; jump if it's a ghost battle
+    ld a, [wBattleType]
+    cp BATTLE_TYPE_SAFARI
+    jp z, .canEscape ; jump if it's a safari battle
+    ld a, [wLinkState]
+    cp LINK_STATE_BATTLING
+    jp z, .canEscape
+    ld a, [wIsInBattle]
+    dec a
+    jp nz, .trainerBattle ; jump if it's a trainer battle
+    ld a, [wNumRunAttempts]
+    inc a
+    ld [wNumRunAttempts], a
+
+    ; Multiply enemy speed by 4
+    xor a, a
+    ld [H_MULTIPLICAND], a
+    ld a, [de]
+    ld [H_MULTIPLICAND + 1], a
+    inc de
+    ld a, [de]
+    ld [H_MULTIPLICAND + 2], a
+    ld a, 4
+    ld [H_MULTIPLIER], a
+    call Multiply
+    ld a, [H_PRODUCT + 2]
+    ld [hEnemySpeed], a
+    ld a, [H_PRODUCT + 3]
+    ld [hEnemySpeed + 1], a
+
+    ; Multiply player speed by 3
+    xor a, a
+    ld [H_MULTIPLICAND], a
+    ld a, [hli]
+    ld [H_MULTIPLICAND + 1], a
+    ld a, [hl]
+    ld [H_MULTIPLICAND + 2], a
+    ld a, 3
+    ld [H_MULTIPLIER], a
+    call Multiply
+    
+    ; Compare 3*player speed with 4*enemy speed
+    ld de, H_PRODUCT + 2
+    ld hl, hEnemySpeed
+    ld c, 2
+    call StringCmp
+    jp nc, .canEscape ; jump if player speed greater than enemy speed
+
+    xor a
+    ld [H_MULTIPLICAND], a
+    ld a, 32
+    ld [H_MULTIPLIER], a
+    call Multiply ; multiply player speed by 32
+    ld a, [H_PRODUCT + 2]
+    ld [H_DIVIDEND], a
+    ld a, [H_PRODUCT + 3]
+    ld [H_DIVIDEND + 1], a
+    ld a, [hEnemySpeed]
+    ld b, a
+    ld a, [hEnemySpeed + 1]
 ; divide enemy speed by 4
 	srl b
 	rr a
-	srl b
-	rr a
+	;srl b
+	;rr a
 	and a
 	jr z, .canEscape ; jump if enemy speed divided by 4, mod 256 is 0
 	ld [H_DIVISOR], a ; ((enemy speed / 4) % 256)

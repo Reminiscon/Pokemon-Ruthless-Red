@@ -67,7 +67,7 @@ const_value = 0
 	const HS_POKEDEX_2                    ; 30
 	const HS_OAKS_LAB_OAK_2               ; 31
 	const HS_VIRIDIAN_GYM_GIOVANNI        ; 32
-	const HS_VIRIDIAN_GYM_ITEM            ; 33 X
+	;const HS_VIRIDIAN_GYM_ITEM            ; 33 X
 	const HS_MOLTRES
 	const HS_MOLTEN_CAVERN_ITEM_2
 	const HS_MOLTEN_CAVERN_ITEM_3
@@ -229,7 +229,7 @@ const_value = 0
 	const HS_MANSION_4_ITEM_2             ; BF X
 	const HS_MANSION_4_ITEM_3             ; C0 X
 	const HS_MANSION_4_ITEM_4             ; C1 X
-	const HS_MANSION_4_ITEM_5             ; C2 X
+	;const HS_MANSION_4_ITEM_5             ; C2 X
 	const HS_SAFARI_ZONE_EAST_ITEM_1      ; C3 X
 	const HS_SAFARI_ZONE_EAST_ITEM_2      ; C4 X
 	const HS_SAFARI_ZONE_EAST_ITEM_3      ; C5 X

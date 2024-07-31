@@ -8,8 +8,12 @@ _Mansion3EndBattleText1::
 	prompt
 
 _Mansion3AfterBattleText1::
-	text "I wonder where"
-	line "my partner went."
+	text "Some doors seem"
+	line "busted!"
+	
+	para "They won't move"
+	line "when the switch"
+	cont "is pressed!"
 	done
 
 _Mansion3BattleText2::
@@ -26,6 +30,11 @@ _Mansion3AfterBattleText2::
 	text "So, you're stuck?"
 	line "Try jumping off"
 	cont "over there!"
+	
+	para "Which one, you"
+	line "ask?"
+	
+	para "HAH!"
 	done
 
 _Mansion3Text5::

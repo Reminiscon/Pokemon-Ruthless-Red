@@ -93,6 +93,9 @@ _Route21AfterBattleText6::
 _Route21BattleText7::
 	text "Ahh! Feel the sun"
 	line "and the wind!"
+	
+	para "Prepare for my"
+	line "DRAGONAIR!"
 	done
 
 _Route21EndBattleText7::
@@ -132,6 +135,6 @@ _Route21EndBattleText9::
 	prompt
 
 _Route21AfterBattleText9::
-	text "Oh wait! I got a"
-	line "bite! Yeah!"
+	text "I'll starve at"
+	line "this rate!"
 	done

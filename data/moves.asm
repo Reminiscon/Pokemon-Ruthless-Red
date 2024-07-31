@@ -92,7 +92,7 @@ MoveEnd:
 	move SLEEP_POWDER, SLEEP_EFFECT,                 0, GRASS,     75, 15
 	move PETAL_DANCE,  THRASH_PETAL_DANCE_EFFECT,  120, GRASS,    100, 10		;120 POW, 10 PP
 	move STRING_SHOT,  SPEED_DOWN1_EFFECT,           0, BUG,       95, 40
-	move DRAGON_RAGE,  SWIFT_EFFECT,               100, DRAGON,   100,  5		;Swift effect and 2x Crit rate, 100 POW, 5 PP
+	move DRAGON_RAGE,  SWIFT_EFFECT,               100, DRAGON,   100,  5		;Swift effect, 100 POW, 5 PP
 	move FIRE_SPIN,    TRAPPING_EFFECT,             15, FIRE,      70, 15
 	move THUNDERSHOCK, PARALYZE_SIDE_EFFECT1,       40, ELECTRIC, 100, 30
 	move THUNDERBOLT,  PARALYZE_SIDE_EFFECT1,       95, ELECTRIC, 100, 15
@@ -111,7 +111,7 @@ MoveEnd:
 	move QUICK_ATTACK, NO_ADDITIONAL_EFFECT,        40, NORMAL,   100, 30
 	move RAGE,         RAGE_EFFECT,                 65, NORMAL,   100, 10		;Now lasts for a random 2 to 5 turns instead of lasting indefinitely, 65 POW, 10 PP
 	move TELEPORT,     SWITCH_AND_TELEPORT_EFFECT,   0, PSYCHIC,  100, 20
-	move NIGHT_SHADE,  DRAIN_HP_EFFECT,             80, GHOST,    100,  5		;Drain HP effect and 2x Crit rate, 80 POW, 5 PP
+	move NIGHT_SHADE,  DRAIN_HP_EFFECT,             80, GHOST,    100,  5		;Drain HP effect, 80 POW, 5 PP
 	move MIMIC,        MIMIC_EFFECT,                 0, NORMAL,   100, 10
 	move SCREECH,      DEFENSE_DOWN2_EFFECT,         0, NORMAL,    85, 40
 	move DOUBLE_TEAM,  EVASION_UP1_EFFECT,           0, NORMAL,   100,  5		;5 PP
@@ -154,7 +154,7 @@ MoveEnd:
 	move LEECH_LIFE,   DRAIN_HP_EFFECT,             40, BUG,      100, 15		;40 POW
 	move LOVELY_KISS,  SLEEP_EFFECT,                 0, NORMAL,    75, 10
 	move SKY_ATTACK,   CHARGE_EFFECT,              140, FLYING,    90,  5		;30% chance to Flinch on Charge turn and 2x Crit rate
-	move TRANSFORM,    TRANSFORM_EFFECT,             0, NORMAL,   100, 10
+	move TRANSFORM,    TRANSFORM_EFFECT,             0, NORMAL,   100,  5		;Provides 20 PP per move, 5 PP
 	move BUBBLE,       SPEED_DOWN1_EFFECT,           0, WATER,    100, 20		;Lowers SPE 1 stage, 20 PP
 	move DIZZY_PUNCH,  CONFUSION_SIDE_EFFECT,       70, GHOST,    100, 10		;10% chance to Confuse, Normal -> Ghost
 	move SPORE,        SLEEP_EFFECT,                 0, GRASS,    100, 15
@@ -176,8 +176,8 @@ MoveEnd:
 	move SLASH,        NO_ADDITIONAL_EFFECT,        70, NORMAL,   100, 20
 	move SUBSTITUTE,   SUBSTITUTE_EFFECT,            0, NORMAL,   100, 10
 	move SUPPRESS,     SPECIAL_DOWN2_EFFECT,		 0, PSYCHIC,  100, 10		;NEW (Unique to Arm.Mewtwo)
-	move ROCKET_BEAM,  SWIFT_EFFECT,			   100, FIRE,     100, 10		;NEW (Unique to Arm.Mewtwo)
-	move SHADOW_BALL,  SPECIAL_DOWN_SIDE_EFFECT,    80, GHOST,    100, 15		;NEW
+	move SHADOW_BEAM,  DEFENSE_DOWN_SIDE_EFFECT,   120, GHOST,     85, 10		;NEW (Unique to Arm.Mewtwo)
+	move SHADOW_BALL,  SPECIAL_DOWN_SIDE_EFFECT,    80, GHOST,    100, 15		;NEW (Unique to Mewtwo)
 	move AEROBLAST,    NO_ADDITIONAL_EFFECT,       100, FLYING,    95,  5		;NEW (Unique to Lugia)
 	move SACRED_FIRE,  BURN_SIDE_EFFECT2,		   100, FIRE,      95,  5		;NEW (Unique to Ho-oh)
 	move STRUGGLE,     RECOIL_EFFECT,               50, BIRD,     100, 10	;joenote - changed from normal to BIRD type (acts as typless)

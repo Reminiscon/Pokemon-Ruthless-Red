@@ -1,5 +1,5 @@
 Mansion2Script:
-	call Mansion2Script_51fee
+	call Mansion2Subscript1
 	call EnableAutoTextBoxDrawing
 	ld hl, Mansion2TrainerHeader0
 	ld de, Mansion2ScriptPointers
@@ -8,35 +8,77 @@ Mansion2Script:
 	ld [wMansion2CurScript], a
 	ret
 
-Mansion2Script_51fee:
+Mansion2Subscript1:
 	ld hl, wCurrentMapScriptFlags
 	bit 5, [hl]
 	res 5, [hl]
 	ret z
 	CheckEvent EVENT_MANSION_SWITCH_ON
-	jr nz, .asm_52016
-	ld a, $e
+	jr nz, .switchedon2
+	lb bc, 7, 2
+	call Mansion2Script_empty
+	lb bc, 11, 5
+	call Mansion2Script_empty
+	lb bc, 6, 12
+	call Mansion2Script_empty
+	lb bc, 4, 13
+	call Mansion2Script_empty
+	lb bc, 2, 7
+	call Mansion2Script_vertical
+	lb bc, 6, 9
+	call Mansion2Script_horizontaldown
+	lb bc, 5, 10
+	call Mansion2Script_vertical
+	lb bc, 12, 8
+	call Mansion2Script_vertical
+	lb bc, 12, 11
+	call Mansion2Script_vertical
 	lb bc, 2, 4
-	call Mansion2Script_5202f
-	ld a, $54
-	lb bc, 4, 9
-	call Mansion2Script_5202f
-	ld a, $5f
-	lb bc, 11, 3
-	call Mansion2Script_5202f
-	ret
-.asm_52016
-	ld a, $5f
+	jp Mansion2Script_empty
+.switchedon2
+	lb bc, 7, 2
+	call Mansion2Script_horizontalup
+	lb bc, 11, 5
+	call Mansion2Script_vertical
+	lb bc, 6, 12
+	call Mansion2Script_horizontaldown
+	lb bc, 4, 13
+	call Mansion2Script_horizontalup
+	lb bc, 2, 7
+	call Mansion2Script_empty
+	lb bc, 6, 9
+	call Mansion2Script_empty
+	lb bc, 5, 10
+	call Mansion2Script_empty
+	lb bc, 12, 8
+	call Mansion2Script_empty
+	lb bc, 12, 11
+	call Mansion2Script_empty
 	lb bc, 2, 4
-	call Mansion2Script_5202f
-	ld a, $e
-	lb bc, 4, 9
-	call Mansion2Script_5202f
-	ld a, $e
-	lb bc, 11, 3
-	call Mansion2Script_5202f
-	ret
+	jp Mansion2Script_vertical
 
+Mansion2Script_horizontalup:
+	ld a, $54
+	ld [wNewTileBlockID], a
+	jr Mansion2ReplaceBlock
+	
+Mansion2Script_horizontaldown:
+	ld a, $2d
+	ld [wNewTileBlockID], a
+	jr Mansion2ReplaceBlock
+	
+Mansion2Script_vertical:
+	ld a, $5f
+	ld [wNewTileBlockID], a
+	jr Mansion2ReplaceBlock
+
+Mansion2Script_empty:
+	ld a, $e
+	ld [wNewTileBlockID], a
+Mansion2ReplaceBlock:
+	predef ReplaceTileBlock
+	ret
+	
 Mansion2Script_5202f:
 	ld [wNewTileBlockID], a
 	predef_jump ReplaceTileBlock
@@ -65,7 +107,7 @@ Mansion2TextPointers:
 
 Mansion2TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_MANSION_2_TRAINER_0
-	db ($0 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_MANSION_2_TRAINER_0
 	dw Mansion2BattleText1 ; TextBeforeBattle
 	dw Mansion2AfterBattleText1 ; TextAfterBattle

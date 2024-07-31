@@ -1,27 +1,27 @@
 MansionMons2:
 	db $0A
 	IF DEF(_RED)
-		db 32,GROWLITHE
-		db 34,KOFFING
-		db 34,KOFFING
-		db 30,PONYTA
-		db 30,KOFFING
-		db 32,PONYTA
-		db 30,GRIMER
-		db 28,PONYTA
-		db 39,WEEZING
-		db 37,MUK
+		db 82,RAPIDASH
+		db 82,ARBOK
+		db 83,RAPIDASH
+		db 83,ARBOK
+		db 83,FLAREON
+		db 83,WEEZING
+		db 84,FLAREON
+		db 84,WEEZING
+		db 85,MAGMAR
+		db 85,MUK
 	ENDC
 	IF (DEF(_BLUE) || DEF(_GREEN))
-		db 32,VULPIX
-		db 34,GRIMER
-		db 34,GRIMER
-		db 30,PONYTA
-		db 30,GRIMER
-		db 32,PONYTA
-		db 30,KOFFING
-		db 28,PONYTA
-		db 39,MUK
-		db 37,WEEZING
+		db 82,RAPIDASH
+		db 82,ARBOK
+		db 83,RAPIDASH
+		db 83,ARBOK
+		db 83,FLAREON
+		db 83,WEEZING
+		db 84,FLAREON
+		db 84,WEEZING
+		db 85,MAGMAR
+		db 85,MUK
 	ENDC
 	db $00

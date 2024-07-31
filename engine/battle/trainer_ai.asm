@@ -809,6 +809,8 @@ AIMoveChoiceModification2:
 	jr c, .nextMove
 	cp REFLECT_EFFECT + 1
 	jr c, .preferMove			;includes light screen and reflect
+	cp DISABLE_EFFECT
+	jr z, .preferMove			;includes disable
 	jr .nextMove
 .preferMove
 	dec [hl] ; slightly encourage this move
@@ -1602,7 +1604,7 @@ TrainerClassMoveChoiceModifications:
 	db 1,2,3,4,0  ; PROF_OAK			;Added 2
 	db 1,2,3,4,0  ; CHIEF				
 	db 1,2,3,4,0  ; SCIENTIST			;Added 3,4
-	db 1,2,3,4,0  ; GIOVANNI			;Added 2
+	db 1,2,3,4,6,0  ; GIOVANNI			;Added 2,6
 	db 1,3,4,0    ; ROCKET				;Added 3,4
 	db 1,3,4,0  ; COOLTRAINER_M
 	db 1,3,4,0  ; COOLTRAINER_F
@@ -1967,6 +1969,12 @@ BurglarAI:	;NEW
 .burglarnext4
 	call StrCmpSpeed	;only use DIRE HIT if faster than the player
 	jr nc, .burglarnext5
+	ld a, [wEnemyMonAttackMod]	;only use DIRE HIT if attack is unboosted
+	cp 8 ;+1
+	jr nc, .burglarnext5
+	ld a, [wEnemyMonSpecialMod]	;only use DIRE HIT if special is unboosted
+	cp 8 ;+1
+	jr nc, .burglarnext5
 	call Random
 	cp $30	;18.75%
 	jr nc, .burglarnext5
@@ -2026,6 +2034,9 @@ JugglerXAI:	;NEW
 
 FisherAI:	;NEW
 	cp $20	;12.5%
+	jr nc, .fishernext1
+	ld a, [wEnemyMonMaxHP]		;dylannote - skip Lemonade at higher levels
+	cp 200
 	jr nc, .fishernext1
 	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
@@ -2292,6 +2303,9 @@ ChiefAI:		;NEW
 ScientistAI:	;NEW
 	cp $60	;12.5%
 	jr nc, .scientistnext0
+	ld a, [wEnemyMonSpecies]	;dylannote - Don't use X Special on Ditto
+	cp DITTO
+	jr z, .scientistnext0
     ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
     jp nc, AIXSpcRestricted2	;SPECIAL CASE 1
@@ -2331,6 +2345,42 @@ ScientistAI:	;NEW
     ret
 	
 GiovanniAI:
+	ld a, [wEnemyMon6]
+	cp ARM_MEWTWO
+	jr nz, .defaultAI
+	call Random
+	cp $60 ;37.5%
+	jr nc, .checkaccuracy
+	call StrCmpSpeed
+	jr c, .checkaccuracy
+	ld a, $2	;above fraction
+	call AICheckIfHPBelowFraction
+	jp nc, AIUseXSpeed			;GYM LEADER UNIQUE POOL
+.checkaccuracy
+	call Random
+	cp $20	;12.5%
+	jr nc, .defaultAI
+	ld a, [wEnemyMonAccuracyMod]
+	cp 7	;testing for lower than +0
+	jr c, .accuracywaslowered
+	ld a, [wPlayerMonEvasionMod]
+	cp 8	;testing for higher than +0
+	jr nc, .accuracywaslowered
+	jr .defaultAI
+.accuracywaslowered
+	ld a, $2	;above fraction
+	call AICheckIfHPBelowFraction
+	jp c, .defaultAI
+	ld a, [wEnemyBattleStatus2]	;If X Accuracy was already used, skip
+	bit USING_X_ACCURACY, a
+	jr nz, .defaultAI
+	jp AIUseXAccuracy			;GYM LEADER UNIQUE POOL
+; Special additional AI that activates when fighting Giovanni as a gym leader.
+; Giovanni has a 37.5% chance to use X Speed when slower, and has at least
+; 1/2 HP. If faster, with at least 1/2 HP, and the player has an 
+; accuracy/evasion advantage, Giovanni has a 12.5% chance to use X Accuracy.
+.defaultAI
+	call Random
 	cp $20	;12.5%
 	jr nc, .giovanninext0
 	ld a, $2	;above fraction
@@ -2444,6 +2494,8 @@ RocketAI:    ;NEW
 	call Random
     cp $20	;12.5%
 	jr nc, .rocketnext4
+	call StrCmpSpeed	;only use X_SPEED if currently slower than player
+	jr c, .rocketnext4
     ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
     jp nc, AIXSpeRestricted2	;SPECIAL CASE 1
@@ -3066,13 +3118,22 @@ LanceAI:
 	ret
 	
 BugMasterAI:
+	ld a, [wEnemyMon1]
+	cp METAPOD
+	jr nz, .tougherbugmaster
+	call Random
 	cp $20	;12.5%
 	jr nc, .bugmasternext0
 	jp c, AISwitchIfEnoughMonsL1
 	ret
 ; Bug Master has a 12.5% chance to switch once during a battle.
+.tougherbugmaster
+	call AIMoveChoiceModification4
+	jr .bugmasternext0
+	ret
+; Bug Masters after Viridian Forest have more advanced switching.
 .bugmasternext0
-	ld a, $6	;below fraction 
+	ld a, $4	;below fraction 
     call AICheckIfHPBelowFraction
 	jp c, AIUseFullRestore
 	call Random
@@ -3085,16 +3146,31 @@ BugMasterAI:
 	and a
 	jp nz, AIUseFullHeal		;SPECIAL CASE 1
 .bugmasternext1
+	ld a, [wEnemyMonType1]
+	cp GRASS
+	jr z, .bugmasternext2
 	call Random
     cp $20 ;12.5%
-	jr nc, .bugmasternext2
+	jr nc, .bugmasternext3
 	ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-	jr c, .bugmasternext2
+	jr c, .bugmasternext3
     ld a, [wEnemyMonStatus]
 	and a
-	jp z, AIXAttRestricted2		;SPECIAL CASE 2
+	jp z, AIXAttRestricted2		;SPECIAL CASE 2 (applies only to bug)
 .bugmasternext2
+	call Random
+	cp $20 ;12.5%
+	jr nc, .bugmasternext3
+	ld a, $2	;above fraction
+	call AICheckIfHPBelowFraction
+	jr c, .bugmasternext3
+	call StrCmpSpeed
+	jr c, .bugmasternext3
+	ld a, [wEnemyMonStatus]
+	and a
+	jp z, AIXSpeRestricted3		;SPECIAL CASE 3 (applies only to grass)
+.bugmasternext3
 	and a
 	ret
 

@@ -1737,7 +1737,7 @@ KakunaEvosMoves:
 ; Learnset
 	db 7, HARDEN
 	db 12, LIGHT_SCREEN
-	db 19, WITHDRAW
+	db 19, ACID_ARMOR
 	db 0
 
 BeedrillEvosMoves:

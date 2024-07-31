@@ -314,9 +314,9 @@ Route22Script4:
 	ret
 
 StarterMons_510d9:
-	db STARTER2,$0a
-	db STARTER3,$0b
-	db STARTER1,$0c
+	db STARTER2,$0d
+	db STARTER3,$0e
+	db STARTER1,$0f
 
 Route22Script5:
 	ld a, [wIsInBattle]

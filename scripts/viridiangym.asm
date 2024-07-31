@@ -29,24 +29,24 @@ ViridianGymScriptPointers:
 	dw ViridianGymScript3
 	dw ViridianGymScript4
 
-ViridianGymScript0:
-	ld a, [wYCoord]
-	ld b, a
-	ld a, [wXCoord]
-	ld c, a
-	ld hl, ViridianGymArrowTilePlayerMovement
-	call DecodeArrowMovementRLE
-	cp $ff
-	jp z, CheckFightingMapTrainers
-	call StartSimulatingJoypadStates
-	ld hl, wd736
-	set 7, [hl]
-	ld a, SFX_ARROW_TILES
-	call PlaySound
-	ld a, $ff
-	ld [wJoyIgnore], a
-	ld a, $4
-	ld [wCurMapScript], a
+ViridianGymScript0:	;dylannote - removed script/puzzle from the gym
+	;ld a, [wYCoord]
+	;ld b, a
+	;ld a, [wXCoord]
+	;ld c, a
+	;ld hl, ViridianGymArrowTilePlayerMovement
+	;call DecodeArrowMovementRLE
+	;cp $ff
+	;jp z, CheckFightingMapTrainers
+	;call StartSimulatingJoypadStates
+	;ld hl, wd736
+	;set 7, [hl]
+	;ld a, SFX_ARROW_TILES
+	;call PlaySound
+	;ld a, $ff
+	;ld [wJoyIgnore], a
+	;ld a, $4
+	;ld [wCurMapScript], a
 	ret
 
 ;format:
@@ -182,7 +182,7 @@ ViridianGymTextPointers:
 	dw ViridianGymText8
 	dw ViridianGymText9
 	dw ViridianGymText10
-	dw PickUpItemText
+	dw BoulderText
 	dw ViridianGymText12
 	dw ViridianGymText13
 	dw ViridianGymText14

@@ -659,26 +659,59 @@ Mansion1HiddenObjects:
 	db $05,$02,$04
 	db BANK(Mansion1Script_Switches)
 	dw Mansion1Script_Switches
+	db $0f,$14,$04							;NEW
+	db BANK(Mansion1Script_Switches)
+	dw Mansion1Script_Switches
 	db $FF
 Mansion2HiddenObjects:
 	db $0b,$02,$04
+	db BANK(Mansion2Script_Switches)
+	dw Mansion2Script_Switches
+	db $0b,$10,$04							;NEW
+	db BANK(Mansion2Script_Switches)
+	dw Mansion2Script_Switches
+	db $13,$1b,$04							;NEW
 	db BANK(Mansion2Script_Switches)
 	dw Mansion2Script_Switches
 	db $FF
 Mansion3HiddenObjects:
 	db $09,$01,MAX_REVIVE
 	dbw BANK(HiddenItems),HiddenItems
-	db $05,$0a,$04
+	db $17,$04,$04
 	db BANK(Mansion3Script_Switches)
 	dw Mansion3Script_Switches
 	db $FF
 Mansion4HiddenObjects:
 	db $09,$01,RARE_CANDY
 	dbw BANK(HiddenItems),HiddenItems
-	db $03,$14,$04
+	db $17,$11,$04
 	db BANK(Mansion4Script_Switches)
 	dw Mansion4Script_Switches
-	db $19,$12,$04
+	db $17,$0a,$04
+	db BANK(Mansion4Script_Switches)
+	dw Mansion4Script_Switches
+	db $2b,$30,$04						;NEW
+	db BANK(Mansion4Script_Switches)
+	dw Mansion4Script_Switches
+	db $17,$35,$04						;NEW
+	db BANK(Mansion4Script_Switches)
+	dw Mansion4Script_Switches
+	db $03,$14,$04						
+	db BANK(Mansion4Script_Switches)
+	dw Mansion4Script_Switches
+	db $0f,$1a,$04						;NEW
+	db BANK(Mansion4Script_Switches)
+	dw Mansion4Script_Switches
+	db $17,$38,$04						;NEW
+	db BANK(Mansion4Script_Switches)
+	dw Mansion4Script_Switches
+	db $0d,$04,$04						;NEW
+	db BANK(Mansion4Script_Switches)
+	dw Mansion4Script_Switches
+	db $33,$26,$04						;NEW
+	db BANK(Mansion4Script_Switches)
+	dw Mansion4Script_Switches
+	db $03,$35,$04						;NEW
 	db BANK(Mansion4Script_Switches)
 	dw Mansion4Script_Switches
 	db $FF
