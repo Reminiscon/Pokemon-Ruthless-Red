@@ -728,6 +728,17 @@ VictoryRoad2HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $07,$1a,FULL_RESTORE
 	dbw BANK(HiddenItems),HiddenItems
+	db BANK(VictoryRoad2Script_Switches)
+	dw VictoryRoad2Script_Switches
+	db $53,$02,$04						;NEW
+	db BANK(VictoryRoad2Script_Switches)
+	dw VictoryRoad2Script_Switches
+	db $2d,$17,$04						;NEW
+	db BANK(VictoryRoad2Script_Switches)
+	dw VictoryRoad2Script_Switches
+	db $03,$11,$04						;NEW
+	db BANK(VictoryRoad2Script_Switches)
+	dw VictoryRoad2Script_Switches
 	db $FF
 Unused6FHiddenObjects:
 	db $0b,$0e,MAX_ELIXER

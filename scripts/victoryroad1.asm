@@ -17,17 +17,17 @@ VictoryRoad1Script:
 ; wispnote - If the switch is activated place the boulder in switch's coordinates.
 ; Sprite05 indexes the boulder, and ($11, $0D) are the swtich's coordinates.
 	ld hl, Sprite05MapY
-	ld a, $0D
+	ld a, $01
 	add 4; wispnote - We need to offset coordinates by 4
 	ld [hl], a
 	ld hl, Sprite05MapX
-	ld a, $11
+	ld a, $57
 	add 4; wispnote - We need to offset coordinates by 4
 	ld [hl], a
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-	ld a, $1d
+	ld a, $01
 	ld [wNewTileBlockID], a
-	lb bc, 6, 4
+	lb bc, 2, 1
 	predef_jump ReplaceTileBlock
 
 VictoryRoad1ScriptPointers:
@@ -47,7 +47,7 @@ VictoryRoad1Script0:
 	ret
 
 CoordsData_5da5c:
-	db $0D,$11,$FF
+	db $01,$57,$FF
 
 VictoryRoad1TextPointers:
 	dw VictoryRoad1Text1
@@ -57,10 +57,18 @@ VictoryRoad1TextPointers:
 	dw BoulderText
 	dw BoulderText
 	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
+	dw BoulderText
 
 VictoryRoad1TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1_TRAINER_0
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1_TRAINER_0
 	dw VictoryRoad1BattleText1 ; TextBeforeBattle
 	dw VictoryRoad1AfterBattleText1 ; TextAfterBattle
@@ -69,7 +77,7 @@ VictoryRoad1TrainerHeader0:
 
 VictoryRoad1TrainerHeader1:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_1_TRAINER_1
-	db ($2 << 4) ; trainer's view range
+	db ($4 << 4) ; trainer's view range
 	dwEventFlagAddress EVENT_BEAT_VICTORY_ROAD_1_TRAINER_1
 	dw VictoryRoad1BattleText2 ; TextBeforeBattle
 	dw VictoryRoad1AfterBattleText2 ; TextAfterBattle

@@ -113,7 +113,7 @@ ENDM
 	mapconst UNUSED_MAP_69,               0,  0 ; $69
 	mapconst UNUSED_MAP_6A,               0,  0 ; $6A
 	mapconst UNUSED_MAP_6B,               0,  0 ; $6B
-	mapconst VICTORY_ROAD_1,              9, 10 ; $6C
+	mapconst VICTORY_ROAD_1,             18, 44 ; $6C
 	mapconst UNUSED_MAP_6D,               0,  0 ; $6D
 	mapconst UNUSED_MAP_6E,               0,  0 ; $6E
 	mapconst UNUSED_MAP_6F,               0,  0 ; $6F
@@ -199,7 +199,7 @@ ENDM
 	mapconst ROUTE_18_GATE_2F,            4,  4 ; $BF
 	mapconst SEAFOAM_ISLANDS_1,           9, 15 ; $C0
 	mapconst ROUTE_22_GATE,               4,  5 ; $C1
-	mapconst VICTORY_ROAD_2,              9, 15 ; $C2
+	mapconst VICTORY_ROAD_2,             44, 20 ; $C2
 	mapconst ROUTE_12_GATE_2F,            4,  4 ; $C3
 	mapconst VERMILION_HOUSE_3,           4,  4 ; $C4
 	mapconst DIGLETTS_CAVE,              18, 20 ; $C5

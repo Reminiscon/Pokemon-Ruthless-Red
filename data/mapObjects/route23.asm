@@ -1,11 +1,13 @@
 Route23Object:
 	db $f ; border block
 
-	db 4 ; warps
+	db 6 ; warps
 	warp 7, 139, 2, ROUTE_22_GATE
 	warp 8, 139, 3, ROUTE_22_GATE
 	warp 4, 31, 0, VICTORY_ROAD_1
 	warp 14, 31, 1, VICTORY_ROAD_2
+	warp 15, 43, 0, ROUTE_16_HOUSE
+	warp 16, 43, 1, ROUTE_16_HOUSE
 
 	db 1 ; signs
 	sign 3, 33, 8 ; Route23Text8
@@ -24,3 +26,5 @@ Route23Object:
 	warp_to 8, 139, ROUTE_23_WIDTH ; ROUTE_22_GATE
 	warp_to 4, 31, ROUTE_23_WIDTH ; VICTORY_ROAD_1
 	warp_to 14, 31, ROUTE_23_WIDTH ; VICTORY_ROAD_2
+	warp_to 15, 43, ROUTE_23_WIDTH ; ROUTE_16_HOUSE
+	warp_to 16, 43, ROUTE_23_WIDTH ; ROUTE_16_HOUSE

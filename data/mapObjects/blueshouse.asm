@@ -1,9 +1,10 @@
 BluesHouseObject:
 	db $a ; border block
 
-	db 2 ; warps
+	db 3 ; warps
 	warp 2, 7, 1, -1
 	warp 3, 7, 1, -1
+	warp 5, 7, 2, VICTORY_ROAD_1
 
 	db 0 ; signs
 

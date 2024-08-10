@@ -1336,7 +1336,7 @@ const_value = 0
 	const EVENT_PASSED_VOLCANOBADGE_CHECK            ; 535, (D7ED, bit 5)
 	const EVENT_PASSED_EARTHBADGE_CHECK              ; 536, (D7ED, bit 6)
 	const EVENT_537                                  ; 537, (D7ED, bit 7)
-	const EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH1    ; 538, (D7EE, bit 0)
+	const EVENT_VICTORY_ROAD_2_SWITCH_ON    		 ; 538, (D7EE, bit 0)	;REPLACED EVENT_VICTORY_ROAD_2_BOULDER_ON_SWITCH
 	const EVENT_BEAT_VICTORY_ROAD_2_TRAINER_0        ; 539, (D7EE, bit 1)
 	const EVENT_BEAT_VICTORY_ROAD_2_TRAINER_1        ; 53A, (D7EE, bit 2)
 	const EVENT_BEAT_VICTORY_ROAD_2_TRAINER_2        ; 53B, (D7EE, bit 3)

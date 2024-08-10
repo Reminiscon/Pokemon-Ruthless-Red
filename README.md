@@ -4,7 +4,8 @@ Version 0.8
 
 Pokemon Mansion is completed. Viridian Gym is completed. The game is complete up until the penultimate Rival battle, which is right before
 Victory Road and the Elite Four. It is now possible to collect all eight badges. Ditto received another buff (Transform now provides 20 PP
-per move).
+per move). In order to guarantee escape from wild encounters, your Pokemon's Speed must now be at least 1.33x or 33% higher than that of the 
+wild Pokemon.
 
 Version 0.7
 

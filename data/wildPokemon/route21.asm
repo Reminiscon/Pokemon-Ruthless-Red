@@ -15,10 +15,10 @@ Route21Mons:
 	db 86,GOLDUCK				
 	db 87,TENTACRUEL				
 	db 87,GOLDUCK					
-	db 86,STARMIE					
+	db 86,QUAGSIRE					
 	db 86,VAPOREON					
-	db 87,STARMIE					
+	db 87,QUAGSIRE				
 	db 87,VAPOREON					
-	db 88,QUAGSIRE				
+	db 88,BLASTOISE				
 	db 88,LAPRAS
 	

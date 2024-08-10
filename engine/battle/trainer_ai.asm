@@ -1844,7 +1844,7 @@ JrtrainerFAI:	;NEW
 	ret
 
 PokemaniacAI:	;NEW
-	cp $20	;12.5%
+	cp $10	;6.25%
 	jr nc, .pokemaniacnext0
 	jp c, AISwitchIfEnoughMons	;SPECIAL CASE 1
 .pokemaniacnext0
@@ -2167,7 +2167,7 @@ TamerAI:	;NEW
 	jr nc, .tamernext2
     ld a, $2	;above fraction
     call AICheckIfHPBelowFraction
-    jp nc, AIXAccRestricted2	;SPECIAL CASE 1
+    jp nc, AIDHitRestricted2	;SPECIAL CASE 1
 .tamernext2
 	and a
     ret

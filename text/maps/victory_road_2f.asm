@@ -1,5 +1,19 @@
 ;_MoltresBattleText::
 	;text "Gyaoo!@@"
+	
+_VictoryRoad2SwitchText::
+	text "A secret switch!"
+
+	para "Press it?"
+	done
+
+_VictoryRoad2SwitchPressedText::
+	text "Who wouldn't?"
+	prompt
+
+_VictoryRoad2SwitchNotPressedText::
+	text "Not quite yet!"
+	done
 
 _VictoryRoad2BattleText1::
 	text "VICTORY ROAD is"
@@ -83,3 +97,4 @@ _VictoryRoad2AfterBattleText5::
 	line "up the challenge"
 	cont "here."
 	done
+	

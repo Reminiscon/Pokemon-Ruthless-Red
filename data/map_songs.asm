@@ -193,7 +193,7 @@ MapSongBanks:
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; Route18GateUpstairs
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; SeafoamIslands1
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; Route22Gate
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VictoryRoad2
+	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; VictoryRoad2
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; Route12GateUpstairs
 	db MUSIC_VERMILION, BANK(Music_Vermilion) ; VermilionHouse3
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; DiglettsCave

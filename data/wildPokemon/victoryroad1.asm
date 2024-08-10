@@ -1,13 +1,13 @@
 PlateauMons1:
-	db $0F
-	db 24,MACHOP
-	db 26,GEODUDE
-	db 22,ZUBAT
-	db 36,ONIX
-	db 39,ONIX
-	db 42,ONIX
-	db 41,GRAVELER
-	db 41,GOLBAT
-	db 42,MACHOKE
-	db 43,MAROWAK
+	db $0A
+	db 93,ONIX
+	db 93,MACHAMP
+	db 94,ONIX
+	db 94,MACHAMP
+	db 93,GOLEM
+	db 93,NIDOKING
+	db 94,GOLEM
+	db 94,NIDOKING
+	db 95,SUDOWOODO
+	db 100,MEW
 	db $00

@@ -206,7 +206,7 @@ PokemaniacData:
 	db 40,VENUSAUR,NINETALES,PORYGON,0										;Custom Moves Applied
 	db 40,DUGTRIO,WEEZING,HYPNO,0											;Custom Moves Applied
 ; Victory Road 2F
-	db 40,CHARMELEON,LAPRAS,LICKITUNG,0
+	db 97,LICKILICKI,MAROWAK,BEEDRILL,NIDOQUEEN,NINETALES,RAICHU,0			;Custom Moves Applied
 ; Rock Tunnel 1F
 	db 40,SLOWBRO,VILEPLUME,SANDSLASH,0										;Custom Moves Applied
 ; Route 3
@@ -413,8 +413,8 @@ JugglerData:
 ; Silph Co. 5F
 	db 66,GRAVELER,EXEGGCUTE,ELECTRODE,0									;Custom Moves Applied
 ; Victory Road 2F
-	db 41,DROWZEE,HYPNO,KADABRA,KADABRA,0
-	db 48,MR_MIME,0
+	db 96,KADABRA,GOLEM,EXEGGCUTE,ELECTRODE,EXEGGUTOR,ALAKAZAM,0			;Custom Moves Applied
+	db 96,MR_MIME,GRAVELER,HYPNO,MAGNETON,TANGELA,SLOWKING,0				;Custom Moves Applied
 ; Fuchsia Gym
 	db 60,KADABRA,EXEGGCUTE,WEEZING,0										;Custom Moves Applied
 	db 60,HAUNTER,HYPNO,ELECTRODE,0											;Custom Moves Applied
@@ -436,7 +436,7 @@ TamerData:
 	db 43,RHYHORN,0
 	db 39,ARBOK,TAUROS,0
 ; Victory Road 2F
-	db 44,PERSIAN,GOLDUCK,0
+	db 95,DEWGONG,RAPIDASH,ARBOK,FEAROW,SEADRA,DUNSPARCE,0					;Custom Moves Applied
 ; Unused
 	;db 42,RHYHORN,PRIMEAPE,ARBOK,TAUROS,0
 BirdKeeperData:
@@ -476,7 +476,7 @@ BlackbeltData:
 	db 43,MACHOKE,0
 	db 38,MACHOKE,MACHOP,MACHOKE,0
 ; Victory Road 2F
-	db 43,MACHOKE,MACHOP,MACHOKE,0
+	db 95,MAROWAK,HYPNO,POLIWRATH,PINSIR,PRIMEAPE,URSARING,0					;Custom Moves Applied
 ; Route 4
 	db 20,HITMONCHAN,0														;NEW				;Custom Moves Applied
 Green1Data:
@@ -613,7 +613,7 @@ CooltrainerMData:
 	db 43,EXEGGUTOR,CLOYSTER,ARCANINE,0
 	db 43,KINGLER,TENTACRUEL,BLASTOISE,0
 ; Victory Road 1F
-	db 42,IVYSAUR,WARTORTLE,CHARMELEON,CHARIZARD,0
+	db 97,VENUSAUR,QUAGSIRE,CHARIZARD,EXEGGUTOR,BLASTOISE,ARCANINE,0										;Custom Moves Applied
 ; Viridian Gym
 	db 39,SANDSLASH,DUGTRIO,0
 	db 43,RHYHORN,0
@@ -633,7 +633,7 @@ CooltrainerFData:
 	db 43,BELLSPROUT,WEEPINBELL,VICTREEBEL,0
 	db 43,PARASECT,DEWGONG,CHANSEY,0
 ; Victory Road 1F
-	db 44,PERSIAN,NINETALES,0
+	db 97,WIGGLYTUFF,VILEPLUME,PERSIAN,VILEPLUME,KANGASKHAN,BELLOSSOM,0					;Custom Moves Applied									;Custom Moves Applied
 ;Route 2
 	db 12,CHANSEY,0											;NEW						;Custom Moves Applied
 ; Celadon Mansion 4F
