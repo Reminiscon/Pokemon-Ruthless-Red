@@ -1,5 +1,5 @@
 PlateauMons3:
-	db $00
+	db $0A
 	db 93,MAGMAR
 	db 93,MR_MIME
 	db 94,MAGMAR

@@ -2653,14 +2653,14 @@ wNumberOfWarps:: ; d3ae
 	ds 1
 
 wWarpEntries:: ; d3af
-; current map warp entries
-	ds 128
+; current map warp entries, dylannote - increased max warps to 68 by raising to 272
+	ds 272
 
 wDestinationWarpID:: ; d42f
 ; if $ff, the player's coordinates are not updated when entering the map
 	ds 1
 
-	ds 128
+; ds 128 dylannote - removed to make space for warps
 
 wNumSigns:: ; d4b0
 ; number of signs in the current map (up to 16)
@@ -2933,7 +2933,9 @@ wMansion4CurScript:: ; d63e
 wVictoryRoad2CurScript:: ; d63f
 	ds 1
 wVictoryRoad3CurScript:: ; d640
-	ds 2
+	ds 1
+wVictoryRoad4CurScript:: ; d641
+	ds 1
 wFightingDojoCurScript:: ; d642
 	ds 1
 wSilphCo2CurScript:: ; d643
@@ -3009,7 +3011,7 @@ wSeafoamIslands5CurScript:: ; d668
 wRoute18GateCurScript:: ; d669
 	ds 1
 
-	ds 78
+	ds 60	;dylannote - reduced from 78 to 62 to increase max warps per map to 68
 wGameProgressFlagsEnd::
 
 wGBCBasePalPointers:: 

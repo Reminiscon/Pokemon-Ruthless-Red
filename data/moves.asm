@@ -29,7 +29,7 @@ MoveEnd:
 	move GUST,         NO_ADDITIONAL_EFFECT,        40, FLYING,   100, 35		;Normal -> Flying
 	move WING_ATTACK,  NO_ADDITIONAL_EFFECT,        60, FLYING,   100, 35		;60 POW
 	move WHIRLWIND,    SPEED_DOWN_SIDE_EFFECT,      55, FLYING,   100, 15		;33% chance to lower SPE, 55 POW, Normal -> Flying, 100 ACC, 15 PP
-	move FLY,          CHARGE_EFFECT,        		70, FLYING,    95, 15		
+	move FLY,          FLY_EFFECT,        			85, FLYING,    95, 15		;85 POW
 	move BIND,         TRAPPING_EFFECT,             15, ROCK,      75, 20		;Normal -> Rock
 	move SLAM,         NO_ADDITIONAL_EFFECT,        80, FIGHTING,  75, 20		;Normal -> Fighting
 	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        35, GRASS,    100, 10		;2x Crit rate

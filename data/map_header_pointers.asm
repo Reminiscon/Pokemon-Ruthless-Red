@@ -241,7 +241,7 @@ MapHeaderPointers::
 	dw SilphCo2_h ; unused
 	dw TradeCenter_h
 	dw Colosseum_h
-	dw SilphCo2_h ; unused
+	dw VictoryRoad4_h
 	dw SilphCo2_h ; unused
 	dw SilphCo2_h ; unused
 	dw SaffronGym2_h ; NEW, was unused

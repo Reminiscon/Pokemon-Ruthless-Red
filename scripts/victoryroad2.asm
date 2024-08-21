@@ -15,23 +15,231 @@ VictoryRoad2Subscript1:
 	ret z
 	CheckEvent EVENT_VICTORY_ROAD_2_SWITCH_ON
 	jp nz, .switchedon5
-	lb bc, 5, 5
-	call VictoryRoad2Script_grass
-	lb bc, 8, 1
+	;dylannote - coords that have stone as original block
+	lb bc, 3, 12
 	call VictoryRoad2Script_fulltree
+	lb bc, 2, 18
+	call VictoryRoad2Script_fulltree
+	lb bc, 16, 1
+	call VictoryRoad2Script_grass
 	lb bc, 8, 8
 	call VictoryRoad2Script_fulltree
-	lb bc, 4, 2
-	jp VictoryRoad2Script_fulltree
+	lb bc, 28, 10
+	call VictoryRoad2Script_grass
+	lb bc, 31, 14
+	call VictoryRoad2Script_grass
+	lb bc, 25, 16
+	call VictoryRoad2Script_grass
+	lb bc, 30, 1
+	call VictoryRoad2Script_grass
+	lb bc, 12, 18
+	call VictoryRoad2Script_fulltree
+	lb bc, 9, 4
+	call VictoryRoad2Script_fulltree
+	lb bc, 9, 5
+	call VictoryRoad2Script_fulltree
+	;dylannote - coords that have half trees as original block
+	lb bc, 0, 7
+	call VictoryRoad2Script_fulltree
+	lb bc, 1, 7
+	call VictoryRoad2Script_fulltree
+	lb bc, 0, 3
+	call VictoryRoad2Script_uppertree
+	lb bc, 1, 3
+	call VictoryRoad2Script_lowertree
+	lb bc, 37, 4
+	call VictoryRoad2Script_fulltree
+	lb bc, 38, 4
+	call VictoryRoad2Script_fulltree
+	lb bc, 37, 5
+	call VictoryRoad2Script_fulltree
+	lb bc, 38, 5
+	call VictoryRoad2Script_fulltree
+	lb bc, 37, 6
+	call VictoryRoad2Script_fulltree
+	lb bc, 38, 6
+	call VictoryRoad2Script_fulltree
+	lb bc, 42, 10
+	call VictoryRoad2Script_uppertree
+	lb bc, 43, 10
+	call VictoryRoad2Script_lowertree
+	lb bc, 35, 15
+	call VictoryRoad2Script_fulltree
+	lb bc, 36, 15
+	call VictoryRoad2Script_fulltree
+	lb bc, 28, 17
+	call VictoryRoad2Script_fulltree
+	lb bc, 29, 17
+	call VictoryRoad2Script_fulltree
+	lb bc, 24, 2
+	call VictoryRoad2Script_fulltree
+	lb bc, 25, 2
+	call VictoryRoad2Script_fulltree
+	lb bc, 24, 3
+	call VictoryRoad2Script_fulltree
+	lb bc, 25, 3
+	call VictoryRoad2Script_fulltree
+	lb bc, 19, 2
+	call VictoryRoad2Script_fulltree
+	lb bc, 20, 2
+	call VictoryRoad2Script_fulltree
+	lb bc, 19, 3
+	call VictoryRoad2Script_fulltree
+	lb bc, 20, 3
+	call VictoryRoad2Script_fulltree
+	lb bc, 18, 12
+	call VictoryRoad2Script_uppertree
+	lb bc, 19, 12
+	call VictoryRoad2Script_lowertree
+	lb bc, 18, 14
+	call VictoryRoad2Script_uppertree
+	lb bc, 19, 14
+	call VictoryRoad2Script_lowertree
+	lb bc, 10, 11
+	call VictoryRoad2Script_uppertree
+	lb bc, 11, 11
+	call VictoryRoad2Script_lowertree
+	lb bc, 10, 12
+	call VictoryRoad2Script_uppertree
+	lb bc, 11, 12
+	call VictoryRoad2Script_lowertree
+	lb bc, 10, 13
+	call VictoryRoad2Script_uppertree
+	lb bc, 11, 13
+	call VictoryRoad2Script_lowertree
+	lb bc, 14, 9
+	call VictoryRoad2Script_fulltree
+	lb bc, 15, 9
+	call VictoryRoad2Script_fulltree
+	lb bc, 14, 8
+	call VictoryRoad2Script_fulltree
+	lb bc, 15, 8
+	call VictoryRoad2Script_fulltree
+	lb bc, 4, 9
+	call VictoryRoad2Script_fulltree
+	lb bc, 5, 9
+	call VictoryRoad2Script_fulltree
+	lb bc, 6, 17
+	call VictoryRoad2Script_uppertree
+	lb bc, 7, 17
+	call VictoryRoad2Script_lowertree
+	lb bc, 7, 13
+	call VictoryRoad2Script_uppertree
+	lb bc, 8, 13
+	jp VictoryRoad2Script_lowertree
 .switchedon5
-	lb bc, 5, 5
-	call VictoryRoad2Script_fulltree
-	lb bc, 8, 1
+	;dylannote - coords that have stone as original block
+	lb bc, 3, 12
 	call VictoryRoad2Script_grass
+	lb bc, 2, 18
+	call VictoryRoad2Script_grass
+	lb bc, 16, 1
+	call VictoryRoad2Script_fulltree
 	lb bc, 8, 8
 	call VictoryRoad2Script_grass
-	lb bc, 4, 2
-	jp VictoryRoad2Script_grass
+	lb bc, 28, 10
+	call VictoryRoad2Script_fulltree
+	lb bc, 31, 14
+	call VictoryRoad2Script_fulltree
+	lb bc, 25, 16
+	call VictoryRoad2Script_fulltree
+	lb bc, 30, 1
+	call VictoryRoad2Script_fulltree
+	lb bc, 12, 18
+	call VictoryRoad2Script_grass
+	lb bc, 9, 4
+	call VictoryRoad2Script_grass
+	lb bc, 9, 5
+	call VictoryRoad2Script_grass
+	;dylannote - coords that have half trees as original block
+	lb bc, 0, 7
+	call VictoryRoad2Script_uppertree
+	lb bc, 1, 7
+	call VictoryRoad2Script_lowertree
+	lb bc, 0, 3
+	call VictoryRoad2Script_fulltree
+	lb bc, 1, 3
+	call VictoryRoad2Script_fulltree
+	lb bc, 37, 4
+	call VictoryRoad2Script_uppertree
+	lb bc, 38, 4
+	call VictoryRoad2Script_lowertree
+	lb bc, 37, 5
+	call VictoryRoad2Script_uppertree
+	lb bc, 38, 5
+	call VictoryRoad2Script_lowertree
+	lb bc, 37, 6
+	call VictoryRoad2Script_uppertree
+	lb bc, 38, 6
+	call VictoryRoad2Script_lowertree
+	lb bc, 42, 10
+	call VictoryRoad2Script_fulltree
+	lb bc, 43, 10
+	call VictoryRoad2Script_fulltree
+	lb bc, 35, 15
+	call VictoryRoad2Script_uppertree
+	lb bc, 36, 15
+	call VictoryRoad2Script_lowertree
+	lb bc, 28, 17
+	call VictoryRoad2Script_uppertree
+	lb bc, 29, 17
+	call VictoryRoad2Script_lowertree
+	lb bc, 24, 2
+	call VictoryRoad2Script_uppertree
+	lb bc, 25, 2
+	call VictoryRoad2Script_lowertree
+	lb bc, 24, 3
+	call VictoryRoad2Script_uppertree
+	lb bc, 25, 3
+	call VictoryRoad2Script_lowertree
+	lb bc, 19, 2
+	call VictoryRoad2Script_uppertree
+	lb bc, 20, 2
+	call VictoryRoad2Script_lowertree
+	lb bc, 19, 3
+	call VictoryRoad2Script_uppertree
+	lb bc, 20, 3
+	call VictoryRoad2Script_lowertree
+	lb bc, 18, 12
+	call VictoryRoad2Script_fulltree
+	lb bc, 19, 12
+	call VictoryRoad2Script_fulltree
+	lb bc, 18, 14
+	call VictoryRoad2Script_fulltree
+	lb bc, 19, 14
+	call VictoryRoad2Script_fulltree
+	lb bc, 10, 11
+	call VictoryRoad2Script_fulltree
+	lb bc, 11, 11
+	call VictoryRoad2Script_fulltree
+	lb bc, 10, 12
+	call VictoryRoad2Script_fulltree
+	lb bc, 11, 12
+	call VictoryRoad2Script_fulltree
+	lb bc, 10, 13
+	call VictoryRoad2Script_fulltree
+	lb bc, 11, 13
+	call VictoryRoad2Script_fulltree
+	lb bc, 14, 9
+	call VictoryRoad2Script_uppertree
+	lb bc, 15, 9
+	call VictoryRoad2Script_lowertree
+	lb bc, 14, 8
+	call VictoryRoad2Script_uppertree
+	lb bc, 15, 8
+	call VictoryRoad2Script_lowertree
+	lb bc, 4, 9
+	call VictoryRoad2Script_uppertree
+	lb bc, 5, 9
+	call VictoryRoad2Script_lowertree
+	lb bc, 6, 17
+	call VictoryRoad2Script_fulltree
+	lb bc, 7, 17
+	call VictoryRoad2Script_fulltree
+	lb bc, 7, 13
+	call VictoryRoad2Script_fulltree
+	lb bc, 8, 13
+	jp VictoryRoad2Script_fulltree
 
 VictoryRoad2Script_fulltree:
 	ld a, $02
@@ -81,7 +289,7 @@ VictoryRoad2TextPointers:
 	dw PickUpItemText
 	dw PickUpItemText
 	dw PickUpItemText
-	dw VictoryRoad2Text6
+	dw VictoryRoad2PuzzleText
 
 VictoryRoad2TrainerHeader0:
 	dbEventFlagBit EVENT_BEAT_VICTORY_ROAD_2_TRAINER_0
@@ -229,7 +437,7 @@ VictoryRoad2AfterBattleText5:
 	TX_FAR _VictoryRoad2AfterBattleText5
 	db "@"
 	
-VictoryRoad2Text6:
+VictoryRoad2PuzzleText:
 	TX_ASM
 	ld hl, VictoryRoad2SwitchText
 	call PrintText

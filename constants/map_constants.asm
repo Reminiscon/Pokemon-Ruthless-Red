@@ -203,7 +203,7 @@ ENDM
 	mapconst ROUTE_12_GATE_2F,            4,  4 ; $C3
 	mapconst VERMILION_HOUSE_3,           4,  4 ; $C4
 	mapconst DIGLETTS_CAVE,              18, 20 ; $C5
-	mapconst VICTORY_ROAD_3,              9, 15 ; $C6
+	mapconst VICTORY_ROAD_3,             29, 29 ; $C6
 	mapconst ROCKET_HIDEOUT_1,           14, 15 ; $C7
 	mapconst ROCKET_HIDEOUT_2,           14, 15 ; $C8
 	mapconst ROCKET_HIDEOUT_3,           14, 15 ; $C9
@@ -246,7 +246,7 @@ ENDM
 	mapconst UNUSED_MAP_EE,               0,  0 ; $EE
 	mapconst TRADE_CENTER,                4,  5 ; $EF
 	mapconst COLOSSEUM,                   4,  5 ; $F0
-	mapconst UNUSED_MAP_F1,               0,  0 ; $F1
+	mapconst VICTORY_ROAD_4,             29, 29 ; $F1		;was UNUSED_MAP_F1
 	mapconst UNUSED_MAP_F2,               0,  0 ; $F2
 	mapconst UNUSED_MAP_F3,               0,  0 ; $F3
 	mapconst SAFFRON_GYM_2,              12, 12 ; $F4		;was UNUSED_MAP_F4

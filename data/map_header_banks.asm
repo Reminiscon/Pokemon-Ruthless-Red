@@ -241,7 +241,7 @@ MapHeaderBanks:
 	db $11
 	db BANK(TradeCenter_h)
 	db BANK(Colosseum_h)
-	db $11
+	db BANK(VictoryRoad4_h)
 	db $11
 	db $11
 	db BANK(SaffronGym2_h)

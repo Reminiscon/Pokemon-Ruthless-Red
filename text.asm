@@ -182,6 +182,7 @@ INCLUDE "text/maps/ss_anne_8.asm"
 INCLUDE "text/maps/ss_anne_9.asm"
 INCLUDE "text/maps/ss_anne_10.asm"
 INCLUDE "text/maps/victory_road_3f.asm"
+INCLUDE "text/maps/victory_road_4f.asm"									;NEW
 INCLUDE "text/maps/rocket_hideout_b1f.asm"
 INCLUDE "text/maps/rocket_hideout_b2f.asm"
 INCLUDE "text/maps/rocket_hideout_b3f.asm"
@@ -1942,7 +1943,7 @@ _Char00Text::
 _Char55Text::
 	text $4B,"@@"
 
-INCLUDE "text/maps/moltencavern.asm"
+INCLUDE "text/maps/moltencavern.asm"									;NEW
 INCLUDE "text/maps/viridian_forest_exit.asm"
 INCLUDE "text/maps/route_2_house.asm"
 INCLUDE "text/maps/route_2_gate.asm"

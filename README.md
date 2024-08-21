@@ -1,5 +1,10 @@
 # Pokemon Ruthless Red
 
+Version 0.9
+
+Victory Road is completed, with four levels of differing map types instead of three identical ones. Fly retains the same effect, PP, and
+accuracy it originally had, but its power has been increased from 70 to 85.
+
 Version 0.8
 
 Pokemon Mansion is completed. Viridian Gym is completed. The game is complete up until the penultimate Rival battle, which is right before

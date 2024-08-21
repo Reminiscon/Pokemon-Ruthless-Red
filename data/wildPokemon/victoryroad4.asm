@@ -1,0 +1,14 @@
+PlateauMons4:
+	db $0A
+	db 93,SNEASEL
+	db 93,ALAKAZAM
+	db 94,SNEASEL
+	db 94,ALAKAZAM
+	db 93,EXEGGUTOR
+	db 93,HOUNDOOM
+	db 94,EXEGGUTOR
+	db 94,HOUNDOOM
+	db 95,GENGAR
+	db 100,MEW
+	db $00
+	

@@ -101,5 +101,6 @@ InternalMapEntries:
 	IMAP CERULEAN_HOUSE_2,          $A,$2,CeruleanCityName
 	IMAP ROCK_TUNNEL_2,             $E,$3,RockTunnelName
 	IMAP SILPH_CO_ELEVATOR,         $A,$5,SilphCoName
+	IMAP VICTORY_ROAD_4,			$0,$4,VictoryRoadName			;NEW
 	IMAP AGATHAS_ROOM,              $0,$2,PokemonLeagueName
 	db $FF

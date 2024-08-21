@@ -1641,9 +1641,9 @@ const_value = 0
 	const EVENT_VICTORY_ROAD_3_BOULDER_ON_SWITCH2    ; 666, (D813, bit 6)
 	const EVENT_667                                  ; 667, (D813, bit 7)
 	const EVENT_668                                  ; 668, (D814, bit 0)
-	const EVENT_669                                  ; 669, (D814, bit 1)
-	const EVENT_66A                                  ; 66A, (D814, bit 2)
-	const EVENT_66B                                  ; 66B, (D814, bit 3)
+	const EVENT_BEAT_VICTORY_ROAD_4_TRAINER_0        ; 669, (D814, bit 1)		;NEW
+	const EVENT_BEAT_VICTORY_ROAD_4_TRAINER_1        ; 66A, (D814, bit 2)		;NEW
+	const EVENT_BEAT_VICTORY_ROAD_4_TRAINER_2        ; 66B, (D814, bit 3)		;NEW
 	const EVENT_66C                                  ; 66C, (D814, bit 4)
 	const EVENT_66D                                  ; 66D, (D814, bit 5)
 	const EVENT_66E                                  ; 66E, (D814, bit 6)

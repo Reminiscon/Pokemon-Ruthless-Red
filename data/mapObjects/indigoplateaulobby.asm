@@ -2,8 +2,8 @@ IndigoPlateauLobbyObject:
 	db $0 ; border block
 
 	db 3 ; warps
-	warp 7, 11, 0, -1
-	warp 8, 11, 1, -1
+	warp 7, 11, 0, INDIGO_PLATEAU
+	warp 8, 11, 1, INDIGO_PLATEAU
 	warp 8, 0, 0, LORELEIS_ROOM
 
 	db 0 ; signs
@@ -19,3 +19,4 @@ IndigoPlateauLobbyObject:
 	warp_to 7, 11, INDIGO_PLATEAU_LOBBY_WIDTH
 	warp_to 8, 11, INDIGO_PLATEAU_LOBBY_WIDTH
 	warp_to 8, 0, INDIGO_PLATEAU_LOBBY_WIDTH ; LORELEIS_ROOM
+	warp_to 7, 9, INDIGO_PLATEAU_LOBBY_WIDTH ; INDIGO_PLATEAU_LOBBY

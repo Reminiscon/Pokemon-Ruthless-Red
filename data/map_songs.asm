@@ -197,7 +197,7 @@ MapSongBanks:
 	db MUSIC_CITIES1, BANK(Music_Cities1) ; Route12GateUpstairs
 	db MUSIC_VERMILION, BANK(Music_Vermilion) ; VermilionHouse3
 	db MUSIC_DUNGEON2, BANK(Music_Dungeon2) ; DiglettsCave
-	db MUSIC_DUNGEON3, BANK(Music_Dungeon3) ; VictoryRoad3
+	db MUSIC_SILPH_CO, BANK(Music_SilphCo) ; VictoryRoad3
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; RocketHideout1
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; RocketHideout2
 	db MUSIC_DUNGEON1, BANK(Music_Dungeon1) ; RocketHideout3
@@ -240,7 +240,7 @@ MapSongBanks:
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo)
 	db MUSIC_CELADON, BANK(Music_Celadon) ; TradeCenter
 	db MUSIC_CELADON, BANK(Music_Celadon) ; Colosseum
-	db MUSIC_SILPH_CO, BANK(Music_SilphCo)
+	db MUSIC_SAFARI_ZONE, BANK(Music_SafariZone) ; VictoryRoad4
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo)
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo)
 	db MUSIC_SILPH_CO, BANK(Music_SilphCo)

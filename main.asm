@@ -2247,6 +2247,11 @@ INCLUDE "scripts/victoryroad1.asm"
 INCLUDE "data/mapObjects/victoryroad1.asm"
 VictoryRoad1Blocks: INCBIN "maps/victoryroad1.blk"
 
+INCLUDE "data/mapHeaders/victoryroad4.asm"
+INCLUDE "scripts/victoryroad4.asm"
+INCLUDE "data/mapObjects/victoryroad4.asm"
+VictoryRoad4Blocks: INCBIN "maps/victoryroad4.blk"
+
 INCLUDE "engine/predefs17_2.asm"
 
 INCLUDE "engine/hidden_object_functions17.asm"

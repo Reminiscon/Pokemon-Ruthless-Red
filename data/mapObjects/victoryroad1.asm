@@ -4,8 +4,8 @@ VictoryRoad1Object:
 	db 4 ; warps
 	warp 82, 35, 2, -1
 	warp 83, 35, 2, -1
-	warp  0,  4, 0, VICTORY_ROAD_2
-	warp 83, 33, 3, VICTORY_ROAD_1 ; ONE-WAY WARP
+	warp  0,  4, 2, VICTORY_ROAD_2 ; ONE-WAY WARP
+	warp 83, 33, 2, VICTORY_ROAD_1 ; ONE-WAY WARP
 
 	db 0 ; signs
 
@@ -29,6 +29,5 @@ VictoryRoad1Object:
 	; warp-to
 	warp_to 82, 35, VICTORY_ROAD_1_WIDTH
 	warp_to 83, 35, VICTORY_ROAD_1_WIDTH
-	warp_to  0,  4, VICTORY_ROAD_1_WIDTH ; VICTORY_ROAD_2
 	warp_to 21, 32, VICTORY_ROAD_1_WIDTH ; VICTORY_ROAD_1 (ONE-WAY WARP)
 	warp_to  1,  4, VICTORY_ROAD_1_WIDTH ; BLUE'S HOUSE

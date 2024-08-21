@@ -15,7 +15,7 @@ dw ExeggcutePicBack
 db BARRAGE
 db HYPNOSIS
 db CONFUSION
-db 0
+db EXPLOSION
 db 5 ; growth rate
 ; learnset
 	tmlearn 6

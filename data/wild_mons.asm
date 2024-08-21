@@ -240,7 +240,7 @@ WildDataPointers:
 	dw NoMons
 	dw NoMons
 	dw NoMons
-	dw NoMons
+	dw PlateauMons4		;NEW
 	dw NoMons
 	dw NoMons
 	dw NoMons
@@ -334,3 +334,5 @@ INCLUDE "data/wildPokemon/silphco9.asm"						;NEW
 INCLUDE "data/wildPokemon/silphco10.asm"					;NEW
 INCLUDE "data/wildPokemon/silphco11.asm"					;NEW
 INCLUDE "data/wildPokemon/route19.asm"						;NEW
+INCLUDE "data/wildPokemon/victoryroad4.asm"					;NEW
+

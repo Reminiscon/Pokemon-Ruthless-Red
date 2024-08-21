@@ -1,5 +1,5 @@
 PlateauMons2:
-	db $00
+	db $0A
 	db 93,PINSIR
 	db 93,SCYTHER
 	db 94,PINSIR
