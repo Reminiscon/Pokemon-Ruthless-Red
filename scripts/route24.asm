@@ -84,6 +84,8 @@ Route24TextPointers:
 	dw Route24Text6
 	dw Route24Text7
 	dw PickUpItemText
+	dw BoulderText
+	dw BoulderText
 	dw Route24Text8
 
 Route24TrainerHeader0:

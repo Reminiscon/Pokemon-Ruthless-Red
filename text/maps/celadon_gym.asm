@@ -11,8 +11,8 @@ _CeladonGymText_48a5e::							;modified text
 	line "I am the LEADER"
 	cont "of CELADON GYM."
 
-	para "I teach the art of"
-	line "FEMINISM."
+	para "I teach the ideol-"
+	line "ogy of FEMINISM."
 	
 	para "I'm also an expert"
 	line "on sleep and"
@@ -32,8 +32,7 @@ _CeladonGymText_48a63::
 	text "Oh!"
 	line "I concede defeat."
 
-	para "You are remarkably"
-	line "strong."
+	para "Misogynist.."
 
 	para "I must confer you"
 	line "the RAINBOWBADGE."
@@ -99,9 +98,8 @@ _CeladonGymEndBattleText2::
 	prompt
 
 _CeladonGymAfterBattleText2::
-	text "Bleaah!"
-	line "I hope ERIKA"
-	cont "wipes you out!"
+	text "Heteronormative"
+	line "scum!"
 	done
 
 _CeladonGymBattleText3::
@@ -202,14 +200,14 @@ _CeladonGymEndBattleText7::
 	prompt
 
 _CeladonGymAfterBattleText7::					;modified text
-	text "I have a blind"
-	line "date coming up."
-	cont "I have to learn"
-	cont "to be polite."
+	text "I'm literally"
+	line "shaking."
 	
-	para "Easier said than"
-	line "done for girls"
-	cont "like us!"
+	para "If KANTO keeps"
+	line "going like this,"
+	cont "I will leave to"
+	cont "HOENN for my"
+	cont "abortions!"
 	done
 
 _CeladonGymBattleText8::						;modified text

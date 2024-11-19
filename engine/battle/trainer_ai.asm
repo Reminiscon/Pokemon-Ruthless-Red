@@ -1468,7 +1468,7 @@ AIMoveChoiceModification7:
 	ret nc
     ld a, [wBattleMonStatus]
 	bit PAR, a
-	jr nz, .skiptotrapping
+	jr z, .skiptotrapping
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	ld a, [wAILayer7Encouragement]
 	and a ;cp $1 ;ret nz	;AI layer 7 is activated regardless of the turn count
@@ -1505,6 +1505,7 @@ AIMoveChoiceModification7:
 	dec [hl]
 	dec [hl]
 	jr .nextMove
+	ret
 .skiptotrapping
 	ld a, [wAILayer7Encouragement]
 	and a ;cp $1 ;ret nz	;AI layer 7 is activated regardless of the turn count
@@ -1576,54 +1577,54 @@ ReadMoveForAIscoring:
 ;6 - Defensive advanced battle strategies (NEW)
 ;7 - Offensive advanced battle strategies (NEW)
 TrainerClassMoveChoiceModifications:
-	db 0      ; YOUNGSTER
-	db 1,0    ; BUG CATCHER
-	db 1,0    ; LASS					;Subtracted 3,4
-	db 1,3,0  ; SAILOR
-	db 1,3,0    ; JR_TRAINER_M			;Subtracted 4
-	db 1,3,0    ; JR_TRAINER_F			;Subtracted 4
-	db 1,2,3,4,0; POKEMANIAC
-	db 1,3,4,5,0  ; SUPER_NERD			;Added 5, Subtracted 2
-	db 1,3,0    ; HIKER					;Subtracted 4
-	db 1,0    ; BIKER
-	db 1,2,3,4,0  ; BURGLAR				;Added 2
-	db 1,2,3,4,0    ; ENGINEER			;Added 2
-	db 1,3,4,6,0  ; JUGGLER_X			;Added 3,6
-	db 1,3,0  ; FISHER
-	db 1,3,0  ; SWIMMER
-	db 0      ; CUE_BALL
-	db 1,3,0    ; GAMBLER				;Added 3
-	db 1,3,4,0  ; BEAUTY
-	db 1,2,3,0  ; PSYCHIC_TR			;Added 3, Subtracted 4
-	db 1,3,0  ; ROCKER					;Subtracted 4
-	db 1,3,4,0    ; JUGGLER				;Added 3,4
-	db 1,3,4,0    ; TAMER				;Added 3
-	db 1,3,0    ; BIRD_KEEPER			;Added 3, Subtracted 4
-	db 1,3,0    ; BLACKBELT				;Added 3
-	db 1,4,0    ; SONY1					;Added 4
-	db 1,2,3,4,0  ; PROF_OAK			;Added 2
-	db 1,2,3,4,0  ; CHIEF				
-	db 1,2,3,4,0  ; SCIENTIST			;Added 3,4
-	db 1,2,3,4,6,0  ; GIOVANNI			;Added 2,6
-	db 1,3,4,0    ; ROCKET				;Added 3,4
-	db 1,3,4,0  ; COOLTRAINER_M
-	db 1,3,4,0  ; COOLTRAINER_F
-	db 1,3,4,0    ; BRUNO
-	db 1,3,4,0    ; BROCK
-	db 1,2,3,4,0  ; MISTY				;Added 2
-	db 1,3,4,7,0  ; LT_SURGE			;Added 7
-	db 1,3,4,5,0  ; ERIKA				;Added 5
-	db 1,2,3,4,0  ; KOGA				;Added 2
-	db 1,3,4,0  ; BLAINE
-	db 1,3,4,0  ; SABRINA
-	db 1,3,4,0  ; GENTLEMAN				;Subtracted 2
-	db 1,3,4,0  ; SONY2
-	db 1,3,4,0  ; SONY3
-	db 1,2,3,4,0; LORELEI
-	db 1,2,3,0    ; CHANNELER			;Added 2,3
-	db 1,3,4,0    ; AGATHA
-	db 1,3,4,0  ; LANCE
-	db 1,3,6,0  ; BUG_MASTER	;NEW	;Given 1,3,6
+	db 0      			; YOUNGSTER
+	db 1,0    			; BUG CATCHER
+	db 1,0    			; LASS					;Subtracted 3,4
+	db 1,3,0  			; SAILOR
+	db 1,3,0    		; JR_TRAINER_M			;Subtracted 4
+	db 1,3,0    		; JR_TRAINER_F			;Subtracted 4
+	db 1,2,3,4,0		; POKEMANIAC
+	db 1,3,4,5,0  		; SUPER_NERD			;Added 5, Subtracted 2
+	db 1,3,0    		; HIKER					;Subtracted 4
+	db 1,0   			; BIKER
+	db 1,2,3,4,0  		; BURGLAR				;Added 2
+	db 1,2,3,4,0    	; ENGINEER				;Added 2
+	db 1,3,4,6,0  		; JUGGLER_X				;Added 3,6
+	db 1,3,0  			; FISHER
+	db 1,3,0  			; SWIMMER
+	db 0      			; CUE_BALL
+	db 1,3,0    		; GAMBLER				;Added 3
+	db 1,3,4,0  		; BEAUTY
+	db 1,2,3,0  		; PSYCHIC_TR			;Added 3, Subtracted 4
+	db 1,3,0  			; ROCKER				;Subtracted 4
+	db 1,3,4,0    		; JUGGLER				;Added 3,4
+	db 1,3,4,0    		; TAMER					;Added 3
+	db 1,3,0    		; BIRD_KEEPER			;Added 3, Subtracted 4
+	db 1,3,0    		; BLACKBELT				;Added 3
+	db 1,4,0    		; SONY1					;Added 4
+	db 1,2,3,4,0  		; PROF_OAK				;Added 2
+	db 1,2,3,4,0  		; CHIEF				
+	db 1,2,3,4,0  		; SCIENTIST				;Added 3,4
+	db 1,2,3,4,6,0  	; GIOVANNI				;Added 2,6
+	db 1,3,4,0    		; ROCKET				;Added 3,4
+	db 1,3,4,0  		; COOLTRAINER_M
+	db 1,3,4,0  		; COOLTRAINER_F
+	db 1,2,3,4,0    	; BRUNO					;Added 2
+	db 1,3,4,0    		; BROCK
+	db 1,2,3,4,0  		; MISTY					;Added 2
+	db 1,3,4,7,0  		; LT_SURGE				;Added 7
+	db 1,3,4,5,0  		; ERIKA					;Added 5
+	db 1,2,3,4,0  		; KOGA					;Added 2
+	db 1,3,4,0  		; BLAINE
+	db 1,3,4,0  		; SABRINA
+	db 1,3,4,0  		; GENTLEMAN				;Subtracted 2
+	db 1,3,4,0  		; SONY2
+	db 1,2,3,4,5,6,0  	; SONY3					;Added 2,6
+	db 1,2,3,4,5,6,0	; LORELEI				;Added 5,6
+	db 1,2,3,0			; CHANNELER				;Added 2,3
+	db 1,3,4,5,6,0    	; AGATHA				;Added 5,6
+	db 1,3,4,5,6,7,0  	; LANCE					;Added 5,6,7
+	db 1,3,6,0  		; BUG_MASTER	;NEW	;Given 1,3,6
 
 INCLUDE "engine/battle/trainer_pic_money_pointers.asm"
 
@@ -1696,51 +1697,51 @@ TrainerAIPointers:
 	dbw 3,GenericAI
 	dbw 3,GenericAI
 	dbw 3,GenericAI
-	dbw 1,SailorAI	; sailor					B-
-	dbw 1,JrtrainerMAI	; jrtrainerm			B
-	dbw 1,JrtrainerFAI	; jrtrainerf			B
-	dbw 3,PokemaniacAI	; pokemaniac			A
-	dbw 3,SupernerdAI	; supernerd				A
-	dbw 1,HikerAI	; hiker						B-
+	dbw 1,SailorAI			; sailor				B-
+	dbw 1,JrtrainerMAI		; jrtrainerm			B
+	dbw 1,JrtrainerFAI		; jrtrainerf			B
+	dbw 3,PokemaniacAI		; pokemaniac			A
+	dbw 3,SupernerdAI		; supernerd				A
+	dbw 1,HikerAI			; hiker					B-
 	dbw 3,GenericAI
-	dbw 3,BurglarAI ; burglar					A
-	dbw 1,EngineerAI	; engineer				B
-	dbw 4,JugglerXAI ; juggler_x	;NEW		S-
-	dbw 1,FisherAI	; fisher					B-
-	dbw 1,SwimmerAI	; swimmer					B-
+	dbw 3,BurglarAI 		; burglar				A
+	dbw 1,EngineerAI		; engineer				B
+	dbw 4,JugglerXAI 		; juggler_x	;NEW		S-
+	dbw 1,FisherAI			; fisher				B-
+	dbw 1,SwimmerAI			; swimmer				B-
 	dbw 3,GenericAI
 	dbw 3,GenericAI
-	dbw 2,BeautyAI ; beauty						B+
-	dbw 1,PsychicTRAI	; psychicTR				B
-	dbw 1,RockerAI	; rocker					B
-	dbw 2,JugglerAI ; juggler					A-
-	dbw 2,TamerAI ; tamer						B+
-	dbw 1,BirdkeeperAI	; birdkeeper			B-
-	dbw 2,BlackbeltAI ; blackbelt				B+
-	dbw 2,Sony1AI ; sony1						B+
+	dbw 2,BeautyAI 			; beauty				B+
+	dbw 1,PsychicTRAI		; psychicTR				B
+	dbw 1,RockerAI			; rocker				B
+	dbw 2,JugglerAI 		; juggler				A-
+	dbw 2,TamerAI 			; tamer					B+
+	dbw 1,BirdkeeperAI		; birdkeeper			B-
+	dbw 2,BlackbeltAI 		; blackbelt				B+
+	dbw 2,Sony1AI 			; sony1					B+
 	dbw 3,GenericAI
-	dbw 4,ChiefAI ; chief			;NEW		S-
-	dbw 3,ScientistAI	; scientist				A
-	dbw 4,GiovanniAI ; giovanni					S
-	dbw 2,RocketAI ; rocket						A-
-	dbw 3,CooltrainerMAI ; cooltrainerm			A
-	dbw 3,CooltrainerFAI ; cooltrainerf			A
-	dbw 4,BrunoAI ; bruno						S
-	dbw 3,BrockAI ; brock						A
-	dbw 3,MistyAI ; misty						A
-	dbw 3,LtSurgeAI ; surge						A+
-	dbw 3,ErikaAI ; erika						A+
-	dbw 4,KogaAI ; koga							S-
-	dbw 4,BlaineAI ; blaine						S
-	dbw 4,SabrinaAI ; sabrina					S-
-	dbw 2,GentlemanAI ; gentleman				A-
-	dbw 3,Sony2AI ; sony2						A+
-	dbw 5,Sony3AI ; sony3						S+
-	dbw 4,LoreleiAI ; lorelei					S
-	dbw 2,ChannelerAI ; channeler				B+
-	dbw 4,AgathaAI ; agatha						S
-	dbw 5,LanceAI ; lance						S+
-	dbw 4,BugMasterAI ; bug_master	;NEW		S-
+	dbw 4,ChiefAI 			; chief			;NEW	S-
+	dbw 3,ScientistAI		; scientist				A
+	dbw 4,GiovanniAI 		; giovanni				S
+	dbw 2,RocketAI 			; rocket				A-
+	dbw 3,CooltrainerMAI 	; cooltrainerm			A
+	dbw 3,CooltrainerFAI 	; cooltrainerf			A
+	dbw 4,BrunoAI 			; bruno					S
+	dbw 3,BrockAI 			; brock					A
+	dbw 3,MistyAI 			; misty					A
+	dbw 3,LtSurgeAI 		; surge					A+
+	dbw 3,ErikaAI 			; erika					A+
+	dbw 4,KogaAI 			; koga					S-
+	dbw 4,BlaineAI 			; blaine				S
+	dbw 4,SabrinaAI 		; sabrina				S-
+	dbw 2,GentlemanAI 		; gentleman				A-
+	dbw 3,Sony2AI 			; sony2					A+
+	dbw 5,Sony3AI 			; sony3					S+
+	dbw 4,LoreleiAI 		; lorelei				S
+	dbw 2,ChannelerAI 		; channeler				B+
+	dbw 4,AgathaAI 			; agatha				S
+	dbw 5,LanceAI 			; lance					S+
+	dbw 4,BugMasterAI 		; bug_master	;NEW	S-
 
 ;joenote - reorganizing these AI routines to jump on carry instead of returning on not-carry
 ;also adding recognition of a switch-pkmn bit
@@ -2035,8 +2036,8 @@ JugglerXAI:	;NEW
 FisherAI:	;NEW
 	cp $20	;12.5%
 	jr nc, .fishernext1
-	ld a, [wEnemyMonMaxHP]		;dylannote - skip Lemonade at higher levels
-	cp 200
+	ld a, [wEnemyMonUnmodifiedLevel]		;dylannote - skip Lemonade at level 60+
+	cp 60
 	jr nc, .fishernext1
 	ld a, $2	;below fraction 
     call AICheckIfHPBelowFraction
@@ -2207,6 +2208,32 @@ BlackbeltAI:
     ret
 	
 Sony1AI:	;NEW
+	ld a, [wEnemyMonUnmodifiedLevel]
+	cp 20	;level 20 or higher to switch to tougher
+	jr nc, .toughersony1
+	call Random
+	cp $10	;6.25%
+	jr nc, .easiersony1next1
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUsePotion
+.easiersony1next1
+	call Random
+	cp $20	;12.5%
+	jr nc, .easiersony1next2
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUsePotion
+.easiersony1next2
+	call Random
+	cp $30	;18.75%
+	jr nc, .sony1next4
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUsePotion
+	jr .sony1next4
+.toughersony1
+	call Random
 	cp $40 ;25%
 	jr nc, .sony1next1
 	ld a, $2	;above fraction
@@ -2216,6 +2243,7 @@ Sony1AI:	;NEW
 	and a
 	jp nz, AIFHeaRestricted2	;SPECIAL CASE 1
 .sony1next1
+	call Random
 	cp $10	;6.25%
 	jr nc, .sony1next2
 	ld a, $2	;below fraction 
@@ -2240,6 +2268,61 @@ Sony1AI:	;NEW
     ret
 	
 ChiefAI:		;NEW
+	ld a, [wEnemyMonUnmodifiedLevel]
+	cp 50	;level 50 or higher to switch to tougher
+	jr nc, .tougherchief
+	call Random
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .easierchiefnext0
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .easierchiefnext3
+.easierchiefnext0
+	call Random
+	cp $20	;12.5%
+	jr nc, .easierchiefnext1
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseMaxPotion
+.easierchiefnext1
+	call Random
+	cp $40	;25%
+	jr nc, .easierchiefnext2
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseMaxPotion
+.easierchiefnext2
+	call Random
+	cp $60	;37.5%
+	jr nc, .easierchiefnext3
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseMaxPotion
+.easierchiefnext3
+	call Random
+    cp $80 ;50%
+	jr nc, .easierchiefnext4
+	ld a, $2	;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .easierchiefnext4
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal				;SPECIAL CASE 2
+.easierchiefnext4
+	call Random
+    cp $20 ;12.5%
+	jp nc, .chiefnext6
+	call StrCmpSpeed	;only use X_SPEED if currently slower than player
+	jp c, .chiefnext6
+	ld a, $2	;above fraction
+    call AICheckIfHPBelowFraction
+	jp c, .chiefnext6
+    ld a, [wEnemyMonStatus]
+	and a
+	jp z, AIUseXSpeed					;SPECIAL CASE 3
+	jr .chiefnext6
+.tougherchief
+	call Random
 	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
 	jr c, .chiefnext0
 	ld a, [wPlayerMovePower]
@@ -2464,6 +2547,48 @@ GiovanniAI:
 	ret
 
 RocketAI:    ;NEW
+	ld a, [wEnemyMonUnmodifiedLevel]
+	cp 30	;level 30 or higher to switch to tougher
+	jr nc, .tougherrocket
+	call Random
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .easierrocketnext0
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .easierrocketnext3
+.easierrocketnext0
+	call Random
+	cp $20	;12.5%
+	jr nc, .easierrocketnext1
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSuperPotion
+.easierrocketnext1
+	call Random
+	cp $40	;25%
+	jr nc, .easierrocketnext2
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSuperPotion
+.easierrocketnext2
+	call Random
+	cp $60	;37.5%
+	jr nc, .easierrocketnext3
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseSuperPotion
+.easierrocketnext3
+	call Random
+    cp $20	;12.5%
+	jr nc, .rocketnext4
+	call StrCmpSpeed	;only use X_SPEED if currently slower than player
+	jr c, .rocketnext4
+    ld a, $2	;above fraction
+    call AICheckIfHPBelowFraction
+    jp nc, AIXSpeRestricted2	;SPECIAL CASE 1
+	jr .rocketnext4
+.tougherrocket
+	call Random
 	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
 	jr c, .rocketnext0
 	ld a, [wPlayerMovePower]
@@ -3041,25 +3166,289 @@ Sony2AI:
 	ret
 
 Sony3AI:
-	cp $20
-	jr nc, .rival3return
-	ld a, 5
+	ld a, $2
 	call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore
-.rival3return
+	jr nc, .proceedwithotheritems
+	jp .healing
+.proceedwithotheritems
+	ld a, [wPlayerMoveEffect]
+	cp ACCURACY_DOWN1_EFFECT
+	jr z, .counterwithXaccuracy
+	cp ACCURACY_DOWN2_EFFECT
+	jr z, .counterwithXaccuracy
+	cp EVASION_UP1_EFFECT
+	jr z, .counterwithXaccuracy
+	cp EVASION_UP2_EFFECT
+	jr z, .counterwithXaccuracy
+	ld a, [wPlayerMonEvasionMod]
+	ld b, a
+	ld a, [wEnemyMonAccuracyMod]
+	sub b
+	cp 0
+	jr c, .counterwithXaccuracy
+	jr .checkforpassiveplayer
+.counterwithXaccuracy
+	ld a, [wEnemyBattleStatus2]	
+	bit USING_X_ACCURACY, a
+	jr nz, .checkforpassiveplayer	
+	call Random
+	cp $80	;50%
+	jr nz, .checkforpassiveplayer
+	jp AIUseXAccuracy
+.checkforpassiveplayer
+	ld a, [wActionResultOrTookBattleTurn]
+	cp 1
+	jp nz, .playerisaggressive
+	call StrCmpSpeed
+	jr c, .checkteam
+	ld a, [wPlayerMonSpeedMod]
+	ld b, a
+	ld a, [wEnemyMonSpeedMod]
+	sub b
+	cp 0
+	jr c, .checkteam
+	call Random
+	cp $80	;50%
+	jr nc, .checkteam
+	jp AIUseXSpeed
+.checkteam
+	ld a, [wEnemyMonSpecies]
+	cp NIDOKING
+	jp z, .nidoking
+	cp ARCANINE
+	jp z, .arcanine
+	cp LEAFEON
+	jp z, .leafeon
+	cp AERODACTYL
+	jp z, .aerodactyl
+	cp BLASTOISE
+	jp z, .blastoise
+	cp VENUSAUR
+	jp z, .venusaur
+	cp CHARIZARD
+	jp z, .charizard
+	cp MEWTWO
+	jp z, .mewtwo
+	jp .playerisaggressive
+.nidoking
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	ld a, [wEnemyBattleStatus2]
+	bit GETTING_PUMPED, a
+	jp nz, .healing
+	jp AIUseDireHit
+.arcanine
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	ld a, [wEnemyBattleStatus2]
+	bit GETTING_PUMPED, a
+	jp nz, .healing
+	jp AIUseDireHit
+.leafeon
+	ld a, [wBattleMonType1]
+	cp $14
+	jr nc, .tryguardspecinstead
+	ld a, [wBattleMonType2]
+	cp $14
+	jr nc, .tryguardspecinstead
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	jp AIUseXDefend
+.tryguardspecinstead
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	ld a, [wEnemyBattleStatus3]
+	bit HAS_LIGHT_SCREEN_UP, a
+	jp nz, .healing
+	jp AIUseGuardSpec
+.aerodactyl
+	ld a, [wBattleMonType1]
+	cp $14
+	jr nc, .tryguardspecinstead2
+	ld a, [wBattleMonType2]
+	cp $14
+	jr nc, .tryguardspecinstead2
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	jp AIUseXDefend
+.tryguardspecinstead2
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	ld a, [wEnemyBattleStatus3]
+	bit HAS_LIGHT_SCREEN_UP, a
+	jp nz, .healing
+	jp AIUseGuardSpec
+.blastoise
+	call Random
+	cp $80	;50%
+	jr nc, .tryguardspecinstead3
+	ld a, [wEnemyBattleStatus2]
+	bit GETTING_PUMPED, a
+	jr nz, .tryguardspecinstead3
+	jp AIUseDireHit
+.tryguardspecinstead3
+	ld a, [wBattleMonType1]
+	cp $14
+	jp c, .healing
+	ld a, [wBattleMonType2]
+	cp $14
+	jp c, .healing
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	ld a, [wEnemyBattleStatus3]
+	bit HAS_LIGHT_SCREEN_UP, a
+	jp nz, .healing
+	jp AIUseGuardSpec
+.venusaur
+	ld a, [wBattleMonType1]
+	cp $14
+	jr nc, .tryguardspecinstead4
+	ld a, [wBattleMonType2]
+	cp $14
+	jr nc, .tryguardspecinstead4
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	jp AIUseXDefend
+.tryguardspecinstead4
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	ld a, [wEnemyBattleStatus3]
+	bit HAS_LIGHT_SCREEN_UP, a
+	jp nz, .healing
+	jp AIUseGuardSpec
+.charizard
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	jp AIUseXSpecial
+.mewtwo
+	ld a, [wBattleMonType1]
+	cp PSYCHIC
+	jr z, .useXattack
+	cp GHOST
+	jr z, .useXattack
+	ld a, [wBattleMonType2]
+	cp PSYCHIC
+	jr z, .useXattack
+	cp GHOST
+	jr z, .useXattack
+	jr .attemptXdefendinstead
+.useXattack
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	jp AIUseXAttack
+.attemptXdefendinstead
+	ld a, [wBattleMonType1]
+	cp $14
+	jp nc, .healing
+	ld a, [wBattleMonType2]
+	cp $14
+	jp nc, .healing
+	call Random
+	cp $20	;12.5%
+	jp nc, .healing
+	jp AIUseXDefend
+.playerisaggressive
+	ld a, $2
+	call AICheckIfHPBelowFraction
+	jp c, .healing
+	ld a, [wEnemyMonStatus]
+	and a
+	jp nz, .healing
+	ld a, [wPlayerMoveType]
+	cp $14
+	jr c, .counterwithXdefend
+	jr .counterwithguardspec
+.counterwithXdefend
+	ld a, [wPlayerMovePower]
+	cp 10
+	jp c, .healing
+	call Random
+	cp $20	;12.5%
+	jp nc, .healing
+	jp AIUseXDefend
+.counterwithguardspec
+	ld a, [wPlayerMovePower]
+	cp 10
+	jp nc, .healing
+	ld a, [wEnemyBattleStatus3]
+	bit HAS_LIGHT_SCREEN_UP, a
+	jp nz, .healing
+	call Random
+	cp $20	;12.5%
+	jp nc, .healing
+	jp AIUseGuardSpec
+.healing
+	jp EliteHealingRoutine
 	ret
 
 LoreleiAI:
-	cp $80
-	jr nc, .loreleireturn
-	ld a, $2
+	ld a, $2	;below fraction
 	call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore				
-.loreleireturn
+	jr c, .healing
+	ld a, [wEnemyMonSpecies]
+	cp SLOWBRO
+	jr z, .skipEntireXSpecial
+	ld a, [wEnemyMonSpecialMod]
+	cp 10 	;+3
+	jr nc, .skipEntireXSpecial
+	ld a, [wPlayerMoveType]
+	cp FIRE
+	jr nz, .skipAntifireXSpecial
+	call Random
+	cp $E0	;87.5%
+	jr nc, .skipAntifireXSpecial
+	jp AIUseXSpecial
+.skipAntifireXSpecial
+	call Random
+	cp $40	;25%
+	jr nc, .skipEntireXSpecial
+	ld a, [wPlayerMoveType]
+	cp $14
+	jr c, .skipEntireXSpecial
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .skipEntireXSpecial
+	ld a, [wEnemyMonSpecialMod]
+	cp 10 	;+3
+	jr nc, .skipEntireXSpecial
+	jp AIUseXSpecial
+.skipEntireXSpecial
+	call Random
+	cp $40	;25%
+	jr nc, .healing
+	ld a, [wEnemyMonSpecies]
+	cp SLOWBRO
+	jr z, .healing
+	cp PORYGON2
+	jr z, .healing
+	cp CHANSEY
+	jr z, .healing
+	call StrCmpSpeed
+	jr c, .healing
+	ld a, [wEnemyMonSpeedMod]
+	cp 10 	;+3
+	jr nc, .healing
+	ld a, [wEnemyMonStatus]
+	and a
+	jr nz, .healing
+	jp AIUseXSpeed
+.healing
+	jp EliteHealingRoutine
 	ret
 
 ChannelerAI:	;NEW
-	cp $8 ;3.125%
+	cp $8	;3.125%
 	jr nc, .channelernext1
 	ld a, $1	;below fraction 
     call AICheckIfHPBelowFraction
@@ -3090,31 +3479,216 @@ ChannelerAI:	;NEW
     ret
 
 BrunoAI:
-	cp $20	;12.5% chance to use
-	jp c, AIUseXAttack					
+	ld a, [wActionResultOrTookBattleTurn]
+	cp 1
+	jr nz, .healing
+	call Random
+	cp $80	;50%
+	jr nc, .healing
+	ld a, [wEnemyMonSpecies]
+	cp HERACROSS
+	jr z, .useXspeedinstead
+	cp HITMONCHAN
+	jr z, .useXspeedinstead
+	cp HITMONLEE
+	jr z, .useXspeedinstead
+	call StrCmpSpeed
+	jr nc, .useXspeedinstead
+	ld a, [wEnemyMonAttackMod]
+	cp 10	;+3
+	jr nc, .useXspeedinstead
+	jp AIUseXAttack
+.useXspeedinstead
+	ld a, [wEnemyMonSpeedMod]
+	cp 10	;+3
+	jr nc, .healing
 	ld a, [wEnemyMonStatus]
-    and a
-    jp nz, AIUseFullHeal            
-    ret 
+	and a
+	jr nz, .healing
+	jp AIUseXSpeed
+.healing
+	jp EliteHealingRoutine
+	ret
 
 AgathaAI:
-;	cp $14
-;	jp c, AISwitchIfEnoughMons
-	cp $C0	;75% chance to heal
-	jr nc, .agathareturn
-	ld a, $2
-	call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore				
-.agathareturn
+	cp $60	;50%
+	jr nc, .healing
+	ld a, [wEnemyBattleStatus2]
+	bit HAS_SUBSTITUTE_UP, a
+	jr nz, .checkforXspeed
+	ld a, [wPlayerBattleStatus1]
+	bit CONFUSED, a
+	jr nz, .checkforXspeed
+	ld a, [wEnemyMonEvasionMod]
+	cp 9	;+2
+	jr nc, .checkforXspeed
+	jr .healing
+.checkforXspeed
+	call StrCmpSpeed
+	jr c, .usedirehitinstead
+	ld a, [wEnemyMonStatus]
+	and a
+	jr nz, .healing
+	call Random
+	cp $80	;50%
+	jr nc, .healing
+	jp AIUseXSpeed
+.usedirehitinstead
+	jp AIDHitRestricted2
+.healing
+	jp EliteHealingRoutine
 	ret
 
 LanceAI:
-	cp $E0	;87.5% chance to heal
-	jr nc, .lancereturn
 	ld a, $2
 	call AICheckIfHPBelowFraction
-	jp c, AIUseFullRestore				
-.lancereturn
+	jr nc, .proceedwithotheritems
+	jp .healing
+.proceedwithotheritems
+	ld a, [wPlayerMoveEffect]
+	cp ACCURACY_DOWN1_EFFECT
+	jr z, .counterwithXaccuracy
+	cp ACCURACY_DOWN2_EFFECT
+	jr z, .counterwithXaccuracy
+	cp EVASION_UP1_EFFECT
+	jr z, .counterwithXaccuracy
+	cp EVASION_UP2_EFFECT
+	jr z, .counterwithXaccuracy
+	ld a, [wPlayerMonEvasionMod]
+	ld b, a
+	ld a, [wEnemyMonAccuracyMod]
+	sub b
+	cp 0
+	jr c, .counterwithXaccuracy
+	jr .checkforpassiveplayer
+.counterwithXaccuracy
+	ld a, [wEnemyBattleStatus2]	
+	bit USING_X_ACCURACY, a
+	jr nz, .checkforpassiveplayer	
+	call Random
+	cp $80	;50%
+	jp AIUseXAccuracy
+.checkforpassiveplayer
+	ld a, [wActionResultOrTookBattleTurn]
+	cp 1
+	jp nz, .countericeattacks
+	call StrCmpSpeed
+	jr c, .checkdragonites
+	ld a, [wPlayerMonSpeedMod]
+	ld b, a
+	ld a, [wEnemyMonSpeedMod]
+	sub b
+	cp 0
+	jr c, .checkdragonites
+	call Random
+	cp $80	;50%
+	jr nc, .checkdragonites
+	jp AIUseXSpeed
+.checkdragonites
+	ld a, [wEnemyMonPartyPos]	;zero-indexed
+	cp 0
+	jr z, .the1stdragonite
+	cp 2
+	jr z, .the2nddragonite
+	cp 4
+	jr z, .the3rddragonite
+	jr .countericeattacks
+.the1stdragonite
+	ld a, [wPlayerMonDefenseMod]
+	ld b, a
+	ld a, [wEnemyMonAttackMod]
+	sub b
+	cp 0
+	jp c, .lastresortdirehitphysical
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	jp AIUseXAttack
+.the2nddragonite
+	ld a, [wPlayerMonSpecialMod]
+	ld b, a
+	ld a, [wEnemyMonSpecialMod]
+	sub b
+	cp 0
+	jp c, .lastresortdirehitspecial
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	jp AIUseXSpecial
+.the3rddragonite
+	ld a, [wEnemyBattleStatus2]	
+	bit USING_X_ACCURACY, a
+	jr nz, .attackboost3rddragonite
+	call Random
+	cp $80	;50%
+	jp nc, .healing
+	jp AIUseXAccuracy
+.attackboost3rddragonite
+	ld a, [wPlayerMonDefenseMod]
+	ld b, a
+	ld a, [wEnemyMonAttackMod]
+	sub b
+	cp 0
+	jp c, .lastresortdirehitphysical
+	call Random
+	cp $80	;50%
+	jr nc, .healing
+	jp AIUseXAttack
+.countericeattacks
+	ld a, $2
+	call AICheckIfHPBelowFraction
+	jr c, .healing
+	ld a, [wEnemyBattleStatus3]
+	bit HAS_LIGHT_SCREEN_UP, a
+	jr nz, .lastresortdirehitphysical
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .lastresortdirehitphysical
+	ld a, [wPlayerMoveType]
+	cp ICE
+	jr nz, .counterotherspecialattacks
+	call Random
+	cp $E0	;87.5%
+	jr nc, .healing
+	jp AIUseGuardSpec
+.counterotherspecialattacks
+	ld a, [wPlayerMoveType]
+	cp $14
+	jr c, .healing
+	call Random
+	cp $20	;12.5%
+	jr nc, .healing
+	jp AIUseGuardSpec
+.lastresortdirehitphysical
+	ld a, [wPlayerMonDefenseMod]
+	ld b, a
+	ld a, [wEnemyMonAttackMod]
+	sub b
+	cp 0
+	jr nc, .lastresortdirehitspecial
+	call Random
+	cp $E0	;87.5%
+	jr nc, .healing
+	ld a, [wEnemyBattleStatus2]
+	bit GETTING_PUMPED, a
+	jr nz, .healing
+	jp AIUseDireHit
+.lastresortdirehitspecial
+	ld a, [wPlayerMonSpecialMod]
+	ld b, a
+	ld a, [wEnemyMonSpecialMod]
+	sub b
+	cp 0
+	jr nc, .healing
+	call Random
+	cp $E0	;87.5%
+	jr nc, .healing
+	ld a, [wEnemyBattleStatus2]
+	bit GETTING_PUMPED, a
+	jr nz, .healing
+	jp AIUseDireHit
+.healing
+	jp EliteHealingRoutine
 	ret
 	
 BugMasterAI:
@@ -4519,4 +5093,53 @@ AITrickyUseXSpecial:
 .useitem
 	jp AIUseXSpecial
 
+EliteHealingRoutine:
+	call Random
+	cp $20 ;12.5% chance that A.I. will initiate standard healing protocol even if player is not attacking
+	jr c, .elitenext1
+	ld a, [wPlayerMovePower]
+	cp 10
+	jr c, .elitenext4
+.elitenext1
+	call Random
+    cp $60	;37.5%
+	jr nc, .elitenext2
+	ld a, $2	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.elitenext2
+	call Random
+	cp $80	;50%
+	jr nc, .elitenext3
+	ld a, $3	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.elitenext3
+	call Random
+	cp $A0	;62.5%
+	jr nc, .elitenext4
+	ld a, $6	;below fraction 
+    call AICheckIfHPBelowFraction
+	jp c, AIUseFullRestore
+.elitenext4
+	call Random
+    cp $E0 ;87.5%
+	jr nc, .elitenext5
+	ld a, $1	;below fraction
+    call AICheckIfHPBelowFraction
+	jr nc, .elitenext5
+    jp AIUseFullRestoreSLPFRZPAR		;SPECIAL CASE 1
+.elitenext5
+	call Random
+    cp $E0 ;87.5%
+	jr nc, .elitenext6
+	ld a, $1	;above fraction
+    call AICheckIfHPBelowFraction
+	jr c, .elitenext6
+    ld a, [wEnemyMonStatus]
+	and a
+	jp nz, AIUseFullHeal				;SPECIAL CASE 2
+.elitenext6
+	and a
+	ret
 

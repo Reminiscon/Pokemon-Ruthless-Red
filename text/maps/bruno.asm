@@ -16,6 +16,9 @@ _BrunoBeforeBattleText::
 	para "We will grind you"
 	line "down with our"
 	cont "superior power!"
+	
+	para "Switch tactics"
+	line "won't save you!"
 
 	para "Hoo hah!"
 	done

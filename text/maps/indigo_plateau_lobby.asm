@@ -23,3 +23,55 @@ _IndigoPlateauLobbyText3::
 	cont "next trainer!"
 	cont "Good luck!"
 	done
+	
+_IndigoPlateauLobbyText6::
+	text "Hey there, so"
+	line "you made it."
+	
+	para "No hard feelings,"
+	line "right, buddy?"
+	
+	para "By the way..."
+	
+	para "I lost."
+	
+	para "BRUNO pretty much"
+	line "annihilated me."
+	done
+
+_IndigoPlateauLobbyText7::
+	text "After GIOVANNI"
+	line "disbanded TEAM"
+	cont "ROCKET..."
+	
+	para "I had no other"
+	line "purpose, so I"
+	cont "tried my luck."
+	
+	para "Heh.. if you"
+	line "thought that"
+	cont "ARM.MEWTWO was"
+	cont "tough.."
+	
+	para "Well, adios in"
+	line "advance!"
+	
+	para "HAH HAH HAH!"
+	
+	para "?"
+	
+	para "Yes, I lost."
+	
+	para "LANCE is a true"
+	line "#MON MASTER."
+	done
+
+_IndigoPlateauLobbyText8::
+	text "Hey there"
+	line "neighborino!"
+	
+	para "Fancy a bit 'o"
+	line "refreshin' before"
+	cont "the testin'?!"
+	done
+

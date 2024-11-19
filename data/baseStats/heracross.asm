@@ -21,7 +21,7 @@ db 5 ; growth rate
 	tmlearn 3,6,8
 	tmlearn 9,10,15
 	tmlearn 18,19
-	tmlearn 28,31,32
+	tmlearn 26,28,31,32
 	tmlearn 34
 	tmlearn 44,48
 	tmlearn 50,51,54

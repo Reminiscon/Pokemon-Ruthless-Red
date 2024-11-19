@@ -1,11 +1,11 @@
 Route23Script:
-	call Route23Script_511e9
+	;call Route23Script_511e9
 	call EnableAutoTextBoxDrawing
 	ld hl, Route23ScriptPointers
 	ld a, [wRoute23CurScript]
 	jp CallFunctionInTable
 
-Route23Script_511e9:
+;Route23Script_511e9:
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ; wispnote - Resetting Victory Road Puzzle
 	; EVENT_VICTORY_ROAD_1_BOULDER_ON_SWITCH was probably mentto be reset here

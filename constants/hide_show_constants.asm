@@ -124,7 +124,7 @@ const_value = 0
 	const HS_VICTORY_ROAD_2_ITEM_2        ; 5D X
 	const HS_VICTORY_ROAD_2_ITEM_3        ; 5E X
 	const HS_VICTORY_ROAD_2_ITEM_4        ; 5F X
-	const HS_VICTORY_ROAD_2_BOULDER       ; 60
+	;const HS_VICTORY_ROAD_2_BOULDER      ; 60
 	const HS_BILL_POKEMON                 ; 61
 	const HS_BILL_1                       ; 62
 	const HS_BILL_2                       ; 63

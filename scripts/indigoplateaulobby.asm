@@ -21,6 +21,9 @@ IndigoPlateauLobbyTextPointers:
 	dw IndigoPlateauLobbyText3
 	dw IndigoCashierText
 	dw IndigoTradeNurseText
+	dw IndigoPlateauLobbyText6
+	dw IndigoPlateauLobbyText7
+	dw IndigoPlateauLobbyText8
 
 IndigoHealNurseText:
 	TX_POKECENTER_NURSE
@@ -35,3 +38,16 @@ IndigoPlateauLobbyText3:
 
 IndigoTradeNurseText:
 	TX_CABLE_CLUB_RECEPTIONIST
+
+IndigoPlateauLobbyText6:
+	TX_FAR _IndigoPlateauLobbyText6
+	db "@"
+
+IndigoPlateauLobbyText7:
+	TX_FAR _IndigoPlateauLobbyText7
+	db "@"
+	
+IndigoPlateauLobbyText8:
+	TX_FAR _IndigoPlateauLobbyText8
+	db "@"
+	

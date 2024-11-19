@@ -20,6 +20,12 @@ _AgathaBeforeBattleText::
 	para "<PLAYER>! I'll show"
 	line "you how a real"
 	cont "trainer fights!"
+	
+	para "Prepare to witness"
+	line "magic and tricks"
+	cont "that will make"
+	cont "you regret play-"
+	cont "ing this game!"
 	done
 
 _AgathaEndBattleText::

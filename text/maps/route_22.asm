@@ -39,7 +39,7 @@ _Route22RivalDefeatedText1::
 
 _Route22Text_511bc::
 	text "What?"
-	line "Why do I have 2"
+	line "Why do I have 4"
 	cont "#MON?"
 
 	para "You should catch"

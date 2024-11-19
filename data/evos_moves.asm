@@ -1208,6 +1208,7 @@ JynxEvosMoves:
 	db 35, CONFUSION
 	db 39, BODY_SLAM
 	db 47, THRASH
+	db 48, PETAL_DANCE
 	db 58, BLIZZARD
 	db 0
 
@@ -1975,6 +1976,9 @@ MewtwoEvosMoves:
 	db 75, MIST
 	db 81, AMNESIA
 	db 88, SHADOW_BALL
+	db 100, PSYCHIC_M								;Added, for Mewtwo encounter
+	db 100, ICE_BEAM								;Added, for Mewtwo encounter
+	db 100, RECOVER									;Added, for Mewtwo encounter
 	db 0
 
 SnorlaxEvosMoves:
@@ -2777,7 +2781,8 @@ ArmMewtwoEvosMoves:
 	db 70, RECOVER
 	db 75, MIST
 	db 81, AMNESIA
-	db 95, COUNTER ;placeholder
+	db 84, SUPPRESS
+	db 88, SHADOW_BEAM
 	db 0
 	
 VenustoiseEvosMoves:

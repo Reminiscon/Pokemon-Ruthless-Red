@@ -127,11 +127,8 @@ GaryScript4:
 	ret
 
 OakEntranceAfterVictoryMovement:
-	db NPC_MOVEMENT_UP
-	db NPC_MOVEMENT_UP
-	db NPC_MOVEMENT_UP
-	db NPC_MOVEMENT_UP
-	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_RIGHT
+	db NPC_MOVEMENT_RIGHT
 	db $FF
 
 GaryScript5:
@@ -190,6 +187,7 @@ GaryScript7:
 OakExitGaryRoomMovement:
 	db NPC_MOVEMENT_UP
 	db NPC_MOVEMENT_UP
+	db NPC_MOVEMENT_RIGHT
 	db $FF
 
 GaryScript8:

@@ -670,7 +670,7 @@ HandlePoisonBurnLeechSeed:
 	pop af
 	ld [H_WHOSETURN], a
 	pop hl
-	call HandleLeechSeed_DecreaseOwnHP ;Instead of HandlePoisonBurnLeechSeed_DecreaseOwnHP, make Leech Seed take 1/8 HP instead of 1/16 HP
+	call HandlePoisonBurnLeechSeed_DecreaseOwnHP
 	call HandlePoisonBurnLeechSeed_IncreaseEnemyHP
 	push hl
 	ld hl, HurtByLeechSeedText
@@ -719,8 +719,8 @@ HandlePoisonBurnLeechSeed_DecreaseOwnHP:
 	rr c
 	srl b
 	rr c
-	srl c 
-	srl c         ; c = max HP/16 (assumption: HP < 1024)
+	;srl c 
+	srl c         ; c = max HP/8 (assumption: HP < 1024) dylannote - changed to max HP/8 for regular poison, burn, and leech seed
 	ld a, c
 	and a
 	jr nz, .nonZeroDamage
@@ -736,6 +736,12 @@ HandlePoisonBurnLeechSeed_DecreaseOwnHP:
 .playersTurn
 	bit BADLY_POISONED, [hl]
 	jr z, .noToxic
+	srl c		  ; c = max HP/16 (assumption: HP < 1024) - dylnanote - added this code so that toxic poison correctly starts and increments at 1/16
+	ld a, c
+	and a
+	jr nz, .nonZeroDamageAgain
+	inc c
+.nonZeroDamageAgain
 	ld a, [de]    ; increment toxic counter
 	inc a
 	ld [de], a
@@ -821,75 +827,6 @@ HandlePoisonBurnLeechSeed_IncreaseEnemyHP:
 	ld [H_WHOSETURN], a
 	pop hl
 	ret
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;Added so that Leech Seed will subtract 1/8 max HP like it does in later gens, instead of 1/16 max HP
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-HandleLeechSeed_DecreaseOwnHP:
-	push hl
-	push hl
-	ld bc, $e      ; skip to max HP
-	add hl, bc
-	ld a, [hli]    ; load max HP
-	ld [wHPBarMaxHP+1], a
-	ld b, a
-	ld a, [hl]
-	ld [wHPBarMaxHP], a
-	ld c, a
-	srl b
-	rr c
-	srl b
-	rr c
-	srl c ;srl c         ; c = max HP/8 (assumption: HP < 1024), one srl c was commented out
-	ld a, c
-	and a
-	jr nz, .nonZeroDamage
-	inc c         ; damage is at least 1
-.nonZeroDamage
-	ld hl, wPlayerBattleStatus3
-	ld de, wPlayerToxicCounter
-	ld a, [H_WHOSETURN]
-	and a
-	jr z, .playersTurn
-	ld hl, wEnemyBattleStatus3
-	ld de, wEnemyToxicCounter
-.playersTurn
-	bit BADLY_POISONED, [hl]
-	jr z, .noToxic
-	ld a, [de]    ; increment toxic counter
-	inc a
-	ld [de], a
-	ld hl, $0000
-.toxicTicksLoop
-	add hl, bc
-	dec a
-	jr nz, .toxicTicksLoop
-	ld b, h       ; bc = damage * toxic counter
-	ld c, l
-.noToxic
-	pop hl
-	inc hl
-	ld a, [hl]    ; subtract total damage from current HP
-	ld [wHPBarOldHP], a
-	sub c
-	ld [hld], a
-	ld [wHPBarNewHP], a
-	ld a, [hl]
-	ld [wHPBarOldHP+1], a
-	sbc b
-	ld [hl], a
-	ld [wHPBarNewHP+1], a
-	jr nc, .noOverkill
-	xor a         ; overkill: zero HP
-	ld [hli], a
-	ld [hl], a
-	ld [wHPBarNewHP], a
-	ld [wHPBarNewHP+1], a
-.noOverkill
-	call UpdateCurMonHPBar
-	pop hl
-	ret
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 	
 UpdateCurMonHPBar:
 	coord hl, 10, 9    ; tile pointer to player HP bar
@@ -1180,8 +1117,19 @@ TrainerBattleVictory:
 .gymleader
 	ld a, [wTrainerClass]
 	cp SONY3 ; final battle against rival
+	jr z, .special1998
+	cp LORELEI
+	jr z, .special1998
+	cp BRUNO
+	jr z, .special1998
+	cp AGATHA
+	jr z, .special1998
+	cp LANCE
 	jr nz, .notrival
+.special1998
 	ld b, MUSIC_DEFEATED_GYM_LEADER
+	cp SONY3 ; final battle against rival
+	jr nz, .notrival
 	ld hl, wFlags_D733
 	set 1, [hl]
 .notrival
@@ -5207,7 +5155,9 @@ CriticalHitTest:
 QuasiHighCriticalMoves:
 	db BONEMERANG
 	db DOUBLESLAP
+	db DOUBLE_KICK
 	db TWINEEDLE
+	db SKULL_BASH
 	db SKY_ATTACK
 	db VINE_WHIP
 	db AEROBLAST

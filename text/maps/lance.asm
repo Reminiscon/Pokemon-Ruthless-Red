@@ -25,6 +25,10 @@ _LanceBeforeBattleText::
 	para "Your LEAGUE"
 	line "challenge ends"
 	cont "with me, <PLAYER>!"
+	
+	para "No. Seriously."
+	
+	para "It's over."
 	done
 
 _LanceEndBattleText::

@@ -60,7 +60,7 @@ VictoryRoad3Script0:
 	ld a, HS_VICTORY_ROAD_3_BOULDER
 	ld [wMissableObjectIndex], a
 	predef HideObject
-	ld a, HS_VICTORY_ROAD_2_BOULDER
+	ld a, HS_SEAFOAM_ISLANDS_1_BOULDER_1
 	ld [wMissableObjectIndex], a
 	predef_jump ShowObject
 

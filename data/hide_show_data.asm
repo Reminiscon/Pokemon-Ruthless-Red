@@ -362,7 +362,6 @@ MapHS2E:
 	db MOLTEN_CAVERN,$05,Show					;NEW
 	db MOLTEN_CAVERN,$06,Show					;NEW
 	db MOLTEN_CAVERN,$07,Show					;NEW
-	
 MapHS34:
 	db MUSEUM_1F,$05,Show
 MapHSE4:
@@ -430,7 +429,7 @@ MapHSC2:
 	db VICTORY_ROAD_2,$08,Show
 	db VICTORY_ROAD_2,$09,Show
 	db VICTORY_ROAD_2,$0A,Show
-	;db VICTORY_ROAD_2,$0D,Show
+	;db VICTORY_ROAD_2,$0D,Show	;deleted because boulders aren't here anymore
 MapHS58:
 	db BILLS_HOUSE,$01,Show
 	db BILLS_HOUSE,$02,Hide
@@ -564,7 +563,6 @@ MapHSD8:
 	db MANSION_4,$04,Show
 	db MANSION_4,$05,Show
 	db MANSION_4,$06,Show
-	;db MANSION_4,$06,Show
 	db MANSION_4,$09,Show
 MapHSD9:
 	db SAFARI_ZONE_EAST,$01,Show
@@ -593,7 +591,7 @@ MapHS6C:
 	db VICTORY_ROAD_1,$03,Show
 	db VICTORY_ROAD_1,$04,Show
 MapHS78:
-	db CHAMPIONS_ROOM,$02,Hide
+	db CHAMPIONS_ROOM,$02,Show	;Changing it so Oak is not originally hidden
 MapHSC0:
 	db SEAFOAM_ISLANDS_1,$01,Show
 	db SEAFOAM_ISLANDS_1,$02,Show

@@ -107,13 +107,10 @@ _GaryText_76125::
 	text "OAK: <RIVAL>! I'm"
 	line "disappointed!"
 
-	para "I came when I"
-	line "heard you beat"
-	cont "the ELITE FOUR!"
+	para "I watched this"
+	line "entire battle!"
 
-	para "But, when I got"
-	line "here, you had"
-	cont "already lost!"
+	para "And you lost!"
 
 	para "<RIVAL>! Do you"
 	line "understand why"

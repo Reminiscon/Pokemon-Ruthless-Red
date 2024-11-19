@@ -30,8 +30,8 @@ CheckHigherEnemyPriority:
 	ret
 HighPriorityMoves:
 	cp QUICK_ATTACK
-;	ret z
-;	cp DUMMY_MOVE1
+	ret z
+	cp COMET_PUNCH
 ;	ret z
 ;	cp DUMMY_MOVE2
 ;	ret z

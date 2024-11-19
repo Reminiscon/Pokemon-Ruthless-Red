@@ -16,6 +16,10 @@ _LoreleiBeforeBattleText::
 	line "be at my mercy"
 	cont "when they are"
 	cont "frozen solid!"
+	
+	para "I will douse"
+	line "any FIRE in"
+	cont "your soul!"
 
 	para "Hahaha!"
 	line "Are you ready?"

@@ -381,14 +381,21 @@ PlayBattleMusic::
 	ld a, [wCurOpponent]
 	cp 200
 	jr c, .wildBattle
+	cp OPP_LORELEI
+	jr z, .elite4Battle
+	cp OPP_BRUNO
+	jr z, .elite4Battle
+	cp OPP_AGATHA
+	jr z, .elite4Battle
+	cp OPP_LANCE
+	jr z, .finalBattle
 	cp OPP_SONY3
 	jr z, .finalBattle
-	cp OPP_LANCE
-	jr nz, .normalTrainerBattle
-	ld a, MUSIC_GYM_LEADER_BATTLE ; lance also plays gym leader theme
-	jr .playSong
 .normalTrainerBattle
 	ld a, MUSIC_TRAINER_BATTLE
+	jr .playSong
+.elite4Battle
+	ld a, MUSIC_GYM_LEADER_BATTLE
 	jr .playSong
 .finalBattle
 	ld a, MUSIC_FINAL_BATTLE

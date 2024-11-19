@@ -531,15 +531,15 @@ RockTunnelPokecenterHiddenObjects:
 	dw OpenPokemonCenterPC
 	db $FF
 ViridianForestHiddenObjects:
-	db $12,$01,POTION
+	db $21,$02,POTION
 	dbw BANK(HiddenItems),HiddenItems
-	db $2a,$10,ANTIDOTE
+	db $0b,$11,ANTIDOTE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 MtMoon3HiddenObjects:
-	db $0c,$12,MOON_STONE
+	db $05,$16,MOON_STONE
 	dbw BANK(HiddenItems),HiddenItems
-	db $09,$21,ETHER
+	db $0b,$02,ETHER
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 IndigoPlateauHiddenObjects:
@@ -551,13 +551,13 @@ IndigoPlateauHiddenObjects:
 	dw PrintIndigoPlateauHQText
 	db $FF
 Route25HiddenObjects:
-	db $03,$26,ETHER
+	db $09,$2d,ETHER
 	dbw BANK(HiddenItems),HiddenItems
-	db $01,$0a,ELIXER
+	db $02,$0a,ULTRA_BALL
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route9HiddenObjects:
-	db $07,$0e,ETHER
+	db $03,$0e,PP_UP
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SSAnne6HiddenObjects:
@@ -573,21 +573,21 @@ SSAnne10HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route10HiddenObjects:
-	db $11,$09,SUPER_POTION
+	db $0b,$0e,FULL_HEAL
 	dbw BANK(HiddenItems),HiddenItems
 	db $35,$10,MAX_ETHER
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 RocketHideout1HiddenObjects:
-	db $0f,$15,PP_UP
+	db $07,$13,PP_UP
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 RocketHideout3HiddenObjects:
-	db $11,$1b,NUGGET
+	db $12,$1b,NUGGET
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 RocketHideout4HiddenObjects:
-	db $01,$19,SUPER_POTION
+	db $01,$19,FULL_RESTORE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SaffronPokecenterHiddenObjects:
@@ -599,21 +599,21 @@ SaffronPokecenterHiddenObjects:
 	dw OpenPokemonCenterPC
 	db $FF
 PokemonTower5HiddenObjects:
-	db $0c,$04,ELIXER
+	db $0f,$0c,ELIXER
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route13HiddenObjects:
-	db $0e,$01,PP_UP
+	db $03,$25,PP_UP
 	dbw BANK(HiddenItems),HiddenItems
 	db $0d,$10,CALCIUM
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SafariZoneEntranceHiddenObjects:
-	db $05,$05,NUGGET	;joenote - moved to within map bounds
+	db $05,$05,ULTRA_BALL	;joenote - moved to within map bounds
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SafariZoneWestHiddenObjects:
-	db $05,$06,REVIVE
+	db $05,$0a,MAX_POTION
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SilphCo5FHiddenObjects:
@@ -621,28 +621,28 @@ SilphCo5FHiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SilphCo9FHiddenObjects:
-	db $0f,$02,MAX_POTION
+	db $0f,$02,FULL_HEAL
 	dbw BANK(HiddenItems),HiddenItems
 	db $0B,$07,$04		;dylannote - adding functional PC to Silph Co. 9F
 	db BANK(OpenPokemonCenterPC)
 	dw OpenPokemonCenterPC
 	db $FF
 CopycatsHouse2FHiddenObjects:
-	db $01,$01,NUGGET
+	db $01,$01,POKE_DOLL
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 UnknownDungeon1HiddenObjects:
-	db $0b,$0e,RARE_CANDY
+	db $0b,$0e,NUGGET
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 UnknownDungeon3HiddenObjects:
-	db $03,$1b,ULTRA_BALL
+	db $03,$1b,NUGGET
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 PowerPlantHiddenObjects:
-	db $10,$11,MAX_ELIXER
+	db $05,$11,MAX_ETHER
 	dbw BANK(HiddenItems),HiddenItems
-	db $01,$0c,PP_UP
+	db $07,$02,PP_UP
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SeafoamIslands3HiddenObjects:
@@ -650,11 +650,11 @@ SeafoamIslands3HiddenObjects:
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SeafoamIslands5HiddenObjects:
-	db $11,$19,ULTRA_BALL
+	db $08,$19,NUGGET
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Mansion1HiddenObjects:
-	db $10,$08,MOON_STONE
+	db $06,$04,FIRE_STONE
 	dbw BANK(HiddenItems),HiddenItems
 	db $05,$02,$04
 	db BANK(Mansion1Script_Switches)
@@ -675,14 +675,14 @@ Mansion2HiddenObjects:
 	dw Mansion2Script_Switches
 	db $FF
 Mansion3HiddenObjects:
-	db $09,$01,MAX_REVIVE
+	db $13,$13,MAX_ETHER
 	dbw BANK(HiddenItems),HiddenItems
 	db $17,$04,$04
 	db BANK(Mansion3Script_Switches)
 	dw Mansion3Script_Switches
 	db $FF
 Mansion4HiddenObjects:
-	db $09,$01,RARE_CANDY
+	db $09,$08,RARE_CANDY
 	dbw BANK(HiddenItems),HiddenItems
 	db $17,$11,$04
 	db BANK(Mansion4Script_Switches)
@@ -718,15 +718,15 @@ Mansion4HiddenObjects:
 Route23HiddenObjects:
 	db $2c,$09,FULL_RESTORE
 	dbw BANK(HiddenItems),HiddenItems
-	db $46,$13,ULTRA_BALL
+	db $46,$0e,PP_UP
 	dbw BANK(HiddenItems),HiddenItems
-	db $5a,$08,MAX_ETHER
+	db $5a,$08,MAX_ELIXER
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 VictoryRoad2HiddenObjects:
-	db $02,$05,ULTRA_BALL
+	db $4e,$0a,NUGGET
 	dbw BANK(HiddenItems),HiddenItems
-	db $07,$1a,FULL_RESTORE
+	db $13,$19,NUGGET
 	dbw BANK(HiddenItems),HiddenItems
 	db $53,$02,$04						;NEW
 	db BANK(VictoryRoad2Script_Switches)
@@ -747,7 +747,7 @@ BillsHouseHiddenObjects:
 	dbw BANK(BillsHousePC), BillsHousePC
 	db $FF
 ViridianCityHiddenObjects:
-	db $04,$0e,POTION
+	db $04,$0e,SUPER_POTION
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SafariZoneRestHouse2HiddenObjects:
@@ -843,7 +843,7 @@ BikeShopHiddenObjects:
 	dbw BANK(PrintNewBikeText), PrintNewBikeText
 	db $FF
 Route11HiddenObjects:
-	db $05,$30,ESCAPE_ROPE
+	db $09,$33,FULL_HEAL
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route12HiddenObjects:
@@ -856,54 +856,54 @@ SilphCo11FHiddenObjects:
 	dw OpenPokemonCenterPC
 	db $FF
 Route17HiddenObjects:
-	db $0e,$0f,RARE_CANDY
+	db $14,$0b,RARE_CANDY
 	dbw BANK(HiddenItems),HiddenItems
-	db $2d,$08,FULL_RESTORE
+	db $6e,$08,FULL_RESTORE
 	dbw BANK(HiddenItems),HiddenItems
-	db $48,$11,PP_UP
+	db $6f,$0b,PP_UP
 	dbw BANK(HiddenItems),HiddenItems
-	db $5b,$04,MAX_REVIVE
+	db $8e,$05,MAX_ETHER
 	dbw BANK(HiddenItems),HiddenItems
-	db $79,$08,MAX_ELIXER
+	db $8e,$0e,ELIXER
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 UndergroundPathNsHiddenObjects:
-	db $04,$03,FULL_RESTORE
+	db $04,$03,X_DEFEND
 	dbw BANK(HiddenItems),HiddenItems
-	db $22,$04,X_SPECIAL
+	db $22,$04,X_ATTACK
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 UndergroundPathWeHiddenObjects:
-	db $02,$0c,NUGGET
+	db $02,$0c,X_SPEED
 	dbw BANK(HiddenItems),HiddenItems
-	db $05,$15,ELIXER
+	db $05,$15,X_ACCURACY
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 CeladonCityHiddenObjects:
-	db $0f,$30,PP_UP
+	db $0f,$30,AWAKENING
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 SeafoamIslands4HiddenObjects:
-	db $10,$09,MAX_ELIXER
+	db $0f,$16,FULL_RESTORE
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 VermilionCityHiddenObjects:
-	db $0b,$0e,MAX_ETHER
+	db $1b,$0e,PARLYZ_HEAL
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 CeruleanCityHiddenObjects:
-	db $08,$0f,RARE_CANDY
+	db $13,$22,RARE_CANDY
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
 Route4HiddenObjects:
-	db $03,$28,GREAT_BALL
+	db $05,$51,GREAT_BALL
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF
-VermilionDockHiddenObjects: ;joenote - added some hidden goodies
-	db $00,$15,SURFBOARD
-	dbw BANK(HiddenItems),HiddenItems	;joenote - added hidden surfboard
+VermilionDockHiddenObjects:
+	db $00,$0f,NUGGET
+	dbw BANK(HiddenItems),HiddenItems	
 	db $01,$01,NUGGET
 	dbw BANK(HiddenItems),HiddenItems
-	db $0A,$1B,TM_15
+	db $00,$15,MASTER_BALL
 	dbw BANK(HiddenItems),HiddenItems
 	db $FF

@@ -84,9 +84,9 @@ DexRatingsTable:
 	dw PokedexRatingText_4423d
 	db 140
 	dw PokedexRatingText_44242
-	db 150
+	db 188	;150
 	dw PokedexRatingText_44247
-	db 152
+	db 192	;152
 	dw PokedexRatingText_4424c
 
 PokedexRatingText_44201:

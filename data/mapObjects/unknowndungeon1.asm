@@ -16,7 +16,7 @@ UnknownDungeon1Object:
 
 	db 3 ; objects
 	object SPRITE_BALL, 7, 13, STAY, NONE, 1, FULL_RESTORE
-	object SPRITE_BALL, 19, 3, STAY, NONE, 2, MAX_ELIXER
+	object SPRITE_BALL, 19, 3, STAY, NONE, 2, MIST_STONE
 	object SPRITE_BALL, 5, 0, STAY, NONE, 3, NUGGET
 
 	; warp-to

@@ -91,10 +91,10 @@ FishingGroup8:
 
 FishingGroup9:
 	db 4
-	db 100,SLOWBRO
-	db 100,SEAKING
+	db 100,DRAGONAIR
 	db 100,KINGLER
-	db 100,SEADRA
+	db 100,SLOWBRO
+	db 100,GYARADOS
 
 FishingGroup10:
 	db 4

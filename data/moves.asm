@@ -14,9 +14,9 @@ endm
 MoveEnd:
 	move KARATE_CHOP,  NO_ADDITIONAL_EFFECT,        50, FIGHTING, 100, 25		;4x Crit rate, Normal -> Fighting
 	move DOUBLESLAP,   ATTACK_TWICE_EFFECT,         50, NORMAL,    85, 10		;Hits twice and 2x Crit rate, 50 POW
-	move COMET_PUNCH,  TWO_TO_FIVE_ATTACKS_EFFECT,  18, BUG,       85, 15		;Normal -> Bug
+	move COMET_PUNCH,  TWO_TO_FIVE_ATTACKS_EFFECT,  18, BUG,       85, 10		;Strikes first, Normal -> Bug, 10 PP
 	move MEGA_PUNCH,   FLINCH_SIDE_EFFECT2,        100, NORMAL,    85, 15		;30% chance to Flinch, 100 POW, 15 PP
-	move PAY_DAY,      DRAIN_HP_EFFECT,             60, NORMAL,   100, 10		;Drain HP effect, 60 POW, 10 PP
+	move PAY_DAY,      DRAIN_HP_EFFECT,             60, ROCK,     100, 10		;Drain HP effect, Normal -> Rock, 60 POW, 10 PP
 	move FIRE_PUNCH,   BURN_SIDE_EFFECT1,           75, FIRE,     100, 15
 	move ICE_PUNCH,    FREEZE_SIDE_EFFECT,          75, ICE,      100, 15
 	move THUNDERPUNCH, PARALYZE_SIDE_EFFECT1,       75, ELECTRIC, 100, 15
@@ -31,13 +31,13 @@ MoveEnd:
 	move WHIRLWIND,    SPEED_DOWN_SIDE_EFFECT,      55, FLYING,   100, 15		;33% chance to lower SPE, 55 POW, Normal -> Flying, 100 ACC, 15 PP
 	move FLY,          FLY_EFFECT,        			85, FLYING,    95, 15		;85 POW
 	move BIND,         TRAPPING_EFFECT,             15, ROCK,      75, 20		;Normal -> Rock
-	move SLAM,         NO_ADDITIONAL_EFFECT,        80, FIGHTING,  75, 20		;Normal -> Fighting
+	move SLAM,         JUMP_KICK_EFFECT,    	    80, FIGHTING,  90, 15		;Jump Kick effect, Normal -> Fighting, 90 ACC, 15 PP
 	move VINE_WHIP,    NO_ADDITIONAL_EFFECT,        35, GRASS,    100, 10		;2x Crit rate
 	move STOMP,        FLINCH_SIDE_EFFECT2,         65, NORMAL,   100, 20
-	move DOUBLE_KICK,  ATTACK_TWICE_EFFECT,         30, FIGHTING, 100, 30
+	move DOUBLE_KICK,  ATTACK_TWICE_EFFECT,         30, FIGHTING, 100, 15		;2x Crit rate
 	move MEGA_KICK,    NO_ADDITIONAL_EFFECT,       120, NORMAL,    85,  5		;85 ACC
-	move JUMP_KICK,    JUMP_KICK_EFFECT,            70, FIGHTING,  95, 25
-	move ROLLING_KICK, FLINCH_SIDE_EFFECT2,         60, FIGHTING,  85, 15
+	move JUMP_KICK,    JUMP_KICK_EFFECT,            85, FIGHTING,  95, 25		;85 POW
+	move ROLLING_KICK, FLINCH_SIDE_EFFECT2,         75, FIGHTING,  85, 15		;75 POW
 	move SAND_ATTACK,  ACCURACY_DOWN1_EFFECT,        0, GROUND,   100, 15		;Normal -> Ground
 	move HEADBUTT,     FLINCH_SIDE_EFFECT2,         70, NORMAL,   100, 15
 	move HORN_ATTACK,  POISON_SIDE_EFFECT1,         65, POISON,   100, 15		;30% chance to Poison, Normal -> Poison, 15 PP
@@ -56,9 +56,9 @@ MoveEnd:
 	move LEER,         DEFENSE_DOWN1_EFFECT,         0, NORMAL,   100, 30
 	move BITE,         FLINCH_SIDE_EFFECT2,         60, GHOST,    100, 25		;30% chance to Flinch, Normal -> Ghost
 	move GROWL,        ATTACK_DOWN1_EFFECT,          0, NORMAL,   100, 40
-	move ROAR,         SPECIAL_DOWN_SIDE_EFFECT,    55, NORMAL,   100, 15		;33% chance to lower SPC, 55 POW, 15 PP
+	move ROAR,         PARALYZE_EFFECT,    			 0, NORMAL,    55, 15		;Causes Paralysis, 55 ACC, 15 PP
 	move SING,         SLEEP_EFFECT,                 0, NORMAL,    55, 15
-	move SUPERSONIC,   CONFUSION_EFFECT,             0, NORMAL,   100,  5		;100 ACC, 5 PP
+	move SUPERSONIC,   CONFUSION_EFFECT,             0, NORMAL,    85, 40		;85 ACC, 40 PP
 	move SONICBOOM,    SPECIAL_DOWN1_EFFECT,         0, NORMAL,   100, 10		;Lowers SPC 1 stage, 100 ACC, 10 PP
 	move DISABLE,      DISABLE_EFFECT,               0, NORMAL,   100, 10		;100 ACC, 10 PP
 	move ACID,         BURN_SIDE_EFFECT2,           65, POISON,   100, 20		;30% chance to Burn, 65 POW, 20 PP
@@ -79,7 +79,7 @@ MoveEnd:
 	move SUBMISSION,   RECOIL_EFFECT,               80, FIGHTING, 100, 20		;100 ACC, 20 PP
 	move LOW_KICK,     FLINCH_SIDE_EFFECT2,         50, FIGHTING,  90, 20
 	move COUNTER,      NO_ADDITIONAL_EFFECT,         1, FIGHTING, 100, 20		;Counters all physical types instead of only Normal and Fighting types
-	move SEISMIC_TOSS, BURN_SIDE_EFFECT2,           50, FIGHTING, 100, 15		;30% chance to Burn, 50 POW, 15 PP
+	move SEISMIC_TOSS, BURN_SIDE_EFFECT1,           70, FIGHTING,  90, 15		;10% chance to Burn, 70 POW, 90 ACC, 15 PP
 	move STRENGTH,     NO_ADDITIONAL_EFFECT,       100, NORMAL,   100, 10		;100 POW, 10 PP
 	move ABSORB,       DRAIN_HP_EFFECT,             40, GRASS,    100, 15		;40 POW, 15 PP
 	move MEGA_DRAIN,   DRAIN_HP_EFFECT,             60, GRASS,    100, 10		;60 POW
@@ -92,7 +92,7 @@ MoveEnd:
 	move SLEEP_POWDER, SLEEP_EFFECT,                 0, GRASS,     75, 15
 	move PETAL_DANCE,  THRASH_PETAL_DANCE_EFFECT,  120, GRASS,    100, 10		;120 POW, 10 PP
 	move STRING_SHOT,  SPEED_DOWN1_EFFECT,           0, BUG,       95, 40
-	move DRAGON_RAGE,  SWIFT_EFFECT,               100, DRAGON,   100,  5		;Swift effect, 100 POW, 5 PP
+	move DRAGON_RAGE,  NO_ADDITIONAL_EFFECT,       100, DRAGON,   100, 10		;100 POW
 	move FIRE_SPIN,    TRAPPING_EFFECT,             15, FIRE,      70, 15
 	move THUNDERSHOCK, PARALYZE_SIDE_EFFECT1,       40, ELECTRIC, 100, 30
 	move THUNDERBOLT,  PARALYZE_SIDE_EFFECT1,       95, ELECTRIC, 100, 15
@@ -109,7 +109,7 @@ MoveEnd:
 	move MEDITATE,     ATTACK_UP2_EFFECT,            0, PSYCHIC,  100, 15		;Raises ATK 2 stages, 15 PP
 	move AGILITY,      SPEED_UP2_EFFECT,             0, PSYCHIC,  100, 30
 	move QUICK_ATTACK, NO_ADDITIONAL_EFFECT,        40, NORMAL,   100, 30
-	move RAGE,         RAGE_EFFECT,                 65, NORMAL,   100, 10		;Now lasts for a random 2 to 5 turns instead of lasting indefinitely, 65 POW, 10 PP
+	move RAGE,         RAGE_EFFECT,                 55, NORMAL,   100, 10		;Now lasts for a random 2 to 5 turns instead of lasting indefinitely, 55 POW, 10 PP
 	move TELEPORT,     SWITCH_AND_TELEPORT_EFFECT,   0, PSYCHIC,  100, 20
 	move NIGHT_SHADE,  DRAIN_HP_EFFECT,             80, GHOST,    100,  5		;Drain HP effect, 80 POW, 5 PP
 	move MIMIC,        MIMIC_EFFECT,                 0, NORMAL,   100, 10
@@ -140,13 +140,13 @@ MoveEnd:
 	move WATERFALL,    FLINCH_SIDE_EFFECT2,         80, WATER,    100, 15		;30% chance to Flinch
 	move CLAMP,        TRAPPING_EFFECT,             35, WATER,     75, 10
 	move SWIFT,        SWIFT_EFFECT,                60, NORMAL,   100, 20
-	move SKULL_BASH,   CHARGE_EFFECT,              130, FIGHTING, 100, 10		;Raises DEF 1 stage on Charge, 130 POW, Normal -> Fighting, 10 PP
+	move SKULL_BASH,   CHARGE_EFFECT,              130, FIGHTING, 100, 10		;Raises DEF 1 stage on Charge and 2x Crit rate, 130 POW, Normal -> Fighting, 10 PP
 	move SPIKE_CANNON, TWO_TO_FIVE_ATTACKS_EFFECT,  20, ICE,      100, 15		;Normal -> Ice
-	move CONSTRICT,    EVASION_DOWN1_EFFECT,         0, NORMAL,   100, 15		;Normal -> Grass, Lowers EVS 1 stage, 15 PP
+	move CONSTRICT,    EVASION_DOWN1_EFFECT,         0, NORMAL,   100, 15		;Lowers EVS 1 stage, Normal -> Grass, 15 PP
 	move AMNESIA,      SPECIAL_UP2_EFFECT,           0, PSYCHIC,  100,  5		;5 PP
 	move KINESIS,      ACCURACY_DOWN2_EFFECT,        0, PSYCHIC,   80, 10		;Lowers ACC 2 stages, 10 PP
 	move SOFTBOILED,   HEAL_EFFECT,                  0, NORMAL,   100, 10
-	move HI_JUMP_KICK, JUMP_KICK_EFFECT,            85, FIGHTING,  90, 20
+	move HI_JUMP_KICK, JUMP_KICK_EFFECT,           100, FIGHTING,  90, 20		;100 pow
 	move GLARE,        PARALYZE_EFFECT,              0, NORMAL,   100, 20		;100 ACC, 20 PP
 	move DREAM_EATER,  DREAM_EATER_EFFECT,         100, PSYCHIC,  100, 15
 	move POISON_GAS,   POISON_EFFECT,                0, POISON,   100, 15		;100 ACC, 15 PP
@@ -156,7 +156,7 @@ MoveEnd:
 	move SKY_ATTACK,   CHARGE_EFFECT,              140, FLYING,    90,  5		;30% chance to Flinch on Charge turn and 2x Crit rate
 	move TRANSFORM,    TRANSFORM_EFFECT,             0, NORMAL,   100,  5		;Provides 20 PP per move, 5 PP
 	move BUBBLE,       SPEED_DOWN1_EFFECT,           0, WATER,    100, 20		;Lowers SPE 1 stage, 20 PP
-	move DIZZY_PUNCH,  CONFUSION_SIDE_EFFECT,       70, GHOST,    100, 10		;10% chance to Confuse, Normal -> Ghost
+	move DIZZY_PUNCH,  CONFUSION_SIDE_EFFECT,       80, GHOST,    100, 10		;10% chance to Confuse, Normal -> Ghost, 80 POW
 	move SPORE,        SLEEP_EFFECT,                 0, GRASS,    100, 15
 	move FLASH,        ACCURACY_DOWN1_EFFECT,        0, NORMAL,   100, 10		;100 ACC, 10 PP
 	move PSYWAVE,      SPECIAL_DAMAGE_EFFECT,        1, PSYCHIC,   80, 10		;Does damage equal to 1x to 2x the user's level, 10 PP

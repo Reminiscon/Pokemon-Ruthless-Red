@@ -4,7 +4,7 @@ BluesHouseObject:
 	db 3 ; warps
 	warp 2, 7, 1, -1
 	warp 3, 7, 1, -1
-	warp 5, 7, 3, INDIGO_PLATEAU_LOBBY
+	warp  9, 10, 3, INDIGO_PLATEAU_LOBBY
 
 	db 0 ; signs
 

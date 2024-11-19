@@ -1,11 +1,12 @@
 VictoryRoad1Object:
 	db $7d ; border block
 
-	db 4 ; warps
+	db 5 ; warps
 	warp 82, 35, 2, -1
 	warp 83, 35, 2, -1
 	warp  0,  4, 2, VICTORY_ROAD_2 ; ONE-WAY WARP
 	warp 83, 33, 2, VICTORY_ROAD_1 ; ONE-WAY WARP
+	warp 39, 35, 7, ROUTE_23 ; ONE-WAY WARP
 
 	db 0 ; signs
 

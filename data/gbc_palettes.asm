@@ -101,9 +101,9 @@ ENDC
 
 	; PAL_LOGO2
 	RGB 31, 31, 31	;white bg
-	RGB 31, 31,  0	;yellow logo text
-	RGB  7,  7, 25	;blue logo text shadow
-	RGB  0,  0, 17	;blue logo text outline
+	RGB 31,  0,  0	;yellow logo text dylannote - modified to a deep red
+	RGB  0,  0,  0	;blue logo text shadow dylannote - modified to black
+	RGB  0,  0,  0	;blue logo text outline - modified to black
 
 	; PAL_0F
 	RGB 31, 31, 31

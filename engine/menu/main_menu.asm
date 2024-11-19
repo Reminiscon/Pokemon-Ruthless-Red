@@ -348,7 +348,7 @@ HandshakeList:	;this serves as a version control passcode with FF as an end-of-l
 	db $b
 	db $ff
 VersionText:
-	db "          V0.9 ALPHA@"	;dylannote - Switched to Ruthless Red version
+	db "V1.0 BETA  2021-2024@"	;dylannote - Switched to Ruthless Red version
 
 WhereWouldYouLikeText:
 	TX_FAR _WhereWouldYouLikeText

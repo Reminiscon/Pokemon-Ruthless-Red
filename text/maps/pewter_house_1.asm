@@ -13,4 +13,8 @@ _PewterHouse1Text3::
 
 	para "If only we had"
 	line "some BADGEs..."
+	
+	para "If we could beat"
+	line "BROCK, our level"
+	cont "cap would be 30!"
 	done

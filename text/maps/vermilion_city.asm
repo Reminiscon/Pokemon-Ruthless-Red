@@ -12,9 +12,6 @@ _VermilionCityText1::							;modified text
 	cont "face!"
 	
 	para "It was a joke!"
-	line "Oh, you're never"
-	cont "too old to have"
-	cont "fun!"
 	done
 
 _VermilionCityText_198a7::

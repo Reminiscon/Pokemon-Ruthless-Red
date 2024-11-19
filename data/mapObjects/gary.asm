@@ -11,10 +11,10 @@ GaryObject:
 
 	db 2 ; objects
 	object SPRITE_BLUE, 4, 2, STAY, DOWN, 1 ; person
-	object SPRITE_OAK, 3, 7, STAY, UP, 2 ; person
+	object SPRITE_OAK,  1,  2, STAY, RIGHT, 2 ; person
 
 	; warp-to
-	warp_to 3, 7, CHAMPIONS_ROOM_WIDTH ; LANCES_ROOM
+	warp_to  3,  7, CHAMPIONS_ROOM_WIDTH ; LANCES_ROOM
 	warp_to 4, 7, CHAMPIONS_ROOM_WIDTH ; LANCES_ROOM
 	warp_to 3, 0, CHAMPIONS_ROOM_WIDTH ; HALL_OF_FAME
 	warp_to 4, 0, CHAMPIONS_ROOM_WIDTH ; HALL_OF_FAME
